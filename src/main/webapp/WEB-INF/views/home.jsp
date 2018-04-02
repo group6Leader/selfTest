@@ -10,8 +10,8 @@
 <link rel="stylesheet" type="text/css"
 	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.login').hide();
@@ -56,6 +56,8 @@
 				})
 			});
 		}
+
+	
 	});
 
 	// show password
@@ -244,10 +246,10 @@
 			<input type='submit' value='Sign in'>
 		</div>
 		<div class='forgot'>
-			<h3>Forgot your password?</h3>
-			<a href='#'>click here</a> to order a new password.
+			<h3>회원이 아니신가요?</h3>
+			<a href='customer/goJoin'>click here</a> to join a new member
 		</div>
 	</div>
-
+   
 </body>
 </html>
