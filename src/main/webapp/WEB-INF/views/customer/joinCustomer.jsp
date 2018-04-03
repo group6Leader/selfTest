@@ -110,6 +110,9 @@
 					class="form-radio-button"></i> <span>여자</span>
 				</label>
 			</div>
+			<div class="form-radio form-radio-block">
+				<div class="form-radio-legend">생년월일</div>
+			</div>
 			<div class="form-element form-select">
 				<select class="form-element-field" id="year">
 					<option disabled selected value="" class="form-select-placeholder"></option>
@@ -153,7 +156,7 @@
 		</fieldset>
 		<div class="form-actions">
 			<button class="form-btn" type="submit">JOIN</button>
-			<button class="form-btn-cancel -nooutline" type="reset">CANCEL</button>
+			<button class="form-btn-cancel -nooutline" type="reset">Reset</button>
 		</div>
 
 	</form>
