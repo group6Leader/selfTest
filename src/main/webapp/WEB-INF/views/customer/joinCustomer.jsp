@@ -12,6 +12,23 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
 <script type="text/javascript">
+	
+	
+	<script type="text/javascript">
+
+	<c:if test="${message != null}">
+
+	alert('${message}');
+
+	</c:if>
+
+	function idCheckOpen() {
+		
+
+		window.open("idCheck","newWindow","top=200,left=400,height=300,width=400,resizable=no");
+
+	}
+	
 	document.addEventListener("change", function(event) {
 		let
 		element = event.target;
@@ -19,11 +36,20 @@
 			element.classList[element.value ? "add" : "remove"]("-hasvalue");
 		}
 	});
+	
+	
+	
+	
 	window.onload = function() {
 		appendYear();
 		appendMonth();
 		appendDay();
 	}
+	
+	
+	
+	
+	
 	function appendYear() {
 
 		var date = new Date();
