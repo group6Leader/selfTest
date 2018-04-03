@@ -111,7 +111,7 @@
 				</label>
 			</div>
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">생년월일</div>
+				<div class="form-radio-legend">생년월일 </div>
 			</div>
 			<div class="form-element form-select">
 				<select class="form-element-field" id="year">
