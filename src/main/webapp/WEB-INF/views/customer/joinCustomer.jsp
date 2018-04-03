@@ -12,6 +12,7 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
 <script type="text/javascript">
+
 $(document).ready(function() {
 	
 	$('#id').on('keyup',IdChk);
@@ -76,6 +77,7 @@ function IdChk(){
 
 
 	
+
 	document.addEventListener("change", function(event) {
 		let
 		element = event.target;
@@ -83,20 +85,11 @@ function IdChk(){
 			element.classList[element.value ? "add" : "remove"]("-hasvalue");
 		}
 	});
-	
-	
-	
-	
 	window.onload = function() {
 		appendYear();
 		appendMonth();
 		appendDay();
 	}
-	
-	
-	
-	
-	
 	function appendYear() {
 
 		var date = new Date();
@@ -225,6 +218,12 @@ function IdChk(){
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Email</label> <small
 					class="form-element-hint">We will never spam you!</small>
+			</div>
+				<div class="form-element form-input">
+				<input class="form-element-field"
+					placeholder="Please your job // if you doctor please enter major" type="text" required />
+				<div class="form-element-bar"></div>
+				<label class="form-element-label">Job</label>
 			</div>
 		</fieldset>
 		<div class="form-actions">
