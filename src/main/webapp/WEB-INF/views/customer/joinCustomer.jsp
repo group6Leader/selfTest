@@ -12,22 +12,69 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
 <script type="text/javascript">
+$(document).ready(function() {
 	
+	$('#id').on('keyup',IdChk);
+
 	
-	<script type="text/javascript">
+	var RegexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 요휴성검사
 
-	<c:if test="${message != null}">
+	var RegexName = /^[가-힣]{2,4}$/; //이름 유효성 검사 2~4자 사이
 
-	alert('${message}');
+	var RegexId = /^[a-z0-9_-]{3,16}$/; //아이디 유효성 검사 316자 사이
 
-	</c:if>
+	var RegexTel = /^[0-9]{8,11}$/; //전화번호 유효성 검사
 
-	function idCheckOpen() {
-		
+	$("form").submit(function() {
+		if (!RegexId.test($.trim($("#id").val())))
+		{
+			alert("아이디 오류");
+			$("#id").focus();
+			return false;
+		}
+		if (!RegexName.test($.trim($("#name").val())))
+		{
+			alert("이름은 한글로 2~4자 이내로 해주세요.");
+			$("#name").focus();
+			return false;
+		}
+		if (!RegexEmail.test($.trim($("#email").val())))
+		{
+			alert("이메일 오류");
+			$("#email").focus();
+			return false;
+		}
+	});
+});
 
-		window.open("idCheck","newWindow","top=200,left=400,height=300,width=400,resizable=no");
+function IdChk(){
+	var id = $('#id').val();
+	$.ajax({
+		url:'idcheck'
+		,type:'post'
+		,data:{
+			id:id
+		}
+		,dataType:'json'
+		,success:function(data){
+			console.log(data);
+			var html = '<span id="check">';
+			if(data['id']!=""){
+				html += '중복되는 아이디가 있습니다.';
+			}else{
+				html += '사용가능한 아이디 입니다.';
+			}
+			html += '</span>';
+			
+			$('#check').html(html);
+		}
+		,error:function(err){
+			console.log(JSON.stringify(err));
+		}
+	});
+}
 
-	}
+
 	
 	document.addEventListener("change", function(event) {
 		let
@@ -109,19 +156,19 @@
 		<fieldset class="form-fieldset">
 			<legend class="form-legend">JOIN US</legend>
 			<div class="form-element form-input">
-				<input class="form-element-field"
+				<input id="cust_Name" class="form-element-field"
 					placeholder="Please fill in your full name" type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Name</label>
 			</div>
 			<div class="form-element form-input">
-				<input class="form-element-field" placeholder="Please your id"
+				<input id="cust_Id" class="form-element-field" placeholder="Please your id"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">ID</label>
 			</div>
 			<div class="form-element form-input">
-				<input class="form-element-field" placeholder="Please your password"
+				<input id="cust_Pw" class="form-element-field" placeholder="Please your password"
 					type="password" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Password</label>
