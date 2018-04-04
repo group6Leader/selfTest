@@ -11,19 +11,15 @@ public class Customer {
 	private String cust_Address;
 	private String cust_Phone;
 	private String cust_Email;
-	private int role_Id;
 	private String cust_Major;
 	private String original_File;
 	private String saved_File;
-
-	public Customer() {
-		super();
-	}
-
+	private char EmailVerify;
+	
 	public Customer(int cust_Num, String cust_Id, String cust_Name, String cust_Pw, String cust_Sex, String cust_Birth,
-			String cust_Address, String cust_Phone, String cust_Email, int role_Id, String cust_Major,
-			String original_File, String saved_File) {
-		super();
+			String cust_Address, String cust_Phone, String cust_Email, String cust_Major, String original_File,
+			String saved_File, char emailVerify) {
+		
 		this.cust_Num = cust_Num;
 		this.cust_Id = cust_Id;
 		this.cust_Name = cust_Name;
@@ -33,10 +29,13 @@ public class Customer {
 		this.cust_Address = cust_Address;
 		this.cust_Phone = cust_Phone;
 		this.cust_Email = cust_Email;
-		this.role_Id = role_Id;
 		this.cust_Major = cust_Major;
 		this.original_File = original_File;
 		this.saved_File = saved_File;
+		EmailVerify = emailVerify;
+	}
+
+	public Customer() {
 	}
 
 	public int getCust_Num() {
@@ -111,14 +110,6 @@ public class Customer {
 		this.cust_Email = cust_Email;
 	}
 
-	public int getRole_Id() {
-		return role_Id;
-	}
-
-	public void setRole_Id(int role_Id) {
-		this.role_Id = role_Id;
-	}
-
 	public String getCust_Major() {
 		return cust_Major;
 	}
@@ -143,12 +134,20 @@ public class Customer {
 		this.saved_File = saved_File;
 	}
 
+	public char getEmailVerify() {
+		return EmailVerify;
+	}
+
+	public void setEmailVerify(char emailVerify) {
+		EmailVerify = emailVerify;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [cust_Num=" + cust_Num + ", cust_Id=" + cust_Id + ", cust_Name=" + cust_Name + ", cust_Pw="
 				+ cust_Pw + ", cust_Sex=" + cust_Sex + ", cust_Birth=" + cust_Birth + ", cust_Address=" + cust_Address
-				+ ", cust_Phone=" + cust_Phone + ", cust_Email=" + cust_Email + ", role_Id=" + role_Id + ", cust_Major="
-				+ cust_Major + ", original_File=" + original_File + ", saved_File=" + saved_File + "]";
+				+ ", cust_Phone=" + cust_Phone + ", cust_Email=" + cust_Email + ", cust_Major=" + cust_Major
+				+ ", original_File=" + original_File + ", saved_File=" + saved_File + ", EmailVerify=" + EmailVerify
+				+ "]";
 	}
-
 }

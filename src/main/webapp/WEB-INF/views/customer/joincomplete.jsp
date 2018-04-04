@@ -29,7 +29,7 @@ padding-top:13rem;
 </style>
 </head>
 <body>
-	<div class="hit-the-floor">회원가입을 축하합니다.</div>
-
+	<div class="hit-the-floor"><a href="../">회원가입을 축하합니다.</a></div>
+	
 </body>
 </html>
