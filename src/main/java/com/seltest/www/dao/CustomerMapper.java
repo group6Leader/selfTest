@@ -8,4 +8,5 @@ public interface CustomerMapper {
 	
 	public int verifyUser(String cust_Email);
 
+	public Customer searchCustomerOne(String cust_Id);
 }

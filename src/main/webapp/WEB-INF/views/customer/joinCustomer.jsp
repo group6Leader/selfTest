@@ -17,7 +17,7 @@ $(document).ready(function() {
 	
 	$('#cust_Id').on('keyup',IdChk);
 
-	/* 
+	 
 	var RegexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 요휴성검사
 
 	var RegexName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; //이름 유효성 검사 2~4자 사이
@@ -49,18 +49,18 @@ $(document).ready(function() {
 });
 
 function IdChk(){
-	var id = $('#cust_Id').val();
+	var cust_Id = $('#cust_Id').val();
 	$.ajax({
 		url:'idcheck'
 		,type:'post'
 		,data:{
-			id:id
+			cust_Id:cust_Id
 		}
 		,dataType:'json'
 		,success:function(data){
 			console.log(data);
 			var html = '<span id="check">';
-			if(data['id']!=""){
+			if(data['cust_Id']!=""){
 				html += '중복되는 아이디가 있습니다.';
 			}else{
 				html += '사용가능한 아이디 입니다.';
@@ -138,12 +138,6 @@ function IdChk(){
 		}
 
 	}
-	var selYear = document.getElementById("year");
-	var selMonth = document.getElementById("month");
-	var selDay = document.getElementById("day");
-	
-	var cust_Birth = selYear.value +" 년 "+ selMonth.value+" 월 "+ selDay.value +"일";
-	
 	
 	
 </script>
@@ -174,6 +168,7 @@ function IdChk(){
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">ID</label>
+				<div id="check"></div>
 			</div>
 			
 			
