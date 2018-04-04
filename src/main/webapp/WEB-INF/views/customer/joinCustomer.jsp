@@ -15,41 +15,41 @@
 
 $(document).ready(function() {
 	
-	$('#id').on('keyup',IdChk);
+	$('#cust_Id').on('keyup',IdChk);
 
-	
+	/* 
 	var RegexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 요휴성검사
 
-	var RegexName = /^[가-힣]{2,4}$/; //이름 유효성 검사 2~4자 사이
+	var RegexName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; //이름 유효성 검사 2~4자 사이
 
 	var RegexId = /^[a-z0-9_-]{3,16}$/; //아이디 유효성 검사 316자 사이
-
-	var RegexTel = /^[0-9]{8,11}$/; //전화번호 유효성 검사
+	
+	var RegexTel = /^[0-9]{8,11}$/; //전화번호 유효성 검사 */
 
 	$("form").submit(function() {
-		if (!RegexId.test($.trim($("#id").val())))
+		if (!RegexId.test($.trim($("#cust_Id").val())))
 		{
 			alert("아이디 오류");
-			$("#id").focus();
+			$("#cust_Id").focus();
 			return false;
 		}
-		if (!RegexName.test($.trim($("#name").val())))
+		if (!RegexName.test($.trim($("#cust_Name").val())))
 		{
 			alert("이름은 한글로 2~4자 이내로 해주세요.");
-			$("#name").focus();
+			$("#cust_Name").focus();
 			return false;
 		}
-		if (!RegexEmail.test($.trim($("#email").val())))
+		if (!RegexEmail.test($.trim($("#cust_Email").val())))
 		{
 			alert("이메일 오류");
-			$("#email").focus();
+			$("#cust_Email").focus();
 			return false;
 		}
 	});
 });
 
 function IdChk(){
-	var id = $('#id').val();
+	var id = $('#cust_Id').val();
 	$.ajax({
 		url:'idcheck'
 		,type:'post'
@@ -90,6 +90,9 @@ function IdChk(){
 		appendMonth();
 		appendDay();
 	}
+	
+	
+	
 	function appendYear() {
 
 		var date = new Date();
@@ -135,6 +138,14 @@ function IdChk(){
 		}
 
 	}
+	var selYear = document.getElementById("year");
+	var selMonth = document.getElementById("month");
+	var selDay = document.getElementById("day");
+	
+	var cust_Birth = selYear.value +" 년 "+ selMonth.value+" 월 "+ selDay.value +"일";
+	
+	
+	
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CHAR HOSPITAL JOIN</title>
@@ -145,7 +156,7 @@ function IdChk(){
 		<source src="https://codepen.jonnitto.ch/BackgroundVideo.mp4"
 			type="video/mp4">
 	</video>
-	<form class="form-card">
+	<form class="form-card" action="custJoin" method="post" >
 		<fieldset class="form-fieldset">
 			<legend class="form-legend">JOIN US</legend>
 			<div class="form-element form-input">
@@ -168,10 +179,10 @@ function IdChk(){
 			</div>
 			<div class="form-radio form-radio-block">
 				<div class="form-radio-legend">성별</div>
-				<label class="form-radio-label"> <input name=sex
+				<label class="form-radio-label"> <input name=cust_Sex
 					class="form-radio-field" type="radio" value="men" /> <i
 					class="form-radio-button"></i> <span>남자</span>
-				</label> <label class="form-radio-label"> <input name=sex
+				</label> <label class="form-radio-label"> <input name=cust_Sex
 					class="form-radio-field" type="radio" value="women" /> <i
 					class="form-radio-button"></i> <span>여자</span>
 				</label>
@@ -201,26 +212,26 @@ function IdChk(){
 				<label class="form-element-label">Day</label>
 			</div>
 			<div class="form-element form-input">
-				<input class="form-element-field" placeholder="Please your Address"
+				<input id="cust_Address" class="form-element-field" placeholder="Please your Address"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Address</label>
 			</div>
 			<div class="form-element form-input">
-				<input class="form-element-field"
+				<input id="cust_Phone" class="form-element-field"
 					placeholder="Please your PhoneNumber" type="number" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">PhoneNumber</label>
 			</div>
 			<div class="form-element form-input">
-				<input class="form-element-field" placeholder=" " type="email"
+				<input id="cust_Email" class="form-element-field" placeholder=" " type="email"
 					required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Email</label> <small
 					class="form-element-hint">We will never spam you!</small>
 			</div>
 				<div class="form-element form-input">
-				<input class="form-element-field"
+				<input id="cust_Major" class="form-element-field"
 					placeholder="Please your job // if you doctor please enter major" type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Job</label>
