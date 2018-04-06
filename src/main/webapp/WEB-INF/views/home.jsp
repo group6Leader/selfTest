@@ -154,12 +154,12 @@
 				<li><a href="customer/logout"> <i class="fa fa-user fa-lg"></i> <span
 						class="nav-text">LogOut</span>
 				</a></li>
-				</c:if>
+				
 
-				<li><a href=""> <i class="fa fa-envelope-o fa-lg"></i> <span
-						class="nav-text">Contact</span>
+				<li><a href="selfCheck/goSelfCheck"> <i class="fa fa-envelope-o fa-lg"></i> <span
+						class="nav-text">SelfCheck</span>
 				</a></li>
-
+				</c:if>
 				<li class="darkerlishadow"><a href=""> <i
 						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">News</span>
 				</a></li>

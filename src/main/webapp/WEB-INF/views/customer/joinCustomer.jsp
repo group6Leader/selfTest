@@ -184,10 +184,10 @@ function IdChk(){
 			<div class="form-radio form-radio-block">
 				<div class="form-radio-legend">성별</div>
 				<label class="form-radio-label"> <input name=cust_Sex
-					class="form-radio-field" type="radio" value="man" /> <i
+					class="form-radio-field" type="radio" value="남" /> <i
 					class="form-radio-button"></i> <span>남자</span>
 				</label> <label class="form-radio-label"> <input name=cust_Sex
-					class="form-radio-field" type="radio" value="woman" /> <i
+					class="form-radio-field" type="radio" value="여" /> <i
 					class="form-radio-button"></i> <span>여자</span>
 				</label>
 				
