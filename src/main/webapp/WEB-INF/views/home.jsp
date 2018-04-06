@@ -144,11 +144,17 @@
 				<li><a href=""> <i class="fa fa-home fa-lg"></i> <span
 						class="nav-text">Home</span>
 				</a></li>
-
+				<c:if test="${sessionScope.loginID == null}">
 				<li><a id='SignIn'> <i class="fa fa-user fa-lg"></i> <span
 						class="nav-text">Login</span>
 				</a></li>
-
+				</c:if>
+				
+				<c:if test="${sessionScope.loginID != null}">
+				<li><a href="customer/logout"> <i class="fa fa-user fa-lg"></i> <span
+						class="nav-text">LogOut</span>
+				</a></li>
+				</c:if>
 
 				<li><a href=""> <i class="fa fa-envelope-o fa-lg"></i> <span
 						class="nav-text">Contact</span>
