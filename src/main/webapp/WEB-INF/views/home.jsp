@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +14,12 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$('.login').hide();
 	});
 	// Placeholder fixed for Internet Explorer
 	$(function() {
-		
+
 		$('#SignIn').on('click', function(event) {
 			event.preventDefault();//href 사용 안함
 			$('.login').show();
@@ -57,8 +58,66 @@
 			});
 		}
 
-	
 	});
+
+	function formCheck() {
+	
+		var cust_Id1 = $('#cust_Id').val();
+		var cust_Pw1 = $('#cust_Pw').val();
+		var cust_Id2 = document.getElementById('cust_Id');
+		var cust_Pw2 = document.getElementById('cust_Pw');
+ 		
+		var logincheck = 'fail';
+ 	
+ 		
+		if (cust_Id2.value == '') {
+			alert("ID를 입력해주세요");
+			cust_Id.focus();
+			return false;
+		}
+		if (cust_Pw2.value == '') {
+			alert("password를 입력해주세요");
+			cust_Pw.focus();
+			return false;
+		}
+
+		$.ajax({
+			url : 'customer/login',
+			type : 'post',
+			data : {
+				cust_Id : cust_Id1,
+				cust_Pw : cust_Pw1
+			},
+			dataType : 'json',
+			success : function(data) {
+				console.log(data);
+				var html = '<span id="check">';
+				if (data['check'] == "errorId") {
+					html += data.value;
+					
+				} else if (data['check'] == "errorPw") {
+					html += data.value;
+					
+				} else {
+					logincheck = 'success';
+					
+				
+					$(location).attr('href',"")
+					
+					alert("로그인이 완료 되었습니다.")
+				}
+				html += '</span>';
+
+				$('#check').html(html);
+			},
+			error : function(err) {
+				console.log(JSON.stringify(err));
+			}
+		});
+
+	
+		
+	}
 
 	// show password
 	// $(document).ready(function(){
@@ -70,7 +129,7 @@
 	// });
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Home</title>
+<title>Home</title>
 </head>
 <body>
 	<nav class="main-menu">
@@ -82,123 +141,81 @@
 
 			<ul>
 
-				<li>
-					<a href="">
-					<i class="fa fa-home fa-lg"></i>
-					<span class="nav-text">Home</span>
+				<li><a href=""> <i class="fa fa-home fa-lg"></i> <span
+						class="nav-text">Home</span>
 				</a></li>
 
-				<li>
-					<a id='SignIn'>
-					<i class="fa fa-user fa-lg"></i>
-					<span class="nav-text">Login</span>
-					</a>
-				</li>
+				<li><a id='SignIn'> <i class="fa fa-user fa-lg"></i> <span
+						class="nav-text">Login</span>
+				</a></li>
 
 
-				<li>
-					<a href="">
-					<i class="fa fa-envelope-o fa-lg"></i>
-					<span class="nav-text">Contact</span>
-					</a>
-				</li>
+				<li><a href=""> <i class="fa fa-envelope-o fa-lg"></i> <span
+						class="nav-text">Contact</span>
+				</a></li>
 
-				<li class="darkerlishadow">
-					<a href="">
-					<i class="fa fa-clock-o fa-lg"></i> 
-					<span class="nav-text">News</span>
-					</a>
-				</li>
+				<li class="darkerlishadow"><a href=""> <i
+						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">News</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-desktop fa-lg"></i>
-					<span class="nav-text">Technology</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-desktop fa-lg"></i> <span class="nav-text">Technology</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-plane fa-lg"></i>
-					<span class="nav-text">Travel</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-plane fa-lg"></i> <span class="nav-text">Travel</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-shopping-cart"></i>
-					<span class="nav-text">Shopping</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-shopping-cart"></i> <span class="nav-text">Shopping</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-microphone fa-lg"></i>
-					<span class="nav-text">Film & Music</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-microphone fa-lg"></i> <span class="nav-text">Film
+							& Music</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com"> 
-					<i class="fa fa-flask fa-lg"></i> 
-					<span class="nav-text">Web Tools</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-flask fa-lg"></i> <span class="nav-text">Web
+							Tools</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-picture-o fa-lg"></i>
-					<span class="nav-text">Art & Design</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-picture-o fa-lg"></i> <span class="nav-text">Art
+							& Design</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-align-left fa-lg"></i>
-					<span class="nav-text">Magazines</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-align-left fa-lg"></i> <span class="nav-text">Magazines</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com"> 
-					<i class="fa fa-gamepad fa-lg"></i>
-					<span class="nav-text">Games</span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-gamepad fa-lg"></i> <span class="nav-text">Games</span>
+				</a></li>
 
-				<li class="darkerli">
-					<a href="http://startific.com">
-					<i class="fa fa-glass fa-lg"></i>
-					<span class="nav-text">Life & Style </span>
-					</a>
-				</li>
+				<li class="darkerli"><a href="http://startific.com"> <i
+						class="fa fa-glass fa-lg"></i> <span class="nav-text">Life
+							& Style </span>
+				</a></li>
 
-				<li class="darkerlishadowdown">
-					<a href="http://startific.com">
-					<i class="fa fa-rocket fa-lg"></i>
-					<span class="nav-text">Fun</span>
-					</a>
-				</li>
+				<li class="darkerlishadowdown"><a href="http://startific.com">
+						<i class="fa fa-rocket fa-lg"></i> <span class="nav-text">Fun</span>
+				</a></li>
 
 
 			</ul>
 
 
-			<li>
-				<a href="http://startific.com"> 
-				<i class="fa fa-question-circle fa-lg"></i>
-				<span class="nav-text">Help</span>
-				</a>
-			</li>
+			<li><a href="http://startific.com"> <i
+					class="fa fa-question-circle fa-lg"></i> <span class="nav-text">Help</span>
+			</a></li>
 
 
 			<ul class="logout">
-				<li>
-					<a href="http://startific.com"> 
-					<i class="fa fa-lightbulb-o fa-lg"></i> 
-					<span class="nav-text">	BLOG </span>
-					</a>
-				</li>
+				<li><a href="http://startific.com"> <i
+						class="fa fa-lightbulb-o fa-lg"></i> <span class="nav-text">
+							BLOG </span>
+				</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -232,24 +249,27 @@
 		<div class='top'>
 			<h2>Login&nbsp;to&nbsp;download&nbsp;area</h2>
 		</div>
-		<div class='user'>
-			<input name='username' placeholder='Mail' type='text'>
-		</div>
-		<div class='pw'>
-			<input id='pw' name='password' placeholder='Password' type='password'>
-		</div>
-		<div class='remlog'>
-			<div class='remember'>
-				<input checked='checked' id='remember' name='remember'
-					type='checkbox'> <label for='remember'></label>remember me
+		
+			<div class='user'>
+				<input id="cust_Id" name='cust_Id' placeholder='ID' type='text'>
 			</div>
-			<input type='submit' value='Sign in'>
-		</div>
-		<div class='forgot'>
-			<h3>회원이 아니신가요?</h3>
-			<a href='customer/goJoin'>click here</a> to join a new member
-		</div>
+			<div class='pw'>
+				<input id='cust_Pw' name='cust_Pw' placeholder='Password'
+					type='password'>
+			</div>
+			<div id="check"></div>
+			<div class='remlog'>
+
+				<input type="button" value='Sign in' onclick="return formCheck()">
+
+			</div>
+			<div class='forgot'>
+				<h3>회원이 아니신가요?</h3>
+				<a href='customer/goJoin'>click here</a> to join a new member
+			</div>
+		
+
 	</div>
-   
+
 </body>
 </html>

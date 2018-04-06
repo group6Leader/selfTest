@@ -75,15 +75,14 @@ label {
 
 input[type="submit"] {
 	background: #b5cd60;
+	width:18rem;
 	border: 0;
 	height: 30px;
 	border-radius: 3px;
 	color: white;
 	font-weight: bold;
-	padding: 0px 25px;
 	cursor: pointer;
 	transition: background 0.3s ease-in-out;
-	margin-left: 50px;
 }
 
 input[type="submit"]:hover {

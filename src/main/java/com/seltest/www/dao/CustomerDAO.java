@@ -93,6 +93,8 @@ public class CustomerDAO {
 	public Customer searchCustomerOne(String cust_Id) {
 		Customer result = null;
 
+		logger.info("search id는"+cust_Id);
+		
 		try {
 			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
 			result = mapper.searchCustomerOne(cust_Id);
