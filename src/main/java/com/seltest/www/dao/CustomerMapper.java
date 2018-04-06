@@ -1,6 +1,6 @@
 package com.seltest.www.dao;
 
-import com.seltest.www.customer.vo.Customer;
+import com.seltest.www.vo.Customer;
 
 public interface CustomerMapper {
 

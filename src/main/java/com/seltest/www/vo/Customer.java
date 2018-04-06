@@ -1,4 +1,4 @@
-package com.seltest.www.customer.vo;
+package com.seltest.www.vo;
 
 public class Customer {
 

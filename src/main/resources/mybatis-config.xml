@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.seltest.www.customer.vo.Customer" alias="customer" />
+		<typeAlias type="com.seltest.www.vo.Customer" alias="customer" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/customerMapper.xml" />

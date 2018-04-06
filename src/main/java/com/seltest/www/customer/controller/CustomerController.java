@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.seltest.www.customer.vo.Customer;
 import com.seltest.www.dao.CustomerDAO;
+import com.seltest.www.vo.Customer;
 
 @Controller
 @RequestMapping(value = "customer")
