@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 예약정보 처리 SQL -->
+<mapper namespace="com.charhospital.www.dao.ReservationMapper">
+	
+	<insert id="insertReservation" parameterType="reservation">
+		insert into reservation (
+			res_Num
+			,res_Date
+			,res_Hos
+			,cust_Num
+		)
+		values (
+			res_Num_sequence.nextval
+			, #{res_Date}
+			, #{res_Hos}
+			, #{cust_Num}		
+		)
+	</insert>	
+	
+	<!-- 모든 예약시간 -->
+	<select id="selectReservation" parameterType="reservation" resultType="reservation">
+		select res_Num, res_Date, res_Hos, cust_Num
+		from reservation	
+	</select>
+	
+	<!-- 나의 예약시간 -->
+	<select id ="selectMyReservation" parameterType="int" resultType="reservation">
+		select res_Num, res_Date, res_Hos, cust_Num
+		from reservation
+		where cust_Num = #{cust_Num}	
+	</select>
+
+	<!-- 해당 날짜에 예약된 시간 -->
+	<select id="checkReservation" parameterType="String" resultType="reservation">
+		select res_Num, res_Date, res_Hos, cust_Num
+		from reservation
+		where res_Date LIKE '%' || #{res_Date} || '%'	
+	</select>
+
+
+</mapper>

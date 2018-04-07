@@ -160,8 +160,8 @@
 						class="nav-text">SelfCheck</span>
 				</a></li>
 				</c:if>
-				<li class="darkerlishadow"><a href=""> <i
-						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">News</span>
+				<li class="darkerlishadow"><a href="reservation/book"> <i
+						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">Reservation</span>
 				</a></li>
 
 				<li class="darkerli"><a href="http://startific.com"> <i
