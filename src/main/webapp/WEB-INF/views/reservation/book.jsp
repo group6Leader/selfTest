@@ -93,8 +93,8 @@
 		<table width="100%" border="0" cellspacing="1" cellpadding="1">	
 			<tr>	
 			       <td align ="right">	
-			             <input type="button" onclick="javascript:location.href='<c:url value='/book' />'" value="오늘"/>	
-			       </td>	
+			             <input type="button" onclick="javascript:location.href='<c:url value='../reservation/book' />'" value="오늘"/>	
+			       </td>
 			</tr>	
 		</table>	
 	
@@ -109,11 +109,11 @@
 				       </tr> 
 				       <tr>		
 				             <td align="center" >		
-				                    <a href="<c:url value='/book' />?year=<%=year-1%>&amp;month=<%=month%>" target="_self">		
+				                    <a href="<c:url value='../reservation/book' />?year=<%=year-1%>&amp;month=<%=month%>" target="_self">		
 				                           <b>&lt;&lt;</b><!-- 이전해 -->		
 				                    </a>		
 				                    <%if(month > 0 ){ %>		
-				                    <a href="<c:url value='/book' />?year=<%=year%>&amp;month=<%=month-1%>" target="_self">		
+				                    <a href="<c:url value='../reservation/book' />?year=<%=year%>&amp;month=<%=month-1%>" target="_self">		
 				                           <b>&lt;</b><!-- 이전달 -->		
 				                    </a>		
 				                    <%} else {%>		
@@ -124,13 +124,13 @@
 									<%=month+1%>월		
 				                    &nbsp;&nbsp;		
 				                    <%if(month < 11 ){ %>		
-				                    <a href="<c:url value='/book' />?year=<%=year%>&amp;month=<%=month+1%>" target="_self">		
+				                    <a href="<c:url value='../reservation/book' />?year=<%=year%>&amp;month=<%=month+1%>" target="_self">		
 				                           <!-- 다음달 --><b>&gt;</b>		
 				                    </a>		
 				                    <%}else{%>		
 				                           <b>&gt;</b>		
 				                    <%} %>		
-				                    <a href="<c:url value='/book' />?year=<%=year+1%>&amp;month=<%=month%>" target="_self">		
+				                    <a href="<c:url value='../reservation/book' />?year=<%=year+1%>&amp;month=<%=month%>" target="_self">		
 				                           <!-- 다음해 --><b>&gt;&gt;</b>		
 				                    </a>		
 				             </td>		

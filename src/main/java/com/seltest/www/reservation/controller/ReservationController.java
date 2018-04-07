@@ -19,11 +19,9 @@ public class ReservationController {
 			
 	@RequestMapping(value="book", method = RequestMethod.GET)
 	public String book(HttpSession session, Model model){
-			Integer custNum = null;
+			Integer cust_Num = null;
 			if(session.getAttribute("cust_Num") != null){
-				custNum = (Integer)session.getAttribute("cust_Num") ;
-				System.out.println(custNum);
-				int cust_Num = Integer.valueOf(custNum);
+				cust_Num = (Integer)session.getAttribute("cust_Num") ;				
 				System.out.println(cust_Num);
 				ArrayList<Reservation> myList = new ArrayList<Reservation>();
 				myList = dao.selectMyReservation(cust_Num);
