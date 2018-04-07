@@ -45,7 +45,7 @@
 	    		return false;	    		
 	    	}
 	    	
-	    	if(${sessionScope.cust_Id == null}){
+	    	if(${sessionScope.loginID == null}){
 	    		alert("로그인 후 예약이 가능합니다.");
 	    		return false;
 	    	}  
@@ -53,12 +53,12 @@
     </script>
     
     <script type="text/javaScript" > 
-    var haveRes = "${haveRes}";	 
+   /*  var haveRes = "${haveRes}";	 
 	if(haveRes != null){
 	     alert("이미 예약된 정보가 있습니다.");
 	     alert("예약이 불가합니다.");
-	     location.href="./";
-	}
+	     location.href="../";
+	} */
 	</script>
 
        <style type="text/css">

@@ -19,16 +19,21 @@ public class ReservationController {
 			
 	@RequestMapping(value="book", method = RequestMethod.GET)
 	public String book(HttpSession session, Model model){
-		//session.getAttribute("cust_Id");
-		//session.setAttribute("cust_Id", 1);
-		//session.getAttribute("cust_Num");
-		ArrayList<Reservation> myList = new ArrayList<Reservation>();
-		myList = dao.selectMyReservation(1);
-		if(myList != null){
-			String haveRes = "haveRes";
-			model.addAttribute("haveRes", haveRes);
-			return "reservation/book";
-		}
+			Integer custNum = null;
+			if(session.getAttribute("cust_Num") != null){
+				custNum = (Integer)session.getAttribute("cust_Num") ;
+				System.out.println(custNum);
+				int cust_Num = Integer.valueOf(custNum);
+				System.out.println(cust_Num);
+				ArrayList<Reservation> myList = new ArrayList<Reservation>();
+				myList = dao.selectMyReservation(cust_Num);
+				if(myList != null){
+					String haveRes = "예약된 정보가 있습니다.";
+					model.addAttribute("haveRes", haveRes);
+					return "reservation/book";
+				}	
+			}
+						
 		
 		return "reservation/book";
 	}
@@ -64,11 +69,9 @@ public class ReservationController {
 			Reservation res = new Reservation();	
 			res.setRes_Date(res_Date);
 			res.setRes_Hos("차병원");
-			//session.getAttribute("cust_Num");
-			res.setCust_Num(1);
-			System.out.println(res_Date);			
-			System.out.println(res);
-			
+			int cust_Num = (Integer)session.getAttribute("cust_Num") ;
+			res.setCust_Num(cust_Num);
+						
 			int result = 0;
 			result = dao.insertReservation(res);
 			if(result == 1){
@@ -89,17 +92,16 @@ public class ReservationController {
 	
 	@RequestMapping(value="updateBook", method = RequestMethod.GET)
 	public String updateBook(HttpSession session, Model model){
-		//session.getAttribute("cust_Id");
-		//session.setAttribute("cust_Id", 1);
-		//session.getAttribute("cust_Num");
-		ArrayList<Reservation> myList = new ArrayList<Reservation>();
-		myList = dao.selectMyReservation(1);
-		if(myList != null){
-			String haveRes = "haveRes";
-			model.addAttribute("haveRes", haveRes);
-			return "reservation/book";
-		}
+		
 		
 		return "reservation/book";
 	}
+	
+	@RequestMapping(value="deleteBook", method = RequestMethod.GET)
+	public String deleteBook(HttpSession session, Model model){
+		
+		
+		return "reservation/book";
+	}
+	
 }
