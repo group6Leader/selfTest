@@ -164,6 +164,7 @@ public class CustomerController {
 			loginMap.put("message2", cust_Pw + "비밀번호가 다릅니다.");
 			loginMap.put("check", "errorPw");
 		} else {
+			session.setAttribute("cust_Num", custLogin.getCust_Num());
 			session.setAttribute("loginID", custLogin.getCust_Id());
 			session.setAttribute("loginName", custLogin.getCust_Name());
 			loginMap.put("message3", "로그인이 완료 되었습니다.");
