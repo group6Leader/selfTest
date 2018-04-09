@@ -14,7 +14,7 @@ public class ChatController {
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
 	@RequestMapping(value = "goChat", method = RequestMethod.GET)
-	public String divMember() {
+	public String goChat() {
 
 		logger.info("회원가입 창으로 이동합니다-c");
 

@@ -10,10 +10,9 @@
 <script type="text/javascript" src="<c:url value="/resources/js/sockjs-0.3.min.js"></c:url>"></script>
 <script type="text/javascript">
 	var wsocket;
-	
+	//"http://10.10.12.110:9090/www/chat-sockjs"
 	function connect() {
-		wsocket = new SockJS(
-				"http://localhost:9090/www/chat-sockjs");
+		wsocket = new SockJS("<c:url value="/chat-sockjs"/>");
 		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
