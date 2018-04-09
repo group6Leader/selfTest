@@ -18,7 +18,7 @@ public class ChatController {
 
 		logger.info("회원가입 창으로 이동합니다-c");
 
-		return "chat/chat-ws";
+		return "chat/chat-sockjs";
 
 	}
 	
