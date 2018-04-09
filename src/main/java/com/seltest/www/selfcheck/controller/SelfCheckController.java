@@ -49,5 +49,7 @@ public class SelfCheckController {
 		System.out.println("selfCheckForm2");
 		
 		return "selfCheck/selfCheckForm2";
+		
+		
 	}
 }
