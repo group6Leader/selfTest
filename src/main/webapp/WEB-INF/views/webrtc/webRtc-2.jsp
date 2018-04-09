@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>webRtc-2</title>
-<link href="resources/css/main.css" rel="stylesheet" type="text/css" />
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<link href="resources/css/webrtc.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
+
 <script type="text/javascript" src="<c:url value="/resources/js/sockjs-0.3.min.js"></c:url>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/DetectRTC.js"></c:url>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/global.js"></c:url>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/highlight.min.js"></c:url>"></script>
+
+<script type="text/javascript" src="<c:url value="/resources/webrtc/DetectRTC.js"></c:url>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webrtc/global.js"></c:url>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webrtc/highlight.min.js"></c:url>"></script>
 <script type="text/javascript">
 $(function() {
 	  if (typeof webkitSpeechRecognition != 'function') {
