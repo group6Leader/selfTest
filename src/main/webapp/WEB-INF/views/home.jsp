@@ -118,7 +118,14 @@
 	
 		
 	}
-
+	
+	function remoteCheck() {
+		
+		$(location).attr('href',"chat-ws");
+	}
+	
+	
+	
 	// show password
 	// $(document).ready(function(){
 	// $("#pw").focus(function(){
@@ -164,7 +171,7 @@
 						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">Reservation</span>
 				</a></li>
 
-				<li class="darkerli"><a href="http://startific.com"> <i
+				<li class="darkerli"><a href="chat/goChat"> <i
 						class="fa fa-desktop fa-lg"></i> <span class="nav-text">Technology</span>
 				</a></li>
 
@@ -247,7 +254,7 @@
 	</div>
 
 	<div id="box">
-		<button value="원격진료"></button>
+		<button value="원격진료" onclick="return remoteCheck()"></button>
 		<button value="예약하러가기"></button>
 	</div>
 	<div class='login'>
