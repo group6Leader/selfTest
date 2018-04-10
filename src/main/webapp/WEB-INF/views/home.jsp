@@ -253,10 +253,35 @@
 		</div>
 	</div>
 
-	<div id="box">
-		<button value="원격진료" onclick="return remoteCheck()"></button>
-		<button value="예약하러가기"></button>
-	</div>
+<section class="page-container" id="flip-3d">
+	  	<section class="section-container">
+		    <!-- 3-D Flip Downward-->
+			<div class="button-container button-flip3d-vertical1">
+		        <div class="flipper flipper-flip3d-vertical1">
+		            <div class="button front">
+		              	<i class="fa fa-codepen"></i>
+		            </div>
+		            <div class="button button-3d back">
+		              	원격진료
+		            </div>
+		        </div>
+	    	</div>
+	    	
+		    <!-- 3-D Flip Upward-->
+			<div class="button-container button-flip3d-vertical2">
+		        <div class="flipper flipper-flip3d-vertical2">
+		            <div class="button front">
+		              	<i class="far fa-calendar-alt"></i>
+		            </div>
+		            <div class="button button-3d back">
+		              	예약하기
+		            </div>
+		        </div>
+	    	</div>
+	    	
+	  </section>
+	</section>
+	
 	<div class='login'>
 		<button class='close' id='close'></button>
 		<div class='top'>
