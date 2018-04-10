@@ -6,4 +6,6 @@ public interface SelfCheckMapper {
 
 	public int insertSelfCheck(SelfCheck selfCheck);
 	
+	SelfCheck readOne(int cust_Num);
+	
 }

@@ -42,7 +42,15 @@
 		, #{family_History}
 		, #{pregnant}
 		, #{cust_Num} )
+		
 	</insert>
+	
+	<select id="readOne" resultType="selfCheck">
+		select *
+		from selfCheck
+		where cust_Num = #{cust_Num}
+	</select>
+	
 	
 </mapper>
 	

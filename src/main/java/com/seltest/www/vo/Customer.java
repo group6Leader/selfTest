@@ -15,11 +15,11 @@ public class Customer {
 	private String original_File;
 	private String saved_File;
 	private char EmailVerify;
+	private int division;
 	
 	public Customer(int cust_Num, String cust_Id, String cust_Name, String cust_Pw, String cust_Sex, String cust_Birth,
 			String cust_Address, String cust_Phone, String cust_Email, String cust_Major, String original_File,
-			String saved_File, char emailVerify) {
-		
+			String saved_File, char emailVerify, int division) {
 		this.cust_Num = cust_Num;
 		this.cust_Id = cust_Id;
 		this.cust_Name = cust_Name;
@@ -33,9 +33,11 @@ public class Customer {
 		this.original_File = original_File;
 		this.saved_File = saved_File;
 		EmailVerify = emailVerify;
+		this.division = division;
 	}
 
 	public Customer() {
+		super();
 	}
 
 	public int getCust_Num() {
@@ -142,12 +144,20 @@ public class Customer {
 		EmailVerify = emailVerify;
 	}
 
+	public int getDivision() {
+		return division;
+	}
+
+	public void setDivision(int division) {
+		this.division = division;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [cust_Num=" + cust_Num + ", cust_Id=" + cust_Id + ", cust_Name=" + cust_Name + ", cust_Pw="
 				+ cust_Pw + ", cust_Sex=" + cust_Sex + ", cust_Birth=" + cust_Birth + ", cust_Address=" + cust_Address
 				+ ", cust_Phone=" + cust_Phone + ", cust_Email=" + cust_Email + ", cust_Major=" + cust_Major
 				+ ", original_File=" + original_File + ", saved_File=" + saved_File + ", EmailVerify=" + EmailVerify
-				+ "]";
+				+ ", division=" + division + "]";
 	}
 }

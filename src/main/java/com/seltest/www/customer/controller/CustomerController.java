@@ -143,7 +143,7 @@ public class CustomerController {
 		return "redirect:/";
 	}
 
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public HashMap<String, String> login(String cust_Id, String cust_Pw, HttpSession session, Model model) {
 
@@ -175,7 +175,7 @@ public class CustomerController {
 		logger.info("로그인 종료");
 
 		return loginMap;
-	}
+	}*/
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {

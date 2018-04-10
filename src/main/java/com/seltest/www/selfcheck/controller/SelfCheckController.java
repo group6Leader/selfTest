@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,7 +49,34 @@ public class SelfCheckController {
 		System.out.println("selfCheckForm2");
 		
 		return "selfCheck/selfCheckForm2";
-		
-		
 	}
+	
+	@RequestMapping(value="goEditForm", method = RequestMethod.GET)
+	public String editForm(SelfCheck selfCheck, HttpSession session, Model model){
+		
+		/*System.out.println("editForm");*/
+		
+		int cust_Num = (int) session.getAttribute("cust_Num");
+		System.out.println("cust_Num: " + cust_Num);
+	
+		/*System.out.println("cust_Num: " + cust_Num);
+		selfCheck.setCust_Num(cust_Num);
+		
+		int cust_Num = selfCheck.getCust_Num();*/
+	
+		SelfCheck s = selfCheckDAO.readOne(cust_Num);
+		System.out.println(s);
+		
+		
+		return "selfCheck/editForm";
+	}
+	
+	@RequestMapping(value="goEditResult", method = RequestMethod.POST)
+	public String editResut(){
+		
+		System.out.println("editResult");
+		
+		return "redirect: goSelfCheck2";
+	}
+	
 }
