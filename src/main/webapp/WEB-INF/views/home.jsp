@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,10 @@
 <link rel="stylesheet" type="text/css"
 	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	crossorigin="anonymous">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
@@ -62,15 +66,14 @@
 	});
 
 	function formCheck() {
-	
+
 		var cust_Id1 = $('#cust_Id').val();
 		var cust_Pw1 = $('#cust_Pw').val();
 		var cust_Id2 = document.getElementById('cust_Id');
 		var cust_Pw2 = document.getElementById('cust_Pw');
- 		
+
 		var logincheck = 'fail';
- 	
- 		
+
 		if (cust_Id2.value == '') {
 			alert("ID를 입력해주세요");
 			cust_Id.focus();
@@ -82,7 +85,7 @@
 			return false;
 		}
 
-		$.ajax({
+		/* $.ajax({
 			url : 'customer/login',
 			type : 'post',
 			data : {
@@ -114,19 +117,15 @@
 			error : function(err) {
 				console.log(JSON.stringify(err));
 			}
-		});
+		}); */
 
-	
-		
 	}
-	
+
 	function remoteCheck() {
-		
-		$(location).attr('href',"chat-ws");
+
+		$(location).attr('href', "chat-ws");
 	}
-	
-	
-	
+
 	// show password
 	// $(document).ready(function(){
 	// $("#pw").focus(function(){
@@ -153,20 +152,20 @@
 						class="nav-text">Home</span>
 				</a></li>
 				<c:if test="${sessionScope.loginID == null}">
-				<li><a id='SignIn'> <i class="fa fa-user fa-lg"></i> <span
-						class="nav-text">Login</span>
-				</a></li>
+					<li><a id='SignIn'> <i class="fa fa-user fa-lg"></i> <span
+							class="nav-text">Login</span>
+					</a></li>
 				</c:if>
-				
-				<c:if test="${sessionScope.loginID != null}">
-				<li><a href="customer/logout"> <i class="fa fa-user fa-lg"></i> <span
-						class="nav-text">LogOut</span>
-				</a></li>
-				
 
-				<li><a href="selfCheck/goSelfCheck"> <i class="fa fa-envelope-o fa-lg"></i> <span
-						class="nav-text">SelfCheck</span>
-				</a></li>
+				<c:if test="${sessionScope.loginID != null}">
+					<li><a href="customer/logout"> <i class="fa fa-user fa-lg"></i>
+							<span class="nav-text">LogOut</span>
+					</a></li>
+
+
+					<li><a href="selfCheck/goSelfCheck"> <i
+							class="fa fa-envelope-o fa-lg"></i> <span class="nav-text">SelfCheck</span>
+					</a></li>
 				</c:if>
 				<li class="darkerlishadow"><a href="reservation/book"> <i
 						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">Reservation</span>
@@ -251,41 +250,45 @@
 		</div>
 	</div>
 
-<section class="page-container" id="flip-3d">
-	  	<section class="section-container">
-		    <!-- 3-D Flip Downward-->
+	<section class="page-container" id="flip-3d">
+		<section class="section-container">
+			<!-- 3-D Flip Downward-->
 			<div class="button-container button-flip3d-vertical1">
-		        <div class="flipper flipper-flip3d-vertical1">
-		            <div class="button front">
-		              	<i class="fas fa-heartbeat"></i>
-		            </div>
-		            <div class="button button-3d back">
-		              	원격진료
-		            </div>
-		        </div>
-	    	</div>
-	    	
-		    <!-- 3-D Flip Upward-->
+				<div class="flipper flipper-flip3d-vertical1">
+					<div class="button front">
+						<i class="fas fa-heartbeat"></i>
+					</div>
+					<div class="button button-3d back">원격진료</div>
+				</div>
+			</div>
+
+			<!-- 3-D Flip Upward-->
 			<div class="button-container button-flip3d-vertical2">
-		        <div class="flipper flipper-flip3d-vertical2">
-		            <div class="button front">
-		              	<i class="far fa-calendar-alt"></i>
-		            </div>
-		            <div class="button button-3d back">
-		              	예약하기
-		            </div>
-		        </div>
-	    	</div>
-	    	
-	  </section>
+				<div class="flipper flipper-flip3d-vertical2">
+					<div class="button front">
+						<i class="far fa-calendar-alt"></i>
+					</div>
+					<div class="button button-3d back">예약하기</div>
+				</div>
+			</div>
+
+		</section>
 	</section>
-	
+
+
+	<c:url value="/login" var="loginUrl" />
+
 	<div class='login'>
 		<button class='close' id='close'></button>
+
+
+
 		<div class='top'>
 			<h2>Login&nbsp;to&nbsp;download&nbsp;area</h2>
 		</div>
-		
+
+
+		<form:form name="f" action="${loginUrl}" method="POST">
 			<div class='user'>
 				<input id="cust_Id" name='cust_Id' placeholder='ID' type='text'>
 			</div>
@@ -296,14 +299,14 @@
 			<div id="check"></div>
 			<div class='remlog'>
 
-				<input type="button" value='Sign in' onclick="return formCheck()">
+				<input type="submit" value='Sign in'>
 
 			</div>
-			<div class='forgot'>
-				<h3>회원이 아니신가요?</h3>
-				<a href='customer/goJoin'>click here</a> to join a new member
-			</div>
-		
+		</form:form>
+		<div class='forgot'>
+			<h3>회원이 아니신가요?</h3>
+			<a href='customer/goJoin'>click here</a> to join a new member
+		</div>
 
 	</div>
 
