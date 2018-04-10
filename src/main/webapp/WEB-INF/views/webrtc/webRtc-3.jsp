@@ -9,12 +9,12 @@
 <link href="resources/css/webrtc.css" rel="stylesheet" type="text/css" />
 <link href="resources/css/webrtc2.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/sockjs-0.3.min.js"></c:url>"></script>
 <script type="text/javascript" src="<c:url value="/resources/webrtc/adapter.js"></c:url>"></script>
 <script type="text/javascript" src="<c:url value="/resources/webrtc/DetectRTC.js"></c:url>"></script>
 <script type="text/javascript" src="<c:url value="/resources/webrtc/global.js"></c:url>"></script>
 <script type="text/javascript" src="<c:url value="/resources/webrtc/highlight.min.js"></c:url>"></script>
+<script type="text/javascript" src="<c:url value="/resources/webrtc/socket.io.js"></c:url>"></script>
 <script type="text/javascript">
 $(function() {
 	  console.log('Loaded webrtc');
