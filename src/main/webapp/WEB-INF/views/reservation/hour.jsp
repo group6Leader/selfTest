@@ -65,8 +65,7 @@
 
 <script type="text/javascript">
 		
-	$(document).ready(function(){
-		
+	$(document).ready(function(){		
 		var iUseDate = "<%=(String)session.getAttribute("iUseDate")%>"		
 		
 		if(${hourList} != null){		 
@@ -82,7 +81,6 @@
 			var seventeen = document.getElementById("seventeen").value;
 			
 			for(var i=0; i<hour.length; i++){
-				alert(hour[i]);	
 				if(nine==hour[i]){
 					$('#nine').attr('disabled', 'disabled');
 					$('#nine').attr('class', 'button1');
@@ -174,8 +172,7 @@
 					$('#seventeen').attr('disabled', 'disabled');
 					$('#seventeen').attr('class', 'button1');
 				}
-			}
-			
+			}			
 		}	
 	});
 </script>
