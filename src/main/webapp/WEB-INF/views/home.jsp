@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css"
 	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
@@ -236,19 +237,16 @@
 	<div id="slideshow">
 		<div class="slide-wrapper">
 			<div class="slide">
-				<h1 class="slide-number">1</h1>
+				<h1 class="slide-number"></h1>
 			</div>
 			<div class="slide">
-				<h1 class="slide-number">2</h1>
+				<h1 class="slide-number"></h1>
 			</div>
 			<div class="slide">
-				<h1 class="slide-number">3</h1>
+				<h1 class="slide-number"></h1>
 			</div>
 			<div class="slide">
-				<h1 class="slide-number">4</h1>
-			</div>
-			<div class="slide">
-				<h1 class="slide-number">5</h1>
+				<h1 class="slide-number"></h1>
 			</div>
 		</div>
 	</div>
@@ -259,7 +257,7 @@
 			<div class="button-container button-flip3d-vertical1">
 		        <div class="flipper flipper-flip3d-vertical1">
 		            <div class="button front">
-		              	<i class="fa fa-codepen"></i>
+		              	<i class="fas fa-heartbeat"></i>
 		            </div>
 		            <div class="button button-3d back">
 		              	원격진료
