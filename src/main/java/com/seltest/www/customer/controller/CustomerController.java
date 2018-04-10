@@ -183,7 +183,7 @@ public class CustomerController {
 		logger.info("로그아웃 시작");
 
 		session.invalidate();
-
+		
 		logger.info("로그아웃 끝");
 
 		return "redirect:/";

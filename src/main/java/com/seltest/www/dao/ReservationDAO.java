@@ -16,8 +16,7 @@ public class ReservationDAO {
 	SqlSession sqlSession;	
 
 	public int insertReservation(Reservation res){		
-		ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);		
-		System.out.println(res);
+		ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
 		int result = 0;		
 		try{
 			result = mapper.insertReservation(res);				
@@ -38,15 +37,15 @@ public class ReservationDAO {
 		return list;		
 	}
 	
-	public ArrayList<Reservation> selectMyReservation(int cust_Num){		
+	public Reservation selectMyReservation(int cust_Num){		
 		ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);		
-		ArrayList<Reservation> list = new ArrayList<Reservation>();	
+		Reservation myRes = new Reservation();	
 		try{
-			list = mapper.selectMyReservation(cust_Num);			
+			myRes = mapper.selectMyReservation(cust_Num);			
 		}catch(Exception e){
 			e.printStackTrace();			
 		}
-		return list;		
+		return myRes;		
 	}
 	
 	public ArrayList<Reservation>checkReservation(String res_Date){
@@ -60,5 +59,14 @@ public class ReservationDAO {
 		return list;		
 	}
 	
-	
+	public int deleteReservation(Reservation res){		
+		ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);
+		int result = 0;		
+		try{
+			result = mapper.deleteMyReservation(res);				
+		}catch(Exception e){
+			e.printStackTrace();			
+		}
+		return result;		
+	}
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.seltest.www.vo.Reservation;
+import net.sf.json.JSONArray;
 import com.seltest.www.dao.ReservationDAO;
 
 @Controller
@@ -20,42 +21,52 @@ public class ReservationController {
 	@RequestMapping(value="book", method = RequestMethod.GET)
 	public String book(HttpSession session, Model model){
 			Integer cust_Num = null;
+			Reservation myRes = new Reservation();
+			
 			if(session.getAttribute("cust_Num") != null){
 				cust_Num = (Integer)session.getAttribute("cust_Num") ;				
-				System.out.println(cust_Num);
-				ArrayList<Reservation> myList = new ArrayList<Reservation>();
-				myList = dao.selectMyReservation(cust_Num);
-				if(myList != null){
-					String haveRes = "예약된 정보가 있습니다.";
+				myRes = dao.selectMyReservation(cust_Num);
+				if(myRes != null){
+					String haveRes = "이미 예약된 정보가 있습니다.";
 					model.addAttribute("haveRes", haveRes);
+					String my_Res = myRes.getRes_Date();
+					String year = my_Res.substring(0, 4);
+					String month = my_Res.substring(4, 6);
+					String date = my_Res.substring(6, 8);
+					String hour = my_Res.substring(8, 10);
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 예약하셨습니다.";
+					model.addAttribute("myReservation", myReservation);
 					return "reservation/book";
-				}	
+				}
 			}
-						
-		
+								
 		return "reservation/book";
 	}
 	
 	@RequestMapping(value="hour", method = RequestMethod.GET)
 	public String hour(String iUseDate, HttpSession session, Model model){
 		session.setAttribute("iUseDate", iUseDate);
-		ArrayList<String> hourList = new ArrayList<String>();
+		ArrayList<String> hourList = new ArrayList<String>();		
 		ArrayList<Reservation> checkList = new ArrayList<Reservation>();
-			
+		Reservation myRes = new Reservation();
+		Integer cust_Num = null;
+		
+		if(session.getAttribute("cust_Num") != null){
+			cust_Num = (Integer)session.getAttribute("cust_Num") ;				
+			myRes = dao.selectMyReservation(cust_Num);
+		}
+		
 		checkList = dao.checkReservation(iUseDate);
 		for(int i=0; i<checkList.size(); i++){			
 			String res = checkList.get(i).getRes_Date();
 			String res_Date = res.substring(0, 8);
 			String res_Hour = res.substring(8, 10);
-			hourList.add(res_Hour);
-			System.out.println(res);
-			System.out.println(res_Date);
-			System.out.println(res_Hour);					
+			hourList.add(res_Hour);		
+			System.out.println(res_Hour);
 			}
-
+		JSONArray jsonArray = new JSONArray();
 		model.addAttribute("hourList", hourList);
-		System.out.println(hourList);		
-		
+		model.addAttribute("jsonList", jsonArray.fromObject(hourList));
 		return "reservation/hour";
 	}
 	
@@ -73,32 +84,42 @@ public class ReservationController {
 			int result = 0;
 			result = dao.insertReservation(res);
 			if(result == 1){
-				String msg = "예약 완료";
 				session.removeAttribute(iUseDate);
-				model.addAttribute("successMsg", msg);
 				System.out.println("예약 완료");
 			}else{
-				String errorMsg = "예약 실패";
 				session.removeAttribute(iUseDate);
-				model.addAttribute("errorMsg", errorMsg);
 				System.out.println("예약 실패");
 				return "hour";
 			}
 						
-			return "redirect:../";
-	}
-	
-	@RequestMapping(value="updateBook", method = RequestMethod.GET)
-	public String updateBook(HttpSession session, Model model){
-		
-		
-		return "reservation/book";
+			return "redirect:book";
 	}
 	
 	@RequestMapping(value="deleteBook", method = RequestMethod.GET)
 	public String deleteBook(HttpSession session, Model model){
+		Reservation myRes = new Reservation();
+		Integer custNum = null;
+		int result = 0;		
 		
-		
+		if(session.getAttribute("cust_Num") != null){
+			custNum = (Integer)session.getAttribute("cust_Num") ;				
+			myRes = dao.selectMyReservation(custNum);
+			if(myRes != null){
+				int cust_Num = myRes.getCust_Num();
+				int res_Num = myRes.getRes_Num();
+				Reservation res = new Reservation();
+				res.setCust_Num(cust_Num);
+				res.setRes_Num(res_Num);
+				result = dao.deleteReservation(res);
+				if(result != 0){
+					System.out.println("예약 삭제 성공");
+					return "reservation/book";
+				}else{
+					System.out.println("예약 삭제 실패");
+					return "reservation/book";
+				}
+			}
+		}
 		return "reservation/book";
 	}
 	

@@ -36,6 +36,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>예약</title> 
+	
+	
+	
     <script type="text/javaScript" > 
 	    function loginCheck(iUseDate){	    	
 	    	var iUseDate = iUseDate;  	
@@ -49,16 +52,22 @@
 	    		alert("로그인 후 예약이 가능합니다.");
 	    		return false;
 	    	}  
+	    	
+	    	if(${myReservation != null}){
+	    		alert("하나의 예약만 가능합니다. 예약 삭제 후 시도하세요.");
+	    		return false;
+	    	}
 	    }
     </script>
     
-    <script type="text/javaScript" > 
-   /*  var haveRes = "${haveRes}";	 
-	if(haveRes != null){
-	     alert("이미 예약된 정보가 있습니다.");
-	     alert("예약이 불가합니다.");
-	     location.href="../";
-	} */
+	<script type="text/javascript">
+		function deleteCheck(){
+			if(confirm("예약을 삭제하시겠습니까?") == true){
+				location.href="deleteBook";
+			}else{
+				return false;
+			}					
+		}
 	</script>
 
        <style type="text/css">
@@ -89,8 +98,12 @@
 <body>
 	<form name="calendarFrm" id="calendarFrm" action="" method="">	
 		<div id="content" style="width:712px;">	
-		
+		<c:if test="${myReservation != null}">
+			<input type="text" value="${myReservation}" size="50px">
+			<input type="button" value="예약 삭제" onclick="return deleteCheck()">
+		</c:if>
 		<table width="100%" border="0" cellspacing="1" cellpadding="1">	
+			
 			<tr>	
 			       <td align ="right">	
 			             <input type="button" onclick="javascript:location.href='<c:url value='../reservation/book' />'" value="오늘"/>	
@@ -209,7 +222,7 @@
 		       <%		
 		       out.println("<br>");		
 		   	   //년월일 : 20180403
-		  	   out.println(iUseDate);		
+		  	   //out.println(iUseDate);		
 		       out.println("<br>");	      
 		
 		       //기능 제거 		
