@@ -30,8 +30,7 @@ public class SelfCheckController {
 	public String selfCheckResult(SelfCheck selfCheck, HttpSession session){
 		
 		System.out.println(selfCheck);
-		
-		int cust_Num = (int) session.getAttribute("cust_Num");
+		int cust_Num = (int)session.getAttribute("cust_Num");
 		System.out.println("cust_Num: " + cust_Num);
 		/*int cust_NumInt = Integer.parseInt(cust_Num);*/
 		
