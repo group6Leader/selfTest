@@ -9,18 +9,27 @@
 	href="./resources/css/sideBar.css">
 <link rel="stylesheet" type="text/css" href="./resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="./resources/css/login.css">
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
-	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
-	crossorigin="anonymous">
+	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.login').hide();
+		$('.gn-icon-menu').hover(function() {
+			$('.gn-menu-wrapper').toggleClass('gn-open-part');
+		});
+
+		$('.gn-menu-wrapper').hover(function() {
+			$(this).toggleClass('gn-open-all');
+		});
+
 	});
 	// Placeholder fixed for Internet Explorer
 	$(function() {
@@ -64,7 +73,7 @@
 		}
 
 	});
-
+	
 	function formCheck() {
 
 		var cust_Id1 = $('#cust_Id').val();
@@ -139,99 +148,93 @@
 <title>Home</title>
 </head>
 <body>
-	<nav class="main-menu">
-		<div>
-			<a class="logo" href="home"> </a>
-		</div>
-		<div class="settings"></div>
-		<div class="scrollbar" id="style-1">
 
-			<ul>
+	<div class="container">
+		<ul id="gn-menu" class="gn-menu-main">
+			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+				<nav class="gn-menu-wrapper">
+					<div class="gn-scroller">
+						<ul class="gn-menu">
+							
+							<li class="gn-search-item">
+							<input placeholder="Search" type="search" class="gn-search"> 
+								<a class="gn-icon gn-icon-search">
+									<span>Search</span>
+								</a>
+							</li>
+							
+							<li>
+								<a class="gn-icon gn-icon-download">진료</a>
+									<ul class="gn-submenu">
+										<li>
+											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
+										</li>
+										<li>
+											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
+										</li>
+										<li>
+											<a class="gn-icon gn-icon-photoshop" href="reservation/book">예약하기</a>
+										</li>
+									</ul>
+							</li>
 
-				<li><a href=""> <i class="fa fa-home fa-lg"></i> <span
-						class="nav-text">Home</span>
-				</a></li>
+							<li>
+								<a class="gn-icon gn-icon-cog">Settings</a>
+							</li>
+							<li>
+								<a class="gn-icon gn-icon-help">Help</a>
+							</li>
+							<li>
+								<a class="gn-icon gn-icon-archive">WebRTC</a>
+									<ul class="gn-submenu">
+										<li>
+											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc1">WebRTC1</a>
+										</li>
+										<li>
+											<a class="gn-icon gn-icon-pictures" href="webrtc/goWebRtc2">WebRTC2</a>
+										</li>
+										<li>
+											<a class="gn-icon gn-icon-videos" href="webrtc/goWebRtc3">WebRTC3</a>
+										</li>
+									</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- /gn-scroller -->
+				</nav>
+			</li>
+			<li><a href="">Char LIFE</a></li>
+			<c:if test="${sessionScope.loginID != null}">
+			<li><a href="">My Page</a></li>
+			<li>
+				<a class="codrops-icon codrops-icon-prev">
+					<span>VOC</span>
+				</a>
+			</li>
+			</c:if>
+			<li>
 				<c:if test="${sessionScope.loginID == null}">
-					<li><a id='SignIn'> <i class="fa fa-user fa-lg"></i> <span
-							class="nav-text">Login</span>
-					</a></li>
-				</c:if>
+				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
+					<span>Login</span>
+				</a>
 
+				</c:if>
 				<c:if test="${sessionScope.loginID != null}">
-					<li><a href="customer/logout"> <i class="fa fa-user fa-lg"></i>
-							<span class="nav-text">LogOut</span>
-					</a></li>
-
-
-					<li><a href="selfCheck/goSelfCheck"> <i
-							class="fa fa-envelope-o fa-lg"></i> <span class="nav-text">SelfCheck</span>
-					</a></li>
+					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='SignIn'>
+						<span>Logout</span>
+					</a>
 				</c:if>
-				<li class="darkerlishadow"><a href="reservation/book"> <i
-						class="fa fa-clock-o fa-lg"></i> <span class="nav-text">Reservation</span>
-				</a></li>
+			</li>
+		</ul>
+		<header>
+			<h1>
+				Char Hospital <span>Welcome To
+					<a>CHAR HOSPITAL</a> page
+				</span>
+			</h1>
+		</header>
+	</div>
 
-				<li class="darkerli"><a href="chat/goChat"> <i
-						class="fa fa-desktop fa-lg"></i> <span class="nav-text">Technology</span>
-				</a></li>
-
-				<li class="darkerli"><a href="webrtc/goWebRtc1"> <i
-						class="fa fa-plane fa-lg"></i> <span class="nav-text">Travel</span>
-				</a></li>
-
-				<li class="darkerli"><a href="webrtc/goWebRtc2"> <i
-						class="fa fa-shopping-cart"></i> <span class="nav-text">Shopping</span>
-				</a></li>
-
-				<li class="darkerli"><a href="webrtc/goWebRtc3"> <i
-						class="fa fa-microphone fa-lg"></i> <span class="nav-text">Film
-							& Music</span>
-				</a></li>
-
-				<li class="darkerli"><a href="http://startific.com"> <i
-						class="fa fa-flask fa-lg"></i> <span class="nav-text">Web
-							Tools</span>
-				</a></li>
-
-				<li class="darkerli"><a href="http://startific.com"> <i
-						class="fa fa-picture-o fa-lg"></i> <span class="nav-text">Art
-							& Design</span>
-				</a></li>
-
-				<li class="darkerli"><a href="http://startific.com"> <i
-						class="fa fa-align-left fa-lg"></i> <span class="nav-text">Magazines</span>
-				</a></li>
-
-				<li class="darkerli"><a href="http://startific.com"> <i
-						class="fa fa-gamepad fa-lg"></i> <span class="nav-text">Games</span>
-				</a></li>
-
-				<li class="darkerli"><a href="http://startific.com"> <i
-						class="fa fa-glass fa-lg"></i> <span class="nav-text">Life
-							& Style </span>
-				</a></li>
-
-				<li class="darkerlishadowdown"><a href="http://startific.com">
-						<i class="fa fa-rocket fa-lg"></i> <span class="nav-text">Fun</span>
-				</a></li>
-
-
-			</ul>
-
-
-			<li><a href="http://startific.com"> <i
-					class="fa fa-question-circle fa-lg"></i> <span class="nav-text">Help</span>
-			</a></li>
-
-
-			<ul class="logout">
-				<li><a href="http://startific.com"> <i
-						class="fa fa-lightbulb-o fa-lg"></i> <span class="nav-text">
-							BLOG </span>
-				</a></li>
-			</ul>
-		</div>
-	</nav>
 
 	<div id="slideshow">
 		<div class="slide-wrapper">
@@ -249,32 +252,6 @@
 			</div>
 		</div>
 	</div>
-
-	<section class="page-container" id="flip-3d">
-		<section class="section-container">
-			<!-- 3-D Flip Downward-->
-			<div class="button-container button-flip3d-vertical1">
-				<div class="flipper flipper-flip3d-vertical1">
-					<div class="button front">
-						<i class="fas fa-heartbeat"></i>
-					</div>
-					<div class="button button-3d back">원격진료</div>
-				</div>
-			</div>
-
-			<!-- 3-D Flip Upward-->
-			<div class="button-container button-flip3d-vertical2">
-				<div class="flipper flipper-flip3d-vertical2">
-					<div class="button front">
-						<i class="far fa-calendar-alt"></i>
-					</div>
-					<div class="button button-3d back">예약하기</div>
-				</div>
-			</div>
-
-		</section>
-	</section>
-
 
 	<c:url value="/login" var="loginUrl" />
 

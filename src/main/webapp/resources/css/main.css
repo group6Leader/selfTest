@@ -9,9 +9,10 @@ body {
 
 #slideshow {
   overflow: hidden;
-  height: 800px;
+  height: 330px;
   width: 100%;
   margin: 0 auto;
+  display:inline-block;
 }
 
 .slide-wrapper {
@@ -21,7 +22,7 @@ body {
 
 .slide {
   float: left;
-  height: 800px;
+  height: 330px;
   width: 1960px;
 }
 
@@ -109,42 +110,5 @@ body {
   color: white;
   font-size: 15px;
   text-transform: uppercase;
-}
-
-/* -------------------------------- 
-			3D-Flip
--------------------------------- */
-.button-flip3d-vertical1 .flipper-flip3d-vertical1 {
-  transform-origin: 100% 22.5px;
-}
-.button-flip3d-vertical1 .front {
-  transform: translateZ(22.5px);
-  background-image: linear-gradient(90deg, #000, #3c3c3c);
-}
-.button-flip3d-vertical1 .back {
-  -webkit-transform: rotateX(90deg) translateZ(22.5px);
-  -ms-transform: rotateX(90deg) translateZ(22.5px);
-  transform: rotateX(90deg) translateZ(22.5px);
-  background-image: linear-gradient(90deg, #000, #3c3c3c);
-}
-.button-flip3d-vertical1:hover .flipper-flip3d-vertical1 {
-  transform: rotateX(-90deg);
-}
-
-.button-flip3d-vertical2 .flipper-flip3d-vertical2 {
-  transform-origin: 100% 22.5px;
-}
-.button-flip3d-vertical2 .front {
-  transform: translateZ(22.5px);
-  background-image: linear-gradient(90deg, #000, #3c3c3c);
-}
-.button-flip3d-vertical2 .back {
-  -webkit-transform: rotateX(90deg) rotateZ(180deg) rotateY(180deg) translateZ(22.5px);
-  -ms-transform: rotateX(90deg) rotateZ(180deg) rotateY(180deg) translateZ(22.5px);
-  transform: rotateX(90deg) rotateZ(180deg) rotateY(180deg) translateZ(22.5px);
-  background-image: linear-gradient(90deg, #000, #3c3c3c);
-}
-.button-flip3d-vertical2:hover .flipper-flip3d-vertical2 {
-  transform: rotateX(90deg);
 }
 
