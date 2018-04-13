@@ -19,9 +19,10 @@ public class SelfCheckController {
 	SelfCheckDAO selfCheckDAO;
 	
 	@RequestMapping(value="goSelfCheck", method = RequestMethod.GET)
-	public String selfCheckForm(){
+	public String selfCheckForm(HttpSession session){
 		
 		System.out.println("selfCheckForm");
+		session.setAttribute("cust_Num", 83);
 		
 		return "selfCheck/selfCheckForm";
 	}
@@ -30,13 +31,13 @@ public class SelfCheckController {
 	public String selfCheckResult(SelfCheck selfCheck, HttpSession session){
 		
 		System.out.println(selfCheck);
-		int cust_Num = (int)session.getAttribute("cust_Num");
+		
+		int cust_Num = (int) session.getAttribute("cust_Num");
 		System.out.println("cust_Num: " + cust_Num);
-		/*int cust_NumInt = Integer.parseInt(cust_Num);*/
 		
 		selfCheck.setCust_Num(cust_Num);
 		
-		int a = selfCheckDAO.insertSelfCheck(selfCheck);
+		int a = selfCheckDAO.update(selfCheck);
 		System.out.println(a);
 		
 		return "redirect: goSelfCheck2";
@@ -48,34 +49,6 @@ public class SelfCheckController {
 		System.out.println("selfCheckForm2");
 		
 		return "selfCheck/selfCheckForm2";
-	}
-	
-	@RequestMapping(value="goEditForm", method = RequestMethod.GET)
-	public String editForm(SelfCheck selfCheck, HttpSession session, Model model){
-		
-		/*System.out.println("editForm");*/
-		
-		int cust_Num = (int) session.getAttribute("cust_Num");
-		System.out.println("cust_Num: " + cust_Num);
-	
-		/*System.out.println("cust_Num: " + cust_Num);
-		selfCheck.setCust_Num(cust_Num);
-		
-		int cust_Num = selfCheck.getCust_Num();*/
-	
-		SelfCheck s = selfCheckDAO.readOne(cust_Num);
-		System.out.println(s);
-		
-		
-		return "selfCheck/editForm";
-	}
-	
-	@RequestMapping(value="goEditResult", method = RequestMethod.POST)
-	public String editResut(){
-		
-		System.out.println("editResult");
-		
-		return "redirect: goSelfCheck2";
 	}
 	
 }
