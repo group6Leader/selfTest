@@ -132,7 +132,7 @@
 	
 		<div>
 			<input type="submit" value="다음"> &nbsp; 
-			<input type="button" value="수정" onclick="edit()">
+			<input type="button" value="종료" onclick="location.href='../'">
 		</div>
 
 	</form>

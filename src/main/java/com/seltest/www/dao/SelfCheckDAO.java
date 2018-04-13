@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.seltest.www.vo.Customer;
 import com.seltest.www.vo.SelfCheck;
 
 @Repository
@@ -15,7 +16,7 @@ public class SelfCheckDAO {
 	public int insertSelfCheck(SelfCheck selfCheck) {
 
 		int result = 0;
-		System.out.println(selfCheck);
+		/*System.out.println(selfCheck);*/
 
 		try {
 			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);
@@ -27,18 +28,19 @@ public class SelfCheckDAO {
 		return result;
 	}
 
-	public SelfCheck readOne(int cust_Num) {
-
-		SelfCheck selfCheck = null;
-
+	public int update(SelfCheck selfCheck) {
+		
+		int result = 0;
+		
 		try {
 			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);
-			selfCheck = mapper.readOne(cust_Num);
+			result = mapper.update(selfCheck);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return selfCheck;
+		
+		return result;
+		
 	}
 
 }

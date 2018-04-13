@@ -7,49 +7,43 @@
 <mapper namespace="com.seltest.www.dao.SelfCheckMapper">
 
 	<insert id="insertSelfCheck" parameterType="selfCheck">
-		insert into selfCheck (
 		
+		insert into selfCheck (
 		selfCheck_Num
-		, blood_Pressure
-		, smoking
-		, drinking
-		, diabetes
-		, surgery
-		, disability
-		, medicine
-		, allergy
-		, overseas_Visits
-		, sleep_Time
-		, stress
-		, family_History
-		, pregnant
-		, cust_Num )
+		, cust_Num 
+		)
+		
 		
 		values (
-		
 		selfCheck_Num_sequence.nextval
-		, #{blood_Pressure}
-		, #{smoking}
-		, #{drinking}
-		, #{diabetes}
-		, #{surgery}
-		, #{disability}
-		, #{medicine}
-		, #{allergy}
-		, #{overseas_Visits}
-		, #{sleep_Time}
-		, #{stress}
-		, #{family_History}
-		, #{pregnant}
-		, #{cust_Num} )
+		, #{cust_Num} 
+		)
 		
 	</insert>
 	
-	<select id="readOne" resultType="selfCheck">
-		select *
-		from selfCheck
+	
+	
+	<update id="update" parameterType="selfCheck">
+		
+		update selfCheck
+		set
+		blood_Pressure = #{blood_Pressure}
+		, smoking = #{smoking}
+		, drinking = #{drinking}
+		, diabetes = #{diabetes}
+		, surgery = #{surgery}
+		, disability = #{disability}
+		, medicine = #{medicine}
+		, allergy = #{allergy}
+		, overseas_Visits = #{overseas_Visits}
+		, sleep_Time = #{sleep_Time}
+		, stress = #{stress}
+		, family_History = #{family_History}
+		, pregnant = #{pregnant}
+		
 		where cust_Num = #{cust_Num}
-	</select>
+		
+	</update>
 	
 	
 </mapper>

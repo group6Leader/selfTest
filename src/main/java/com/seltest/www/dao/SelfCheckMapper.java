@@ -4,8 +4,10 @@ import com.seltest.www.vo.SelfCheck;
 
 public interface SelfCheckMapper {
 
-	public int insertSelfCheck(SelfCheck selfCheck);
+	int insertSelfCheck(SelfCheck selfCheck);
 	
-	SelfCheck readOne(int cust_Num);
+
+	
+	int update(SelfCheck selfCheck);
 	
 }
