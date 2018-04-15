@@ -1,142 +1,185 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/editForm.css"></c:url>">
 <title>selfCheck/selfCheckForm</title>
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	function edit() {
-		/* alert(1); */
-		location.href = "goEditForm"
-	}
-
+$('#smileys input').on('click', function() {
+	$('#result').html($(this).val());
+});
 </script>
-
 </head>
 <body>
 
-	<h1>자가진단</h1>
-	
-	<form action="goSelfCheck" method="post">
+	<form>
+		<h1>
+			 자가진단<span>솔직한 자신의 건강정보를 입력해주세요. 정확한 진단을 위해서 필요합니다.</span>
+		</h1>
+	<div class="controls blood_Pressure">
+		<h1>Blood Pressure</h1>
+		<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100">
+		<h3>*혈압의 평균값을 입력해주세요.</h3>
+	</div>
+		<div class="controls smoking">
+			<h1>Smoking</h1>
+			<input id="noSmoking" type="radio" name='smoking' checked='checked' />
+			<label for="noSmoking">없음</label> 
+			<input id='halfSmoking' type="radio" name='smoking' />
+			<label for="halfSmoking">하루 한 갑 미만</label>
+			<input id='oneSmoking' type="radio" name='smoking' />
+			<label for="oneSmoking">하루 한 갑</label>
+			<input id='moreSmoking' type="radio" name='smoking' />
+			<label for="moreSmoking">하루 한 갑이상</label>
+		</div>
+
+		<div class="controls drinking">
+			<h1>Drinking</h1>
+			<input id="noDrinking" type="radio" name='drinking' checked='checked' />
+			<label for="noDrinking">음주 안함</label> 
+			<input id='oneDrinking' type="radio" name='drinking' />
+			<label for="oneDrinking">일주일 1번 이하</label>
+			<input id='twoDrinking' type="radio" name='drinking' />
+			<label for="twoDrinking">일주일 2~3번</label>
+			<input id='moreDrinking' type="radio" name='drinking' />
+			<label for="moreDrinking">일주일 3번 이상</label>
+		</div>
 		
+		<div class="controls diabetes">
+			<h1>Diabetes</h1>
+			<input id="noDiabetes" type="radio" name='diabetes' checked='checked' />
+			<label for="noDiabetes">당뇨 없음</label> 
+			<input id='yesDiabetes' type="radio" name='diabetes' />
+			<label for="yesDiabetes">당뇨 있음</label>
+		</div>
+
+		<div class="controls surgery">
+			<h1>Surgery</h1>
+			<input id="noSurgery" type="radio" name='surgery' checked='checked' />
+			<label for="noSurgery">수술 경력없음</label> 
+			<input id='yesSurgery' type="radio" name='surgery' />
+			<label for="yesSurgery">수술 경력있음</label>
+		</div>
+		
+		<div class="controls obstacle">
+			<h1>Obstacle</h1>
+			<input id="noObstacle" type="radio" name='obstacle' checked='checked' />
+			<label for="noObstacle">장애 없음</label> 
+			<input id='yesObstacle' type="radio" name='obstacle' />
+			<label for="yesObstacle">장애 있음</label>
+		</div>
+		
+		<div class="controls medicine">
+			<h1>medicine</h1>
+			<input type="text" name="medicine" placeholder="ex) 없음">
+			<h3>*최근의 복용한 약을 입력해주세요.</h3>
+		</div>
+		
+		<div class="controls medicine">
+			<h1>allergy</h1>
+			<input type="text" name="allergy" placeholder="ex) 갑각류 알레르기">
+		</div>
+		
+		<div class="controls overseas_Visits">
+			<h1>Overseas_Visits</h1>
+			<input id="noOverseas_Visits" type="radio" name='overseas_Visits' checked='checked' />
+			<label for="noOverseas_Visits">없음</label> 
+			<input id='yesOverseas_Visits' type="radio" name='obstoverseas_Visitsacle' />
+			<label for="yesOverseas_Visits">있음</label>
+			<h3>*최근의 3개월 내의 해외여행 여부를 기입해주세요.</h3>
+		</div>
+		
+		<div class="controls sleep_Time">
+			<h1>Sleep_Time</h1>
+			<input id="4hour" type="radio" name='sleep_Time' checked='checked' />
+			<label for="4hour">4시간 이하</label> 
+			<input id='6hour'type="radio" name='sleep_Time' />
+			<label for="6hour">5~6시간</label>
+			<input id='8hour'type="radio" name='sleep_Time' />
+			<label for="8hour">7~8시간</label>
+			<input id='over8hour'type="radio" name='sleep_Time' />
+			<label for="over8hour">8시간 이상</label>
+		</div>
+		
+		<div class="card">
+  <div class="rating-container">
+    <div class="rating-text">
+      <p>I'm feeling...</p>
+    </div>
+    <div class="rating">
+      <form class="rating-form">
+
+        <label for="super-happy">
+			<input type="radio" name="rating" class="super-happy" id="super-happy" value="super-happy" />
+			<svg viewBox="0 0 24 24"><path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
+			</label>
+
+        <label for="happy">
+			<input type="radio" name="rating" class="happy" id="happy" value="happy" checked />
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>
+			</label>
+
+        <label for="neutral">
+			<input type="radio" name="rating" class="neutral" id="neutral" value="neutral" />
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>
+			</label>
+
+        <label for="sad">
+			<input type="radio" name="rating" class="sad" id="sad" value="sad" />
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>
+			</label>
+
+        <label for="super-sad">
+			<input type="radio" name="rating" class="super-sad" id="super-sad" value="super-sad" />
+			<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>
+			</label>
+
+      </form>
+    </div>
+  </div>
+</div>
+		
+	</form>
+		
+	<form action="goSelfCheck" method="post"><div>
 		<div>
-			<label for="blood_Pressure">혈압(중간값)</label>
-			<input type="text" name="blood_Pressure" value="100">
-		
-		</div> <br>
+			<label for="stress">스트레스 받는 정도</label> <br> <input type="radio"
+				name="stress" class="stress" value="없음"> 없음 <input
+				type="radio" name="stress" class="stress" value="적음"
+				checked="checked"> 적음 <input type="radio" name="stress"
+				class="stress" value="많음"> 많음 <input type="radio"
+				name="stress" class="stress" value="심함"> 심함
+
+		</div>
+		<br>
 
 		<div>
-			<label for="smoking">담배</label> <br>
-			
-			<input type="radio" name="smoking" class="smoking" value="없음" checked="checked"> 없음
-			<input type="radio" name="smoking" class="smoking" value="한갑"> 하루 한 갑
-			<input type="radio" name="smoking" class="smoking" value="두갑"> 하루 두 갑
-		</div> <br>
-		
-		<div>
-		
-			<label for="drinking">음주</label> <br>
-			
-			<input type="radio" name="drinking" class="drinking" value="없음" checked="checked"> 없음
-			<input type="radio" name="drinking" class="drinking" value="한번"> 일주일 1번
-			<input type="radio" name="drinking" class="drinking" value="두세번"> 일주일 2~3번
-			<input type="radio" name="drinking" class="drinking" value="대여섯번"> 일주일 5~6번
-			
-			
-		</div> <br>
-		
-		<div>
-		
-			<label for="diabetes">당뇨병</label> <br>
-			
-			<input type="radio" name="diabetes" class="diabetes" value="없음" checked="checked"> 없음
-			<input type="radio" name="diabetes" class="diabetes" value="있음"> 있음	
-			
-		</div> <br>
+			<label for="family_history">가족력</label> <input type="text"
+				name="family_History" placeholder="가족력" value="없음">
+
+		</div>
+		<br>
 
 		<div>
-			
-			<label for="surgery">수술여부</label> <br>
-			
-			<input type="radio" name="surgery" class="diabetes" value="없음" checked="checked"> 없음
-			<input type="radio" name="surgery" class="diabetes" value="있음"> 있음
-		
-		</div> <br>
-		
-		<div>
-			<label for="diabetes">장애여부</label> <br>
-			
-			<input type="radio" name="disability" class="diabetes" value="없음" checked="checked"> 없음
-			<input type="radio" name="disability" class="diabetes" value="있음"> 있음
-		
-		</div> <br>
-		
-		<div>
-			<label for="medicine">최근 복용약</label> 
-			
-			<input type="text" name="medicine" placeholder="최근 복용약" value="없음">
-		
-		</div> <br>
+			<label for="pregnant">현재 임신여부</label> <br> <input type="radio"
+				name="pregnant" class="pregnant" value="없음" checked="checked">
+			없음 <input type="radio" name="pregnant" class="pregnant" value="있음">
+			있음
+
+		</div>
+		<br>
 
 		<div>
-			<label for="allergy">알레르기</label> 
-		
-			<input type="text" name="allergy" placeholder="알레르기" value="없음">
-		
-		</div> <br>
-		
-		<div>
-			<label for="overseas_Visits">최근 해외방문 여부</label> <br>
-			
-			<input type="radio" name="overseas_Visits" class="overseas_Visits" value="없음" checked="checked"> 없음
-			<input type="radio" name="overseas_Visits" class="overseas_Visits" value="있음"> 있음
-		
-		</div> <br>
-		
-		<div>
-			<label for="sleep_Time">평균 수면시간</label> <br>
-		
-			<input type="radio" name="sleep_Time" class="sleep_Time" value="4시간이하"> 4시간이하
-			<input type="radio" name="sleep_Time" class="sleep_Time" value="4~6시간"> 5~6시간
-			<input type="radio" name="sleep_Time" class="sleep_Time" value="6~8시간" checked="checked"> 7~8시간
-			<input type="radio" name="sleep_Time" class="sleep_Time" value="8시간이상"> 8시간이상
-		
-		</div> <br>
-		
-		<div>
-			<label for="stress">스트레스 받는 정도</label> <br>
-			
-			<input type="radio" name="stress" class="stress" value="없음"> 없음
-			<input type="radio" name="stress" class="stress" value="적음" checked="checked"> 적음
-			<input type="radio" name="stress" class="stress" value="많음"> 많음
-			<input type="radio" name="stress" class="stress" value="심함"> 심함
-		
-		</div> <br>
-		
-		<div>
-			<label for="family_history">가족력</label>
-			
-			<input type="text" name="family_History" placeholder="가족력" value="없음">
-		
-		</div> <br>
-		
-		<div>
-			<label for="pregnant">현재 임신여부</label> <br>
-			
-			<input type="radio" name="pregnant" class="pregnant" value="없음" checked="checked"> 없음
-			<input type="radio" name="pregnant" class="pregnant" value="있음"> 있음
-		
-		</div> <br>
-	
-		<div>
-			<input type="submit" value="다음"> &nbsp; 
-			<input type="button" value="종료" onclick="location.href='../'">
+			<input type="submit" value="다음"> &nbsp; <input type="button"
+				value="수정" onclick="edit()">
 		</div>
 
 	</form>
-	
-	
+
+
 </body>
 </html>
