@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,17 +214,22 @@
 			</li>
 			</c:if>
 			<li>
-				<c:if test="${sessionScope.loginID == null}">
+				<sec:authorize access="isAnonymous()">
+				
 				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
 					<span>Login</span>
 				</a>
 
-				</c:if>
-				<c:if test="${sessionScope.loginID != null}">
+				</sec:authorize>
+				
+				
+				<sec:authorize access="isAuthenticated()">
+    				
 					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='SignIn'>
 						<span>Logout</span>
 					</a>
-				</c:if>
+				
+				</sec:authorize>
 			</li>
 		</ul>
 		<header>
