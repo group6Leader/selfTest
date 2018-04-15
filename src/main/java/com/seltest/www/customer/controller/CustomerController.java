@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.seltest.www.dao.CustomerDAO;
+import com.seltest.www.dao.SelfCheckDAO;
 import com.seltest.www.vo.Customer;
+import com.seltest.www.vo.SelfCheck;
 
 @Controller
 @RequestMapping(value = "customer")
@@ -40,6 +43,9 @@ public class CustomerController {
 
 	@Autowired
 	CustomerDAO custDao;
+
+	@Autowired
+	SelfCheckDAO selfCheckDao;
 
 	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
@@ -73,7 +79,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "custJoin", method = RequestMethod.POST)
-	public String custJoin(Customer customer, Model model, String birth_Year, String birth_Month, String birth_Day)
+	public String custJoin(Customer customer, SelfCheck selfCheck, Model model, String birth_Year, String birth_Month, String birth_Day)
 			throws MessagingException, UnsupportedEncodingException {
 
 		String cust_Birth = birth_Year + "/" + birth_Month + "/" + birth_Day + "/";
@@ -88,10 +94,14 @@ public class CustomerController {
 		String admin = "pauluskim0306@gmail.com";
 
 		// Server Address
-		String serverAddress = "http://203.233.199.159:9090/www/";
+		String serverAddress = "http://localhost:9090/www/";
 
-		System.out.println(customer);
 		boolean joinIs = custDao.insertCustomer(customer);
+		System.out.println(customer.getCust_Id());
+		
+		Customer c = custDao.searchCustomerOne(customer.getCust_Id());
+		
+		/*System.out.println(customer);*/
 
 		if (joinIs) {
 
@@ -107,15 +117,23 @@ public class CustomerController {
 							.append("메일인증 \n").append("CHARHospital에 가입해주셔서 감사합니다. \n" + serverAddress
 									+ "customer/verify?cust_Email=" + customer.getCust_Email())
 							.append("\n이메일 인증 확인").toString());
+
 			try {
-
 				mailSender.send(message); // 메일 보내기
+
 			} catch (MailException e) {
-
 				e.printStackTrace();
-			}
 
+			}
 			logger.info("User Join Success");
+			
+			int cust_Num = c.getCust_Num();
+			System.out.println("cust_Num: " + cust_Num);
+
+			selfCheck.setCust_Num(c.getCust_Num());
+			
+			selfCheckDao.insertSelfCheck(selfCheck);
+
 		} else {
 
 			logger.info("User Join Fail");
@@ -143,39 +161,39 @@ public class CustomerController {
 		return "redirect:/";
 	}
 
-	/*@ResponseBody
-	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public HashMap<String, String> login(String cust_Id, String cust_Pw, HttpSession session, Model model) {
-
-		HashMap<String, String> loginMap = new HashMap<String, String>();
-
-		logger.info("로그인 시작");
-
-		logger.info(cust_Id + "id" + cust_Pw + "pw");
-
-		Customer custLogin = null;
-
-		custLogin = custDao.searchCustomerOne(cust_Id);
-
-		if (custLogin == null) {
-			loginMap.put("message1", cust_Id + "아이디가 없습니다.");
-			loginMap.put("check", "errorId");
-		} else if (!custLogin.getCust_Pw().equals(cust_Pw)) {
-			loginMap.put("message2", cust_Pw + "비밀번호가 다릅니다.");
-			loginMap.put("check", "errorPw");
-		} else {
-			session.setAttribute("cust_Num", custLogin.getCust_Num());
-			session.setAttribute("loginID", custLogin.getCust_Id());
-			session.setAttribute("loginName", custLogin.getCust_Name());
-			loginMap.put("message3", "로그인이 완료 되었습니다.");
-		}
-
-		model.addAttribute("login", custLogin);
-
-		logger.info("로그인 종료");
-
-		return loginMap;
-	}*/
+//	@ResponseBody
+//	@RequestMapping(value = "login", method = RequestMethod.POST)
+//	public HashMap<String, String> login(String cust_Id, String cust_Pw, HttpSession session, Model model) {
+//
+//		HashMap<String, String> loginMap = new HashMap<String, String>();
+//
+//		logger.info("로그인 시작");
+//
+//		logger.info(cust_Id + "id" + cust_Pw + "pw");
+//
+//		Customer custLogin = null;
+//
+//		custLogin = custDao.searchCustomerOne(cust_Id);
+//
+//		if (custLogin == null) {
+//			loginMap.put("message1", cust_Id + "아이디가 없습니다.");
+//			loginMap.put("check", "errorId");
+//		} else if (!custLogin.getCust_Pw().equals(cust_Pw)) {
+//			loginMap.put("message2", cust_Pw + "비밀번호가 다릅니다.");
+//			loginMap.put("check", "errorPw");
+//		} else {
+//			session.setAttribute("cust_Num", custLogin.getCust_Num());
+//			session.setAttribute("loginID", custLogin.getCust_Id());
+//			session.setAttribute("loginName", custLogin.getCust_Name());
+//			loginMap.put("message3", "로그인이 완료 되었습니다.");
+//		}
+//
+//		model.addAttribute("login", custLogin);
+//
+//		logger.info("로그인 종료");
+//
+//		return loginMap;
+//	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {

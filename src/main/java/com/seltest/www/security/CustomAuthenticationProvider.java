@@ -2,6 +2,7 @@ package com.seltest.www.security;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +33,15 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 	@Autowired
 	SqlSession sqlSession;
 	
-	
-	
 	public CustomAuthenticationProvider() {
         super();
+    }
+	
+	
+	@Override
+    public boolean supports(Class<?> authentication) {
+        return authentication.equals(
+          UsernamePasswordAuthenticationToken.class);
     }
 	
 	
@@ -75,6 +81,7 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		logger.info("authToken 확인 종료 auth 반환" + userInfo + "11 "+ authorities);
 		return new UsernamePasswordAuthenticationToken(userInfo, null, authorities);	
 	}
+	
 	private boolean matchPassword(String password, Object credentials) {
 		return password.equals(credentials);
 	}
@@ -105,14 +112,5 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		
 	}
 	
-	
-	
-	
-	
-	@Override
-	public boolean supports(Class<?> authentication) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

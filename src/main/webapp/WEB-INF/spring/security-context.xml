@@ -5,15 +5,19 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
 	<!-- 검사 URL -->
-	<http use-expressions="true" auto-config="true"
-		disable-url-rewriting="true">
+	<http use-expressions="true" auto-config="true" disable-url-rewriting="true">
 
 		<intercept-url pattern="/**" access="permitAll" />
 
-		<form-login login-page="/"
+		<form-login 
+			login-page="/customer/loginForm"
 			login-processing-url="/login"
-			default-target-url="/" authentication-failure-url="/login/error?"
-			username-parameter="cust_Id" password-parameter="cust_Pw" />
+			default-target-url="/" 
+			
+			authentication-failure-url="/?error=1"
+			username-parameter="cust_Id" 
+			password-parameter="cust_Pw" />
+			
 		<csrf disabled="true" />
 
 		<logout logout-url="/logout" invalidate-session="true"
@@ -21,11 +25,17 @@
 
 		<access-denied-handler error-page="/login/accessDenied" />
 	</http>
-	
+
+
 	<beans:bean id="authenticationProvider"
 		class="com.seltest.www.security.CustomAuthenticationProvider">
+		
 	</beans:bean>
-
+	
+	<!-- <beans:bean id="CustomUserDetailsService"
+		class="com.seltest.www.security.CustomUserDetailsService">
+	</beans:bean> -->
+	
 	<beans:bean id="userDetailsService"
 		class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
 		<beans:property name="dataSource" ref="dataSource" />
