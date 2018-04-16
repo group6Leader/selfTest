@@ -27,7 +27,6 @@ $('#smileys input').on('click', function() {
 		<h3>*혈압의 평균값을 입력해주세요.</h3>
 	</div>
 	
-	
 		<div class="controls smoking">
 			<h1>Smoking</h1>
 			<input id="noSmoking" type="radio" name='smoking' checked='checked' value="없음"/>
@@ -42,7 +41,7 @@ $('#smileys input').on('click', function() {
 
 		<div class="controls drinking">
 			<h1>Drinking</h1>
-			<input id="noDrinking" type="radio" name='drinking' checked='checked' value="음주 안함"/>
+			<input id="noDrinking" type="radio" name='drinking' checked='checked' value="안함"/>
 			<label for="noDrinking">음주 안함</label> 
 			<input id='oneDrinking' type="radio" name='drinking' value="일주일 1번 이하" />
 			<label for="oneDrinking">일주일 1번 이하</label>
@@ -54,25 +53,25 @@ $('#smileys input').on('click', function() {
 		
 		<div class="controls diabetes">
 			<h1>Diabetes</h1>
-			<input id="noDiabetes" type="radio" name='diabetes' checked='checked' value="당뇨 없음"/>
+			<input id="noDiabetes" type="radio" name='diabetes' checked='checked' value="없음"/>
 			<label for="noDiabetes">당뇨 없음</label> 
-			<input id='yesDiabetes' type="radio" name='diabetes' value="당뇨 있음"/>
+			<input id='yesDiabetes' type="radio" name='diabetes' value="있음"/>
 			<label for="yesDiabetes">당뇨 있음</label>
 		</div>
 
 		<div class="controls surgery">
 			<h1>Surgery</h1>
-			<input id="noSurgery" type="radio" name='surgery' checked='checked' value="수술 경력없음"/>
+			<input id="noSurgery" type="radio" name='surgery' checked='checked' value="없음"/>
 			<label for="noSurgery">수술 경력없음</label> 
-			<input id='yesSurgery' type="radio" name='surgery' value="수술 경력있음"/>
+			<input id='yesSurgery' type="radio" name='surgery' value="있음"/>
 			<label for="yesSurgery">수술 경력있음</label>
 		</div>
 		
 		<div class="controls disability">
 			<h1>Obstacle</h1>
-			<input id="noDisability" type="radio" name='disability' checked='checked' value="장애 없음"/>
+			<input id="noDisability" type="radio" name='disability' checked='checked' value="없음"/>
 			<label for="noDisability">장애 없음</label> 
-			<input id='yesDisability' type="radio" name='disability' value="장애 있음"/>
+			<input id='yesDisability' type="radio" name='disability' value="있음"/>
 			<label for="yesDisability">장애 있음</label>
 		</div>
 		
