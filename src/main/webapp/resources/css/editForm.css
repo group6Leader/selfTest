@@ -206,9 +206,8 @@ input[type='text'] {
   background-color: #f4f4f4;
 }
 
+/*스트레스*/
 .card {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	margin: auto;
 	-webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
@@ -302,3 +301,73 @@ input[class="super-sad"]:focus + svg {
 	fill: rgb(239, 42, 16);
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(86, 86, 86,0.6);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+button {
+  margin: 20px;
+}
+.custom-btn {
+  padding: 10px 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+/**** BTN No. 1 ****/
+.btn-1 {
+	border: 2.3px solid #ffffff;
+	color:#ffffff;
+}
+.btn-1:hover {
+  background: #ffffff;
+  color: #400040;
+}
+.btn-1:active {top: 2px;}
+
+.controlsBtn{
+  margin-bottom: 20px;
+  padding: 20px 35px 20px 30px;
+  position: relative;
+  text-align:center;
+  margin-bottom: 25px;
+}
