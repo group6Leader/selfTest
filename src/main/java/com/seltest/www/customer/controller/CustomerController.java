@@ -20,6 +20,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.seltest.www.dao.CustomerDAO;
 import com.seltest.www.dao.SelfCheckDAO;
+import com.seltest.www.security.CustomAuthenticationProvider;
 import com.seltest.www.vo.Customer;
+import com.seltest.www.vo.Member;
 import com.seltest.www.vo.SelfCheck;
 
 @Controller
@@ -194,6 +197,21 @@ public class CustomerController {
 //
 //		return loginMap;
 //	}
+	
+	
+	@RequestMapping(value = "login_success", method = RequestMethod.GET)
+	public String loginSuccess(HttpSession session) {
+
+		Member member = (Member)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		logger.info("member {}", member.getCustomer().getCust_Num());
+		
+		session.setAttribute("member", member);
+		
+		
+		return "redirect:/";
+
+	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {

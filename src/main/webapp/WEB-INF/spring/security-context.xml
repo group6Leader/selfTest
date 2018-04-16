@@ -12,7 +12,7 @@
 		<form-login 
 			login-page="/customer/loginForm"
 			login-processing-url="/login"
-			default-target-url="/" 
+			default-target-url="/customer/login_success" 
 			
 			authentication-failure-url="/?error=1"
 			username-parameter="cust_Id" 
