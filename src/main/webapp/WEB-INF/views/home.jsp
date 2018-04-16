@@ -144,6 +144,7 @@
 	// this.type = "password";
 	// })
 	// });
+	
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
@@ -267,7 +268,7 @@
 
 
 		<div class='top'>
-			<h2>Login&nbsp;to&nbsp;download&nbsp;area</h2>
+			<h2>Login</h2>
 		</div>
 
 
@@ -282,8 +283,9 @@
 			<div id="check"></div>
 			<div class='remlog'>
 
-				<input type="submit" value='Sign in'>
-
+				<div class="container">
+					<input type="submit" value='Login' class="btn btn-success btn-lg btn-block" id="button">
+				</div>
 			</div>
 		</form:form>
 		<div class='forgot'>
