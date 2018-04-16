@@ -6,8 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>webRtc-3</title>
-<link href="resources/css/webrtc.css" rel="stylesheet" type="text/css" />
-<link href="resources/css/webrtc2.css" rel="stylesheet" type="text/css" />
+<link href="./resources/css/webrtc.css" rel="stylesheet" type="text/html" />
+<link href="./resources/css/webrtc2.css" rel="stylesheet" type="text/html" />
+
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/sockjs-0.3.min.js"></c:url>"></script>
 <script type="text/javascript" src="<c:url value="/resources/webrtc/adapter.js"></c:url>"></script>
@@ -35,6 +36,7 @@ $(function() {
 	  var isOffer = null;
 	  var localStream = null;
 	  var peer = null; // offer or answer peer
+	  
 	  var iceServers = {
 	    'iceServers': [
 	      {'url': 'stun:stun.l.google.com:19302'},

@@ -36,11 +36,11 @@ public class WebRtcController {
 
 
 	@RequestMapping(value = "goWebRtc3", method = RequestMethod.GET)
-	public String goWebRtc3() {
+	public String goWebRtc4() {
 
-		logger.info("webRtc-3 창으로 이동합니다-c");
+		logger.info("webRtc-4 창으로 이동합니다-c");
 
-		return "webrtc/webRtc-3";
+		return "webrtc/webRtc-4";
 
 	}
 
