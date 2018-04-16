@@ -52,7 +52,7 @@ public class ReservationController {
 					model.addAttribute("myReservation", myReservation);
 				}
 				
-				//예약된 버튼 비활성화
+				//예약된 버튼 비활성화 & 지난 시간 버튼 비활성화
 				ArrayList<String> hourList = new ArrayList<String>();		
 				ArrayList<Reservation> checkList = new ArrayList<Reservation>();
 				checkList = dao.checkReservation(iUseDate);

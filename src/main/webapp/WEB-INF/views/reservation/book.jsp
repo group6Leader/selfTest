@@ -1,462 +1,751 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
-<!DOCTYPE html>
+
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-890dc39bb89183d4642d58b1ae5376a0193342f9aed88ea04330dc14c8d52f55.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/anon/pen/GxVKLm" />
+
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
+<style class="cp-pen-styles">body {
+  /*font-family: "RobotoRegular";*/
+  font-family: 'Roboto', sans-serif;
+  font-weigth: 400;
+}
+
+h3, h4, h5 {
+  /*color: #e7e7e7;*/
+  font-weight: 300 !important;
+}
+
+.calendar-wrapper {
+  height: auto;
+}
+
+.calendar-header {
+  background-color: rgba(18, 15, 25, 0.25);
+  height: 100%;
+  padding: 20px;
+  color: #fff;
+  /*font-family: "RobotoLight";*/
+  font-family: 'Roboto', sans-serif;
+  font-weigth: 300;
+  position: relative;
+}
+
+.header-title {
+  padding-left: 15%;
+}
+
+.header-background {
+  background-image: url("https://github.com/JustMonk/prod-dip-docs/blob/master/img/first-header.jpg?raw=true");
+  height: 200px;
+  background-position: center right;
+  background-size: cover;
+}
+
+.calendar-content {
+  background-color: #fff;
+  padding: 20px;
+  padding-left: 15%;
+  padding-right: 15%;
+  overflow: hidden;
+}
+
+.event-mark {
+  width: 5px;
+  height: 5px;
+  background-color: teal;
+  border-radius: 100px;
+  position: absolute;
+  left: 46%;
+  top: 70%;
+}
+
+.calendar-footer {
+  height: 200px;
+  /*font-family: "RobotoLight";*/
+  font-family: 'Roboto', sans-serif;
+  font-weigth: 300;
+  text-align: center;
+  background-color: #4b6289 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.addForm {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: #4b5889 !important;
+  transition: top 0.5s cubic-bezier(1, 0, 0, 1);
+  padding: 0 5px 0 5px;
+}
+
+.addForm input {
+  color: #fff;
+}
+
+.addForm .row {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-bottom: 0;
+}
+
+.addForm h4 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.addEventButtons {
+  text-align: right;
+  padding: 0 0.75rem 0 0.75rem;
+}
+
+.addEventButtons a {
+  color: black;
+  font-weight: 300;
+}
+
+.emptyForm {
+  padding: 20px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.emptyForm h4 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.sidebar-wrapper {
+  color: #fff;
+  background-color: #5a649c !important;
+  padding-top: 0;
+  padding-bottom: 20px;
+  /*font-family: "RobotoLight";*/
+  font-family: 'Roboto', sans-serif;
+  font-weigth: 300;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar-title {
+  padding: 50px 6% 50px 12%;
+}
+
+.sidebar-title h4 {
+  margin-top: 0;
+}
+
+.sidebar-events {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-bottom: 70px;
+}
+
+.empty-message {
+  font-size: 1.2rem;
+  padding: 15px 6% 15px 12%;
+}
+
+.eventCard {
+  background-color: #fff;
+  color: black;
+  padding: 12px 24px 12px 24px;
+  border-bottom: 1px solid #E5E5E5;
+  position: relative;
+}
+
+.eventCard-header {
+  font-weight: bold;
+}
+
+.eventCard-description {
+  color: grey;
+}
+
+.eventCard-mark-wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%);
+}
+
+.eventCard-mark {
+  width: 8px;
+  height: 8px;
+  background-color: #b39ddb;
+  border-radius: 100px;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+}
+
+.day-mark {
+  width: 7px;
+  height: 7px;
+  background-color: #b39ddb;
+  border-radius: 100px;
+  position: absolute;
+  left: 47%;
+  top: 67%;
+}
+
+.content-wrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-left: 300px;
+}
+
+#table-body .col:hover {
+  cursor: pointer;
+  /*border: 1px solid grey;*/
+  background-color: #E0E0E0;
+}
+
+.empty-day:hover {
+  cursor: default !important;
+  background-color: #fff !important;
+}
+
+#table-body .row .col {
+  padding: .75rem;
+}
+
+#table-body .col {
+  border: 1px solid transparent;
+}
+
+#table-body {}
+
+#table-body .row {
+  margin-bottom: 0;
+}
+
+#table-body .col {
+  padding-top: 1.3rem !important;
+  padding-bottom: 1.3rem !important;
+}
+
+#calendar-table {
+  text-align: center;
+}
+
+.prev-button {
+  position: absolute;
+  cursor: pointer;
+  left: 0%;
+  top: 35%;
+  color: grey !important;
+}
+.prev-button i{ 
+  font-size: 4em;
+}
+
+.next-button {
+  position: absolute;
+  cursor: pointer;
+  left: 92%;
+  top: 35%;
+  color: grey !important;
+}
+.next-button i{ 
+  font-size: 4em;
+}
+
+
+.addEvent {
+  box-shadow: 0 5px 15px rgb(57, 168, 228);
+  background-color: #39a8e4;
+  padding: 10px;
+  padding-left: 3em;
+  padding-right: 3em;
+  cursor: pointer;
+  border-radius: 25px;
+  color: #fff !important;
+  background-image: linear-gradient(135deg, #8d8dd4, #45ced4);
+}
+
+.addEvent:hover {
+  transition: box-shadow 0.5s;
+  box-shadow: 0 5px 25px rgb(57, 168, 228);
+}
+
+.mobile-header {
+  padding: 0;
+  display: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  background-color: #5a649c !important;
+}
+
+.mobile-header a i {
+  color: #fff;
+  font-size: 38px;
+}
+
+.mobile-header h4 {
+  color: #fff;
+}
+
+.mobile-header .row {
+  margin-bottom: 0;
+}
+
+.mobile-header h4 {
+  margin: 0;
+  /*font-family: "RobotoLight";*/
+  font-family: 'Roboto', sans-serif;
+  font-weigth: 300;
+}
+
+@media (max-width:992px) {
+  .content-wrapper {
+    margin-left: 0;
+  }
+  .mobile-header {
+    display: block;
+  }
+  .calendar-wrapper {
+    margin-top: 80px;
+  }
+  .sidebar-wrapper {
+    background-color: #EEEEEE !important;
+  }
+  .sidebar-title {
+    background-color: #5A649C !important;
+  }
+  .empty-message {
+    color: black;
+  }
+}
+
+@media (max-width:767px) {
+  .content-wrapper .container {
+    width: auto;
+  }
+  .calendar-content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  body .row {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width:450px) {
+  .content-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .content-wrapper .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}</style></head><body>
 <html>
-<%
-	Calendar cal = Calendar.getInstance();
-	String strYear = request.getParameter("year");
-	String strMonth = request.getParameter("month");
-	int year = cal.get(Calendar.YEAR);
-	int month = cal.get(Calendar.MONTH);
-	int date = cal.get(Calendar.DATE);
-	int hour_of_day = cal.get(Calendar.HOUR_OF_DAY);
-	
-	if(strYear != null){
-	  year = Integer.parseInt(strYear);
-	  month = Integer.parseInt(strMonth);
-	}else{	
-		
-	}
-	
-	//년도/월 셋팅
-	cal.set(year, month, 1);
-	int startDay = cal.getMinimum(java.util.Calendar.DATE);
-	int endDay = cal.getActualMaximum(java.util.Calendar.DAY_OF_MONTH);
-	int start = cal.get(java.util.Calendar.DAY_OF_WEEK);
-	int newLine = 0; 
-	
-	//오늘 날짜 저장
-	Calendar todayCal = Calendar.getInstance();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyMMdd");
-	int intToday = Integer.parseInt(sdf.format(todayCal.getTime())); 
-%>
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
-	<title>예약</title> 
-	<script src="<c:url value='../resources/js/jquery-3.3.1.js'/>"></script>
-	<script type="text/javaScript">
-		$(document).ready(function(){			
-		var iUseDate = "<%=(String)session.getAttribute("iUseDate")%>"		
-		
-		if(${hourList} != null){		 
-			var hour = JSON.parse('${jsonList}');
-			var nine = document.getElementById("nine").value;
-			var ten = document.getElementById("ten").value;
-			var eleven = document.getElementById("eleven").value;
-			var twelve = document.getElementById("twelve").value;
-			var thirteen = document.getElementById("thirteen").value;
-			var fourteen = document.getElementById("fourteen").value;
-			var fifteen = document.getElementById("fifteen").value;
-			var sixteen = document.getElementById("sixteen").value;
-			var seventeen = document.getElementById("seventeen").value;
-			
-			for(var i=0; i<hour.length; i++){
-				if(nine==hour[i]){
-					$('#nine').attr('disabled', 'disabled');
-					$('#nine').attr('class', 'button1');
-				}
-				if(ten==hour[i]){
-					$('#ten').attr('disabled', 'disabled');
-					$('#ten').attr('class', 'button1');
-				}
-				if(eleven==hour[i]){
-					$('#eleven').attr('disabled', 'disabled');
-					$('#eleven').attr('class', 'button1');
-				}
-				if(twelve==hour[i]){
-					$('#twelve').attr('disabled', 'disabled');
-					$('#twelve').attr('class', 'button1');
-				}				
-				if(thirteen==hour[i]){
-					$('#thirteen').attr('disabled', 'disabled');
-					$('#thirteen').attr('class', 'button1');
-				}
-				if(fourteen==hour[i]){
-					$('#fourteen').attr('disabled', 'disabled');
-					$('#fourteen').attr('class', 'button1');
-				}
-				if(fifteen==hour[i]){
-					$('#fifteen').attr('disabled', 'disabled');
-					$('#fifteen').attr('class', 'button1');
-				}
-				if(sixteen==hour[i]){
-					$('#sixteen').attr('disabled', 'disabled');
-					$('#sixteen').attr('class', 'button1');
-				}
-				if(seventeen==hour[i]){
-					$('#seventeen').attr('disabled', 'disabled');
-					$('#seventeen').attr('class', 'button1');
-				}
-			}
-			
-			if(iUseDate==<%=intToday%>){
-				if(nine<=<%=hour_of_day %>){
-					$('#nine').attr('disabled', 'disabled');
-					$('#nine').attr('class', 'button1');
-				}
-			}			
-			if(iUseDate==<%=intToday%>){
-				if(ten<=<%=hour_of_day %>){
-					$('#ten').attr('disabled', 'disabled');
-					$('#ten').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(eleven<=<%=hour_of_day %>){
-					$('#eleven').attr('disabled', 'disabled');
-					$('#eleven').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(twelve<=<%=hour_of_day %>){
-					$('#twelve').attr('disabled', 'disabled');
-					$('#twelve').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(thirteen<=<%=hour_of_day %>){
-					$('#thirteen').attr('disabled', 'disabled');
-					$('#thirteen').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(fourteen<=<%=hour_of_day %>){
-					$('#fourteen').attr('disabled', 'disabled');
-					$('#fourteen').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(fifteen<=<%=hour_of_day %>){
-					$('#fifteen').attr('disabled', 'disabled');
-					$('#fifteen').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(sixteen<=<%=hour_of_day %>){
-					$('#sixteen').attr('disabled', 'disabled');
-					$('#sixteen').attr('class', 'button1');
-				}
-			}
-			if(iUseDate==<%=intToday%>){
-				if(seventeen<=<%=hour_of_day %>){
-					$('#seventeen').attr('disabled', 'disabled');
-					$('#seventeen').attr('class', 'button1');
-				}
-			}			
-		}	
-	});
-</script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<script type="text/javaScript">
-	function res_Check(){		
-		if(confirm("예약 하시겠습니까?") == true){
-			if(${myReservation != null}){
-				alert("하나의 예약만 가능합니다. 예약 삭제 후 시도하세요.");
-				return false;
-			}
-			return true;
-		}else{
-			return false;
-		}		
-	}	
-</script>
-	
-	
-    <script type="text/javaScript" > 
-	    function loginCheck(iUseDate){	    	
-	    	var iUseDate = iUseDate;  	
-	    	
-	    	if(iUseDate<<%=intToday%>){
-	    		alert("예약불가합니다.");
-	    		return false;	    		
-	    	}
-	    	
-	    	/* if(${sessionScope.loginID == null}){
-	    		alert("로그인 후 예약이 가능합니다.");
-	    		return false;
-	    	}  */ 
-	    	
-	    	if(${myReservation != null}){
-	    		alert("하나의 예약만 가능합니다. 예약 삭제 후 시도하세요.");
-	    		return false;
-	    	}
-	    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> 
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+      <div class="content-wrapper grey lighten-3">
+        <div class="container">
+
+          <div class="calendar-wrapper z-depth-2">
+
+            <div class="header-background">
+              <div class="calendar-header">
+
+                <a class="prev-button" id="prev">
+                  <i class="material-icons">keyboard_arrow_left</i>
+                </a>
+                <a class="next-button" id="next">
+                  <i class="material-icons">keyboard_arrow_right</i>
+                </a>
+
+                <div class="row header-title">
+
+                  <div class="header-text">
+                    <h3 id="month-name">February</h3>
+                    <h5 id="todayDayName">Today is Friday 7 Feb</h5>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-content">
+              <div id="calendar-table" class="calendar-cells">
+
+                <div id="table-header">
+                  <div class="row">
+                    <div class="col">Mon</div>
+                    <div class="col">Tue</div>
+                    <div class="col">Wed</div>
+                    <div class="col">Thu</div>
+                    <div class="col">Fri</div>
+                    <div class="col">Sat</div>
+                    <div class="col">Sun</div>
+                  </div>
+                </div>
+
+                <div id="table-body" class="">
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="calendar-footer">
+              <div class="emptyForm" id="emptyForm">
+                <h4 id="emptyFormTitle">No events now</h4>
+                <a class="addEvent" id="changeFormButton">Add new</a>
+              </div>
+              <div class="addForm" id="addForm">
+                <h4>Add new event</h4>
+
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="eventTitleInput" type="text" class="validate">
+                    <label for="eventTitleInput">Title</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="eventDescInput" type="text" class="validate">
+                    <label for="eventDescInput">Description</label>
+                  </div>
+                </div>
+
+
+                <div class="addEventButtons">
+                  <a class="waves-effect waves-light btn blue lighten-2" id="addEventButton">Add</a>
+                  <a class="waves-effect waves-light btn grey lighten-2" id="cancelAdd">Cancel</a>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="main-wrapper">
+      <div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar">
+
+        <div class="sidebar-title">
+          <h4>Events</h4>
+          <h5 id="eventDayName">SIDEBAR SUB-TITLE</h5>
+        </div>
+        <div class="sidebar-events" id="sidebarEvents">
+          <div class="empty-message">Sorry, no events to selected date</div>
+        </div>
+
+      </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script>
+      $(".button-collapse").sideNav();
     </script>
-    
-	<script type="text/javascript">
-		function deleteCheck(){
-			if(confirm("예약을 삭제하시겠습니까?") == true){
-				location.href="deleteBook";
-			}else{
-				return false;
-			}					
-		}
-	</script>
 
-       <style type="text/css">
-             body {
-             scrollbar-face-color: #F6F6F6;
-             scrollbar-highlight-color: #bbbbbb;
-             scrollbar-3dlight-color: #FFFFFF;
-             scrollbar-shadow-color: #bbbbbb;
-             scrollbar-darkshadow-color: #FFFFFF;
-             scrollbar-track-color: #FFFFFF;
-             scrollbar-arrow-color: #bbbbbb;
-             margin-left:"0px"; margin-right:"0px"; margin-top:"0px"; margin-bottom:"0px";
-             } 
+  </body>
 
-             td {font-family: "돋움"; font-size: 9pt; color:#595959;}
-             th {font-family: "돋움"; font-size: 9pt; color:#000000;}
-             select {font-family: "돋움"; font-size: 9pt; color:#595959;}
-             .divDotText {
-             overflow:hidden;
-             text-overflow:ellipsis;
-             }
-            A:link { font-size:9pt; font-family:"돋움";color:#000000; text-decoration:none; }
-            A:visited { font-size:9pt; font-family:"돋움";color:#000000; text-decoration:none; }
-            A:active { font-size:9pt; font-family:"돋움";color:red; text-decoration:none; }
-            A:hover { font-size:9pt; font-family:"돋움";color:red;text-decoration:none;}
-            
-            .button {  
-			position:relative;	
-			margin-top: 5px;
-			background-color: #87CEFA;
-			font-size: 15px;
-			color: black;
-			padding: 10px;
-			width: 100px;
-			text-align: center;
-			-webkit-transition-duration: 0.4s;
-			transition-duration: 0.4s;
-			text-decoration: none;
-			overflow: hidden;
-			cursor: pointer;
-		}
-		.button1{
-			position:relative;	
-			margin-top: 5px;
-			background-color: #848484;
-			font-size: 15px;
-			color: black;
-			padding: 10px;
-			width: 100px;
-			text-align: center;
-			-webkit-transition-duration: 0.4s;
-			transition-duration: 0.4s;
-			text-decoration: none;
-			overflow: hidden;
-			cursor: pointer;
-		}
-		
-		.button:hover {
-			color: #DDDDDD;
-			 border-color: #DDDDDD;
-		}
-		
-		.button2:active {
-			 color: #BBBBBB;
-			 border-color: #BBBBBB;
-		}
-		.calDiv{
-			display: inline; float: left; width: 70%; height:100%; text-align: center; margin-left:5%;
-		}
-		.hourDiv{
-			position: relative; display: inline; float: left; width: 30%; height:100%; text-align: center; margin-left:50%; margin-top: -40%
-		}
-       </style>
-</head>
-<body>
-<div class="reservationDiv">
-	<div class="calDiv">
-		<form name="calendarFrm" id="calendarFrm" action="" method="">	
-			<div id="content" style="width:712px;">	
-			<c:if test="${myReservation != null}">
-				<input type="text" value="${myReservation}" size="50px">
-				<input type="button" value="예약 삭제" onclick="return deleteCheck()">
-			</c:if>
-			<table width="100%" border="0" cellspacing="1" cellpadding="1">	
-				
-				<tr>	
-				       <td align ="right">	
-				             <input type="button" onclick="javascript:location.href='<c:url value='../reservation/book' />'" value="오늘"/>	
-				       </td>
-				</tr>	
-			</table>	
-		
-		<!--날짜 네비게이션  -->	
-			<table width="100%" border="0" cellspacing="1" cellpadding="1" id="KOO" bgcolor="#F3F9D7" style="border:1px solid #CED99C">	
-				<tr>	
-					<td height="60">		
-				        <table width="100%" border="0" cellspacing="0" cellpadding="0">		
-					       <tr>		
-					             <td height="10">		
-					             </td>		
-					       </tr> 
-					       <tr>		
-					             <td align="center" >		
-					                    <a href="<c:url value='../reservation/book' />?year=<%=year-1%>&amp;month=<%=month%>" target="_self">		
-					                           <b>&lt;&lt;</b><!-- 이전해 -->		
-					                    </a>		
-					                    <%if(month > 0 ){ %>		
-					                    <a href="<c:url value='../reservation/book' />?year=<%=year%>&amp;month=<%=month-1%>" target="_self">		
-					                           <b>&lt;</b><!-- 이전달 -->		
-					                    </a>		
-					                    <%} else {%>		
-					                           <b>&lt;</b>		
-					                    <%} %>		
-					                    &nbsp;&nbsp;		
-					                    <%=year%>년          
-										<%=month+1%>월		
-					                    &nbsp;&nbsp;		
-					                    <%if(month < 11 ){ %>		
-					                    <a href="<c:url value='../reservation/book' />?year=<%=year%>&amp;month=<%=month+1%>" target="_self">		
-					                           <!-- 다음달 --><b>&gt;</b>		
-					                    </a>		
-					                    <%}else{%>		
-					                           <b>&gt;</b>		
-					                    <%} %>		
-					                    <a href="<c:url value='../reservation/book' />?year=<%=year+1%>&amp;month=<%=month%>" target="_self">		
-					                           <!-- 다음해 --><b>&gt;&gt;</b>		
-					                    </a>		
-					             </td>		
-					       </tr>		
-				       </table>	
-					</td>		
-				</tr>		
-			</table>
-		
-		<br>
-		
-		<table border="0" cellspacing="1" cellpadding="1" bgcolor="#FFFFFF">	
-		<thead>	
-		<tr bgcolor="#CECECE">	
-		       <td width='100px'>	
-		      	 <div align="center"><font color="red">일</font></div>	
-		       </td>	
-		       <td width='100px'>	
-		      	 <div align="center">월</div>	
-		       </td>	
-		       <td width='100px'>	
-		      	 <div align="center">화</div>	
-		       </td>	
-		       <td width='100px'>	
-		     	  <div align="center">수</div>	
-		       </td>	
-		       <td width='100px'>	
-		    	   <div align="center">목</div>	
-		       </td>	
-		       <td width='100px'>	
-		     	  <div align="center">금</div>	
-		       </td>	
-		       <td width='100px'>	
-		      	 <div align="center"><font color="#529dbc">토</font></div>	
-		       </td>	
-		</tr>	
-		</thead>	
-		
-		<tbody>	
-			<tr>		
-				<%		
-					//처음 빈공란 표시		
-					for(int index = 1; index < start ; index++ ){		
-						out.println("<td>&nbsp;</td>");	
-					    newLine++;		
-					}		
-				
-					for(int index = 1; index <= endDay; index++){		
-				       String color = "";		
-				       if(newLine == 0){          
-				    	   color = "RED";		
-				       }else if(newLine == 6){    
-				    	   color = "#529dbc";		
-				       }else{                     
-				    	   color = "BLACK"; 
-				       };
-						
-				       String sUseDate = Integer.toString(year); 		
-				       sUseDate += Integer.toString(month+1).length() == 1 ? "0" + Integer.toString(month+1) : Integer.toString(month+1);		
-				       sUseDate += Integer.toString(index).length() == 1 ? "0" + Integer.toString(index) : Integer.toString(index);				
-				       int iUseDate = Integer.parseInt(sUseDate);		
-				       String backColor = "#EFEFEF";
-				
-				       if(iUseDate == intToday ) {		
-				             backColor = "#c9c9c9";		
-				       }		
-				       out.println("<td valign='top' align='left' height='92px' bgcolor='"+backColor+"' nowrap>");		
-			       %> 
-					
-					<a href="book?iUseDate=<%=iUseDate%>" onclick="return loginCheck(<%=iUseDate%>)"><%=index %>	<br></a>	
-								      
-			       <%		
-			       out.println("<br>");		
-			   	   //년월일 : 20180403
-			  	   //out.println(iUseDate);		
-			       out.println("<br>");	      
-			
-			       //기능 제거 		
-			       out.println("</td>");		
-			       newLine++;	 
-			
-			       if(newLine == 7){		
-			         out.println("</tr>");		
-			       	if(index <= endDay){		
-			           out.println("<tr>");		
-			         }		
-			         newLine=0;	
-			       }		
-				}
-			
-				//마지막 공란 LOOP		
-				while(newLine > 0 && newLine < 7){		
-				  out.println("<td>&nbsp;</td>");		
-				  newLine++;		
-				}		
-			%>
-			
-			</tr>	
-			</tbody>	
-			</table>	
-			</div>	
-		</form>
-	</div>
-	
-	<div class="hourDiv">
-		<form id="reservation" action="reservation" method="get" onsubmit="return res_Check()">
-			<div style="margin-left: 200px; margin-top: 50px;">
-				<div style="margin-bottom: 20px;">예약 시간을 고르세요</div>
-				<div>
-					<button class="button" name="hour" id="nine" value="09" >9:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="ten" value="10" >10:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="eleven" value="11" >11:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="twelve" value="12" >12:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="thirteen" value="13" >13:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="fourteen" value="14" >14:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="fifteen" value="15" >15:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="sixteen" value="16" >16:00</button>
-				</div>
-				<div>
-					<button class="button" name="hour" id="seventeen" value="17" >17:00</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-</body>
 </html>
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script >var calendar = document.getElementById("calendar-table");
+var gridTable = document.getElementById("table-body");
+var currentDate = new Date();
+var selectedDate = currentDate;
+var selectedDayBlock = null;
+var globalEventObj = {};
+
+var sidebar = document.getElementById("sidebar");
+
+function createCalendar(date, side) {
+  var currentDate = date;
+  var startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+
+  var monthTitle = document.getElementById("month-name");
+  var monthName = currentDate.toLocaleString("en-US", {
+    month: "long"
+  });
+  var yearNum = currentDate.toLocaleString("en-US", {
+    year: "numeric"
+  });
+  monthTitle.innerHTML = `${monthName} ${yearNum}`;
+
+  if (side == "left") {
+    gridTable.className = "animated fadeOutRight";
+  } else {
+    gridTable.className = "animated fadeOutLeft";
+  }
+
+  gridTable.innerHTML = "";
+
+  var newTr = document.createElement("div");
+  newTr.className = "row";
+  var currentTr = gridTable.appendChild(newTr);
+
+  for (let i = 1; i < startDate.getDay(); i++) {if (window.CP.shouldStopExecution(1)){break;}
+    let emptyDivCol = document.createElement("div");
+    emptyDivCol.className = "col empty-day";
+    currentTr.appendChild(emptyDivCol);
+  }
+window.CP.exitedLoop(1);
+
+
+  var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+  lastDay = lastDay.getDate();
+
+  for (let i = 1; i <= lastDay; i++) {if (window.CP.shouldStopExecution(2)){break;}
+    if (currentTr.getElementsByTagName("div").length >= 7) {
+      currentTr = gridTable.appendChild(addNewRow());
+    }
+    let currentDay = document.createElement("div");
+    currentDay.className = "col";
+    if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
+      selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+
+      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      });
+
+      selectedDayBlock = currentDay;
+      setTimeout(() => {
+        currentDay.classList.add("blue");
+        currentDay.classList.add("lighten-3");
+      }, 900);
+    }
+    currentDay.innerHTML = i;
+    currentTr.appendChild(currentDay);
+  }
+window.CP.exitedLoop(2);
+
+
+  for (let i = currentTr.getElementsByTagName("div").length; i < 7; i++) {if (window.CP.shouldStopExecution(3)){break;}
+    let emptyDivCol = document.createElement("div");
+    emptyDivCol.className = "col empty-day";
+    currentTr.appendChild(emptyDivCol);
+  }
+window.CP.exitedLoop(3);
+
+
+  setTimeout(() => {
+    if (side == "left") {
+      gridTable.className = "animated fadeInLeft";
+    } else {
+      gridTable.className = "animated fadeInRight";
+    }
+  }, 270);
+
+  function addNewRow() {
+    let node = document.createElement("div");
+    node.className = "row";
+    return node;
+  }
+}
+
+createCalendar(currentDate);
+
+var todayDayName = document.getElementById("todayDayName");
+todayDayName.innerHTML = "Today is " + currentDate.toLocaleString("en-US", {
+  weekday: "long",
+  day: "numeric",
+  month: "short"
+});
+
+var prevButton = document.getElementById("prev");
+var nextButton = document.getElementById("next");
+
+prevButton.onclick = changeMonthPrev;
+nextButton.onclick = changeMonthNext;
+
+function changeMonthPrev() {
+  currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
+  createCalendar(currentDate, "left");
+}
+function changeMonthNext() {
+  currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
+  createCalendar(currentDate, "right");
+}
+
+function addEvent(title, desc) {
+  if (!globalEventObj[selectedDate.toDateString()]) {
+    globalEventObj[selectedDate.toDateString()] = {};
+  }
+  globalEventObj[selectedDate.toDateString()][title] = desc;
+}
+
+function showEvents() {
+  let sidebarEvents = document.getElementById("sidebarEvents");
+  let objWithDate = globalEventObj[selectedDate.toDateString()];
+
+  sidebarEvents.innerHTML = "";
+
+  if (objWithDate) {
+    let eventsCount = 0;
+    for (key in globalEventObj[selectedDate.toDateString()]) {if (window.CP.shouldStopExecution(4)){break;}
+      let eventContainer = document.createElement("div");
+      let eventHeader = document.createElement("div");
+      eventHeader.className = "eventCard-header";
+
+      let eventDescription = document.createElement("div");
+      eventDescription.className = "eventCard-description";
+
+      eventHeader.appendChild(document.createTextNode(key));
+      eventContainer.appendChild(eventHeader);
+
+      eventDescription.appendChild(document.createTextNode(objWithDate[key]));
+      eventContainer.appendChild(eventDescription);
+
+      let markWrapper = document.createElement("div");
+      markWrapper.className = "eventCard-mark-wrapper";
+      let mark = document.createElement("div");
+      mark.classList = "eventCard-mark";
+      markWrapper.appendChild(mark);
+      eventContainer.appendChild(markWrapper);
+
+      eventContainer.className = "eventCard";
+
+      sidebarEvents.appendChild(eventContainer);
+
+      eventsCount++;
+    }
+window.CP.exitedLoop(4);
+
+    let emptyFormMessage = document.getElementById("emptyFormTitle");
+    emptyFormMessage.innerHTML = `${eventsCount} events now`;
+  } else {
+    let emptyMessage = document.createElement("div");
+    emptyMessage.className = "empty-message";
+    emptyMessage.innerHTML = "Sorry, no events to selected date";
+    sidebarEvents.appendChild(emptyMessage);
+    let emptyFormMessage = document.getElementById("emptyFormTitle");
+    emptyFormMessage.innerHTML = "No events now";
+  }
+}
+
+gridTable.onclick = function (e) {
+
+  if (!e.target.classList.contains("col") || e.target.classList.contains("empty-day")) {
+    return;
+  }
+
+  if (selectedDayBlock) {
+    if (selectedDayBlock.classList.contains("blue") && selectedDayBlock.classList.contains("lighten-3")) {
+      selectedDayBlock.classList.remove("blue");
+      selectedDayBlock.classList.remove("lighten-3");
+    }
+  }
+  selectedDayBlock = e.target;
+  selectedDayBlock.classList.add("blue");
+  selectedDayBlock.classList.add("lighten-3");
+
+  selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(e.target.innerHTML));
+
+  showEvents();
+
+  document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
+
+}
+
+var changeFormButton = document.getElementById("changeFormButton");
+var addForm = document.getElementById("addForm");
+changeFormButton.onclick = function (e) {
+  addForm.style.top = 0;
+}
+
+var cancelAdd = document.getElementById("cancelAdd");
+cancelAdd.onclick = function (e) {
+  addForm.style.top = "100%";
+  let inputs = addForm.getElementsByTagName("input");
+  for (let i = 0; i < inputs.length; i++) {if (window.CP.shouldStopExecution(5)){break;}
+    inputs[i].value = "";
+  }
+window.CP.exitedLoop(5);
+
+  let labels = addForm.getElementsByTagName("label");
+  for (let i = 0; i < labels.length; i++) {if (window.CP.shouldStopExecution(6)){break;}
+    console.log(labels[i]);
+    labels[i].className = "";
+  }
+window.CP.exitedLoop(6);
+
+}
+
+var addEventButton = document.getElementById("addEventButton");
+addEventButton.onclick = function (e) {
+  let title = document.getElementById("eventTitleInput").value.trim();
+  let desc = document.getElementById("eventDescInput").value.trim();
+
+  if (!title || !desc) {
+    document.getElementById("eventTitleInput").value = "";
+    document.getElementById("eventDescInput").value = "";
+    let labels = addForm.getElementsByTagName("label");
+    for (let i = 0; i < labels.length; i++) {if (window.CP.shouldStopExecution(7)){break;}
+      console.log(labels[i]);
+      labels[i].className = "";
+    }
+window.CP.exitedLoop(7);
+
+    return;
+  }
+
+  addEvent(title, desc);
+  showEvents();
+
+  if (!selectedDayBlock.querySelector(".day-mark")) {
+    console.log("work");
+    selectedDayBlock.appendChild(document.createElement("div")).className = "day-mark";
+  }
+
+  let inputs = addForm.getElementsByTagName("input");
+  for (let i = 0; i < inputs.length; i++) {if (window.CP.shouldStopExecution(8)){break;}
+    inputs[i].value = "";
+  }
+window.CP.exitedLoop(8);
+
+  let labels = addForm.getElementsByTagName("label");
+  for (let i = 0; i < labels.length; i++) {if (window.CP.shouldStopExecution(9)){break;}
+    labels[i].className = "";
+  }
+window.CP.exitedLoop(9);
+
+
+}
+//# sourceURL=pen.js
+</script>
+</body></html>
