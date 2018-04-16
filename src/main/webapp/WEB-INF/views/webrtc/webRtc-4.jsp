@@ -26,173 +26,60 @@
 	src="<c:url value="/resources/webrtc/socket.io.js"></c:url>"></script>
 	<script type="text/javascript"
 	src="<c:url value="/resources/webrtc/webrtc_signal_server.js"></c:url>"></script>
-<!-- <script type="text/javascript">
-	
-	// Compatibility shim
-	navigator.getUserMedia = navigator.getUserMedia
-			|| navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-	// PeerJS object
-	var peer = new Peer({
-		key : 'lwjd5qra8257b9',
-		debug : 3
-	});
-	peer.on('open', function() {
-		$('#my-id').text(peer.id);
-	});
-	// Receiving a call
-	peer.on('call', function(call) {
-		// Answer the call automatically (instead of prompting user) for demo purposes
-		call.answer(window.localStream);
-		step3(call);
-	});
-	peer.on('error', function(err) {
-		alert(err.message);
-		// Return to step 2 if error occurs
-		step2();
-	});
-	// Click handlers setup
-	$(function() {
-		$('#make-call').click(function() {
-			// Initiate a call!
-			var call = peer.call($('#callto-id').val(), window.localStream);
-			step3(call);
-		});
-		$('#end-call').click(function() {
-			window.existingCall.close();
-			step2();
-		});
-		// Retry if getUserMedia fails
-		$('#step1-retry').click(function() {
-			$('#step1-error').hide();
-			step1();
-		});
-		// Get things started
-		step1();
-	});
-	function step1() {
-		// Get audio/video stream
-		navigator.getUserMedia({
-			audio : true,
-			video : true
-		}, function(stream) {
-			// Set your video displays
-			$('#my-video').prop('src', URL.createObjectURL(stream));
-			window.localStream = stream;
-			step2();
-		}, function() {
-			$('#step1-error').show();
-		});
-	}
-	function step2() {
-		$('#step1, #step3').hide();
-		$('#step2').show();
-	}
-	function step3(call) {
-		// Hang up on an existing call if present
-		if (window.existingCall) {
-			window.existingCall.close();
-		}
-		// Wait for stream on the call, then set peer video display
-		call.on('stream', function(stream) {
-			$('#their-video').prop('src', URL.createObjectURL(stream));
-		});
-		// UI stuff
-		window.existingCall = call;
-		$('#their-id').text(call.peer);
-		call.on('close', step2);
-		$('#step1, #step2').hide();
-		$('#step3').show();
-	}
-</script>
 
-
-</head>
-
-<body>
-
-	<div class="pure-g">
-
-		Video area
-		<div class="pure-u-2-3" id="video-container">
-			<video id="their-video" autoplay></video>
-			<video id="my-video" muted="true" autoplay></video>
-		</div>
-
-		Steps
-		<div class="pure-u-1-3">
-			<h2>PeerJS Video Chat</h2>
-
-			Get local audio/video stream
-			<div id="step1">
-				<p>Please click `allow` on the top of the screen so we can
-					access your webcam and microphone for calls.</p>
-				<div id="step1-error">
-					<p>Failed to access the webcam and microphone. Make sure to run
-						this demo on an http server and click allow when asked for
-						permission by the browser.</p>
-					<a href="#" class="pure-button pure-button-error" id="step1-retry">Try
-						again</a>
-				</div>
-			</div>
-
-			Make calls to others
-			<div id="step2">
-				<p>
-					Your id: <span id="my-id">...</span>
-				</p>
-				<p>Share this id with others so they can call you.</p>
-				<h3>Make a call</h3>
-				<div class="pure-form">
-					<input type="text" placeholder="Call user id..." id="callto-id">
-					<a href="#" class="pure-button pure-button-success" id="make-call">Call</a>
-				</div>
-			</div>
-
-			Call in progress
-			<div id="step3">
-				<p>
-					Currently in call with <span id="their-id">...</span>
-				</p>
-				<p>
-					<a href="#" class="pure-button pure-button-error" id="end-call">End
-						call</a>
-				</p>
-			</div>
-		</div>
-	</div>
-
-
-</body>
-</html> -->
 <script>
-/*
+var wsocket;
 
-  webrtc_polyfill.js by Rob Manson
-  NOTE: Based on adapter.js by Adam Barth
+function connect() {
+	wsocket = new SockJS("<c:url value="/chat-sockjs"/>");
+	wsocket.onopen = onOpen;
+	wsocket.onmessage = onMessage;
+	wsocket.onclose = onClose;
+}
+function disconnect() {
+	wsocket.close();
+}
+function onOpen(evt) {
+	appendMessage("연결되었습니다.");
+}
+function onMessage(evt) {
+	var data = evt.data;
+	if (data.substring(0, 4) == "msg:") {
+		appendMessage(data.substring(4));
+	}
+}
+function onClose(evt) {
+	appendMessage("연결을 끊었습니다.");
+}
 
-  The MIT License
+function send() {
+	var nickname = $("#nickname").val();
+	var msg = $("#message").val();
+	wsocket.send("msg:"+nickname+":" + msg);
+	$("#message").val("");
+}
 
-  Copyright (c) 2010-2013 Rob Manson, http://buildAR.com. All rights reserved.
+function appendMessage(msg) {
+	$("#chatMessageArea").append(msg+"<br>");
+	var chatAreaHeight = $("#chatArea").height();
+	var maxScroll = $("#chatMessageArea").height() - chatAreaHeight;
+	$("#chatArea").scrollTop(maxScroll);
+}
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
+$(document).ready(function() {
+	$('#message').keypress(function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == '13'){
+			send();	
+		}
+		event.stopPropagation();
+	});
+	$('#sendBtn').click(function() { send(); });
+	$('#enterBtn').click(function() { connect(); });
+	$('#exitBtn').click(function() { disconnect(); });
+});
 
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-
-*/
+//웹채팅
 
 var webrtc_capable = true;
 var rtc_peer_connection = null;
@@ -232,33 +119,7 @@ if (navigator.getUserMedia) { // WebRTC 1.0 standard compliant browser
 }
 </script>
 <script>
-/*
 
-  basic_video_call.js by Rob Manson
-
-  The MIT License
-
-  Copyright (c) 2010-2013 Rob Manson, http://buildAR.com. All rights reserved.
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-
-*/
 
 var call_token; // unique token for this call
 var signaling_server; // signaling server for this call
@@ -445,6 +306,227 @@ function log_error(error) {
   console.log(error);
 }
 
+
+//여기 밑에는 음성인식 자막
+$(function() {
+	  if (typeof webkitSpeechRecognition != 'function') {
+	    alert('크롬에서만 동작 합니다.');
+	    return false;
+	  }
+
+	  var recognition = new webkitSpeechRecognition();
+	  var isRecognizing = false;
+	  var ignoreOnend = false;
+	  var finalTranscript = '';
+	 	var audio = document.getElementById('audio');
+	  var $btnMic = $('#btn-mic');
+	 	var $result = $('#result');
+	 	var $iconMusic = $('#icon-music');
+	  recognition.continuous = true;
+	  recognition.interimResults = true;
+
+	  recognition.onstart = function() {
+	    console.log('onstart', arguments);
+	    isRecognizing = true;
+
+	    $btnMic.attr('class', 'on');
+	  };
+
+	  recognition.onend = function() {
+	    console.log('onend', arguments);
+	    isRecognizing = false;
+
+	    if (ignoreOnend) {
+	      return false;
+	    }
+
+	    // DO end process
+	    $btnMic.attr('class', 'off');
+	    if (!finalTranscript) {
+	      console.log('empty finalTranscript');
+	      return false;
+	    }
+
+	    if (window.getSelection) {
+	      window.getSelection().removeAllRanges();
+	      var range = document.createRange();
+	      range.selectNode(document.getElementById('final-span'));
+	      window.getSelection().addRange(range);
+	    }
+
+	  };
+
+	  recognition.onresult = function(event) {
+	    console.log('onresult', event);
+
+	    var interimTranscript = '';
+	    if (typeof(event.results) == 'undefined') {
+	      recognition.onend = null;
+	      recognition.stop();
+	      return;
+	    }
+
+	    for (var i = event.resultIndex; i < event.results.length; ++i) {
+	      if (event.results[i].isFinal) {
+	        finalTranscript += event.results[i][0].transcript;
+	      } else {
+	        interimTranscript += event.results[i][0].transcript;
+	      }
+	    }
+
+	    finalTranscript = capitalize(finalTranscript);
+	    final_span.innerHTML = linebreak(finalTranscript);
+	    interim_span.innerHTML = linebreak(interimTranscript);
+
+	    console.log('finalTranscript', finalTranscript);
+	    console.log('interimTranscript', interimTranscript);
+	    fireCommand(interimTranscript);
+	  };
+
+	  /**
+	   * changeColor
+	   *
+	   */
+	  /*
+		  .red 		{ background: red; }
+			.blue 	{ background: blue; }
+			.green 	{ background: green; }
+			.yellow { background: yellow; }
+			.orange { background: orange; }
+			.grey 	{ background: grey; }
+			.gold   { background: gold; }
+			.white 	{ background: white; }
+			.black  { background: black; }
+	 	*/
+	  function fireCommand(string) {
+	  	if (string.endsWith('레드')) {
+	  		$result.attr('class', 'red');
+	  	} else if (string.endsWith('블루')) {
+	  		$result.attr('class', 'blue');
+	  	} else if (string.endsWith('그린')) {
+	  		$result.attr('class', 'green');
+	  	} else if (string.endsWith('옐로우')) {
+	  		$result.attr('class', 'yellow');
+	  	} else if (string.endsWith('오렌지')) {
+	  		$result.attr('class', 'orange');
+	  	} else if (string.endsWith('그레이')) {
+	  		$result.attr('class', 'grey');
+	  	} else if (string.endsWith('골드')) {
+	  		$result.attr('class', 'gold');
+	  	} else if (string.endsWith('화이트')) {
+	  		$result.attr('class', 'white');
+	  	} else if (string.endsWith('블랙')) {
+	  		$result.attr('class', 'black');
+	  	} else if (string.endsWith('알람') || string.endsWith('알 람')) {
+	  		alert('알람');
+	  	} else if (string.endsWith('노래 켜') || string.endsWith('음악 켜')) {
+	  		audio.play();
+	  		$iconMusic.addClass('visible');
+	  	} else if (string.endsWith('노래 꺼') || string.endsWith('음악 꺼')) {
+	  		audio.pause();
+	  		$iconMusic.removeClass('visible');
+	  	} else if (string.endsWith('볼륨 업') || string.endsWith('볼륨업')) {
+	  		audio.volume += 0.2;
+	  	} else if (string.endsWith('볼륨 다운') || string.endsWith('볼륨다운')) {
+	  		audio.volume -= 0.2;
+	  	} else if (string.endsWith('스피치') || string.endsWith('말해줘') || string.endsWith('말 해 줘')) {
+	  	  textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다.');
+	  	}
+	  }
+
+	  recognition.onerror = function(event) {
+	    console.log('onerror', event);
+
+	    if (event.error == 'no-speech') {
+	      ignoreOnend = true;
+	    } else if (event.error == 'audio-capture') {
+	      ignoreOnend = true;
+	    } else if (event.error == 'not-allowed') {
+	      ignoreOnend = true;
+	    }
+
+	    $btnMic.attr('class', 'off');
+	  };
+
+	  var two_line = /\n\n/g;
+	  var one_line = /\n/g;
+	  var first_char = /\S/;
+
+	  function linebreak(s) {
+	    return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+	  }
+
+	  function capitalize(s) {
+	    return s.replace(first_char, function(m) {
+	      return m.toUpperCase();
+	    });
+	  }
+
+	  function start(event) {
+	    if (isRecognizing) {
+	      recognition.stop();
+	      return;
+	    }
+	    recognition.lang = 'ko-KR';
+	    recognition.start();
+	    ignoreOnend = false;
+
+	    finalTranscript = '';
+	    final_span.innerHTML = '';
+	    interim_span.innerHTML = '';
+
+	  }
+
+	  /**
+	   * textToSpeech
+	   * 지원: 크롬, 사파리, 오페라, 엣지
+	   */
+	  function textToSpeech(text) {
+	    console.log('textToSpeech', arguments);
+
+	    /*
+	    var u = new SpeechSynthesisUtterance();
+	    u.text = 'Hello world';
+	    u.lang = 'en-US';
+	    u.rate = 1.2;
+	    u.onend = function(event) {
+	      log('Finished in ' + event.elapsedTime + ' seconds.');
+	    };
+	    speechSynthesis.speak(u);
+	    */
+
+	    // simple version
+	    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+	  }
+
+	  /**
+	   * requestServer
+	   * key - AIzaSyDiMqfg8frtoZflA_2LPqfGdpjmgTMgWhg
+	   */
+	  function requestServer() {
+	    $.ajax({
+	      method: 'post',
+	      url: 'https://www.google.com/speech-api/v2/recognize?output=json&lang=en-us&key=AIzaSyDiMqfg8frtoZflA_2LPqfGdpjmgTMgWhg',
+	      data: '/examples/speech-recognition/hello.wav',
+	      contentType: 'audio/l16; rate=16000;', // 'audio/x-flac; rate=44100;',
+	      success: function(data) {
+
+	      },
+	      error: function(xhr) {
+
+	      }
+	    });
+	  }
+
+	  /**
+	   * init
+	   */
+	  $btnMic.click(start);
+	  $('#btn-tts').click(function() {
+	    textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다.');
+	  });
+	});
+
 </script>
 <style>
 html, body {
@@ -479,6 +561,24 @@ html, body {
   height: 768px;
   background: #999999;
 }
+/* 요기 밑에는 채팅 */
+
+#chatArea {
+	width: 200px; height: 100px; overflow-y: auto; border: 1px solid black;
+	
+}
+#testChat {
+	
+	margin-left: 90%;
+}
+
+/* 요기 밑에는 마이크자막 */
+#content {
+	
+	margin-left: 90%;
+}
+
+
 </style>
 </head>
 <body onload="start()">
@@ -489,5 +589,54 @@ html, body {
     <video id="remote_video"></video>
     <video id="local_video"></video>
   </div>
+  
+<!-- 요기부분은 채팅 --> 
+<div id="testChat"> 
+이름:<input type="text" id="nickname">
+	<input type="button" id="enterBtn" value="입장">
+	<input type="button" id="exitBtn" value="나가기">
+    
+    <h1>대화 영역</h1>
+    <div id="chatArea"><div id="chatMessageArea"></div></div>
+    <br/>
+    <input type="text" id="message">
+    <input type="button" id="sendBtn" value="전송">
+</div>   
+<!-- 요기부분은 마이크 자막 -->
+<div id="content">
+	<span id="icon-music">♬</span>
+
+  <div class="wrap">
+    <p>
+			WebRTC 관련 예제로 Speech Recognition API를 활용하면 더 재밌는 기능을 만들 수 있습니다.<br>
+			아래 버튼을 누른 후 마이크에 이야기를 해보세요. (마이크와 가까울수록 인식률이 좋습니다)
+		</p>
+    <div id="result">
+      <span class="final" id="final_span"></span>
+      <span class="interim" id="interim_span"></span>
+    </div>
+    <button id="btn-mic" class="off">마이크 <span></span></button>
+    <button id="btn-tts">Text to speech</button>
+    <audio id="audio" src="ending.mp3"></audio>
+    <!--
+		<div>
+		  <button onclick="document.getElementById('audio').play()">Play the Audio</button>
+		  <button onclick="document.getElementById('audio').pause()">Pause the Audio</button>
+		  <button onclick="document.getElementById('audio').volume+=0.2">Increase Volume</button>
+		  <button onclick="document.getElementById('audio').volume-=0.2">Decrease Volume</button>
+		</div>
+		-->
+		<br><br>
+
+		<h3>예약어 (마이크를 켠 상태에서 아래 문자를 읽어보세요)</h3>
+		<ul>
+			<li>레드, 그린, 옐로우, 오렌지, 그레이, 골드, 블랙</li>
+			<li>알람</li>
+			<li>노래 켜, 노래 꺼, 음악 켜, 음악 꺼</li>
+			<li>볼륨업, 볼륨다운</li>
+			<li>스피치, 말해줘</li>
+		</ul>
+  </div>
+</div> 
 </body>
 </html>
