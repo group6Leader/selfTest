@@ -225,7 +225,7 @@
 				
 				<sec:authorize access="isAuthenticated()">
     				
-					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='SignIn'>
+					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
 						<span>Logout</span>
 					</a>
 				
