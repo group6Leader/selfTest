@@ -63,7 +63,10 @@ static final Logger logger = LoggerFactory.getLogger(Member.class);
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return customer.getCust_Id();
+		
+		String cust_NumString = Integer.toString(customer.getCust_Num());
+		
+		return cust_NumString;
 	}
 	
 	

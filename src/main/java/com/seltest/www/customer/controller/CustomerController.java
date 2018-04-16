@@ -204,10 +204,9 @@ public class CustomerController {
 
 		Member member = (Member)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
-		logger.info("member {}", member.getCustomer().getCust_Num());
+		logger.info("cust_Num {}", member.getCustomer().getCust_Num());
 		
 		session.setAttribute("member", member);
-		
 		
 		return "redirect:/";
 

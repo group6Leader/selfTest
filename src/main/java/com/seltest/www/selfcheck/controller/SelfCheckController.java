@@ -34,8 +34,8 @@ public class SelfCheckController {
 //		System.out.println("1cust_Num: " + cust_Num);
 //		session.setAttribute("cust_Num", cust_Num);
 		
-		Member member = (Member) session.getAttribute("member");
-		System.out.println("Cust_Num: " + member.getCustomer().getCust_Num());
+//		Member member = (Member) session.getAttribute("member");
+//		System.out.println("1cust_Num: " + member.getCustomer().getCust_Num());
 		
 		return "selfCheck/selfCheckForm";
 	}
@@ -43,12 +43,15 @@ public class SelfCheckController {
 	@RequestMapping(value="goSelfCheck", method = RequestMethod.POST)
 	public String selfCheckResult(SelfCheck selfCheck, HttpSession session){
 		
-		System.out.println(selfCheck);
+		System.out.println("selfCheckResult");
 		
-		int cust_Num = (int) session.getAttribute("cust_Num");
-		System.out.println("2cust_Num: " + cust_Num);
+		Member member = (Member) session.getAttribute("member");
+		int cust_Num = member.getCustomer().getCust_Num();
+
+		System.out.println("cust_Num: " + member.getCustomer().getCust_Num());
 		
 		selfCheck.setCust_Num(cust_Num);
+		System.out.println(selfCheck);
 		
 		int a = selfCheckDAO.update(selfCheck);
 		System.out.println(a);

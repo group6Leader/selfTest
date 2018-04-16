@@ -48,13 +48,13 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException{
 		
-		System.out.println("authenticate");
+		System.out.println("Authenticate");
 		
 		//유저정보 + 아이디 비밀번호 토큰
 		UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) authentication;
 		
 		//UserDetailsService에서 디비를 거쳐서 유저정보를 불러옴
-		logger.info("authToken 확인"+ authToken + "정보확인?"+ authToken.getName());
+		logger.info("authToken 확인"+ authToken + "정보확인?");
 	
 		Member userInfo = loadMember(authToken.getName());
 		
@@ -78,7 +78,7 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 			authorities.add(new SimpleGrantedAuthority("ROLE_SYSTEM"));
 		}
 		//권한 바꾸기
-		logger.info("authToken 확인 종료 auth 반환" + userInfo + "11 "+ authorities);
+		logger.info("authToken 확인 종료 auth 반환" + userInfo + "11 " + authorities);
 		return new UsernamePasswordAuthenticationToken(userInfo, null, authorities);	
 	}
 	
@@ -89,7 +89,7 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 	public Member loadMember(String username) {
 		WebApplicationContext ctx = ContextLoader.getCurrentWebApplicationContext();
 		sqlSession = (SqlSession) ctx.getBean("sqlSession");
-		logger.info("Load User By Username"+ username);
+		logger.info("Load User By Username: "+ username);
 		
 		Customer customerInfo = null;
 		Member memberInfo = null;
@@ -99,14 +99,14 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
 			
 			customerInfo = mapper.searchCustomerOne(username);
-			logger.info("Load User By Username: "+ customerInfo);
+			/*logger.info("Load User By customerInfo: "+ customerInfo);*/
 			
 			memberInfo = new Member(customerInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		logger.info("디비에서 가져온 유저 : "+ customerInfo);
+		logger.info("DB에서 가져온 유저 : "+ customerInfo);
 		logger.info("유저로 연결한 멤버 : "+ memberInfo);
 		return memberInfo;
 		
