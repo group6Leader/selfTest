@@ -68,15 +68,20 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		//유저가 가진 권한을 읽어온다.
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>)userInfo.getAuthorities();
 		if(userInfo.getCustomer().getDivision() == 1) {
-			authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
+			authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER")); // 여기 부분이 이해가 잘 안 되는데
+			System.out.println("Role_Customer");
 		}
+		
 		//인증된 유저의 경우 [ROLE_USER / AUTHENTICATED_USER ] 역할 가진다.
 		if(userInfo.getCustomer().getDivision() == 2){
 			authorities.add(new SimpleGrantedAuthority("ROLE_DOCTOR"));
+			System.out.println("Role_Doctor");
 		}
+		
 		if(authToken.getPrincipal().toString().equals("systemadmin")){
 			authorities.add(new SimpleGrantedAuthority("ROLE_SYSTEM"));
 		}
+		
 		//권한 바꾸기
 		logger.info("authToken 확인 종료 auth 반환" + userInfo + "11 " + authorities);
 		return new UsernamePasswordAuthenticationToken(userInfo, null, authorities);	

@@ -95,55 +95,12 @@
 			return false;
 		}
 
-		/* $.ajax({
-			url : 'customer/login',
-			type : 'post',
-			data : {
-				cust_Id : cust_Id1,
-				cust_Pw : cust_Pw1
-			},
-			dataType : 'json',
-			success : function(data) {
-				console.log(data);
-				var html = '<span id="check">';
-				if (data['check'] == "errorId") {
-					html += data.value;
-					
-				} else if (data['check'] == "errorPw") {
-					html += data.value;
-					
-				} else {
-					logincheck = 'success';
-					
-				
-					$(location).attr('href',"")
-					
-					alert("로그인이 완료 되었습니다.")
-				}
-				html += '</span>';
-
-				$('#check').html(html);
-			},
-			error : function(err) {
-				console.log(JSON.stringify(err));
-			}
-		}); */
-
 	}
 
 	function remoteCheck() {
 
 		$(location).attr('href', "chat-ws");
 	}
-
-	// show password
-	// $(document).ready(function(){
-	// $("#pw").focus(function(){
-	// this.type = "text";
-	// }).blur(function(){
-	// this.type = "password";
-	// })
-	// });
 	
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -237,6 +194,15 @@
 			<h1>
 				Char Hospital <span>Welcome To
 					<a>CHAR HOSPITAL</a> page
+					
+					<c:if test="${sessionScope.customer.division == 1 }">
+						고객님 환영합니다.
+					</c:if> 
+					
+					<c:if test="${sessionScope.customer.division == 2 }">
+						선생님 환영합니다.
+					</c:if> 
+					
 				</span>
 			</h1>
 		</header>

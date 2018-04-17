@@ -85,7 +85,7 @@ public class CustomerController {
 	public String custJoin(Customer customer, SelfCheck selfCheck, Model model, String birth_Year, String birth_Month, String birth_Day)
 			throws MessagingException, UnsupportedEncodingException {
 
-		String cust_Birth = birth_Year + "/" + birth_Month + "/" + birth_Day + "/";
+		String cust_Birth = birth_Year + "/" + birth_Month + "/" + birth_Day;
 
 		customer.setCust_Birth(cust_Birth);
 
@@ -206,7 +206,10 @@ public class CustomerController {
 		
 		logger.info("cust_Num {}", member.getCustomer().getCust_Num());
 		
+		Customer selCust = custDao.searchCustomerOne(member.getCustomer().getCust_Id());
+				
 		session.setAttribute("member", member);
+		session.setAttribute("customer", selCust);
 		
 		return "redirect:/";
 
