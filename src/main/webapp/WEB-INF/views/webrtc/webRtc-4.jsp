@@ -79,6 +79,8 @@ $(document).ready(function() {
 	$('#exitBtn').click(function() { disconnect(); });
 });
 
+
+
 //웹채팅
 
 var webrtc_capable = true;
@@ -528,58 +530,7 @@ $(function() {
 	});
 
 </script>
-<style>
-html, body {
-  padding: 0px;
-  margin: 0px;
-  font-family: "Arial","Helvetica",sans-serif;
-}
-#loading_state {
-  position: absolute;
-  top: 45%;
-  left: 0px;
-  width: 100%;
-  font-size: 20px;
-  text-align: center;
-}
-#open_call_state {
-  display: none;
-}
-#local_video {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 160px;
-  height: 120px;
-  background: #333333;
-}
-#remote_video {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 1024px;
-  height: 768px;
-  background: #999999;
-}
-/* 요기 밑에는 채팅 */
-
-#chatArea {
-	width: 200px; height: 100px; overflow-y: auto; border: 1px solid black;
-	
-}
-#testChat {
-	
-	margin-left: 90%;
-}
-
-/* 요기 밑에는 마이크자막 */
-#content {
-	
-	margin-left: 90%;
-}
-
-
-</style>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/webrtc.css"></c:url>">
 </head>
 <body onload="start()">
   <div id="loading_state">
@@ -590,6 +541,23 @@ html, body {
     <video id="local_video"></video>
   </div>
   
+<div class="chat">
+  <div class="chat-title">
+    <h1>의사이름</h1>
+    <h2>분야</h2>
+    <figure class="avatar">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>
+  </div>
+  <div class="messages">
+    <div class="messages-content"></div>
+  </div>
+  <div class="message-box">
+    <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+    <button type="submit" class="message-submit">Send</button>
+  </div>
+
+</div>
+<div class="bg"></div>
 <!-- 요기부분은 채팅 --> 
 <div id="testChat"> 
 이름:<input type="text" id="nickname">

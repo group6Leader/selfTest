@@ -280,8 +280,7 @@ addEventButton.onclick = function (e) {
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/book.css"></c:url>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/book.css"></c:url>">
 
 </head>
 
