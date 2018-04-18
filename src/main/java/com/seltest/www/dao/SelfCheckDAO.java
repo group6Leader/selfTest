@@ -16,7 +16,6 @@ public class SelfCheckDAO {
 	public int insertSelfCheck(SelfCheck selfCheck) {
 
 		int result = 0;
-		/*System.out.println(selfCheck);*/
 
 		try {
 			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);
@@ -40,7 +39,20 @@ public class SelfCheckDAO {
 		}
 		
 		return result;
+	}
+	
+	public SelfCheck searchSelfCheckOne(int cust_Num) {
 		
+		SelfCheck selfCheck = null;
+		
+		try {
+			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);
+			selfCheck = mapper.searchSelfCheckOne(cust_Num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return selfCheck;
 	}
 
 }

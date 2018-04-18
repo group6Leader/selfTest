@@ -6,8 +6,8 @@ public interface SelfCheckMapper {
 
 	int insertSelfCheck(SelfCheck selfCheck);
 	
-
-	
 	int update(SelfCheck selfCheck);
+	
+	SelfCheck searchSelfCheckOne(int cust_Num);
 	
 }

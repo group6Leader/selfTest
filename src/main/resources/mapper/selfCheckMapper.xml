@@ -13,15 +13,12 @@
 		, cust_Num 
 		)
 		
-		
 		values (
 		selfCheck_Num_sequence.nextval
 		, #{cust_Num} 
 		)
 		
 	</insert>
-	
-	
 	
 	<update id="update" parameterType="selfCheck">
 		
@@ -44,6 +41,14 @@
 		where cust_Num = #{cust_Num}
 		
 	</update>
+	
+	<select id="searchSelfCheckOne" resultType="selfCheck">
+			
+		select *
+		from selfCheck
+		where cust_Num = #{cust_Num}
+	
+	</select>
 	
 	
 </mapper>

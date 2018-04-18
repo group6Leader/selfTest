@@ -23,7 +23,7 @@ $('#smileys input').on('click', function() {
 	
 	<div class="controls blood_Pressure">
 		<h1>Blood Pressure</h1>
-		<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100" value="100">
+		<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100" value="${s.blood_Pressure }">
 		<h3>*혈압의 평균값을 입력해주세요.</h3>
 	</div>
 	
@@ -77,13 +77,13 @@ $('#smileys input').on('click', function() {
 		
 		<div class="controls medicine">
 			<h1>Medicine</h1>
-			<input type="text" name="medicine" placeholder="ex) 없음" value="없음">
+			<input type="text" name="medicine" placeholder="ex) 없음" value="${s.medicine }">
 			<h3>*최근의 복용한 약을 입력해주세요.</h3>
 		</div>
 		
 		<div class="controls medicine">
 			<h1>Allergy</h1>
-			<input type="text" name="allergy" placeholder="ex) 갑각류 알레르기" value="없음">
+			<input type="text" name="allergy" placeholder="ex) 갑각류 알레르기" value="${s.allergy }">
 		</div>
 		
 		<div class="controls overseas_Visits">
@@ -143,7 +143,7 @@ $('#smileys input').on('click', function() {
     </div>
     <div class="controls family_history">
 			<h1>Family history</h1>
-			<input type="text" name="family_History" placeholder="ex) B형 감염 보균자" value="없음">
+			<input type="text" name="family_History" placeholder="ex) B형 감염 보균자" value="${s.family_History }">
 	</div>
 		
 	<div class="controls pregnant">
@@ -156,9 +156,6 @@ $('#smileys input').on('click', function() {
 		<div class="controlsBtn">
 			<input type="submit" class="custom-btn btn-1" value="다음">
 			<input type="button" class="custom-btn btn-1" value="종료" onclick="location.href='../'">
-			
-			<!-- <button class="custom-btn btn-1">다음</button> -->
-			<!-- <button class="custom-btn btn-1">종료</button> -->
 			
 		</div>
 	</form>
