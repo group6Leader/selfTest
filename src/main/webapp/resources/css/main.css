@@ -7,62 +7,6 @@ body {
   text-align: center;
 }
 
-#slideshow {
-  overflow: hidden;
-  height: 330px;
-  width: 100%;
-  margin: 0 auto;
-  display:inline-block;
-}
-
-.slide-wrapper {
-  width: 7840px;
-  -webkit-animation: slide 18s ease infinite;
-}
-
-.slide {
-  float: left;
-  height: 330px;
-  width: 1960px;
-}
-
-.slide:nth-child(1) {
-  background: url(../image/slide1.jpg);
-  background-size: cover;
-}
-
-.slide:nth-child(2) {
-  background: url(../image/slide2.jpg);
-  background-size: cover;
-}
-
-.slide:nth-child(3) {
-  background: url(../image/slide3.jpg);
-  background-size: cover;
-}
-
-.slide:nth-child(4) {
-  background: url(../image/slide4.jpg);
-  background-size: cover;
-}
-
-.slide-number {
-  color: #000;
-  text-align: center;
-  font-size: 10em;
-}
-
-@-webkit-keyframes slide {
-  20% {margin-left: 0px;}
-  30% {margin-left: -1960px;}
-  50% {margin-left: -1960px;}
-  60% {margin-left: -3920px;}
-  70% {margin-left: -3920px;}
-  80% {margin-left: -5880px;}
-  90% {margin-left: -5880px;}
-}
-
-
 /*** General Button Styles ***/
 .button-container {
   display: inline-block;

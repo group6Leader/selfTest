@@ -6,6 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 <link rel="stylesheet" type="text/css"
 	href="./resources/css/sideBar.css">
 <link rel="stylesheet" type="text/css" href="./resources/css/main.css">
@@ -19,6 +23,12 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" href="./resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./resources/css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+	<script src="./resources/js/modernizr.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -103,13 +113,23 @@
 	}
 	
 </script>
+<script type="text/javascript">
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 300) {
+       $('.gn-menu-main').addClass('fixed-header');
+    }
+    else {
+       $('.gn-menu-main').removeClass('fixed-header');
+    }
+});
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 </head>
 <body>
 
-	<div class="container">
-		<ul id="gn-menu" class="gn-menu-main">
+	 <div class="container">
+		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
 			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
 				<nav class="gn-menu-wrapper">
 					<div class="gn-scroller">
@@ -190,41 +210,272 @@
 				</sec:authorize>
 			</li>
 		</ul>
-		<header>
+ 		<header>
 			<h1>
-				Char Hospital <span>Welcome To
-					<a>CHAR HOSPITAL</a> page
-					
+				Char Hospital<span>Welcome To<a>CHAR HOSPITAL</a>page
 					<c:if test="${sessionScope.customer.division == 1 }">
 						고객님 환영합니다.
 					</c:if> 
-					
 					<c:if test="${sessionScope.customer.division == 2 }">
 						선생님 환영합니다.
 					</c:if> 
 					
 				</span>
 			</h1>
-		</header>
+		</header> 
 	</div>
-
-
-	<div id="slideshow">
-		<div class="slide-wrapper">
-			<div class="slide">
-				<h1 class="slide-number"></h1>
-			</div>
-			<div class="slide">
-				<h1 class="slide-number"></h1>
-			</div>
-			<div class="slide">
-				<h1 class="slide-number"></h1>
-			</div>
-			<div class="slide">
-				<h1 class="slide-number"></h1>
+	
+<section class="slider" id="home">
+		<div class="container-fluid">
+			<div class="row">
+			    <div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
+					<div class="header-backup"></div>
+			        <!-- Wrapper for slides -->
+			        <div class="carousel-inner" role="listbox">
+			            <div class="item active">
+			            	<img src="./resources/img/slide-one.jpg" alt="">
+			                <div class="carousel-caption">
+		               			<h1>providing</h1>
+		               			<p>highquality service for men &amp; women</p>
+		               			<button>learn more</button>
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img src="./resources/img/slide-two.jpg" alt="">
+			                <div class="carousel-caption">
+		               			<h1>providing</h1>
+		               			<p>highquality service for men &amp; women</p>
+		               			<button>learn more</button>
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img src="./resources/img/slide-three.jpg" alt="">
+			                <div class="carousel-caption">
+		               			<h1>providing</h1>
+		               			<p>highquality service for men &amp; women</p>
+		               			<button>learn more</button>
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img src="./resources/img/slide-four.jpg" alt="">
+			                <div class="carousel-caption">
+		               			<h1>providing</h1>
+		               			<p>highquality service for men &amp; women</p>
+		               			<button>learn more</button>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- Controls -->
+			        <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+			            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+			            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+			    </div>
 			</div>
 		</div>
-	</div>
+	</section><!-- end of slider section -->
+
+	<!-- about section -->
+	<section class="about text-center" id="about">
+		<div class="container">
+			<div class="row">
+				<h2>about us</h2>
+				<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</h4>
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail clearfix">
+						<div class="about-img">
+							<img class="img-responsive" src="./resources/img/item1.jpg" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<h1>C</h1>
+							</div>
+							<h3>Children’s specialist</h3>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail">
+						<div class="about-img">
+							<img class="img-responsive" src="./resources/img/item2.jpg" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<h1>W</h1>
+							</div>
+
+							<h3>Children’s specialist</h3>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail">
+						<div class="about-img">
+							<img class="img-responsive" src="./resources/img/item3.jpg" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<h1>M</h1>
+							</div>
+							<h3>Children’s specialist</h3>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of about section -->
+
+
+	<!-- service section starts here -->
+	<section class="service text-center" id="service">
+		<div class="container">
+			<div class="row">
+				<h2>our services</h2>
+				<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h4>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<img class="heart img-responsive" src="./resources/img/service1.png" alt="">
+							</div>
+						</div>
+						<h3>Heart problem</h3>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<img class="brain img-responsive" src="./resources/img/service2.png" alt="">
+							</div>
+						</div>
+						<h3>brain problem</h3>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<img class="knee img-responsive" src="./resources/img/service3.png" alt="">
+							</div>
+						</div>
+						<h3>knee problem</h3>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<img class="bone img-responsive" src="./resources/img/service4.png" alt="">
+							</div>
+						</div>
+						<h3>human bones problem</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of service section -->
+
+
+	<!-- team section -->
+	<section class="team" id="team">
+		<div class="container">
+			<div class="row">
+				<div class="team-heading text-center">
+					<h2>our team</h2>
+					<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</h4>
+				</div>
+				<div class="col-md-2 single-member col-sm-4">
+					<div class="person">
+						<img class="img-responsive" src="./resources/img/member1.jpg" alt="member-1">
+					</div>
+					<div class="person-detail">
+						<div class="arrow-bottom"></div>
+						<h3>Dr. M. Weiner, M.D.</h3>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+					</div>
+				</div>
+				<div class="col-md-2 single-member col-sm-4">
+					<div class="person-detail">
+						<div class="arrow-top"></div>
+						<h3>Dr. Danielle, M.D.</h3>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+					</div>
+					<div class="person">
+						<img class="img-responsive" src="./resources/img/member2.jpg" alt="member-2">
+					</div>
+				</div>
+				<div class="col-md-2 single-member col-sm-4">
+					<div class="person">
+						<img class="img-responsive" src="./resources/img/member3.jpg" alt="member-3">
+					</div>
+					<div class="person-detail">
+						<div class="arrow-bottom"></div>
+						<h3>Dr. Caitlin, M.D.</h3>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+					</div>
+				</div>
+				<div class="col-md-2 single-member col-sm-4">
+					<div class="person-detail">
+						<div class="arrow-top"></div>
+						<h3>Dr. Joseph, M.D.</h3>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+					</div>
+					<div class="person">
+						<img class="img-responsive" src="./resources/img/member4.jpg" alt="member-4">
+					</div>
+				</div>
+				<div class="col-md-2 single-member col-sm-4">
+					<div class="person">
+						<img class="img-responsive" src="./resources/img/member5.jpg" alt="member-5">
+					</div>
+					<div class="person-detail">
+						<div class="arrow-bottom"></div>
+						<h3>Dr. Michael, M.D.</h3>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+					</div>
+				</div>
+				<div class="col-md-2 single-member col-sm-4">
+					<div class="person-detail">
+						<div class="arrow-top"></div>
+						<h3>Dr. Hasina, M.D.</h3>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+					</div>
+					<div class="person">
+						<img class="img-responsive" src="./resources/img/member6.jpg" alt="member-5">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of team section -->
+
+	<!-- footer starts here -->
+	<footer class="footer clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 footer-para">
+					<p>&copy;Mostafizur All right reserved</p>
+				</div>
+				<div class="col-xs-6 text-right">
+					<a href=""><i class="fa fa-facebook"></i></a>
+					<a href=""><i class="fa fa-twitter"></i></a>
+					<a href=""><i class="fa fa-skype"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- script tags
+	============================================================= -->
+	<script src="./resources/js/jquery-2.1.1.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
 
 	<c:url value="/login" var="loginUrl" />
 
@@ -250,7 +501,7 @@
 			<div class='remlog'>
 
 				<div class="container">
-					<input type="submit" value='Login' class="btn btn-success btn-lg btn-block" id="button">
+					<input type="submit" value='Login' class="btn-success btn-lg btn-block" id="button">
 				</div>
 			</div>
 		</form:form>
