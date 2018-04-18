@@ -145,9 +145,13 @@ $(window).scroll(function(){
 							<li>
 								<a class="gn-icon gn-icon-download">진료</a>
 									<ul class="gn-submenu">
+										<sec:authorize access="isAuthenticated()">
+										<c:if test="${sessionScope.customer.division != 2}">
 										<li>
 											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
 										</li>
+										</c:if>
+										</sec:authorize>
 										<li>
 											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
 										</li>
@@ -178,7 +182,7 @@ $(window).scroll(function(){
 				</nav>
 			</li>
 			<li><a href="">Char LIFE</a></li>
-			<c:if test="${sessionScope.loginID != null}">
+			<c:if test="${sessionScope.customer != null}">
 			<li><a href="">My Page</a></li>
 			<li>
 				<a class="codrops-icon codrops-icon-prev">
@@ -207,7 +211,7 @@ $(window).scroll(function(){
 		</ul>
  		<header>
 			<h1>
-				Char Hospital<span>Welcome To<a>CHAR HOSPITAL</a>page
+				Char Hospital<span>Welcome To<a>CHAR HOSPITAL</a>page <br>
 					<c:if test="${sessionScope.customer.division == 1 }">
 						고객님 환영합니다.
 					</c:if> 
