@@ -25,6 +25,7 @@ a {
 	animation-duration: 1s;
 	animation-name: bounceInDown;
 	border-radius: 3px;
+	z-index: 3;
 }
 
 .user, .pw {
