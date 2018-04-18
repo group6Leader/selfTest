@@ -7,6 +7,9 @@
 	<!-- 검사 URL -->
 	<http use-expressions="true" auto-config="true" disable-url-rewriting="true">
 
+		<headers>
+        <frame-options policy="SAMEORIGIN"/>
+    </headers>
 		<intercept-url pattern="/**" access="permitAll" />
 
 		<form-login 

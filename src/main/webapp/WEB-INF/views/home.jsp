@@ -167,14 +167,9 @@ $(window).scroll(function(){
 								<a class="gn-icon gn-icon-archive">WebRTC</a>
 									<ul class="gn-submenu">
 										<li>
-											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc1">WebRTC1</a>
+											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
 										</li>
-										<li>
-											<a class="gn-icon gn-icon-pictures" href="webrtc/goWebRtc2">WebRTC2</a>
-										</li>
-										<li>
-											<a class="gn-icon gn-icon-videos" href="webrtc/goWebRtc3">WebRTC3</a>
-										</li>
+										
 									</ul>
 							</li>
 						</ul>

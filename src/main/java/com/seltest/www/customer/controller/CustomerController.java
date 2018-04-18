@@ -1,37 +1,49 @@
 package com.seltest.www.customer.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-
-import java.io.PrintWriter;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+
+import com.seltest.www.common.MediaUtils;
+import com.seltest.www.common.UploadFileUtils;
 import com.seltest.www.dao.CustomerDAO;
 import com.seltest.www.dao.SelfCheckDAO;
-import com.seltest.www.security.CustomAuthenticationProvider;
 import com.seltest.www.vo.Customer;
 import com.seltest.www.vo.Member;
 import com.seltest.www.vo.SelfCheck;
@@ -82,14 +94,16 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "custJoin", method = RequestMethod.POST)
-	public String custJoin(Customer customer, SelfCheck selfCheck, Model model, String birth_Year, String birth_Month, String birth_Day)
-			throws MessagingException, UnsupportedEncodingException {
+	public String custJoin(Customer customer, SelfCheck selfCheck, Model model, String birth_Year, String birth_Month,
+			String birth_Day, MultipartFile upload) throws MessagingException, UnsupportedEncodingException {
 
 		String cust_Birth = birth_Year + "/" + birth_Month + "/" + birth_Day;
 
 		customer.setCust_Birth(cust_Birth);
 
 		logger.info("회원가입중");
+
+		
 
 		System.out.println(customer);
 
@@ -101,10 +115,10 @@ public class CustomerController {
 
 		boolean joinIs = custDao.insertCustomer(customer);
 		System.out.println(customer.getCust_Id());
-		
+
 		Customer c = custDao.searchCustomerOne(customer.getCust_Id());
-		
-		/*System.out.println(customer);*/
+
+		/* System.out.println(customer); */
 
 		if (joinIs) {
 
@@ -129,12 +143,12 @@ public class CustomerController {
 
 			}
 			logger.info("User Join Success");
-			
+
 			int cust_Num = c.getCust_Num();
 			System.out.println("cust_Num: " + cust_Num);
 
 			selfCheck.setCust_Num(c.getCust_Num());
-			
+
 			selfCheckDao.insertSelfCheck(selfCheck);
 
 		} else {
@@ -164,53 +178,18 @@ public class CustomerController {
 		return "redirect:/";
 	}
 
-//	@ResponseBody
-//	@RequestMapping(value = "login", method = RequestMethod.POST)
-//	public HashMap<String, String> login(String cust_Id, String cust_Pw, HttpSession session, Model model) {
-//
-//		HashMap<String, String> loginMap = new HashMap<String, String>();
-//
-//		logger.info("로그인 시작");
-//
-//		logger.info(cust_Id + "id" + cust_Pw + "pw");
-//
-//		Customer custLogin = null;
-//
-//		custLogin = custDao.searchCustomerOne(cust_Id);
-//
-//		if (custLogin == null) {
-//			loginMap.put("message1", cust_Id + "아이디가 없습니다.");
-//			loginMap.put("check", "errorId");
-//		} else if (!custLogin.getCust_Pw().equals(cust_Pw)) {
-//			loginMap.put("message2", cust_Pw + "비밀번호가 다릅니다.");
-//			loginMap.put("check", "errorPw");
-//		} else {
-//			session.setAttribute("cust_Num", custLogin.getCust_Num());
-//			session.setAttribute("loginID", custLogin.getCust_Id());
-//			session.setAttribute("loginName", custLogin.getCust_Name());
-//			loginMap.put("message3", "로그인이 완료 되었습니다.");
-//		}
-//
-//		model.addAttribute("login", custLogin);
-//
-//		logger.info("로그인 종료");
-//
-//		return loginMap;
-//	}
-	
-	
 	@RequestMapping(value = "login_success", method = RequestMethod.GET)
 	public String loginSuccess(HttpSession session) {
 
-		Member member = (Member)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+		Member member = (Member) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 		logger.info("cust_Num {}", member.getCustomer().getCust_Num());
-		
+
 		Customer selCust = custDao.searchCustomerOne(member.getCustomer().getCust_Id());
-				
+
 		session.setAttribute("member", member);
 		session.setAttribute("customer", selCust);
-		
+
 		return "redirect:/";
 
 	}
@@ -221,9 +200,126 @@ public class CustomerController {
 		logger.info("로그아웃 시작");
 
 		session.invalidate();
-		
+
 		logger.info("로그아웃 끝");
 
 		return "redirect:/";
 	}
+
+	@Resource(name="uploadPath")
+    String uploadPath;
+
+	@RequestMapping(value="uploadForm", method=RequestMethod.POST)
+    public ModelAndView uplodaForm(MultipartFile file, ModelAndView mav) throws Exception{
+
+        logger.info("파일이름 :"+file.getOriginalFilename());
+        logger.info("파일크기 : "+file.getSize());
+        logger.info("컨텐트 타입 : "+file.getContentType());
+
+        String savedName = file.getOriginalFilename();
+
+        File target = new File(uploadPath, savedName);
+
+        // 랜덤생성+파일이름 저장
+        // 파일명 랜덤생성 메서드호출
+        savedName = uploadFile(savedName, file.getBytes());
+        // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
+        // FileCopyUtils.copy(바이트배열, 파일객체)
+        FileCopyUtils.copy(file.getBytes(), target);
+
+        mav.setViewName("/upload/uploadResult");
+        mav.addObject("savedName", savedName);
+
+        return mav; // uploadResult.jsp(결과화면)로 포워딩
+    }
+	
+	// 파일명 랜덤생성 메서드
+    private String uploadFile(String originalName, byte[] fileData) throws Exception{
+        // uuid 생성(Universal Unique IDentifier, 범용 고유 식별자)
+        UUID uuid = UUID.randomUUID();
+        // 랜덤생성+파일이름 저장
+        String savedName = uuid.toString()+"_"+originalName;
+        File target = new File(uploadPath, savedName);
+        // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
+        // FileCopyUtils.copy(바이트배열, 파일객체)
+        FileCopyUtils.copy(fileData, target);
+        return savedName;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value="uploadAjax", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+    public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
+        logger.info("originalName : "+file.getOriginalFilename());
+        logger.info("size : "+file.getSize());
+        logger.info("contentType : "+file.getContentType());
+        return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
+    }
+   
+ // 6. 이미지 표시 매핑
+    @ResponseBody // view가 아닌 data리턴
+    @RequestMapping("displayFile")
+    public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
+        // 서버의 파일을 다운로드하기 위한 스트림
+        InputStream in = null; //java.io
+        ResponseEntity<byte[]> entity = null;
+        try {
+            // 확장자를 추출하여 formatName에 저장
+            String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+            // 추출한 확장자를 MediaUtils클래스에서  이미지파일여부를 검사하고 리턴받아 mType에 저장
+            MediaType mType = MediaUtils.getMediaType(formatName);
+            // 헤더 구성 객체(외부에서 데이터를 주고받을 때에는 header와 body를 구성해야하기 때문에)
+            HttpHeaders headers = new HttpHeaders();
+            // InputStream 생성
+            in = new FileInputStream(uploadPath + fileName);
+            // 이미지 파일이면
+            if (mType != null) { 
+                headers.setContentType(mType);
+            // 이미지가 아니면
+            } else { 
+                fileName = fileName.substring(fileName.indexOf("_") + 1);
+                // 다운로드용 컨텐트 타입
+                headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                // 
+                // 바이트배열을 스트링으로 : new String(fileName.getBytes("utf-8"),"iso-8859-1") * iso-8859-1 서유럽언어, 큰 따옴표 내부에  " \" 내용 \" "
+                // 파일의 한글 깨짐 방지
+                headers.add("Content-Disposition", "attachment; filename=\""+new String(fileName.getBytes("utf-8"), "iso-8859-1")+"\"");
+                //headers.add("Content-Disposition", "attachment; filename='"+fileName+"'");
+            }
+            // 바이트배열, 헤더, HTTP상태코드
+           entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // HTTP상태 코드()
+            entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+        } finally {
+            in.close(); //스트림 닫기
+        }
+        return entity;
+    }
+
+    // 7. 파일 삭제 매핑
+    @ResponseBody // view가 아닌 데이터 리턴
+    @RequestMapping(value = "deleteFile", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteFile(String fileName) {
+        // 파일의 확장자 추출
+        String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+        // 이미지 파일 여부 검사
+        MediaType mType = MediaUtils.getMediaType(formatName);
+        // 이미지의 경우(썸네일 + 원본파일 삭제), 이미지가 아니면 원본파일만 삭제
+        // 이미지 파일이면
+        if (mType != null) {
+            // 썸네일 이미지 파일 추출
+            String front = fileName.substring(0, 12);
+            String end = fileName.substring(14);
+            // 썸네일 이미지 삭제
+            new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
+        }
+        // 원본 파일 삭제
+        new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
+
+        // 데이터와 http 상태 코드 전송
+        return new ResponseEntity<String>("deleted", HttpStatus.OK);
+    }
+	
+	
 }
