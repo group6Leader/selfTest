@@ -5,17 +5,19 @@ public class Reservation {
 	private String res_Date;
 	private String res_Hos;
 	private int cust_Num;
+	private int res_Check;
 
 	public Reservation() {
 		super();
 	}
 
-	public Reservation(int res_Num, String res_Date, String res_Hos, int cust_Num) {
+	public Reservation(int res_Num, String res_Date, String res_Hos, int cust_Num, int res_Check) {
 		super();
 		this.res_Num = res_Num;
 		this.res_Date = res_Date;
 		this.res_Hos = res_Hos;
 		this.cust_Num = cust_Num;
+		this.res_Check = res_Check;
 	}
 
 	public int getRes_Num() {
@@ -50,9 +52,18 @@ public class Reservation {
 		this.cust_Num = cust_Num;
 	}
 
+	public int getRes_Check() {
+		return res_Check;
+	}
+
+	public void setRes_Check(int res_Check) {
+		this.res_Check = res_Check;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [res_Num=" + res_Num + ", res_Date=" + res_Date + ", res_Hos=" + res_Hos + ", cust_Num="
-				+ cust_Num + "]";
+				+ cust_Num + ", res_Check=" + res_Check + "]";
 	}	
+	
 }

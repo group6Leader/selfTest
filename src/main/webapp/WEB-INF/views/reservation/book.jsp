@@ -208,7 +208,17 @@ gridTable.onclick = function (e) {
     day: "numeric",
     year: "numeric"
   });
-
+    
+  $.ajax({
+      url:"book",
+      type:'GET',
+      data: {selectedDate: selectedDate},
+      success:function(data){
+      },
+      error:function(jqXHR, textStatus, errorThrown){
+      }
+  });
+  
 }
 
 var changeFormButton = document.getElementById("changeFormButton");
@@ -233,6 +243,7 @@ cancelAdd.onclick = function (e) {
 
 var addEventButton = document.getElementById("addEventButton");
 addEventButton.onclick = function (e) {
+	
   let title = document.getElementById("eventTitleInput").value.trim();
   let desc = document.getElementById("eventDescInput").value.trim();
 
@@ -246,8 +257,8 @@ addEventButton.onclick = function (e) {
     }
     return;
   }
-
-  addEvent(title, desc);
+   
+  addEvent(title, desc); 
   showEvents();
 
   if (!selectedDayBlock.querySelector(".day-mark")) {
@@ -263,8 +274,34 @@ addEventButton.onclick = function (e) {
   for (let i = 0; i < labels.length; i++) {
     labels[i].className = "";
   }
-
+  
+  $.ajax({
+      url:"reservation",
+      type:'GET',
+      data: {hour: desc, selectRes: title},
+      success:function(data){      	  
+    	  if(${haveRes != null}){
+    	  		alert("예약이 존재합니다.");
+    	  }  
+    	  if(${resErrorMsg != null}){
+    		   alert("예약불가 합니다.");
+    	  }
+    	  location.href="book";
+      },
+      error:function(jqXHR, textStatus, errorThrown){
+          self.close();
+      }
+  });
+  
 }});
+</script>
+
+<script type="text/javascript">
+	if(${jsonList} != null){
+		var resList = JSON.parse('${jsonList}');
+		for(var i=0; i<resList.length; i++){
+			alert(resList[i]);
+		}
 </script>
 
 <link rel="canonical" href="https://codepen.io/anon/pen/GxVKLm" />
@@ -342,8 +379,8 @@ addEventButton.onclick = function (e) {
 								<div class="column-6 form-select">
 									<select name="" id="eventTitleInput">
 										<option value="" disabled="disabled" selected="selected">진료종류</option>
-										<option>원격진료</option>
 										<option>병원진료</option>
+										<option>원격진료</option>
 									</select>
 								</div>
 							</div>
@@ -393,8 +430,25 @@ addEventButton.onclick = function (e) {
 			<div class="sidebar-events" id="sidebarEvents">
 				<div class="empty-message">Sorry, no events to selected date</div>
 			</div>
-
+			
+			<div class="resStatas">
+			<c:if test="${sessionScope.myReservation != null }">
+				&emsp;&emsp;${myReservation }
+				<br><br>
+				<a href="./deleteBook"><button style="margin-left: 30px;">예약 삭제</button></a>
+			</c:if>
+			<c:if test="${list != null }">
+				<c:forEach var="list" items="${list}">
+				   &emsp;&emsp; 예약번호 : ${list.res_Num},
+				   예약일 : ${list.res_Date},
+				   환자번호 : ${list.cust_Num}
+				    <br>
+				</c:forEach>
+			</c:if>
 		</div>
+		</div>
+		
+		
 	</div>
 
 	<script

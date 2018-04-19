@@ -123,6 +123,22 @@ $(window).scroll(function(){
     }
 });
 </script>
+
+<script type="text/javascript">
+	function loginCheck(){
+		if(${sessionScope.member == null}){
+			alert("로그인 후에 예약이 가능합니다.");
+			location.href ="./";
+			return;
+		}
+		if(${sessionScope.customer.division == 1 }){
+			location.href="./reservation/book";
+		}
+		if(${sessionScope.customer.division == 2 }){
+			location.href="./reservation/book2";
+		}
+	}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 </head>
@@ -156,16 +172,14 @@ $(window).scroll(function(){
 											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
 										</li>
 										<li>
-											<a class="gn-icon gn-icon-photoshop" href="reservation/book">예약하기</a>
+											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
 										</li>
 									</ul>
 							</li>
-							<c:if test="${sessionScope.customer != null}">
+
 							<li>
-								
-								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
+								<a class="gn-icon gn-icon-cog">Settings</a>
 							</li>
-							</c:if>
 							<li>
 								<a class="gn-icon gn-icon-help">Help</a>
 							</li>
@@ -192,36 +206,34 @@ $(window).scroll(function(){
 				</a>
 			</li>
 			</c:if>
+			<c:if test="${sessionScope.myReservation != null}">
+				<li>
+					${myReservation}
+				</li>
+			
+			</c:if>
 			<li>
-				
 				<sec:authorize access="isAnonymous()">
-				
 				
 				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
 					<span>Login</span>
 				</a>
-				
+
 				</sec:authorize>
 				
 				
 				<sec:authorize access="isAuthenticated()">
-    			<c:if test="${sessionScope.customer != null}">	
+    				
 					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
 						<span>Logout</span>
 					</a>
-				</c:if>
-				<c:if test="${sessionScope.customer == null}">
-				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
-					<span>Login</span>
-				</a>
-				</c:if>
 				
 				</sec:authorize>
 			</li>
 		</ul>
  		<header>
 			<h1>
-				Char Hospital<span>Welcome To<a>CHAR HOSPITAL</a>page <br>
+				Char Hospital<span>Welcome To <a> CHAR HOSPITAL </a> page <br>
 					<c:if test="${sessionScope.customer.division == 1 }">
 						고객님 환영합니다.
 					</c:if> 
