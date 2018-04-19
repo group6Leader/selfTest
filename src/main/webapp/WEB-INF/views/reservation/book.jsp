@@ -68,7 +68,7 @@ function createCalendar(date, side) {
     if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
       selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
-      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
+      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("ko-kr", {
         month: "long",
         day: "numeric",
         year: "numeric"
@@ -108,11 +108,11 @@ function createCalendar(date, side) {
 createCalendar(currentDate);
 
 var todayDayName = document.getElementById("todayDayName");
-todayDayName.innerHTML = "Today is " + currentDate.toLocaleString("en-US", {
+todayDayName.innerHTML = "오늘은 " + currentDate.toLocaleString("ko-kr", {
   weekday: "long",
   day: "numeric",
   month: "short"
-});
+}) + " 입니다.";
 
 var prevButton = document.getElementById("prev");
 var nextButton = document.getElementById("next");
@@ -176,10 +176,10 @@ function showEvents() {
   } else {
     let emptyMessage = document.createElement("div");
     emptyMessage.className = "empty-message";
-    emptyMessage.innerHTML = "Sorry, no events to selected date";
+    emptyMessage.innerHTML = "";
     sidebarEvents.appendChild(emptyMessage);
     let emptyFormMessage = document.getElementById("emptyFormTitle");
-    emptyFormMessage.innerHTML = "No events now";
+    emptyFormMessage.innerHTML = "예약 하기";
   }
 }
 
@@ -203,7 +203,7 @@ gridTable.onclick = function (e) {
 
   showEvents();
 
-  document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
+  document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("ko-kr", {
     month: "long",
     day: "numeric",
     year: "numeric"
@@ -368,18 +368,18 @@ addEventButton.onclick = function (e) {
 
 				<div class="calendar-footer">
 					<div class="emptyForm" id="emptyForm">
-						<h4 id="emptyFormTitle">No events now</h4>
+						<h4 id="emptyFormTitle">예약 하기</h4>
 						<a class="addEvent" id="changeFormButton">Add new</a>
 					</div>
 					<div class="addForm" id="addForm">
-						<h4>Add new event</h4>
+						<h4>진료종류와 예약시간을 선택해주세요.</h4>
 
 						<div class="row">
 							<div class="input-field col s6">
 								<div class="column-6 form-select">
 									<select name="" id="eventTitleInput">
-										<option value="" disabled="disabled" selected="selected">진료종류</option>
-										<option>병원진료</option>
+										<option value="" disabled="disabled">진료종류</option>
+										<option selected="selected">병원진료</option>
 										<option>원격진료</option>
 									</select>
 								</div>
@@ -387,9 +387,9 @@ addEventButton.onclick = function (e) {
 							<div class="input-field col s6">
 								<div class="column-6 form-select">
 									<select name="" id="eventDescInput">
-										<option value="" disabled="disabled" selected="selected">Time
+										<option value="" disabled="disabled">Time
 											Table</option>
-										<option>9:00</option>
+										<option selected="selected">9:00</option>
 										<option>10:00</option>
 										<option>11:00</option>
 										<option>12:00</option>
@@ -424,11 +424,11 @@ addEventButton.onclick = function (e) {
 		<div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar">
 
 			<div class="sidebar-title">
-				<h4>Events</h4>
+				<h4>선택 일자</h4>
 				<h5 id="eventDayName">SIDEBAR SUB-TITLE</h5>
 			</div>
 			<div class="sidebar-events" id="sidebarEvents">
-				<div class="empty-message">Sorry, no events to selected date</div>
+				<div class="empty-message"></div>
 			</div>
 			
 			<div class="resStatas">
