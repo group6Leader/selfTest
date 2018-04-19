@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
@@ -13,6 +14,8 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
@@ -74,7 +77,24 @@ public class CustomerController {
 		return "customer/joinCustomer";
 
 	}
+	@RequestMapping(value = "goFix", method = RequestMethod.GET)
+	public String goFix(Customer customer, HttpSession session,Model model ) {
 
+		logger.info("회원수정 창으로 이동합니다-c");
+		Customer loginCust = (Customer) session.getAttribute("customer");
+		String loginId = loginCust.getCust_Id();
+		
+		Customer login = custDao.searchCustomerOne(loginId);
+		
+		model.addAttribute("login", login);
+		
+		
+		return "customer/fixCustomer";
+
+	}
+	
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "idcheck", method = RequestMethod.POST)
 	public HashMap<String, String> idcheck(String cust_Id) {
@@ -348,6 +368,32 @@ public class CustomerController {
         // 데이터와 http 상태 코드 전송
         return new ResponseEntity<String>("deleted", HttpStatus.OK);
     }
-	
+    
+    @RequestMapping(value = "download", method = RequestMethod.GET)
+	public void fileDownload(HttpServletResponse response, String saved){
+		try {
+			response.setHeader("Content-Disposition", " attachment;filename="+ URLEncoder.encode(saved, "UTF-8"));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String fullPath = uploadPath + saved;
+		//서버의 파일을 읽을 입력 스트림과 클라이언트에게 전달할 출력스트림
+		FileInputStream filein = null;
+		ServletOutputStream fileout = null;
+		
+		try {
+			filein = new FileInputStream(fullPath);
+			fileout = response.getOutputStream();
+			
+			//Spring의 파일 관련 유틸
+			FileCopyUtils.copy(filein, fileout);
+			
+			filein.close();
+			fileout.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

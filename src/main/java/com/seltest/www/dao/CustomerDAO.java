@@ -26,6 +26,8 @@ public class CustomerDAO {
 		try {
 			joinCnt = mapper.insertCustomer(customer);
 			logger.info("Join User Count : " + joinCnt);
+			System.out.println(customer+"Dao");
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

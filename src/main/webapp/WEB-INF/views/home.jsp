@@ -160,10 +160,12 @@ $(window).scroll(function(){
 										</li>
 									</ul>
 							</li>
-
+							<c:if test="${sessionScope.customer != null}">
 							<li>
-								<a class="gn-icon gn-icon-cog">Settings</a>
+								
+								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
 							</li>
+							</c:if>
 							<li>
 								<a class="gn-icon gn-icon-help">Help</a>
 							</li>
@@ -191,20 +193,28 @@ $(window).scroll(function(){
 			</li>
 			</c:if>
 			<li>
+				
 				<sec:authorize access="isAnonymous()">
+				
 				
 				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
 					<span>Login</span>
 				</a>
-
+				
 				</sec:authorize>
 				
 				
 				<sec:authorize access="isAuthenticated()">
-    				
+    			<c:if test="${sessionScope.customer != null}">	
 					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
 						<span>Logout</span>
 					</a>
+				</c:if>
+				<c:if test="${sessionScope.customer == null}">
+				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
+					<span>Login</span>
+				</a>
+				</c:if>
 				
 				</sec:authorize>
 			</li>

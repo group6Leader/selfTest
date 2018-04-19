@@ -21,10 +21,14 @@
 		,cust_Email
 		,cust_Major
 
-		<if test="original_File != null and saved_File != null">
-			, original_File
-			, saved_File
+		<if test="original_File != null">
+			,original_File
+		</if>	
+		<if test="saved_File != null">
+			,saved_File
 		</if>
+			
+		
 		)
 		values (
 		
@@ -39,9 +43,11 @@
 		,#{cust_Email}
 		,#{cust_Major}
 
-		<if test="original_File != null and saved_File != null">
-			, #{original_File}
-			, #{saved_File}
+		<if test="original_File != null">
+			,#{original_File}
+		</if>	
+		<if test="saved_File != null">
+			,#{saved_File}
 		</if>
 		)
 	</insert>
