@@ -6,59 +6,70 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.seltest.www.dao.CustomerMapper">
 
-	
+
 	<insert id="insertCustomer" parameterType="customer">
 		insert into customer (
 
-			cust_Num
-			,cust_Id
-			,cust_Name
-			,cust_Pw
-			,cust_Sex
-			,cust_Birth
-			,cust_Address
-			,cust_Phone
-			,cust_Email
-			,cust_Major
-			
+		cust_Num
+		,cust_Id
+		,cust_Name
+		,cust_Pw
+		,cust_Sex
+		,cust_Birth
+		,cust_Address
+		,cust_Phone
+		,cust_Email
+		,cust_Major
+
+		<if test="original_File != null and saved_File != null">
+			, original_File
+			, saved_File
+		</if>
 		)
 		values (
-			cust_Num_sequence.nextval
-			,#{cust_Id}
-			,#{cust_Name}
-			,#{cust_Pw}
-			,#{cust_Sex}
-			,#{cust_Birth}
-			,#{cust_Address}
-			,#{cust_Phone}
-			,#{cust_Email}
-			,#{cust_Major}
+		
+		cust_Num_sequence.nextval
+		,#{cust_Id}
+		,#{cust_Name}
+		,#{cust_Pw}
+		,#{cust_Sex}
+		,#{cust_Birth}
+		,#{cust_Address}
+		,#{cust_Phone}
+		,#{cust_Email}
+		,#{cust_Major}
+
+		<if test="original_File != null and saved_File != null">
+			, #{original_File}
+			, #{saved_File}
+		</if>
 		)
 	</insert>
-	
+
 	<!-- E-mail 인증 처리 : 김준형 -->
 	<update id="verifyUser">
-	
-		UPDATE 
-			customer
-			
-		SET 
-			emailVerify = 'Y'
-			
-		WHERE 
-			cust_Email = #{cust_Email}
-			
+
+		UPDATE
+		customer
+
+		SET
+		emailVerify = 'Y'
+
+		WHERE
+		cust_Email = #{cust_Email}
+
 	</update>
-	
-	
-	
-	
-	<select id="searchCustomerOne" parameterType="String" resultType="customer">
-	
-	select * from customer where cust_Id = #{cust_Id}
-	
+
+
+
+
+	<select id="searchCustomerOne" parameterType="String"
+		resultType="customer">
+
+		select * from customer where cust_Id = #{cust_Id}
+
 	</select>
-	
-	
+
+
 
 </mapper>
