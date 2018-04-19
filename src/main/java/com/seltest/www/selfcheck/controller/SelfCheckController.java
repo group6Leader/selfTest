@@ -27,7 +27,7 @@ public class SelfCheckController {
 		System.out.println("selfCheckForm");
 	
 		Customer customer = (Customer) session.getAttribute("customer");
-		System.out.println(customer);
+		System.out.println("customer: " + customer);
 		
 		int cust_Num = customer.getCust_Num();
 		

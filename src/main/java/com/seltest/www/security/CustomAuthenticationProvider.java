@@ -54,7 +54,7 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) authentication;
 		
 		//UserDetailsService에서 디비를 거쳐서 유저정보를 불러옴
-		logger.info("authToken 확인"+ authToken + "정보확인?");
+		logger.info("authToken 확인: " + authToken + "정보확인?");
 	
 		Member userInfo = loadMember(authToken.getName());
 		
@@ -83,7 +83,7 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		}
 		
 		//권한 바꾸기
-		logger.info("authToken 확인 종료 auth 반환" + userInfo + "11 " + authorities);
+		logger.info("authToken 확인 종료 auth 반환: " + userInfo + " 11 " + authorities);
 		return new UsernamePasswordAuthenticationToken(userInfo, null, authorities);	
 	}
 	
@@ -100,21 +100,18 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		Member memberInfo = null;
 		
 		try {
-			/*logger.info("UserInfo" + customerInfo);*/
 			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
-			
 			customerInfo = mapper.searchCustomerOne(username);
-			/*logger.info("Load User By customerInfo: "+ customerInfo);*/
-			
 			memberInfo = new Member(customerInfo);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		logger.info("DB에서 가져온 유저 : "+ customerInfo);
 		logger.info("유저로 연결한 멤버 : "+ memberInfo);
-		return memberInfo;
 		
+		return memberInfo;
 	}
 	
 

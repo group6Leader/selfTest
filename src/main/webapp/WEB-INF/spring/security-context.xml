@@ -8,9 +8,13 @@
 	<http use-expressions="true" auto-config="true" disable-url-rewriting="true">
 
 		<headers>
-        <frame-options policy="SAMEORIGIN"/>
-    </headers>
-		<intercept-url pattern="/**" access="permitAll" />
+        	<frame-options policy="SAMEORIGIN"/>
+   		</headers>
+		
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/selfCheck/**" access="hasRole('CUSTOMER')" />
+		<intercept-url pattern="/reservation/**" access="isAuthenticated()" />
+		<intercept-url pattern="/prescription/**" access="hasRole('DOCTOR')" />
 
 		<form-login 
 			login-page="/customer/loginForm"

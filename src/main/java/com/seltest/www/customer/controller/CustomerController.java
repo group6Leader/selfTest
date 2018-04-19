@@ -77,6 +77,16 @@ public class CustomerController {
 		return "customer/joinCustomer";
 
 	}
+	
+	@RequestMapping(value = "loginForm", method = RequestMethod.GET)
+	public String loginForm() {
+
+		logger.info("로그인 창으로 이동합니다-c");
+
+		return "customer/loginForm";
+
+	}
+	
 	@RequestMapping(value = "goFix", method = RequestMethod.GET)
 	public String goFix(Customer customer, HttpSession session,Model model ) {
 
@@ -213,16 +223,47 @@ public class CustomerController {
 
 		return "redirect:/";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "emailCheck", method = RequestMethod.POST)
+	public String emailCheck(String cust_Id, String cust_Pw, Model model) {
+
+		String message = "";
+		
+		System.out.println("cust_Id: " + cust_Id);
+		System.out.println("cust_Pw: " + cust_Pw);
+		
+		Customer emailCheck = custDao.searchCustomerOne(cust_Id);
+		System.out.println("emailCheck.getCust_Pw: " + emailCheck.getCust_Pw());
+		
+		if (emailCheck.getCust_Pw().equals(cust_Pw)) {
+			if (emailCheck.getEmailVerify() == 'N') {
+				message = "Email Verification Needed";
+				
+				/*model.addAttribute("msg", message);
+				return "/";*/
+				
+			} else {
+				message = "Login Success";
+			}
+		} else {
+			message = "Password is Wrong";
+		}
+		
+		return message;
+	}
+	
+	
 
 	@RequestMapping(value = "login_success", method = RequestMethod.GET)
 	public String loginSuccess(HttpSession session) {
 
+		System.out.println("loginSuccess");
+		
 		Member member = (Member) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		logger.info("cust_Num {}", member.getCustomer().getCust_Num());
-
 		Customer selCust = custDao.searchCustomerOne(member.getCustomer().getCust_Id());
-
+		
+		logger.info("{}", selCust);
 		
 		session.setAttribute("member", member);
 		session.setAttribute("customer", selCust);

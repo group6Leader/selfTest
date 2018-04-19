@@ -29,9 +29,17 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
 	<script src="./resources/js/modernizr.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		/* if(${msg}!=null){
+			alert("이메일인증 필요");
+		} */
+		
 		$('.login').hide();
 		$('.gn-icon-menu').hover(function() {
 			$('.gn-menu-wrapper').toggleClass('gn-open-part');
@@ -104,6 +112,33 @@
 			cust_Pw.focus();
 			return false;
 		}
+		
+		/* alert(JSON.stringify(cust_Id2.value));
+		alert(JSON.stringify(cust_Pw2.value)); */
+
+		$.ajax({
+			type : "post",
+			url : "customer/emailCheck",
+
+			data : {
+				cust_Id : cust_Id2.value,
+				cust_Pw : cust_Pw2.value
+			},
+
+			success : function(message) {
+				/* console.log(message); */
+				alert(message);
+				
+				if (message == "Email Verification Needed") {
+					alert("!!");
+				}
+			},
+			
+			error : function(e) {
+				/* console.log(e) */
+				alert('!');
+			}
+		});
 
 	}
 
@@ -139,6 +174,7 @@ $(window).scroll(function(){
 		}
 	}
 </script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 </head>
@@ -236,10 +272,10 @@ $(window).scroll(function(){
 			<h1>
 				Char Hospital<span>Welcome To <a> CHAR HOSPITAL </a> page <br>
 					<c:if test="${sessionScope.customer.division == 1 }">
-						고객님 환영합니다.
+						${sessionScope.customer.cust_Name } 고객님 환영합니다.
 					</c:if> 
 					<c:if test="${sessionScope.customer.division == 2 }">
-						선생님 환영합니다.
+						${sessionScope.customer.cust_Name } 선생님 환영합니다.
 					</c:if> 
 					
 				</span>
@@ -511,7 +547,7 @@ $(window).scroll(function(){
 		</div>
 
 
-		<form:form name="f" action="${loginUrl}" method="POST">
+		<form:form name="f" action="${loginUrl}" method="POST" onsubmit="return formCheck()">
 			<div class='user'>
 				<input id="cust_Id" name='cust_Id' placeholder='ID' type='text'>
 			</div>
