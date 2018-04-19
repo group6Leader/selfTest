@@ -17,28 +17,36 @@ html, body {
 }
 #local_video {
   position: absolute;
-  top: 8%;
+  top: 10%;
   left: 5%;
-  width: 25%;
+  width: 27.5%;
   height: 75%;
   background: #333333;
 }
 #remote_video {
   position: absolute;
-  top: 8%;
+  top: 10%;
   left: 40%;
-  width: 25%;
+  width: 27.5%;
   height: 75%;
   background: #999999;
 }
 /* 요기 밑에는 채팅 */
 .jamaku{
-	margin-top:40rem;
-	margin-left:10rem;
 	background-color: black;
+	width:20rem;
+	height:2.3rem;
 	max-height: 2.3rem;
 	max-width: 30rem;
 	color:white;
+}
+#me{
+	margin-top:35rem;
+	margin-left:6.2%;
+}
+#you{
+	margin-top: 35rem;
+	margin-left:41.2%;
 }
 
 #chatArea {
@@ -89,7 +97,7 @@ Chat
   top: 10%;
   left: 70%;
   width: 25%;
-  height: 80%;
+  height: 75%;
   max-height:80%;
   z-index: 2;
   overflow: hidden;

@@ -544,7 +544,8 @@ $(function() {
 
 </div>
 <div class="bg"></div>
-<div class="jamaku"></div>
+<div class="jamaku" id="me"></div>
+<div class="jamaku" id="you"></div>
 
 </body>
 </html>
