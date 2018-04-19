@@ -74,66 +74,7 @@ $(document).ready(function() {
 });
 
 
-	document.addEventListener("change", function(event) {
-		let
-		element = event.target;
-		if (element && element.matches(".form-element-field")) {
-			element.classList[element.value ? "add" : "remove"]("-hasvalue");
-		}
-	});
-	window.onload = function() {
-		appendYear();
-		appendMonth();
-		appendDay();
-	}
 	
-	
-	
-	function appendYear() {
-
-		var date = new Date();
-
-		var year = date.getFullYear();
-
-		var selectValue = document.getElementById("year");
-
-		var optionIndex = 0;
-
-		for (var i = year - 100; i <= year; i++) {
-
-			selectValue.add(new Option(i + "년", i), optionIndex++);
-
-		}
-
-	}
-
-	function appendMonth() {
-
-		var selectValue = document.getElementById("month");
-
-		var optionIndex = 0;
-
-		for (var i = 1; i <= 12; i++) {
-
-			selectValue.add(new Option(i + "월", i), optionIndex++);
-
-		}
-
-	}
-
-	function appendDay() {
-
-		var selectValue = document.getElementById("day");
-
-		var optionIndex = 0;
-
-		for (var i = 1; i <= 31; i++) {
-
-			selectValue.add(new Option(i + "일", i), optionIndex++);
-
-		}
-
-	}
 
 	// 원본파일이름을 목록에 출력하기 위해
 	function getOriginalName(fileName) {
@@ -213,23 +154,23 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Name" name="cust_Name" class="form-element-field"
-					placeholder="Please fill in your full name" type="text" required />
+					 type="text" disabled="disabled" />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">Name</label>
+				<label class="form-element-label">Name : ${login.cust_Name }</label>
 			</div>
 			
 			
 			<div class="form-element form-input">
 				<input id="cust_Id" name="cust_Id" class="form-element-field" placeholder="Please your id"
-					type="text" required />
+					type="text" disabled="disabled" />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">ID</label>
+				<label class="form-element-label">ID : ${login.cust_Id }</label>
 				<div id="check"></div>
 			</div>
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Pw" name="cust_Pw" class="form-element-field" placeholder="Please your password"
+				<input id="cust_Pw" name="fixCust_Pw" class="form-element-field" placeholder="Please fix your password"
 					type="password" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Password</label>
@@ -250,34 +191,7 @@ $(document).ready(function() {
 				
 			</div>
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">생년월일 </div>
-			</div>
-			
-			
-			<div class="form-element form-select">
-				<select class="form-element-field" id="year" name="birth_Year">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Year</label>
-			</div>
-			
-			
-			<div class="form-element form-select">
-				<select class="form-element-field" id="month" name="birth_Month">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Month</label>
-			</div>
-			
-			
-			<div class="form-element form-select">
-				<select class="form-element-field" id="day" name="birth_Day">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Day</label>
+				<div class="form-radio-legend">생년월일  ${login.cust_Birth }</div>
 			</div>
 			
 			

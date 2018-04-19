@@ -176,10 +176,11 @@ $(window).scroll(function(){
 										</li>
 									</ul>
 							</li>
-
+                           <c:if test="${sessionScope.customer != null}">
 							<li>
-								<a class="gn-icon gn-icon-cog">Settings</a>
+								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
 							</li>
+							</c:if>
 							<li>
 								<a class="gn-icon gn-icon-help">Help</a>
 							</li>

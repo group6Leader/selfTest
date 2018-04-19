@@ -223,6 +223,7 @@ public class CustomerController {
 
 		Customer selCust = custDao.searchCustomerOne(member.getCustomer().getCust_Id());
 
+		
 		session.setAttribute("member", member);
 		session.setAttribute("customer", selCust);
 
