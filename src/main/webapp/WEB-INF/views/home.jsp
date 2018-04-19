@@ -215,20 +215,20 @@ $(window).scroll(function(){
 			</c:if>
 			<li>
 				<sec:authorize access="isAnonymous()">
-				
+				<c:if test="${sessionScope.customer == null}">
 				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
 					<span>Login</span>
 				</a>
-
+				</c:if>
 				</sec:authorize>
 				
 				
 				<sec:authorize access="isAuthenticated()">
-    				
+    				<c:if test="${sessionScope.customer != null}">
 					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
 						<span>Logout</span>
 					</a>
-				
+					</c:if>
 				</sec:authorize>
 			</li>
 		</ul>
