@@ -39,7 +39,7 @@ $(document).ready(function() {
 	            // 이미지 파일이면 썸네일 이미지 출력
 	            if(checkImageType(data)){ 
 	                str = "<div><a href='displayFile?fileName="+getImageLink(data)+"'>";
-	                str += "<img src='displayFile?fileName="+data+"'></a>";
+	                str += "<img class='photo' src='displayFile?fileName="+data+"'></a>";
 	            // 일반파일이면 다운로드링크
 	            } else { 
 	                str = "<div><a href='displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
@@ -113,11 +113,7 @@ $(document).ready(function() {
 	    }
 </script>
 <style>
-.fileDrop {
-        width:200px;
-        height: 200px;
-        border: 1px dotted blue;
-    }
+
 
     small {
         margin-left: 3px;
@@ -140,7 +136,7 @@ $(document).ready(function() {
 			${login }
 			
 			
-  <h2>AJAX File Upload</h2>
+  <div style="text-align: right; margin-bottom: 1.1rem;">Photo Upload</div>
     <!-- 파일을 업로드할 영역 -->
     <div class="fileDrop">
     <!-- 업로드된 파일 목록 -->

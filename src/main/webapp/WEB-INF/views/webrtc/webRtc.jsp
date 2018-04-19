@@ -544,53 +544,7 @@ $(function() {
 
 </div>
 <div class="bg"></div>
-<!-- 요기부분은 채팅 --> 
-<div id="testChat"> 
-이름:<input type="text" id="nickname" value="doctor" disabled="disabled">
-	<input type="button" id="enterBtn" value="입장">
-	<input type="button" id="exitBtn" value="나가기">
-    
-    <h1>대화 영역</h1>
-    <div id="chatArea"><div id="chatMessageArea"></div></div>
-    <br/>
-    <input type="text" id="message">
-    <input type="button" id="sendBtn" value="전송">
-</div>   
-<!-- 요기부분은 마이크 자막 -->
-<div id="content">
-	<span id="icon-music">♬</span>
+<div class="jamaku"></div>
 
-  <div class="wrap">
-    <p>
-			WebRTC 관련 예제로 Speech Recognition API를 활용하면 더 재밌는 기능을 만들 수 있습니다.<br>
-			아래 버튼을 누른 후 마이크에 이야기를 해보세요. (마이크와 가까울수록 인식률이 좋습니다)
-		</p>
-    <div id="result">
-      <span class="final" id="final_span"></span>
-      <span class="interim" id="interim_span"></span>
-    </div>
-    <button id="btn-mic" class="off">마이크 <span></span></button>
-    <button id="btn-tts">Text to speech</button>
-  
-    <!--
-		<div>
-		  <button onclick="document.getElementById('audio').play()">Play the Audio</button>
-		  <button onclick="document.getElementById('audio').pause()">Pause the Audio</button>
-		  <button onclick="document.getElementById('audio').volume+=0.2">Increase Volume</button>
-		  <button onclick="document.getElementById('audio').volume-=0.2">Decrease Volume</button>
-		</div>
-		-->
-		<br><br>
-
-		<h3>예약어 (마이크를 켠 상태에서 아래 문자를 읽어보세요)</h3>
-		<ul>
-			<li>레드, 그린, 옐로우, 오렌지, 그레이, 골드, 블랙</li>
-			<li>알람</li>
-			<li>노래 켜, 노래 꺼, 음악 켜, 음악 꺼</li>
-			<li>볼륨업, 볼륨다운</li>
-			<li>스피치, 말해줘</li>
-		</ul>
-  </div>
-</div> 
 </body>
 </html>
