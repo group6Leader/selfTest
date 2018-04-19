@@ -54,8 +54,8 @@ input[type="text"], input[type="password"] {
   color:white;
   background-color: #71b8ff;
   background-image: none;
-  padding: 8px 50px;
   margin-top:5px;
+  margin-left:6rem;
   margin-bottom:13px;
   border-radius: 40px;
   border: 1px solid #71b8ff;
