@@ -81,21 +81,7 @@ public class ReservationController {
 					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " +resCheck+ "를 예약하셨습니다.";					
 					model.addAttribute("myReservation", myReservation);
 					session.setAttribute("myReservation", myReservation);
-				}
-				
-				//예약된 버튼 비활성화 & 지난 시간 버튼 비활성화
-				/*ArrayList<String> hourList = new ArrayList<String>();		
-				ArrayList<Reservation> checkList = new ArrayList<Reservation>();
-				checkList = dao.checkReservation(selectedDate);
-				for(int i=0; i<checkList.size(); i++){			
-					String res = checkList.get(i).getRes_Date();
-					String res_Date = res.substring(0, 8);
-					String res_Hour = res.substring(8, 10);
-					hourList.add(res_Hour);
-					}
-				JSONArray jsonArray = new JSONArray();
-				model.addAttribute("hourList", hourList);
-				model.addAttribute("jsonList", jsonArray.fromObject(hourList))*/;
+				}				
 			}
 								
 		return "reservation/book";
@@ -110,7 +96,7 @@ public class ReservationController {
 		return "reservation/book";
 	}
 	
-	
+	//예약 하기
 	@RequestMapping(value="reservation", method = RequestMethod.GET)
 	public String revservation(HttpSession session, Model model, HttpServletRequest request){
 				
@@ -198,6 +184,7 @@ public class ReservationController {
 			return "redirect:book";
 	}
 	
+	//예약 삭제
 	@RequestMapping(value="deleteBook", method = RequestMethod.GET)
 	public String deleteBook(HttpSession session, Model model){
 		int cust_Num = 0;

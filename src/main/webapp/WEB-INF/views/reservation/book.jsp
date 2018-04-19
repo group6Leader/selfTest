@@ -435,7 +435,7 @@ addEventButton.onclick = function (e) {
 			<c:if test="${sessionScope.myReservation != null }">
 				&emsp;&emsp;${myReservation }
 				<br><br>
-				<a href="./deleteBook"><button style="margin-left: 30px;">예약 삭제</button></a>
+				<a href="./deleteBook"><button style="margin-left: 30px;">예약 취소</button></a>
 			</c:if>
 			<c:if test="${list != null }">
 				<c:forEach var="list" items="${list}">
