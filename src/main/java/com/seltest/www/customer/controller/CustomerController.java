@@ -64,6 +64,8 @@ public class CustomerController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
+	Customer fileCust = null;
+	
 	@RequestMapping(value = "goJoin", method = RequestMethod.GET)
 	public String divMember() {
 
@@ -97,14 +99,23 @@ public class CustomerController {
 	public String custJoin(Customer customer, SelfCheck selfCheck, Model model, String birth_Year, String birth_Month,
 			String birth_Day, MultipartFile upload) throws MessagingException, UnsupportedEncodingException {
 
+		logger.info("회원가입중");
+		
 		String cust_Birth = birth_Year + "/" + birth_Month + "/" + birth_Day;
 
 		customer.setCust_Birth(cust_Birth);
 
-		logger.info("회원가입중");
+		if(fileCust != null){
+			logger.info("사진 넣는중");
+			customer.setOriginal_File(fileCust.getOriginal_File());
+			customer.setSaved_File(fileCust.getSaved_File());
+		
+		}
+		
 
 		
 
+		
 		System.out.println(customer);
 
 		// 관리자 계정
@@ -113,8 +124,13 @@ public class CustomerController {
 		// Server Address
 		String serverAddress = "http://localhost:9090/www/";
 
+		
+		
+		
 		boolean joinIs = custDao.insertCustomer(customer);
 		System.out.println(customer.getCust_Id());
+		
+		
 
 		Customer c = custDao.searchCustomerOne(customer.getCust_Id());
 
@@ -249,9 +265,21 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value="uploadAjax", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
     public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
-        logger.info("originalName : "+file.getOriginalFilename());
+        fileCust = new Customer();
+        
+        fileCust.setOriginal_File(file.getOriginalFilename());
+        String saved_File = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+        fileCust.setSaved_File(saved_File);
+    	
+    	System.out.println(fileCust.getOriginal_File()+"!");
+    	System.out.println(fileCust.getSaved_File()+"!!");
+        
+    	logger.info("originalName : "+file.getOriginalFilename());
         logger.info("size : "+file.getSize());
         logger.info("contentType : "+file.getContentType());
+        
+        
+        
         return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
     }
    

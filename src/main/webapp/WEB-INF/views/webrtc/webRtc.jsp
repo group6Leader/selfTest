@@ -164,7 +164,7 @@ function start() {
   if (document.location.hash === "" || document.location.hash === undefined) { // you are the Caller
 
     // create the unique token for this call 
-    var token = Date.now()+"-"+Math.round(Math.random()*10000);
+    var token = Date.now()+"-"+"Remote";
     call_token = "#"+token;
 
     // set location.hash to the unique token for this call
@@ -385,21 +385,7 @@ $(function() {
 	    fireCommand(interimTranscript);
 	  };
 
-	  /**
-	   * changeColor
-	   *
-	   */
-	  /*
-		  .red 		{ background: red; }
-			.blue 	{ background: blue; }
-			.green 	{ background: green; }
-			.yellow { background: yellow; }
-			.orange { background: orange; }
-			.grey 	{ background: grey; }
-			.gold   { background: gold; }
-			.white 	{ background: white; }
-			.black  { background: black; }
-	 	*/
+	  
 	  function fireCommand(string) {
 	  	if (string.endsWith('레드')) {
 	  		$result.attr('class', 'red');
@@ -560,7 +546,7 @@ $(function() {
 <div class="bg"></div>
 <!-- 요기부분은 채팅 --> 
 <div id="testChat"> 
-이름:<input type="text" id="nickname">
+이름:<input type="text" id="nickname" value="doctor" disabled="disabled">
 	<input type="button" id="enterBtn" value="입장">
 	<input type="button" id="exitBtn" value="나가기">
     
@@ -585,7 +571,7 @@ $(function() {
     </div>
     <button id="btn-mic" class="off">마이크 <span></span></button>
     <button id="btn-tts">Text to speech</button>
-    <audio id="audio" src="ending.mp3"></audio>
+  
     <!--
 		<div>
 		  <button onclick="document.getElementById('audio').play()">Play the Audio</button>
