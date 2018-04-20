@@ -52,6 +52,15 @@ public class HomeController {
 			}		
 		}
 		return "home";
+		
+	}
 	
+	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+	public String accessDenied() {
+
+		logger.info("accessDenied 창으로 이동합니다-c");
+
+		return "customer/accessDenied";
+
 	}
 }

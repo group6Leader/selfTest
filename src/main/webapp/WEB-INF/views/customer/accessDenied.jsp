@@ -4,11 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>accessDenied</title>
 </head>
 <body>
 
-	<h1>Error</h1>
+
+	<h2>Sorry, you do not have permission to view this page.</h2>
+	 
+	Click 
+	<a href="../"> here </a>
+	to go back to the Homepage.
 
 </body>
 </html>

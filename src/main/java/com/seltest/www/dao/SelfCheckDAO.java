@@ -41,6 +41,23 @@ public class SelfCheckDAO {
 		return result;
 	}
 	
+	public int update2(SelfCheck selfCheck) {
+		
+		int result = 0;
+		
+		System.out.println("DAO2");
+		
+		try {
+			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);
+			result = mapper.update2(selfCheck);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	
 	public SelfCheck searchSelfCheckOne(int cust_Num) {
 		
 		SelfCheck selfCheck = null;

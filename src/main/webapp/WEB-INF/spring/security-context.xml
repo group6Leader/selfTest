@@ -12,6 +12,7 @@
    		</headers>
 		
 		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/customer/**" access="isAuthenticated()" />
 		<intercept-url pattern="/selfCheck/**" access="hasRole('CUSTOMER')" />
 		<intercept-url pattern="/reservation/**" access="isAuthenticated()" />
 		<intercept-url pattern="/prescription/**" access="hasRole('DOCTOR')" />
@@ -30,13 +31,12 @@
 		<logout logout-url="/logout" invalidate-session="true"
 			logout-success-url="/" />
 
-		<access-denied-handler error-page="/login/accessDenied" />
+		<access-denied-handler error-page="/accessDenied" />
 	</http>
 
 
 	<beans:bean id="authenticationProvider"
-		class="com.seltest.www.security.CustomAuthenticationProvider">
-		
+		class="com.seltest.www.security.CustomAuthenticationProvider">	
 	</beans:bean>
 	
 	<!-- <beans:bean id="CustomUserDetailsService"

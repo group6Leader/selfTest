@@ -42,6 +42,18 @@
 		
 	</update>
 	
+	<update id="update2" parameterType="selfCheck">
+		
+		update selfCheck
+		set
+		pain = #{pain}
+		, symptom = #{symptom}
+		, outbreak_Day = sysdate
+		
+		where cust_Num = #{cust_Num}
+		
+	</update>
+	
 	<select id="searchSelfCheckOne" resultType="selfCheck">
 			
 		select *

@@ -36,10 +36,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		/* if(${msg}!=null){
-			alert("이메일인증 필요");
-		} */
-		
 		$('.login').hide();
 		$('.gn-icon-menu').hover(function() {
 			$('.gn-menu-wrapper').toggleClass('gn-open-part');
@@ -138,8 +134,6 @@
 				alert('!');
 			}
 		}); */
-		
-
 	}
 
 	function remoteCheck() {

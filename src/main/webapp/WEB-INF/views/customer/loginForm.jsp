@@ -28,37 +28,7 @@
 			cust_Pw.focus();
 			return false;
 		}
-		
-		/* alert(JSON.stringify(cust_Id2.value));
-		alert(JSON.stringify(cust_Pw2.value)); */
-
-		$.ajax({
-			type : "post",
-			url : "customer/emailCheck",
-
-			data : {
-				cust_Id : cust_Id2.value,
-				cust_Pw : cust_Pw2.value
-			},
-
-			success : function(message) {
-				/* console.log(message); */
-				alert(message);
-				
-				if (message == "Email Verification Needed") {
-					alert("!!")	
-					return false;
-				}
-			},
-			
-			error : function(e) {
-				/* console.log(e) */
-				alert('!');
-			}
-		});
-
 	}
-	
 	
 	</script>
 

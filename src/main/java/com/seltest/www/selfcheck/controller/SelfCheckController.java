@@ -53,7 +53,7 @@ public class SelfCheckController {
 		System.out.println(selfCheck);
 		
 		int a = selfCheckDAO.update(selfCheck);
-		System.out.println(a);
+		System.out.println("Update: " + a);
 		
 		return "redirect: goSelfCheck2";
 	}
@@ -64,6 +64,26 @@ public class SelfCheckController {
 		System.out.println("selfCheckForm2");
 		
 		return "selfCheck/selfCheckForm2";
+	}
+	
+	@RequestMapping(value="goSelfCheck2", method = RequestMethod.POST)
+	public String selfCheckResult2(SelfCheck selfCheck, HttpSession session){
+		
+		System.out.println("selfCheckResult2");
+//		System.out.println(selfCheck);
+		
+		Member member = (Member) session.getAttribute("member");
+		int cust_Num = member.getCustomer().getCust_Num();
+
+		System.out.println("cust_Num: " + member.getCustomer().getCust_Num());
+		
+		selfCheck.setCust_Num(cust_Num);
+		System.out.println(selfCheck);
+		
+		int a = selfCheckDAO.update2(selfCheck);
+		System.out.println("Update: " + a);
+		
+		return "redirect: ../";
 	}
 	
 }
