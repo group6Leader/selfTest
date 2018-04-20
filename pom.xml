@@ -93,6 +93,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		
+		<!-- xml 파싱 위한 XmlPullParser -->
+		<dependency>
+            <groupId>xpp3</groupId>
+            <artifactId>xpp3</artifactId>
+            <version>1.1.4c</version>
+        </dependency>
 
 		<!-- E-mail Verify -->
 		<dependency>
