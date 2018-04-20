@@ -65,6 +65,12 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		if (!matchPassword(userInfo.getPassword(), authToken.getCredentials())) {  
 			throw new BadCredentialsException("not matching username or password");
 		}
+		
+		if (userInfo.getCustomer().getEmailVerify() == 'N') {
+			System.out.println("EmailVerification");
+			throw new BadCredentialsException("Please Verify Email");
+		}
+		
 		//유저가 가진 권한을 읽어온다.
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>)userInfo.getAuthorities();
 		if(userInfo.getCustomer().getDivision() == 1) {

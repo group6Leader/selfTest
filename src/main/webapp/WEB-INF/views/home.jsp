@@ -116,7 +116,7 @@
 		/* alert(JSON.stringify(cust_Id2.value));
 		alert(JSON.stringify(cust_Pw2.value)); */
 
-		$.ajax({
+		/* $.ajax({
 			type : "post",
 			url : "customer/emailCheck",
 
@@ -126,19 +126,19 @@
 			},
 
 			success : function(message) {
-				/* console.log(message); */
 				alert(message);
 				
 				if (message == "Email Verification Needed") {
 					alert("!!");
+					return false;
 				}
 			},
 			
 			error : function(e) {
-				/* console.log(e) */
 				alert('!');
 			}
-		});
+		}); */
+		
 
 	}
 
@@ -218,7 +218,7 @@ $(window).scroll(function(){
 							</li>
 							</c:if>
 							<li>
-								<a class="gn-icon gn-icon-help">Help</a>
+								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
 							</li>
 							<li>
 								<a class="gn-icon gn-icon-archive">WebRTC</a>
