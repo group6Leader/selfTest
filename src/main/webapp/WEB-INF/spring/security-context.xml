@@ -12,7 +12,7 @@
    		</headers>
 		
 		<intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/customer/**" access="isAuthenticated()" />
+		<intercept-url pattern="/customer/fixCustomer" access="isAuthenticated()" />
 		<intercept-url pattern="/selfCheck/**" access="hasRole('CUSTOMER')" />
 		<intercept-url pattern="/reservation/**" access="isAuthenticated()" />
 		<intercept-url pattern="/prescription/**" access="hasRole('DOCTOR')" />
