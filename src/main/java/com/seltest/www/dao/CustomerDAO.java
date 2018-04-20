@@ -108,4 +108,41 @@ public class CustomerDAO {
 		return result;
 	}
 
+	public int fixCustomer(Customer customer) {
+		int result = 0;
+
+		logger.info("search id는"+customer.getCust_Id());
+		Customer fixCustomer = customer;
+		
+		try {
+			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+			result = mapper.fixCustomer(fixCustomer);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	public int delCustomer(String cust_Id){
+		int result = 0;
+		
+		logger.info("delete id는"+cust_Id);
+		
+		try {
+			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+			result = mapper.delCustomer(cust_Id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+		
+	}
+	
+	
+	
+	
 }

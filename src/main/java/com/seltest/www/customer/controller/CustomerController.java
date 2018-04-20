@@ -103,6 +103,51 @@ public class CustomerController {
 
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "custFix", method = RequestMethod.POST)
+	public String compFix(Customer customer) {
+		
+		
+		String msg= "!";
+		
+		logger.info("회원수정 중입니다.");
+		
+		
+		
+		Customer fixCustomer = custDao.searchCustomerOne(customer.getCust_Id());
+		
+		
+		
+		logger.info(fixCustomer + " 수정할 회원 " );
+		
+		fixCustomer.setCust_Pw(customer.getCust_Pw());
+		fixCustomer.setCust_Name(customer.getCust_Name());
+		fixCustomer.setCust_Address(customer.getCust_Address());
+		fixCustomer.setCust_Phone(customer.getCust_Phone());
+		fixCustomer.setCust_Email(customer.getCust_Email());
+		fixCustomer.setCust_Major(customer.getCust_Major());
+		
+		if(fileCust != null){
+			logger.info("사진 넣는중");
+			fixCustomer.setOriginal_File(fileCust.getOriginal_File());
+			fixCustomer.setSaved_File(fileCust.getSaved_File());
+		
+		}
+		
+		int check = custDao.fixCustomer(fixCustomer);
+
+		if(check!=0){
+			msg = "회원 수정이 완료 되었습니다.";
+			
+		}else{
+			msg = "회원 수정이 실패 오류입니다.";
+		}
+		
+		
+		return msg;
+	}
+
+	
 	
 	
 	@ResponseBody

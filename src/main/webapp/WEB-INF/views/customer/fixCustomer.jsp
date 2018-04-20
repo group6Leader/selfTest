@@ -68,8 +68,53 @@ $(document).ready(function() {
 	        }
 	    });
 	});
+ 
+ $('#fixBtn').on('click',function(){
+	 
+	 	if(!confirm("수정하시겠습니까?")){
+	 		return false;
+	 	}
+	 
+	 	
+		var cust_Id = $('#cust_Id').val();
+		var cust_Pw = $('#cust_Pw').val();		
+		var cust_Name = $('#cust_Name').val();
+		var cust_Address = $('#cust_Address').val(); 
+		var cust_Birth = $('#cust_Birth').val();		
+		var cust_Sex = $(':radio[name="cust_Sex"]:checked').val();					
+		var cust_Phone = $('#cust_Phone').val();
+		var cust_Email = $('#cust_Email').val();
+		var cust_Major = $('#cust_Major').val();
+		
+		if(cust_Pw == ''){
+			alert("password를 입력해주세요");
+			return false;
+		}
+		
+		
+		$.ajax({
+			url : "custFix"
+			,type : "post"			
+			,data : {			
 
-
+				cust_Id: cust_Id
+				,cust_Pw : cust_Pw
+				,cust_Name : cust_Name
+				,cust_Address : cust_Address
+				,cust_Phone : cust_Phone
+				,cust_Email : cust_Email
+				,cust_Major : cust_Major
+				
+			},success : function(msg) {
+				alert(msg);
+			},error : function(err) {
+				alert(JSON.stringify(err));
+			}
+		
+		});
+		
+		
+		});
 
 });
 
@@ -130,29 +175,43 @@ $(document).ready(function() {
 		<source src="https://codepen.jonnitto.ch/BackgroundVideo.mp4"
 			type="video/mp4">
 	</video>
-	<form class="form-card" action="custJoin" method="post" enctype="multipart/form-data">
+	<form class="form-card" action="" method="post" enctype="multipart/form-data">
 		<fieldset class="form-fieldset">
-			<legend class="form-legend">JOIN US</legend>
-			${login }
+			<legend class="form-legend">FIX US</legend>
+			<%-- ${login } --%>
+
+	
+	
+	<div style="text-align: left; margin-bottom: 1.1rem;">Photo Upload</div>
+    <!-- 파일을 업로드할 영역 -->
+    <div class="fixfileDrop">
+    
+    <!-- 업로드된 파일 목록 -->
+    <div class="fixuploadedList">			
+	<img class='photo' alt="" src="download?saved=${login.saved_File}" >
+	</div>
+    </div>		
 			
 			
-  <div style="text-align: right; margin-bottom: 1.1rem;">Photo Upload</div>
+  
     <!-- 파일을 업로드할 영역 -->
     <div class="fileDrop">
     <!-- 업로드된 파일 목록 -->
     <div class="uploadedList">
-
+    
+    
    <!-- '<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">' -->
-    <img alt="" src="download?saved=${login.saved_File}">
+    
     </div>
     </div>
+			<input type="hidden">
 			
 			
 			<div class="form-element form-input">
 				<input id="cust_Name" name="cust_Name" class="form-element-field"
-					 type="text" disabled="disabled" />
+					 type="text" placeholder="${login.cust_Name }"/>
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">Name : ${login.cust_Name }</label>
+				<label class="form-element-label">Name</label>
 			</div>
 			
 			
@@ -166,7 +225,7 @@ $(document).ready(function() {
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Pw" name="fixCust_Pw" class="form-element-field" placeholder="Please fix your password"
+				<input id="cust_Pw" name="cust_Pw" class="form-element-field" placeholder="Please fix your password"
 					type="password" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Password</label>
@@ -177,10 +236,14 @@ $(document).ready(function() {
 			<div class="form-radio form-radio-block">
 				<div class="form-radio-legend">성별</div>
 				<label class="form-radio-label"> <input name=cust_Sex
-					class="form-radio-field" type="radio" value="M" /> <i
+					class="form-radio-field" type="radio" disabled="disabled" value="M" 
+					<c:if test="${login.cust_Sex == 'M' }">
+					 checked="checked"</c:if>/> <i
 					class="form-radio-button"></i> <span>남자</span>
 				</label> <label class="form-radio-label"> <input name=cust_Sex
-					class="form-radio-field" type="radio" value="F" /> <i
+					class="form-radio-field" type="radio" disabled="disabled" value="F" 
+					<c:if test="${login.cust_Sex == 'F' }">
+					 checked="checked"</c:if>/> <i
 					class="form-radio-button"></i> <span>여자</span>
 				</label>
 				
@@ -188,48 +251,49 @@ $(document).ready(function() {
 			</div>
 			<div class="form-radio form-radio-block">
 				<div class="form-radio-legend">생년월일  ${login.cust_Birth }</div>
+				<input type="hidden" id="cust_Birth" value="${login.cust_Birth }" name="cust_Birth">
 			</div>
 			
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
+				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your fix Address"
 					type="text" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">Address</label>
+				<label class="form-element-label">${login.cust_Address }</label>
 			</div>
 			
 			
 			<div class="form-element form-input">
 				<input id="cust_Phone" name="cust_Phone" class="form-element-field"
-					placeholder="Please your PhoneNumber" type="number" required />
+					placeholder="Please your fix PhoneNumber" type="number" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">PhoneNumber</label>
+				<label class="form-element-label">${login.cust_Phone }</label>
 			</div>
 			
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Email" name="cust_Email" class="form-element-field" placeholder=" " type="email"
+				<input id="cust_Email" name="cust_Email" class="form-element-field" placeholder="Please your fix Email" type="email"
 					required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">Email</label> <small
+				<label class="form-element-label">${login.cust_Email }</label> <small
 					class="form-element-hint">We will never spam you!</small>
 			</div>
 			
 			
 			<div class="form-element form-input">
 				<input id="cust_Major" name="cust_Major" class="form-element-field"
-					placeholder="Please your job // if you doctor please enter major" type="text" required />
+					placeholder="Please your fix Major" type="text" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">Job</label>
+				<label class="form-element-label">${login.cust_Major }</label>
 			</div>
 			
 			
 		</fieldset>
 		<div class="form-actions">
-			<button class="form-btn" type="submit">Fix</button>
-			<button class="form-btn-cancel -nooutline">Delete</button>
+			<button id="fixBtn" class="form-btn" type="button">Fix</button>
+			<button id="delBtn" class="form-btn-cancel -nooutline">Delete</button>
 		</div>
 
 	</form>
