@@ -89,7 +89,7 @@ public class CustomerController {
 	
 	@ResponseBody
 	@RequestMapping(value = "custDel", method = RequestMethod.POST)
-	public String custDel(String cust_Id) {
+	public String custDel(String cust_Id, HttpSession session) {
 
 		String msg= "!";
 		
@@ -98,11 +98,15 @@ public class CustomerController {
 		int check = custDao.delCustomer(cust_Id);
 		
 		
+		
+		
 		if(check != 0){
 			msg = "delete complete";
+			session.invalidate();
 		}else{
 			msg = "delete error";
 		}
+		
 		
 		return msg;
 

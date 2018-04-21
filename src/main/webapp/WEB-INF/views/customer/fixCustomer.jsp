@@ -115,7 +115,44 @@ $(document).ready(function() {
 		
 		
 		});
+ $('#delBtn').on('click',function(){
+		
+	 
+	 	if(!confirm("삭제하시겠습니까?")){
+	 		
+	 		return false;
+	 	}
+	 	
+	 	
+		var cust_Id = $('#cust_Id').val();
+	
+	
+		
+		$.ajax({
+			url : "custDel"
+			,type : "post"			
+			,data : {			
 
+				cust_Id: cust_Id
+				
+				
+			},success : function(msg) {
+				alert(msg);
+				document.location.href = "/www/";
+			},error : function(err) {
+				alert(JSON.stringify(err));
+			}
+		
+		});
+		
+		
+		});
+
+ 
+ 
+ 
+ 
+ 
 });
 
 
@@ -204,7 +241,7 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Name" name="cust_Name" class="form-element-field"
-					 type="text" placeholder="${login.cust_Name }"/>
+					 type="text" placeholder="${login.cust_Name }" value="${login.cust_Name }"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Name</label>
 			</div>
@@ -212,7 +249,7 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Id" name="cust_Id" class="form-element-field" placeholder="Please your id"
-					type="text" disabled="disabled" />
+					type="text" disabled="disabled" value="${login.cust_Id }"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">ID : ${login.cust_Id }</label>
 				<div id="check"></div>
@@ -253,7 +290,7 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your fix Address"
-					type="text" required />
+					type="text" value="${login.cust_Address }"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">${login.cust_Address }</label>
 			</div>
@@ -261,7 +298,7 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Phone" name="cust_Phone" class="form-element-field"
-					placeholder="Please your fix PhoneNumber" type="number" required />
+					placeholder="Please your fix PhoneNumber" type="number" value="${login.cust_Phone }"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">${login.cust_Phone }</label>
 			</div>
@@ -270,7 +307,7 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Email" name="cust_Email" class="form-element-field" placeholder="Please your fix Email" type="email"
-					required />
+				 value="${login.cust_Email }"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">${login.cust_Email }</label> <small
 					class="form-element-hint">We will never spam you!</small>
@@ -279,7 +316,7 @@ $(document).ready(function() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Major" name="cust_Major" class="form-element-field"
-					placeholder="Please your fix Major" type="text" required />
+					placeholder="Please your fix Major" type="text" value="${login.cust_Major }"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">${login.cust_Major }</label>
 			</div>
