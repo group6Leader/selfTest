@@ -35,6 +35,15 @@
 	<script type="text/javascript"
 	src="<c:url value="/resources/webrtc/webrtc_signal_server.js"></c:url>"></script>
 
+
+<script type="text/javascript">
+	function selfCheck() {
+		/* alert('1'); */
+		window.open("../selfCheck/goSelfCheckList", "newWindow", "top=200, left=400, height=500, width=600, resizable=no");
+	}
+</script>
+
+
 <script>
 $(document).ready(function() {
 	$('.login').hide();
@@ -145,6 +154,8 @@ if (navigator.getUserMedia) { // WebRTC 1.0 standard compliant browser
 var call_token; // unique token for this call
 var signaling_server; // signaling server for this call
 var peer_connection; // peer connection object
+
+
 
 function start() {
   // create the WebRTC peer connection object
@@ -539,6 +550,9 @@ $(function() {
 </head>
 
 <body onload="start()">
+
+<input type="button" style="margin-top: 200px;" value="selfCheck" onclick="selfCheck()">
+
 <input type="button" id="enterBtn" value="입장">
 <input type="button" id="exitBtn" value="나가기">
     

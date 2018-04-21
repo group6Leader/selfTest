@@ -10,6 +10,8 @@ public interface CustomerMapper {
 
 	public Customer searchCustomerOne(String cust_Id);
 	
+	public Customer readOne(int cust_Num);
+	
 	public int fixCustomer(Customer customer);
 	
 	public int delCustomer(String cust_Id);

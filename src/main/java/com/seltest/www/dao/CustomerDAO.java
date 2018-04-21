@@ -107,6 +107,22 @@ public class CustomerDAO {
 
 		return result;
 	}
+	
+	public Customer readOne(int cust_Num) {
+		Customer result = null;
+
+//		logger.info("cust_Num " + cust_Num);
+		
+		try {
+			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+			result = mapper.readOne(cust_Num);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 
 	public int fixCustomer(Customer customer) {
 		int result = 0;

@@ -111,12 +111,18 @@
 	</update>
 
 
-
-
 	<select id="searchCustomerOne" parameterType="String"
 		resultType="customer">
 
 		select * from customer where cust_Id = #{cust_Id}
+
+	</select>
+	
+	
+	<select id="readOne" resultType="customer">
+
+		select * from customer 
+		where cust_Num = #{cust_Num}
 
 	</select>
 

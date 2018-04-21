@@ -50,16 +50,24 @@
               <input type="text" id="hospitalphone" spellcheck="false" placeholder="01011111111"/>
             </div>
             <div>
-              <label for="hospitalpax">팩스</label>
-              <input type="text" id="hospitalpax" spellcheck="false" placeholder="2837464"/>
+              <label for="hospitalfax">팩스</label>
+              <input type="text" id="hospitalfax" spellcheck="false" placeholder="2837464"/>
             </div>
+            
             <div>
             <label for="hospitalemail">Email</label>
               <input type="text" id="hospitalemail" spellcheck="false" placeholder="shridhardeshmukh@xyz.com"/>
             </div>
+            
+            <div>
+            <label for="doctorName">의사성함</label>
+              <input type="text" id="doctorName" spellcheck="false" placeholder="간나"/>
+            </div>
+            
             <div class="sep">
     	        <span class="or">처방약</span>
 	        </div>
+            <button style="margin-left: 410px;">+</button>
             <div>
               <label for="medicineName">처방의약품</label>
               <input type="text" id="medicineName" placeholder="****"/>
@@ -69,8 +77,14 @@
               <input type="text" id="medicineVolume" placeholder="1정"/>
             </div>
             <div>
-              <label for="medicineCount">1회 투여횟수</label>
-              <input type="text" id="medicineCount" placeholder="1회"/>
+              <label for="medicineCount">하루 투여횟수</label>
+             <!--  <input type="text" id="medicineCount" placeholder="1회"/> -->
+              <select id="medicineCount">
+              	<option>하루 1번 </option>
+              	<option>하루 2번 </option>
+              	<option>하루 3번 </option>
+              </select>
+            
             </div>
             <div>
               <label for="medicineDay">총 투여일수</label>
@@ -78,7 +92,7 @@
             </div>
             <div>
               <label></label>
-              <input type="submit" value="Create Account" id="create-account" class="button"/>
+              <input type="submit" value="Print Out" id="create-account" class="button"/>
             </div>
           </form>
   

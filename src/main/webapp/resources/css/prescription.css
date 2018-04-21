@@ -42,7 +42,7 @@
   text-align: right;
   margin: 10px;
 }
-.register input[type=text], .register input[type=password] {
+.register input[type=text], .register input[type=password], select {
   width: 65%;
   font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
   padding: 5px;

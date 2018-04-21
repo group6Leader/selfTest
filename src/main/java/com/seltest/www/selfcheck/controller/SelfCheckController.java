@@ -1,5 +1,7 @@
 package com.seltest.www.selfcheck.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,27 +110,17 @@ public class SelfCheckController {
 	public String selfCheckForm3(HttpSession session, Model model){
 		
 		System.out.println("selfCheckForm3");
-		
-		
-		
-		
-		Member member = (Member) session.getAttribute("member");
-		
 
-		
+		Member member = (Member) session.getAttribute("member");
+
 		String cust_Id = member.getCustomer().getCust_Id();
 		int cust_Num = member.getCustomer().getCust_Num();
 		
-		
 		Customer c = customerDAO.searchCustomerOne(cust_Id);
 		
-		if (c.getDivision() == 2) {
-			System.out.println("DOCTOR");
-			
-			
-		}
-		
-		
+		/*if (c.getDivision() == 2) {
+			System.out.println("DOCTOR");			
+		}*/
 		
 		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
 
@@ -139,6 +131,48 @@ public class SelfCheckController {
 		model.addAttribute("s", s);
 		
 		return "selfCheck/selfCheckForm3";
+	}
+	
+	@RequestMapping(value="goSelfCheckList", method = RequestMethod.GET)
+	public String selfCheckList(HttpSession session, Model model){
+		
+		System.out.println("selfCheckList");
+		
+		ArrayList<SelfCheck> sList = selfCheckDAO.sList();
+		
+		model.addAttribute("sList", sList);
+	
+		return "selfCheck/selfCheckList";
+	}
+	
+	@RequestMapping(value="readOne", method = RequestMethod.GET)
+	public String readOne(HttpSession session, Model model, int cust_Num){
+		
+		System.out.println("readOne");
+		System.out.println("cust_Num: " + cust_Num);
+		
+		Customer c = customerDAO.readOne(cust_Num);
+		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
+		
+		
+		System.out.println(s);
+
+		/*Member member = (Member) session.getAttribute("member");
+
+		String cust_Id = member.getCustomer().getCust_Id();
+		int cust_Num = member.getCustomer().getCust_Num();*/
+		
+		/*Customer c = customerDAO.searchCustomerOne(cust_Id);
+		
+		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
+
+		System.out.println(c);
+		System.out.println(s);*/
+		
+		model.addAttribute("c", c);
+		model.addAttribute("s", s);
+		
+		return "selfCheck/readOne";
 	}
 	
 }

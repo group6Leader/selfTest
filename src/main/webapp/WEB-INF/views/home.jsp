@@ -199,9 +199,15 @@ $(window).scroll(function(){
 										</li>
 										</c:if>
 										</sec:authorize>
+										
 										<li>
-											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
+											<a class="gn-icon gn-icon-photoshop" href="selfCheck/goSelfCheck3">자가진단 결과</a>
 										</li>
+										
+										<li>
+											<a class="gn-icon gn-icon-photoshop" href="selfCheck/goSelfCheckList">자가진단 리스트</a>
+										</li>
+										
 										<li>
 											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
 										</li>

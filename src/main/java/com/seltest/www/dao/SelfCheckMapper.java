@@ -1,5 +1,7 @@
 package com.seltest.www.dao;
 
+import java.util.ArrayList;
+
 import com.seltest.www.vo.SelfCheck;
 
 public interface SelfCheckMapper {
@@ -11,5 +13,7 @@ public interface SelfCheckMapper {
 	int update2(SelfCheck selfCheck);
 	
 	SelfCheck searchSelfCheckOne(int cust_Num);
+	
+	ArrayList<SelfCheck> sList();
 	
 }

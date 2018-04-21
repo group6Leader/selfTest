@@ -1,5 +1,7 @@
 package com.seltest.www.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -70,6 +72,20 @@ public class SelfCheckDAO {
 		}
 		
 		return selfCheck;
+	}
+	
+	public ArrayList<SelfCheck> sList() {
+		
+		ArrayList<SelfCheck> sList = null;
+		
+		try {
+			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);
+			sList = mapper.sList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return sList;
 	}
 
 }
