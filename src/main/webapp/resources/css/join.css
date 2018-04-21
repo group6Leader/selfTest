@@ -607,24 +607,24 @@ font-family: 'Open Sans Condensed', sans-serif;
   font-family: 'Nanum Myeongjo', serif;
 }
 .fileDrop {
-        width:40%;
+        width:180px;
         height: 200px;
         border: 2px solid rgba(200,200,200,0.8);
 		background-color:rgba(222,222,222,0.8);
         display: inline-block;
-        margin-left: 12rem;
-         position: relative;
-        left:70px;
-        top: 8px;
+         position: absolute;
+        left:34rem;
+        top: 10rem;
     }
 .fixfileDrop {
-        width:40%;
+        width:180px;
         height: 200px;
         border: 2px solid rgba(200,200,200,0.8);
 		background-color:rgba(222,222,222,0.8);
         display: inline-block;
-        position: relative;
-        top:-180px;
+        position: absolute;
+        top:10rem;
+        left:49rem;
         
     }
 .photo{
