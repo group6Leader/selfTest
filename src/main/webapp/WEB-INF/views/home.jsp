@@ -163,6 +163,12 @@ $(window).scroll(function(){
 		}
 	}
 </script>
+<script type="text/javascript">
+	function map(){
+		location.href="./mapping/map";		
+	}
+</script>
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
@@ -224,6 +230,7 @@ $(window).scroll(function(){
 				</nav>
 			</li>
 			<li><a href="">Char LIFE</a></li>
+			<li><a href="javascript:map()">지도</a></li>
 			<c:if test="${sessionScope.customer != null}">
 			<li><a href="">My Page</a></li>
 			<li>
