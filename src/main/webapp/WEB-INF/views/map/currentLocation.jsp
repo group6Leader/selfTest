@@ -1,12 +1,18 @@
 <%@ page session="true" pageEncoding="UTF-8"%>
 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<style type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/css/sideBar.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/currentLocation.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 
-</style>
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBTHJM9dvtB89wLTDFXOOX2TG5zttwa4RU&sensor=false">
 	
@@ -123,20 +129,158 @@
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.login').hide();
+	$('.gn-icon-menu').hover(function() {
+		$('.gn-menu-wrapper').toggleClass('gn-open-part');
+	});
+
+	$('.gn-menu-wrapper').hover(function() {
+		$(this).toggleClass('gn-open-all');
+	});
+
+});
+</script>
 </head>
 <body>
-<div style="display: inline; float: left; width: 100%; height: 800px">
-	<div id="map_canvas" style="display: inline; float: left;width: 49%; height: 700px; position: relative;"></div>
-	<div id="hosSelect" style="display: inline; float: left;width: 49%; height: 700px; position: relative;">
-		<div>
-			
-			
-		
-		</div>
+
+	 <div class="container">
+		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
+			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+				<nav class="gn-menu-wrapper">
+					<div class="gn-scroller">
+						<ul class="gn-menu">
+							
+							<li class="gn-search-item">
+							<input placeholder="Search" type="search" class="gn-search"> 
+								<a class="gn-icon gn-icon-search">
+									<span>Search</span>
+								</a>
+							</li>
+							
+							<li>
+								<a class="gn-icon gn-icon-download">진료</a>
+									<ul class="gn-submenu">
+										<sec:authorize access="isAuthenticated()">
+										<c:if test="${sessionScope.customer.division != 2}">
+										<li>
+											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
+										</li>
+										</c:if>
+										</sec:authorize>
+										<li>
+											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
+										</li>
+										<li>
+											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
+										</li>
+									</ul>
+							</li>
+                           <c:if test="${sessionScope.customer != null}">
+							<li>
+								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
+							</li>
+							</c:if>
+							<li>
+								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
+							</li>
+							<li>
+								<a class="gn-icon gn-icon-archive">WebRTC</a>
+									<ul class="gn-submenu">
+										<li>
+											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
+										</li>
+										
+									</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- /gn-scroller -->
+				</nav>
+			</li>
+			<li><a href="">Char LIFE</a></li>
+			<li><a href="javascript:map()">지도</a></li>
+			<c:if test="${sessionScope.customer != null}">
+			<li><a href="customer/goFix">My Page</a></li>
+			<li>
+				<a class="codrops-icon codrops-icon-prev">
+					<span>VOC</span>
+				</a>
+			</li>
+			</c:if>
+			<c:if test="${sessionScope.myReservation != null}">
+				<li>
+					${myReservation}
+				</li>
+			</c:if>
+			<li>
+				<sec:authorize access="isAnonymous()">
+				<c:if test="${sessionScope.customer == null}">
+				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
+					<span>Login</span>
+				</a>
+				</c:if>
+				</sec:authorize>
+				
+				
+				<sec:authorize access="isAuthenticated()">
+    				<c:if test="${sessionScope.customer != null}">
+					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+						<span>Logout</span>
+					</a>
+					</c:if>
+					
+					<c:if test="${sessionScope.customer == null}">
+					<a class="codrops-icon codrops-icon-drop" id='SignIn'>
+					<span>Login</span>
+					</a>
+					</c:if>
+				
+				</sec:authorize>
+			</li>
+		</ul>
 </div>
-		
-	
+<div class="map_container">
+	<div class="" id="map_canvas"></div>
+	<div class="map_menu">
+			<div class="map-controls">
+    <h6 class="title">
+      	병원명
+    </h6>
+    <input type="text" value="" class="input-color" placeholder="차 병원">
+    <h6 class="title">
+		병원종류
+    </h6>
+    <input type="text" value="" class="input-color" placeholder="종합병원">
+    <h6 class="title">
+		지역
+    </h6>
+    <input type="text" value="" class="input-color" placeholder="강남구">
+	<h6 class="title">
+		반경
+    </h6>
+	<input type="range" value="1" step="1" min="1" max="100">
+    <hr>
+    <a href="javascript:void(0);" class="btn btn-update-map">
+      	search
+    </a>
+  </div>
+  <div class="map" id="map">
+  </div>
 	</div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </body>
 
 </html>
