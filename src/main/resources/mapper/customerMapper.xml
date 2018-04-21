@@ -20,24 +20,24 @@
 
 	<update id="fixCustomer" parameterType="customer">
 
-		update customer (
+		update customer 
 
 		set
+		
 		cust_Num = #{cust_Num}
 		,cust_Id = #{cust_Id}
-		,cust_Name #{cust_Name}
-		,cust_Pw #{cust_Pw}
-		,cust_Sex #{cust_Sex}
-		,cust_Birth #{cust_Birth}
-		,cust_Address #{cust_Address}
-		,cust_Phone #{cust_Phone}
-		,cust_Email #{cust_Email}
-		,cust_Major #{cust_Major}
-		,EmailVerify = #{EmailVerify};
-		,division = #{division};
+		,cust_Name = #{cust_Name}
+		,cust_Pw = #{cust_Pw}
+		,cust_Sex = #{cust_Sex}
+		,cust_Birth = #{cust_Birth}
+		,cust_Address = #{cust_Address}
+		,cust_Phone = #{cust_Phone}
+		,cust_Email = #{cust_Email}
+		,cust_Major = #{cust_Major}
+		,EmailVerify = #{EmailVerify}
+		,division = #{division}
 		
 		
-
 		<if test="original_File != null">
 			,original_File = #{original_File}
 		</if>	

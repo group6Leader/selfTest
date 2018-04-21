@@ -232,7 +232,7 @@ $(window).scroll(function(){
 			<li><a href="">Char LIFE</a></li>
 			<li><a href="javascript:map()">지도</a></li>
 			<c:if test="${sessionScope.customer != null}">
-			<li><a href="">My Page</a></li>
+			<li><a href="customer/goFix">My Page</a></li>
 			<li>
 				<a class="codrops-icon codrops-icon-prev">
 					<span>VOC</span>
