@@ -537,7 +537,12 @@ $(function() {
 </script>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/webrtc.css"></c:url>">
 </head>
+
 <body onload="start()">
+<input type="button" id="enterBtn" value="입장">
+<input type="button" id="exitBtn" value="나가기">
+    
+<input type="hidden" id="nickname" value="${sessionScope.customer.cust_Name }">
 <div class="container">
 		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
 			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
@@ -626,24 +631,63 @@ $(function() {
   </div>
   
 <div class="chat">
+  
+  <c:if test="${sessionScope.customer.division == 1 }">
+						 
+					
   <div class="chat-title">
-    <h1>의사이름</h1>
-    <h2>분야</h2>
+    <h1>${sessionScope.customer.cust_Name } </h1>
+    <h2>${sessionScope.customer.cust_Major }</h2>
     <figure class="avatar">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>
+      <img src="download?saved=${sessionScope.customer.saved_File}" /></figure>
   </div>
+  </c:if>
+  
+  <c:if test="${sessionScope.customer.division == 2 }">
+  <div class="chat-title">
+    <h1>${sessionScope.customer.cust_Name } </h1>
+    <h2>${sessionScope.customer.cust_Major }</h2>
+    <figure class="avatar">
+      <img src="download?saved=${sessionScope.customer.saved_File}" />
+      </figure>
+  </div>
+  </c:if>
+  
+	
+    <h1>대화 영역</h1>
+    <div id="chatArea">
+    <div id="chatMessageArea">
+    </div>
+    </div>
+   
+ 
+  <div class="messages">
+    <div class="messages-content"></div>
+  </div>
+  <div class="message-box">
+    <input  id="message" type="text" class="message-input" placeholder="Type message...">
+    <button type="button" class="message-submit" id="sendBtn" value="전송">Send</button>
+  </div>
+ <!--  
   <div class="messages">
     <div class="messages-content"></div>
   </div>
   <div class="message-box">
     <textarea class="message-input" placeholder="Type message..."></textarea>
     <button type="submit" class="message-submit">Send</button>
-  </div>
+  </div> -->
 
 </div>
 <div class="bg"></div>
-<div class="jamaku" id="me"></div>
+<button id="btn-mic" class="off" style="margin-top: 480px; margin-left: 60px " >마이크</button>
+<div class="jamaku" id="me">
+<span class="final" id="final_span"></span>
+<span class="interim" id="interim_span"></span>
+</div>
+
+
 <div class="jamaku" id="you"></div>
+
 
 </body>
 </html>
