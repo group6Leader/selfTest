@@ -184,24 +184,19 @@ $(document).ready(function() {
 	
 	<div style="text-align: left; margin-bottom: 1.1rem;">Photo Upload</div>
     <!-- 파일을 업로드할 영역 -->
+    <div id="filecontainer">
     <div class="fixfileDrop">
-    
     <!-- 업로드된 파일 목록 -->
-    <div class="fixuploadedList">			
-	<img class='photo' alt="" src="download?saved=${login.saved_File}" >
-	</div>
-    </div>		
-			
-			
-  
+    	<div class="fixuploadedList">			
+			<img class='photo' alt="" src="download?saved=${login.saved_File}" >
+		</div>
+	</div>		  
     <!-- 파일을 업로드할 영역 -->
-    <div class="fileDrop">
+    <div class="fileDrop" id="fileDropdiv">
     <!-- 업로드된 파일 목록 -->
-    <div class="uploadedList">
-    
-    
+   		<div class="uploadedList">
    <!-- '<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">' -->
-    
+    	</div>
     </div>
     </div>
 			<input type="hidden">
