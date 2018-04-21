@@ -45,7 +45,7 @@ public class SelfCheckDAO {
 		
 		int result = 0;
 		
-		System.out.println("DAO2");
+//		System.out.println("DAO2");
 		
 		try {
 			SelfCheckMapper mapper = sqlSession.getMapper(SelfCheckMapper.class);

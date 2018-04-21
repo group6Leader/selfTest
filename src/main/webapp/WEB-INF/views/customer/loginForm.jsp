@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>customer/loginForm</title>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	
 	function formCheck() {
 
@@ -30,13 +30,13 @@
 		}
 	}
 	
-	</script>
+	</script> -->
 
 
 </head>
 <body>
 
-	<c:url value="../login" var="loginUrl" />
+	<%-- <c:url value="../login" var="loginUrl" />
 
 	<div class='login'>
 	
@@ -67,7 +67,15 @@
 			<a href='goJoin'>click here</a> to join a new member
 		</div>
 
-	</div>
+	</div> --%>
+	
+	<h1>Login Error</h1>
+	
+	<br><br><br><br><br>
+	
+	Click 
+	<a href="../"> here </a>
+	to go back to the Homepage for login.
 
 </body>
 </html>

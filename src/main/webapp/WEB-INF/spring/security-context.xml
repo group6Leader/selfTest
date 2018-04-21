@@ -13,7 +13,9 @@
 		
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/customer/fixCustomer" access="isAuthenticated()" />
-		<intercept-url pattern="/selfCheck/**" access="hasRole('CUSTOMER')" />
+		<intercept-url pattern="/selfCheck/selfCheckForm" access="hasRole('CUSTOMER')" />
+		<intercept-url pattern="/selfCheck/selfCheckForm2" access="hasRole('CUSTOMER')" />
+		<intercept-url pattern="/selfCheck/selfCheckForm3" access="isAuthenticated()" />
 		<intercept-url pattern="/reservation/**" access="isAuthenticated()" />
 		<intercept-url pattern="/prescription/**" access="hasRole('DOCTOR')" />
 
