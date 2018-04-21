@@ -1,5 +1,7 @@
 package com.seltest.www.map.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,6 @@ import com.seltest.www.vo.HospitalParser;
 @RequestMapping(value = "mapping")
 public class MapController {
 
-	/*@Autowired
-	MapDAO dao;*/
 			
 	@RequestMapping(value="map", method = RequestMethod.GET)
 	public String map(HttpSession session, Model model){		
@@ -38,15 +38,20 @@ public class MapController {
 			latitude = split[0];
 			longitude = split[1].substring(1, split[1].length());
 		}
-		
+		HospitalParser hp = new HospitalParser();
 		Hospital search = new Hospital();
 		search.setxPos(longitude);
 		search.setyPos(latitude);
 		search.setNumOfRows(100);
 		search.setDgsbjtCd("01");
 		search.setRadius(1000);
-		new HospitalParser(search);
-		System.out.println("@@");
+		
+		ArrayList<Hospital>list = hp.HospitalParser1(search);
+		for(int i=0; i<list.size(); i++){
+			Hospital hos = list.get(i);
+			System.out.println(hos);
+		}
+		System.out.println("m~!-@.@-!~m");
 		return "map/currentLocation";
 	}
 	

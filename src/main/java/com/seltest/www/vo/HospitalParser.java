@@ -14,33 +14,24 @@ package com.seltest.www.vo;
 	    public final static String HOSPITAL_URL = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList";
 	    public final static String KEY = "Iw8eUs320SMUJZsV4SYsFHwkm6cxtJS7W1jS%2FgnYg3MYD%2BC9Ch7oWEe%2BO3ZcfEhylj88eCRoZkZvvf5aO1V8IA%3D%3D";
 	    
+	    ArrayList<Hospital> list = null;
 	    Hospital search = null;
 	   	
-	    public HospitalParser() {
-	    	System.out.println("!!!");
-	        try {
-	            apiParserSearch();
-	        } catch (Exception e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	        }
+	    public static void main(String[] args) {
+	        new HospitalParser();
 	    }
 	 	   
-	    public HospitalParser(Hospital getSearch) {
-	    	
+	    public ArrayList<Hospital> HospitalParser1(Hospital getSearch) {	    	
 	    	search = getSearch;
 	    	try {
-	            apiParserSearch();
+	            list = apiParserSearch();
 	        } catch (Exception e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
+	    	return list;
 	    }
-	    /**
-	     * 
-	     * @throws Exception
-	     */
-	    public void apiParserSearch() throws Exception {
+	    
+	    public ArrayList<Hospital> apiParserSearch() throws Exception {
 	    	URL url = new URL(getURLParam(null));
 	        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 	        factory.setNamespaceAware(true);
@@ -98,21 +89,20 @@ package com.seltest.www.vo;
 	 
 	            event_type = xpp.next();
 	        }
-	        printList(list);
+	       // printList(list);
+	        return list;
 	    }
 	    
 	    /**
 	     * 결과 값을 출력
 	     * @param list
 	     */
-	    private Hospital printList(ArrayList<Hospital> list){
+	   /* private void printList(ArrayList<Hospital> list){
 	        Hospital hosInfo = null;
 	    	for(int i=0; i<list.size(); i++){
-	        	hosInfo = list.get(i);	        	
-	            System.out.println("hosInfo: "+hosInfo);
+	        	hosInfo = list.get(i);
 	        } 
-	        return hosInfo;
-	    }
+	    }*/
 	    	    
 	    //검색
 	    private String getURLParam(String searchStr){
@@ -124,10 +114,7 @@ package com.seltest.www.vo;
 	        return url;
 	    }
 	 
-	    public static void main(String[] args) {
-	        // TODO Auto-generated method stub
-	        new HospitalParser();
-	    }
+	   
 	 
 	}
 	
