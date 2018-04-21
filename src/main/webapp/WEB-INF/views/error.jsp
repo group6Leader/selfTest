@@ -9,6 +9,12 @@
 <body>
 
 	<h1>Error</h1>
+	
+	<br><br><br><br><br>
+	
+	Click 
+	<a href="/www"> here </a>
+	to go back to the Homepage.
 
 </body>
 </html>

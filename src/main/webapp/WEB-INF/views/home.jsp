@@ -123,11 +123,6 @@
 
 			success : function(message) {
 				alert(message);
-				
-				if (message == "Email Verification Needed") {
-					alert("!!");
-					return false;
-				}
 			},
 			
 			error : function(e) {
@@ -168,6 +163,12 @@ $(window).scroll(function(){
 		}
 	}
 </script>
+<script type="text/javascript">
+	function map(){
+		location.href="./mapping/map";		
+	}
+</script>
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
@@ -229,8 +230,9 @@ $(window).scroll(function(){
 				</nav>
 			</li>
 			<li><a href="">Char LIFE</a></li>
+			<li><a href="javascript:map()">지도</a></li>
 			<c:if test="${sessionScope.customer != null}">
-			<li><a href="">My Page</a></li>
+			<li><a href="customer/goFix">My Page</a></li>
 			<li>
 				<a class="codrops-icon codrops-icon-prev">
 					<span>VOC</span>
@@ -243,6 +245,11 @@ $(window).scroll(function(){
 				</li>
 			
 			</c:if>
+			
+			<c:if test="${param.error != null}">
+        		<li> 이메일 인증을 하셔야 합니다. </li>
+    		</c:if>
+    		
 			<li>
 				<sec:authorize access="isAnonymous()">
 				<c:if test="${sessionScope.customer == null}">

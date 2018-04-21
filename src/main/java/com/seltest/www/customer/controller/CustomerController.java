@@ -87,6 +87,27 @@ public class CustomerController {
 
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "custDel", method = RequestMethod.POST)
+	public String custDel(String cust_Id) {
+
+		String msg= "!";
+		
+		logger.info("회원삭제중");
+		
+		int check = custDao.delCustomer(cust_Id);
+		
+		
+		if(check != 0){
+			msg = "delete complete";
+		}else{
+			msg = "delete error";
+		}
+		
+		return msg;
+
+	}
+	
 	@RequestMapping(value = "goFix", method = RequestMethod.GET)
 	public String goFix(Customer customer, HttpSession session,Model model ) {
 
@@ -105,27 +126,36 @@ public class CustomerController {
 	
 	@ResponseBody
 	@RequestMapping(value = "custFix", method = RequestMethod.POST)
-	public String compFix(Customer customer) {
+	public String custFix(Customer customer) {
 		
 		
 		String msg= "!";
 		
 		logger.info("회원수정 중입니다.");
+	
+		logger.info(customer+"!");
 		
 		
+		Customer selCustomer = custDao.searchCustomerOne(customer.getCust_Id());
+			
+		Customer fixCustomer = new Customer();
 		
-		Customer fixCustomer = custDao.searchCustomerOne(customer.getCust_Id());
+		logger.info(selCustomer + " 수정할 회원 " );
 		
-		
-		
-		logger.info(fixCustomer + " 수정할 회원 " );
-		
+		fixCustomer.setCust_Num(selCustomer.getCust_Num());
+		fixCustomer.setCust_Id(selCustomer.getCust_Id());
 		fixCustomer.setCust_Pw(customer.getCust_Pw());
 		fixCustomer.setCust_Name(customer.getCust_Name());
+		fixCustomer.setCust_Sex(selCustomer.getCust_Sex());
+		fixCustomer.setCust_Birth(selCustomer.getCust_Birth());
 		fixCustomer.setCust_Address(customer.getCust_Address());
 		fixCustomer.setCust_Phone(customer.getCust_Phone());
 		fixCustomer.setCust_Email(customer.getCust_Email());
 		fixCustomer.setCust_Major(customer.getCust_Major());
+		fixCustomer.setEmailVerify(selCustomer.getEmailVerify());
+		fixCustomer.setDivision(selCustomer.getDivision());
+		
+		logger.info(fixCustomer+"수정");
 		
 		if(fileCust != null){
 			logger.info("사진 넣는중");
@@ -136,11 +166,12 @@ public class CustomerController {
 		
 		int check = custDao.fixCustomer(fixCustomer);
 
+		logger.info(fixCustomer+"수정!");
 		if(check!=0){
-			msg = "회원 수정이 완료 되었습니다.";
+			msg = "fix complete!";
 			
 		}else{
-			msg = "회원 수정이 실패 오류입니다.";
+			msg = "fix error";
 		}
 		
 		
