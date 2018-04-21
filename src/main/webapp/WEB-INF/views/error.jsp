@@ -10,7 +10,11 @@
 
 	<h1>Error</h1>
 	
-	"다시 로그인 해주세요"
+	<br><br><br><br><br>
+	
+	Click 
+	<a href="/www"> here </a>
+	to go back to the Homepage.
 
 </body>
 </html>
