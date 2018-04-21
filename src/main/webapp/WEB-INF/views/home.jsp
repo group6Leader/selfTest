@@ -259,6 +259,13 @@ $(window).scroll(function(){
 						<span>Logout</span>
 					</a>
 					</c:if>
+					
+					<c:if test="${sessionScope.customer == null}">
+					<a class="codrops-icon codrops-icon-drop" id='SignIn'>
+					<span>Login</span>
+					</a>
+					</c:if>
+				
 				</sec:authorize>
 			</li>
 		</ul>
