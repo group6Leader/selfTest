@@ -39,7 +39,8 @@
           	
 			<!-- 맨 첫 화면 문구창  -->
           	<div class="page" id="p1">
-          		<span id="title">아픈 부위를 선택하시고 부위에 따른 증상을 체크해주세요.</span>  
+          		<span id="title">아픈 부위를 선택하시고 부위에 따른 증상을 체크해주세요.</span> <br><br>
+          		<button class="button" onclick="location.href='../'">종료하기</button>
           	</div>
 
 	<!-- 머리 -->
