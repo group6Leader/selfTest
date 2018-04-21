@@ -123,11 +123,6 @@
 
 			success : function(message) {
 				alert(message);
-				
-				if (message == "Email Verification Needed") {
-					alert("!!");
-					return false;
-				}
 			},
 			
 			error : function(e) {
@@ -243,6 +238,11 @@ $(window).scroll(function(){
 				</li>
 			
 			</c:if>
+			
+			<c:if test="${param.error != null}">
+        		<li> 이메일 인증을 하셔야 합니다. </li>
+    		</c:if>
+    		
 			<li>
 				<sec:authorize access="isAnonymous()">
 				<c:if test="${sessionScope.customer == null}">

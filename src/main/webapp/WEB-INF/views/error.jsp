@@ -9,6 +9,8 @@
 <body>
 
 	<h1>Error</h1>
+	
+	"다시 로그인 해주세요"
 
 </body>
 </html>
