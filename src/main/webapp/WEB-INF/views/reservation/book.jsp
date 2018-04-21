@@ -6,15 +6,48 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../resources/css/sideBar.css">
+
+<link rel="canonical" href="https://codepen.io/anon/pen/GxVKLm" />
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css'>
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/book.css"></c:url>">
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.login').hide();
+	$('.gn-icon-menu').hover(function() {
+		$('.gn-menu-wrapper').toggleClass('gn-open-part');
+	});
+
+	$('.gn-menu-wrapper').hover(function() {
+		$(this).toggleClass('gn-open-all');
+	});
+
+});
+</script>
 <script type="text/javascript">
 $(document).ready(function() {var calendar = document.getElementById("calendar-table");
 var gridTable = document.getElementById("table-body");
@@ -36,7 +69,7 @@ function createCalendar(date, side) {
   var yearNum = currentDate.toLocaleString("en-US", {
     year: "numeric"
   });
-  monthTitle.innerHTML = `${monthName} ${yearNum}`;
+  monthTitle.innerHTML = '${monthName} ${yearNum}';
 
   if (side == "left") {
     gridTable.className = "animated fadeOutRight";
@@ -296,32 +329,98 @@ addEventButton.onclick = function (e) {
 }});
 </script>
 
-<script type="text/javascript">
-	if(${jsonList} != null){
+<script type="text/javascript">/* 
+	
+	if(${jsonList != null}){
 		var resList = JSON.parse('${jsonList}');
 		for(var i=0; i<resList.length; i++){
 			alert(resList[i]);
-		}
+		}; */
 </script>
-
-<link rel="canonical" href="https://codepen.io/anon/pen/GxVKLm" />
-<link rel='stylesheet prefetch'
-	href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css'>
-<link rel='stylesheet prefetch'
-	href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-<link rel='stylesheet prefetch'
-	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/book.css"></c:url>">
-
 </head>
 
 <body>
+<div class="container">
+		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
+			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+				<nav class="gn-menu-wrapper" id="gnmenuwrapper">
+					<div class="gn-scroller">
+						<ul class="gn-menu" id="gnmenu">
+							
+							<li class="gn-search-item">
+							<input placeholder="Search" type="search" class="gn-search" id="gnsearch"> 
+								<a class="gn-icon gn-icon-search">
+									<span>Search</span>
+								</a>
+							</li>
+							
+							<li>
+								<a class="gn-icon gn-icon-download">진료</a>
+									<ul class="gn-submenu">
+										<sec:authorize access="isAuthenticated()">
+										<c:if test="${sessionScope.customer.division != 2}">
+										<li>
+											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
+										</li>
+										</c:if>
+										</sec:authorize>
+										<li>
+											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
+										</li>
+										<li>
+											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
+										</li>
+									</ul>
+							</li>
+                           <c:if test="${sessionScope.customer != null}">
+							<li>
+								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
+							</li>
+							</c:if>
+							<li>
+								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
+							</li>
+							<li>
+								<a class="gn-icon gn-icon-archive">WebRTC</a>
+									<ul class="gn-submenu">
+										<li>
+											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
+										</li>
+										
+									</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- /gn-scroller -->
+				</nav>
+			</li>
+			<li><a href="charlife/charlifehome">Char LIFE</a></li>
+			<c:if test="${sessionScope.customer != null}">
+			<li><a href="">My Page</a></li>
+			<li>
+				<a class="codrops-icon codrops-icon-prev">
+					<span>VOC</span>
+				</a>
+			</li>
+			</c:if>
+			<c:if test="${sessionScope.myReservation != null}">
+				<li>
+					${myReservation}
+				</li>
+			
+			</c:if>
+			<li>
+				<sec:authorize access="isAuthenticated()">
+    				<c:if test="${sessionScope.customer != null}">
+					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+						<span>Logout</span>
+					</a>
+					</c:if>
+				
+				</sec:authorize>
+			</li>
+		</ul>
+ 	</div>
 
 	<div class="content-wrapper grey lighten-3">
 		<div class="container">

@@ -3,6 +3,7 @@ body {
   /*font-family: "RobotoRegular";*/
   font-family: 'Roboto', sans-serif;
   font-weigth: 400;
+  background-color: #eee !important;
 }
 
 h3, h4, h5 {
@@ -359,3 +360,29 @@ select::-ms-expand {
 }
 
 
+#gnmenuwrapper{
+	height: 100%;
+}
+#gnmenu li{
+	float: none;
+}
+#gnsearch{
+  position: relative;
+  z-index: 10;
+  padding-left: 60px;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #5f6f81;
+  font-weight: 300;
+  font-family: 'Lato', Arial, sans-serif;
+  cursor: pointer;
+  margin: 0;
+	}
+	
+.container{
+	margin-top: 1rem;
+}
+.side-nav{
+	margin-top: 5rem;
+}

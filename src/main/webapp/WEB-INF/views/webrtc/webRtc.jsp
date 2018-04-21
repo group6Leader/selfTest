@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
 <title>PeerJS - 영상 채팅 예제</title>
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/sideBar.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
 <script type="text/javascript"
 	src="<c:url value="/resources/webrtc/peer.js"></c:url>"></script>
 <script type="text/javascript"
@@ -28,6 +36,17 @@
 	src="<c:url value="/resources/webrtc/webrtc_signal_server.js"></c:url>"></script>
 
 <script>
+$(document).ready(function() {
+	$('.login').hide();
+	$('.gn-icon-menu').hover(function() {
+		$('.gn-menu-wrapper').toggleClass('gn-open-part');
+	});
+
+	$('.gn-menu-wrapper').hover(function() {
+		$(this).toggleClass('gn-open-all');
+	});
+
+});
 var wsocket;
 
 function connect() {
@@ -519,6 +538,85 @@ $(function() {
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/webrtc.css"></c:url>">
 </head>
 <body onload="start()">
+<div class="container">
+		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
+			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+				<nav class="gn-menu-wrapper">
+					<div class="gn-scroller">
+						<ul class="gn-menu">
+							
+							<li class="gn-search-item">
+							<input placeholder="Search" type="search" class="gn-search"> 
+								<a class="gn-icon gn-icon-search">
+									<span>Search</span>
+								</a>
+							</li>
+							
+							<li>
+								<a class="gn-icon gn-icon-download">진료</a>
+									<ul class="gn-submenu">
+										<sec:authorize access="isAuthenticated()">
+										<c:if test="${sessionScope.customer.division != 2}">
+										<li>
+											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
+										</li>
+										</c:if>
+										</sec:authorize>
+										<li>
+											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
+										</li>
+										<li>
+											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
+										</li>
+									</ul>
+							</li>
+                           <c:if test="${sessionScope.customer != null}">
+							<li>
+								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
+							</li>
+							</c:if>
+							<li>
+								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
+							</li>
+							<li>
+								<a class="gn-icon gn-icon-archive">WebRTC</a>
+									<ul class="gn-submenu">
+										<li>
+											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
+										</li>
+										
+									</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- /gn-scroller -->
+				</nav>
+			</li>
+			<li><a href="charlife/charlifehome">Char LIFE</a></li>
+			<c:if test="${sessionScope.customer != null}">
+			<li><a href="">My Page</a></li>
+			<li>
+				<a class="codrops-icon codrops-icon-prev">
+					<span>VOC</span>
+				</a>
+			</li>
+			</c:if>
+			<c:if test="${sessionScope.myReservation != null}">
+				<li>
+					${myReservation}
+				</li>
+			
+			</c:if>
+			<li>
+				<sec:authorize access="isAuthenticated()">
+    				<c:if test="${sessionScope.customer != null}">
+					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+						<span>Logout</span>
+					</a>
+					</c:if>
+				</sec:authorize>
+			</li>
+		</ul>
   <div id="loading_state">
     loading...
   </div>

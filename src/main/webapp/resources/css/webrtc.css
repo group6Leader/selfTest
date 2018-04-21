@@ -38,14 +38,14 @@ html, body {
 	max-width: 30rem;
 	color:white;
 	display: inline-block;
+	position:absolute;
+	top:30rem;
 }
 #me{
-	margin-top:6rem;
-	margin-left:6.2%;
+	left: 8rem;
 }
 #you{
-	margin-top: 6rem;
-	margin-left:10%;
+	left: 33rem;
 }
 
 #chatArea {
@@ -55,12 +55,10 @@ html, body {
 #loading_state{
   width: 26rem;
   height: 10rem;
-  margin-top:20rem;
-  margin-left:20rem;
-  position: relative;
-  left: 0;
+  position: absolute;
+  left: 15rem;
   right: 0;
-  top: 0;
+  top: 20rem;
   bottom: 0;
   text-align: right;
   
