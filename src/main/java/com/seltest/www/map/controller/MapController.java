@@ -21,25 +21,34 @@ public class MapController {
 			
 	@RequestMapping(value="map", method = RequestMethod.GET)
 	public String map(HttpSession session, Model model){		
-				
+			
 		return "map/currentLocation";
 	}
 	
 	@RequestMapping(value="currentLocation", method = RequestMethod.GET)
-	public String currentLocation(HttpSession session, Model model, HttpServletRequest request){		
+	public String currentLocation(HttpSession session, Model model, HttpServletRequest request){
 		
+		//현재 위도와 경도
 		String latitude = request.getParameter("lat");			//위도 : yPos   36.
 		String longitude = request.getParameter("lon");		//경도 : xPos   127.
-		System.out.println("latitude(위도) : " + latitude);		
-		System.out.println("longitude(경도) :" + longitude);
+		if(request.getParameter("clickedLocation") != null){
+			String clickedLocation = request.getParameter("clickedLocation");
+			String clickedLocation2 = clickedLocation.substring(1,clickedLocation.length()-1);
+			String[] split = clickedLocation2.split(",");
+			latitude = split[0];
+			longitude = split[1].substring(1, split[1].length());
+		}
 		
-		Hospital hos = new Hospital();
-		hos.setxPos(longitude);
-		hos.setyPos(latitude);
-		
+		Hospital search = new Hospital();
+		search.setxPos(longitude);
+		search.setyPos(latitude);
+		search.setNumOfRows(100);
+		search.setDgsbjtCd("01");
+		search.setRadius(1000);
+		new HospitalParser(search);
+		System.out.println("@@");
 		return "map/currentLocation";
 	}
-	
 	
 	
 }

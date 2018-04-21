@@ -10,15 +10,16 @@ public class Hospital {
     String yPos;				//병원 y좌표
     int numOfRows;			//한 페이지 결과 수
     int sidoCd;					//시도 코드
-    int clCd;					//종별 코드
-    int dgsbjtCd;				//진료 과목 코드
-	
+    String clCd;					//종별 코드
+    String dgsbjtCd;			//진료 과목 코드
+	int radius;					//반경
+    
     public Hospital() {
 		super();
 	}
 
-	public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
-			int sidoCd, int clCd, int dgsbjtCd) {
+    public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
+			int sidoCd, String clCd, String dgsbjtCd, int radius) {
 		super();
 		this.yadmNm = yadmNm;
 		this.addr = addr;
@@ -30,9 +31,8 @@ public class Hospital {
 		this.sidoCd = sidoCd;
 		this.clCd = clCd;
 		this.dgsbjtCd = dgsbjtCd;
+		this.radius = radius;
 	}
-
-
 
 	public String getYadmNm() {
 		return yadmNm;
@@ -80,8 +80,8 @@ public class Hospital {
 
 	public void setyPos(String yPos) {
 		this.yPos = yPos;
-	}	
-	
+	}
+
 	public int getNumOfRows() {
 		return numOfRows;
 	}
@@ -98,20 +98,28 @@ public class Hospital {
 		this.sidoCd = sidoCd;
 	}
 
-	public int getClCd() {
+	public String getClCd() {
 		return clCd;
 	}
 
-	public void setClCd(int clCd) {
+	public void setClCd(String clCd) {
 		this.clCd = clCd;
 	}
 
-	public int getDgsbjtCd() {
+	public String getDgsbjtCd() {
 		return dgsbjtCd;
 	}
 
-	public void setDgsbjtCd(int dgsbjtCd) {
+	public void setDgsbjtCd(String dgsbjtCd) {
 		this.dgsbjtCd = dgsbjtCd;
+	}
+
+	public int getRadius() {
+		return radius;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
 	}
 
 	@Override

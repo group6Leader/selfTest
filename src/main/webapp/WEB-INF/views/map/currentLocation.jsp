@@ -12,10 +12,13 @@
 	
 </script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <script type="text/javascript">
 	var nav = null;
 	var map;
 	var marker;
+	var clickedLocation;
 	/* 현재 위치(위도/경도)를 받아오기 위한 부분 */
 	$(function() {
 		if (nav == null) {
@@ -41,6 +44,7 @@
 		/* Google Map으로 위도와 경도 초기화 */
 		initialize(latitude, longitude);
 		
+		//현재 좌표값(위도, 경도) 보내기
 		$.ajax({
 		      url:"currentLocation",
 		      type:'GET',
@@ -76,6 +80,20 @@
 		/* 지도에서 마우스 클릭시 마커 생성 */
 		google.maps.event.addListener(map, 'click', function(event) {
 			addMarker(event.latLng);
+			var clickedLocation = event.latLng.toString();
+			
+			$.ajax({
+			      url:"currentLocation",
+			      type:'GET',
+			      data: {clickedLocation: clickedLocation},
+			      success:function(data){
+			    	  
+			      },
+			      error:function(jqXHR, textStatus, errorThrown){
+			    	  
+			      }
+			  });
+			
 		});
 	}
 
@@ -93,7 +111,7 @@
 			map : map
 		});
 		/* 마커 토글바운스 이벤트 걸어주기(마커가 통통 튀도록 애니메이션을 걸어줌) */
-		google.maps.event.addListener(marker, 'click', toggleBounce(marker));
+		google.maps.event.addListener(marker, 'click', toggleBounce(marker));		
 	}
 
 	function toggleBounce(marker) {
@@ -116,15 +134,7 @@
 		
 		</div>
 </div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	</div>
 </body>
