@@ -199,9 +199,25 @@ function start() {
   if (document.location.hash === "" || document.location.hash === undefined) { // you are the Caller
 
     // create the unique token for this call 
-    var token = Date.now()+"-"+"Remote";
-    call_token = "#"+token;
+    
+    var check = $("#check").val();
+    
+  	alert(check);
+  	
+  	if(check == 2){
+  		var token = "12345678910"+"-"+"Remote";
+  	    call_token = "#"+token;
+  	}else if(check == 1){
+  		var token = "12345678910"+"-"+"Remote";
+  		call_token = "#"+token;
+  		alert("환자");
+  	}
+  
+    /* var token = Date.now()+"-"+"Remote";
+    call_token = "#"+token; */
 
+
+    
     // set location.hash to the unique token for this call
     document.location.hash = token;
 
@@ -218,6 +234,8 @@ function start() {
       );
     }
 
+    
+    
     document.title = "You are the Caller";
     document.getElementById("loading_state").innerHTML = "Ready for a call...ask your friend to visit:<br/><br/>"+document.location;
 
@@ -555,17 +573,26 @@ $(function() {
 </head>
 
 <body onload="start()">
+<input type="hidden" value ="${sessionScope.customer.division}" id="check">
+
+
 <c:if test="${sessionScope.customer.division == 2 }">
 	<input type="button" style="position: fixed; margin-top: 200px" value="자기진단 목록" onclick="selfCheckList()">
 </c:if> 
 
 <c:if test="${sessionScope.customer.division == 1 }">
 	<input type="button" style="position: fixed; margin-top: 200px" value="본인 자기진단" onclick="selfCheckOne()">
+	<input type="button" value="원격진료 들어가기" onClick="window.location.reload()" style="margin-top: 200px">    
+	
+	
 </c:if> 
 
 <input type="button" id="enterBtn" value="입장">
 <input type="button" id="exitBtn" value="나가기">
-    
+
+
+<input type="button" value="원격진료 들어가기" onClick="window.location.reload()" style="margin-top: 200px">    
+
 <input type="hidden" id="nickname" value="${sessionScope.customer.cust_Name }">
 <div class="container">
 		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
