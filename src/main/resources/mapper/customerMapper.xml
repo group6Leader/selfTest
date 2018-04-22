@@ -118,6 +118,13 @@
 
 	</select>
 	
+	<select id="cList" resultType="customer">
+		
+		select *
+		from customer
+	
+	</select>
+	
 	
 	<select id="readOne" resultType="customer">
 

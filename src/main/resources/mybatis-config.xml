@@ -8,10 +8,13 @@
 		<typeAlias type="com.seltest.www.vo.Reservation" alias="reservation" />
 		<typeAlias type="com.seltest.www.vo.SelfCheck" alias="selfCheck" />
 		<typeAlias type="com.seltest.www.vo.SelfCheck2" alias="selfCheck2" />
+		<typeAlias type="com.seltest.www.vo.Prescription" alias="prescription" />
+	
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/customerMapper.xml" />
 		<mapper resource="mapper/reservationMapper.xml" />
 		<mapper resource="mapper/selfCheckMapper.xml" />
+		<mapper resource="mapper/prescriptionMapper.xml" />
 	</mappers>
 </configuration>

@@ -1,5 +1,7 @@
 package com.seltest.www.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,6 +108,19 @@ public class CustomerDAO {
 		}
 
 		return result;
+	}
+	
+	public ArrayList<Customer> cList() {
+		ArrayList<Customer> cList = null;
+		
+		try {
+			CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+			cList = mapper.cList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return cList;
 	}
 	
 	public Customer readOne(int cust_Num) {

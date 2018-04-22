@@ -4,14 +4,14 @@ public class Prescription {
 
 	private int pre_Num;
 	private String med_Name;
-	private int med_Amount;
-	private int med_Count;
+	private String med_Amount;
+	private String med_Count;
 	private String med_Content;
 	private int cust_Num;
 	private int pre_Del;
 	
-	public Prescription(int pre_Num, String med_Name, int med_Amount, int med_Count, String med_Content, int cust_Num,
-			int pre_Del) {
+	public Prescription(int pre_Num, String med_Name, String med_Amount, String med_Count, String med_Content,
+			int cust_Num, int pre_Del) {
 		this.pre_Num = pre_Num;
 		this.med_Name = med_Name;
 		this.med_Amount = med_Amount;
@@ -22,7 +22,7 @@ public class Prescription {
 	}
 
 	public Prescription() {
-		super();
+
 	}
 
 	public int getPre_Num() {
@@ -41,19 +41,19 @@ public class Prescription {
 		this.med_Name = med_Name;
 	}
 
-	public int getMed_Amount() {
+	public String getMed_Amount() {
 		return med_Amount;
 	}
 
-	public void setMed_Amount(int med_Amount) {
+	public void setMed_Amount(String med_Amount) {
 		this.med_Amount = med_Amount;
 	}
 
-	public int getMed_Count() {
+	public String getMed_Count() {
 		return med_Count;
 	}
 
-	public void setMed_Count(int med_Count) {
+	public void setMed_Count(String med_Count) {
 		this.med_Count = med_Count;
 	}
 
@@ -87,5 +87,5 @@ public class Prescription {
 				+ ", med_Count=" + med_Count + ", med_Content=" + med_Content + ", cust_Num=" + cust_Num + ", pre_Del="
 				+ pre_Del + "]";
 	}
-	
+
 }
