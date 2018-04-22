@@ -87,16 +87,27 @@
 		google.maps.event.addListener(map, 'click', function(event) {
 			addMarker(event.latLng);
 			var clickedLocation = event.latLng.toString();
-			
+			var hosList = ${hosList};
+			var array = new Array();
+			console.log(hosList);
 			$.ajax({
 			      url:"currentLocation",
 			      type:'GET',
 			      data: {clickedLocation: clickedLocation},
 			      success:function(data){
-			    	  
+			    	  for (let ele of hosList) {
+			    		var yadmNm = ele.yadmNm;
+			    		var addr = ele.addr;
+			    		var hospUrl = ele.hospUrl;
+			    		var telno = ele.telno;
+						var xPos = ele.xPos;
+						var yPos = ele.yPos;
+						console.log(array);
+						console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);
+					  }
 			      },
 			      error:function(jqXHR, textStatus, errorThrown){
-			    	  
+			    	 
 			      }
 			  });
 			

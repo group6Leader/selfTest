@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.seltest.www.vo.Hospital;
 import com.seltest.www.vo.HospitalParser;
+
+import net.sf.json.JSONArray;
 
 
 @Controller
@@ -42,16 +44,21 @@ public class MapController {
 		Hospital search = new Hospital();
 		search.setxPos(longitude);
 		search.setyPos(latitude);
-		search.setNumOfRows(100);
+		search.setNumOfRows(3);
 		search.setDgsbjtCd("01");
 		search.setRadius(1000);
 		
-		ArrayList<Hospital>list = hp.HospitalParser1(search);
-		for(int i=0; i<list.size(); i++){
-			Hospital hos = list.get(i);
+		ArrayList<Hospital>hosList = hp.HospitalParser1(search);		
+		JSONArray jsonArray = JSONArray.fromObject(hosList);
+		
+		session.setAttribute("hosList", jsonArray);
+		
+		for(int i=0; i<hosList.size(); i++){
+			Hospital hos = hosList.get(i);
 			System.out.println(hos);
 		}
 		System.out.println("m~!-@.@-!~m");
+		
 		return "map/currentLocation";
 	}
 	
