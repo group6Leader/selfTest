@@ -37,9 +37,14 @@
 
 
 <script type="text/javascript">
-	function selfCheck() {
+	function selfCheckList() {
 		/* alert('1'); */
-		window.open("../selfCheck/goSelfCheckList", "newWindow", "top=200, left=400, height=700, width=600, resizable=no");
+		window.open("../selfCheck/goSelfCheckList", "newWindow", "top=50, left=400, height=700, width=700, resizable=no");
+	}
+	
+	function selfCheckOne() {
+		/* alert('1'); */
+		window.open("../selfCheck/goSelfCheck3", "newWindow", "top=50, left=400, height=700, width=700, resizable=no");
 	}
 </script>
 
@@ -551,7 +556,11 @@ $(function() {
 
 <body onload="start()">
 <c:if test="${sessionScope.customer.division == 2 }">
-	<input type="button" style="position: fixed; margin-top: 200px" value="자기진단 목록" onclick="selfCheck()">
+	<input type="button" style="position: fixed; margin-top: 200px" value="자기진단 목록" onclick="selfCheckList()">
+</c:if> 
+
+<c:if test="${sessionScope.customer.division == 1 }">
+	<input type="button" style="position: fixed; margin-top: 200px" value="본인 자기진단" onclick="selfCheckOne()">
 </c:if> 
 
 <input type="button" id="enterBtn" value="입장">

@@ -141,7 +141,7 @@ public class SelfCheckController {
 		ArrayList<SelfCheck> sList = selfCheckDAO.sList();
 		
 		model.addAttribute("sList", sList);
-	
+		
 		return "selfCheck/selfCheckList";
 	}
 	

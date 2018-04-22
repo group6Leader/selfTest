@@ -200,13 +200,15 @@ $(window).scroll(function(){
 										</c:if>
 										</sec:authorize>
 										
+										<sec:authorize access="hasRole('CUSTOMER')">
 										<li>
 											<a class="gn-icon gn-icon-photoshop" href="selfCheck/goSelfCheck3">자가진단 결과</a>
 										</li>
+										</sec:authorize>
 										
-										<li>
+										<!-- <li>
 											<a class="gn-icon gn-icon-photoshop" href="selfCheck/goSelfCheckList">자가진단 리스트</a>
-										</li>
+										</li> -->
 										
 										<li>
 											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>

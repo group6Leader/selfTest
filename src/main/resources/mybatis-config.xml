@@ -7,6 +7,7 @@
 		<typeAlias type="com.seltest.www.vo.Customer" alias="customer" />
 		<typeAlias type="com.seltest.www.vo.Reservation" alias="reservation" />
 		<typeAlias type="com.seltest.www.vo.SelfCheck" alias="selfCheck" />
+		<typeAlias type="com.seltest.www.vo.SelfCheck2" alias="selfCheck2" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/customerMapper.xml" />

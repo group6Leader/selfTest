@@ -62,10 +62,18 @@
 	
 	</select>
 	
-	<select id="sList" resultType="selfCheck">
+	<select id="sList" resultType="selfCheck2">
 	
 		select *
-		from selfCheck
+		<!-- cust_Num
+		, cust_Id
+		, cust_Name
+		, cust_Birth
+		, selfCheck_Num
+		, to_char(outbreak_Day, 'YYYY-MM-DD') as outbreak_Day -->
+		
+		from selfCheck, customer
+		where selfCheck.cust_Num = customer.cust_Num
 	
 	</select>
 	

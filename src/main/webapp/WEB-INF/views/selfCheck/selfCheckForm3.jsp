@@ -91,7 +91,9 @@ table {
 			<div class="cell row header">최종수정일</div>
 			<div class="cell">${s.outbreak_Day }</div>
 		</div>
-	</div>
+	</div> <br>
+	
+	<button onclick="location.href='../'" style="margin-left: 30px;">홈으로</button>
 
 </body>
 </html>
