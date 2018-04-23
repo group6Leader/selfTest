@@ -29,9 +29,9 @@ public class PrescriptionController {
 	PrescriptionDAO prescriptionDAO;
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.GET)
-	public String cList(Model model) {
+	public String prescriptionList(Model model) {
 		
-		System.out.println("cList");
+		System.out.println("prescriptionList");
 		
 		ArrayList<Customer> cList = customerDAO.cList();
 		
@@ -41,9 +41,9 @@ public class PrescriptionController {
 	}
 		
 	@RequestMapping(value="readOne", method = RequestMethod.GET)
-	public String readOne(int cust_Num, Model model) {
+	public String prescriptionForm(int cust_Num, Model model) {
 		
-		System.out.println("readOne");
+		System.out.println("prescriptionForm");
 		
 		System.out.println(cust_Num);
 		Customer c = customerDAO.readOne(cust_Num);
@@ -69,15 +69,24 @@ public class PrescriptionController {
 		
 		/*prescription.getMed_Name();*/
 		
-		String[] array = prescription.getMed_Name().split(",");
+		/*String[] array = prescription.getMed_Name().split(",");
 		
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);			
-		}
+		}*/
+		
+		return "redirect: ../";
+	}
+	
+	@RequestMapping(value = "prescriptionResult", method = RequestMethod.GET)
+	public String prescriptionResult2() {
+		
+		System.out.println("prescriptionResult2");
+		
+		
+		
+		
 		
 		return "prescription/prescriptionResult";
 	}
-	
-	
-
 }

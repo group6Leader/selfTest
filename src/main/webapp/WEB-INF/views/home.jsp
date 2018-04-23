@@ -206,31 +206,35 @@ $(window).scroll(function(){
 										</li>
 										</sec:authorize>
 										
-										<!-- <li>
-											<a class="gn-icon gn-icon-photoshop" href="selfCheck/goSelfCheckList">자가진단 리스트</a>
-										</li> -->
 										
 										<li>
 											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
 										</li>
 									</ul>
 							</li>
-                           <c:if test="${sessionScope.customer != null}">
+                           	
+                           	<c:if test="${sessionScope.customer != null}">
 							<li>
 								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
 							</li>
 							</c:if>
+							
 							<li>
-								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
+								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전 작성</a>
 							</li>
+							
+							<li>
+								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionResult">처방전</a>
+							</li>
+							
 							<li>
 								<a class="gn-icon gn-icon-archive">WebRTC</a>
-									<ul class="gn-submenu">
-										<li>
-											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
-										</li>
-										
-									</ul>
+								<ul class="gn-submenu">
+									<li>
+										<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
+									</li>
+									
+								</ul>
 							</li>
 						</ul>
 					</div>
