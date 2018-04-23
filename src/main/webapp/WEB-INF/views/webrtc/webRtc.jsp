@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
 <title>PeerJS - 영상 채팅 예제</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 	rel="stylesheet">
@@ -587,23 +588,18 @@ $(function() {
 <input type="hidden" value ="${sessionScope.customer.division}" id="check">
 
 
-<%-- <c:if test="${sessionScope.customer.division == 2 }">
-	<input type="button" style="position: fixed; margin-top: 200px" value="자기진단 목록" onclick="selfCheckList()">
+<c:if test="${sessionScope.customer.division == 2 }">
+	<button class="selfcheck" onclick="selfCheckList()"><i class="fas fa-clipboard"></i></button>
 	
 </c:if> 
 
 <c:if test="${sessionScope.customer.division == 1 }">
-	<input type="button" style="position: fixed; margin-top: 200px" value="본인 자기진단" onclick="selfCheckOne()">
-	<input type="button" value="원격진료 들어가기1" onClick="window.location.reload()" style="margin-top: 200px">    
-	
-	
-</c:if>  --%>
-
-<input type="button" id="enterBtn" value="입장" style="margin-top: 100px">
-<input type="button" id="exitBtn" value="나가기">
+	<button class="selfcheck" onclick="selfCheckOne()"><i class="fas fa-clipboard"></i></button>
+</c:if> 
 
 
-<input type="button" value="원격진료 들어가기2" onClick="window.location.reload()" style="margin-top: 200px">    
+
+<button onClick="window.location.reload()" id="webRtcbtn"><i class='fas fa-play'></i></button>    
 
 <input type="hidden" id="nickname" value="${sessionScope.customer.cust_Name }">
 <div class="container">
@@ -694,9 +690,13 @@ $(function() {
     <video id="local_video"></video>
   </div>
    <div class="chat">
+   <div class="chat_controll">
+  <input type="button" id="enterBtn" value="      ">
+<input type="button" id="exitBtn" value="      ">
+</div>
   <div class="chat_header">
   <img class="chat_avatar"src="download?saved=${sessionScope.customer.saved_File}" />
-  ${sessionScope.customer.cust_Name }
+  ${sessionScope.customer.cust_Name }    
   <div class="chat_status">${sessionScope.customer.cust_Major }</div>
   </div>
  <div class="chat_s">
@@ -716,16 +716,14 @@ $(function() {
   </div> -->
 
 <div class="bg"></div>
-<button id="btn-mic" class="off" style="margin-top: 480px; margin-left: 60px " >마이크</button>
-
+<button id="btn-mic" class="off"><i class="fas fa-microphone"></i></button>
 <div class="jamaku" id="me">
 <span class="final" id="final_span"></span>
 <span class="interim" id="interim_span"></span>
 </div>
 
 
-<div class="jamaku" id="you">
-</div>
+<div class="jamaku" id="you"></div>
 
-</body>
-</html>
+
+</body></html>

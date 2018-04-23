@@ -45,17 +45,76 @@ body {
 	width: 27.5%;
 	background: rgba(200, 200, 200, 0.7);
 }
+#webRtcbtn{
+	border-radius:10rem;
+	font-size: 3rem;
+	padding: 10px 15px 10px 22px;
+	border:0;
+	outline:0;
+	background-color:#80d2b8;
+	position: absolute;
+	left: 2rem;
+	top:13rem;
+	transition: box-shadow 1s;
+}
+#webRtcbtn:HOVER{
+	border: 3px 3px solid rgba(255,255,255,0.3);
+	box-shadow: 
+		0 0 10px #fff, 
+		0 0 30px #fff, 
+		0 0 50px #fff, 
+		0 0 70px #fff,
+		0 0 90px #fff;
+}
+#btn-mic {
+	border-radius:10rem;
+	font-size: 3rem;
+	padding: 10px 20.5px 10px 20.5px;
+	border:0;
+	outline:0;
+	position: absolute;
+	left: 2rem;
+	top:20rem;
+	transition: box-shadow 1s;
+}
+#btn-mic:hover{
+	box-shadow: 
+		0 0 10px #fff, 
+		0 0 30px #fff, 
+		0 0 50px #fff, 
+		0 0 70px #fff,
+		0 0 90px #fff;
+}
+.selfcheck{
+	border-radius:10rem;
+	font-size: 3rem;
+	padding: 10px 20px 10px 20px;
+	border:0;
+	outline:0;
+	position: absolute;
+	left: 2rem;
+	top:27rem;
+	background-color: #ead368;
+	transition: box-shadow 1s;
+}
+.selfcheck:hover{
+	box-shadow: 
+		0 0 10px #fff, 
+		0 0 30px #fff, 
+		0 0 50px #fff, 
+		0 0 70px #fff,
+		0 0 90px #fff;
+}
+
 /* 요기 밑에는 채팅 */
 .jamaku {
 	background-color: rgba(0, 0, 0, 0.6);
-	width: 20rem;
 	height: 2.3rem;
-	max-height: 2.3rem;
-	max-width: 30rem;
 	color: white;
 	display: inline-block;
 	position: absolute;
 	top: 30rem;
+	font-size: 16px;
 }
 
 #me {
@@ -141,9 +200,13 @@ body {
 	
 }
 
+
 /* 요기 밑에는 마이크자막 */
-#content {
-	
+.on{
+	background-color: #9ad56a;
+}
+.off{
+	background-color: #ff6c6c;
 }
 
 /*--------------------
@@ -169,26 +232,30 @@ Body
 	left:32rem;
 	top:3rem;
 	font-family: 'Montserrat', sans-serif;
-	border-radius: 3px;
+	opacity: 0.8;
 }
-
-.chat_header {
-	padding: 15px;
-	border-bottom: 4px solid teal;
+.chat_controll{
 	background: #f0f0f0;
-	color: teal
+	margin-top: 2px;
+}
+.chat_header {
+	font-size:18px;
+	padding: 1px 10px 13px 13px;
+	border-bottom: 4px solid #0984b9;
+	background: #f0f0f0;
+	color: #0984b9;
 }
 
 .chat_status {
 	font-size: 11px;
-	margin: 4px 0 -4px
+	margin: 4px 0 -4px;
 }
 
 .chat_avatar {
 	float: right;
 	width: 42px;
 	border-radius: 50%;
-	margin-top: -3px
+	margin-top: -3px;
 }
 
 .chat_input {
@@ -196,7 +263,7 @@ Body
 	bottom: 0;
 	width:100%;
 	padding: 10px 4px 6px;
-	background: #c8c8c8
+	background: #c8c8c8;
 }
 
 .chat_text {
@@ -205,7 +272,7 @@ Body
 	margin-left:5px;
 	box-sizing: border-box;
 	vertical-align: top;
-	font-family: 'Montserrat', sans-serif
+	font-family: 'Montserrat', sans-serif;
 }
 
 .chat_submit {
@@ -214,48 +281,91 @@ Body
 	box-sizing: border-box;
 	margin: 0 5px 5px 0;
 	vertical-align: top;
-	border: 1px solid teal;
+	border: 1px solid #0984b9;
 	cursor: pointer;
-	color: teal;
+	color: #0984b9;
 	border-radius: 0 8px 8px 0;
-	transition: all .4s
+	transition: all .4s;
 }
 
 .chat_submit:hover {
-	background: teal;
-	color: #fff
+	background: #0984b9;
+	color: #fff;
 }
 
 .chat_bubble-1, .chat_bubble-2 {
 	padding: 10px;
 	margin: 13px 17px;
 	width: 200px;
-	font-size: 14px
+	font-size: 14px;
 }
 
 .chat_bubble-1 {
-	border: 1px solid teal;
-	border-radius: 12px 12px 12px 0
+	background-color:rgba(128, 191, 255,0.5);
+	border-radius: 12px 12px 12px 0;
+	animation: text 0.3s ease-in;
+	color:black;
 }
 
 .chat_bubble-2 {
-	border: 1px solid grey;
 	border-radius: 12px 12px 0 12px;
-	margin-left: 160px
+	background-color:rgba(200,200,200,0.5);
+	margin-left: 160px;
+	animation: text2 0.3s ease-in-out;
+	color:black;
 }
 
 .chat_s {
 	max-height:76%;
 	overflow: scroll;
-	padding: 15px 0 0
+	padding: 15px 0 0;
 }
 
 ::-webkit-scrollbar {
-	width: 13px
+	width: 13px;
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 0 4px #fff;
-	background: rgba(0, 0, 0, 0.2)
+	background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes text{
+	0%{
+		opacity: 0;
+		margin-left: 27px;
+		}
+	100%{
+		opacity: 1;
+		margin-left: 17px;
+		}
+}
+@keyframes text2{
+	0%{
+		opacity: 0;
+		margin-left: 150px;
+		}
+	100%{
+		opacity: 1;
+		margin-left: 160px;
+		}
+}
+
+#enterBtn{
+	background-color: #8ce855;
+	border:0;
+	outline:0;
+	border-radius: 4rem;
+	margin-left: 20rem;
+	margin-top: 3px;
+	margin-bottom: 2px;
+	color:white;
+}
+#exitBtn{
+	background-color: #f56247;
+	border:0;
+	outline:0;
+	border-radius: 4rem;
+	color:white;
 }
