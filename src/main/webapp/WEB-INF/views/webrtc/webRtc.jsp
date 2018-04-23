@@ -86,14 +86,19 @@ function onClose(evt) {
 }
 
 function send() {
+	
 	var nickname = $("#nickname").val();
 	var msg = $("#message").val();
 	wsocket.send("msg:"+nickname+":" + msg);
 	$("#message").val("");
 }
 
+
 function appendMessage(msg) {
 	$("#chatMessageArea").append(msg+"<br>");
+	$("#chatMessageArea2").append(msg+"<br>");
+	
+	
 	var chatAreaHeight = $("#chatArea").height();
 	var maxScroll = $("#chatMessageArea").height() - chatAreaHeight;
 	$("#chatArea").scrollTop(maxScroll);
@@ -430,6 +435,11 @@ $(function() {
 	    }
 
 	    finalTranscript = capitalize(finalTranscript);
+	    
+	    var nickname = $("#nickname").val();
+	    wsocket.send("msg:"+nickname+":" + interimTranscript);
+			    
+	    
 	    final_span.innerHTML = linebreak(finalTranscript);
 	    interim_span.innerHTML = linebreak(interimTranscript);
 
@@ -439,41 +449,7 @@ $(function() {
 	  };
 
 	  
-	  function fireCommand(string) {
-	  	if (string.endsWith('레드')) {
-	  		$result.attr('class', 'red');
-	  	} else if (string.endsWith('블루')) {
-	  		$result.attr('class', 'blue');
-	  	} else if (string.endsWith('그린')) {
-	  		$result.attr('class', 'green');
-	  	} else if (string.endsWith('옐로우')) {
-	  		$result.attr('class', 'yellow');
-	  	} else if (string.endsWith('오렌지')) {
-	  		$result.attr('class', 'orange');
-	  	} else if (string.endsWith('그레이')) {
-	  		$result.attr('class', 'grey');
-	  	} else if (string.endsWith('골드')) {
-	  		$result.attr('class', 'gold');
-	  	} else if (string.endsWith('화이트')) {
-	  		$result.attr('class', 'white');
-	  	} else if (string.endsWith('블랙')) {
-	  		$result.attr('class', 'black');
-	  	} else if (string.endsWith('알람') || string.endsWith('알 람')) {
-	  		alert('알람');
-	  	} else if (string.endsWith('노래 켜') || string.endsWith('음악 켜')) {
-	  		audio.play();
-	  		$iconMusic.addClass('visible');
-	  	} else if (string.endsWith('노래 꺼') || string.endsWith('음악 꺼')) {
-	  		audio.pause();
-	  		$iconMusic.removeClass('visible');
-	  	} else if (string.endsWith('볼륨 업') || string.endsWith('볼륨업')) {
-	  		audio.volume += 0.2;
-	  	} else if (string.endsWith('볼륨 다운') || string.endsWith('볼륨다운')) {
-	  		audio.volume -= 0.2;
-	  	} else if (string.endsWith('스피치') || string.endsWith('말해줘') || string.endsWith('말 해 줘')) {
-	  	  textToSpeech($('#final_span').text() || '전 음성 인식된 글자를 읽습니다.');
-	  	}
-	  }
+	 
 
 	  recognition.onerror = function(event) {
 	    console.log('onerror', event);
@@ -578,22 +554,24 @@ $(function() {
 
 <c:if test="${sessionScope.customer.division == 2 }">
 	<input type="button" style="position: fixed; margin-top: 200px" value="자기진단 목록" onclick="selfCheckList()">
+	
 </c:if> 
 
 <c:if test="${sessionScope.customer.division == 1 }">
 	<input type="button" style="position: fixed; margin-top: 200px" value="본인 자기진단" onclick="selfCheckOne()">
-	<input type="button" value="원격진료 들어가기" onClick="window.location.reload()" style="margin-top: 200px">    
+	<input type="button" value="원격진료 들어가기1" onClick="window.location.reload()" style="margin-top: 200px">    
 	
 	
 </c:if> 
 
-<input type="button" id="enterBtn" value="입장">
+<input type="button" id="enterBtn" value="입장" style="margin-top: 100px">
 <input type="button" id="exitBtn" value="나가기">
 
 
-<input type="button" value="원격진료 들어가기" onClick="window.location.reload()" style="margin-top: 200px">    
+<input type="button" value="원격진료 들어가기2" onClick="window.location.reload()" style="margin-top: 200px">    
 
 <input type="hidden" id="nickname" value="${sessionScope.customer.cust_Name }">
+
 <div class="container">
 		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
 			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
@@ -729,7 +707,10 @@ $(function() {
   </div> -->
 
 </div>
-<div class="bg"></div>
+<div class="bg">
+<input  id="message_test" type="text" class="message-input" placeholder="Type message...">
+</div>
+
 <button id="btn-mic" class="off" style="margin-top: 480px; margin-left: 60px " >마이크</button>
 <div class="jamaku" id="me">
 <span class="final" id="final_span"></span>
@@ -738,7 +719,7 @@ $(function() {
 
 
 <div class="jamaku" id="you"></div>
-
-
+<div id="chatMessageArea2">
+</div>
 </body>
 </html>
