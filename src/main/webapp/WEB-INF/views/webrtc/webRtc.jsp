@@ -94,27 +94,45 @@ function send() {
 }
 
 function appendMessage(msg) {
+	
 	var strArray = msg.split("/");
 	var nickname = $("#nickname").val();
 	var i;
-	if(strArray.length==1){
-		/*시스템 메세지*/
-		$(".chat_s").append("<div class='chat_bubble-1'>"+msg+"</div>");
-	}else if(strArray[0]=="jamaku"){
-			for(i=1;i<strArray.length;i++){
-		$("#you").append("<span>"+strArray[i]+"</span>");
+		if(strArray.length==1){
+			/*시스템 메세지*/
+			$(".chat_s").append("<div class='chat_bubble-1'>"+msg+"</div>");
+		}else if(strArray[0]=="jamaku"){
+			if($("#you").html() == ""){			
+			
+			}else{
+				$("#you").empty();
 			}
-	}else{
-		if(strArray[0]==nickname){
-			for(i=1;i<strArray.length;i++){
-				$(".chat_s").append("<div class='chat_bubble-2'>"+strArray[i]+"</div>");
-			}
+				for(i=1;i<strArray.length;i++){
+					$("#you").append(strArray[i]);
+				}	
+
+				setTimeout(function() {
+					
+		    	
+		    		strArray.length == 0;
+
+		    		}, 10000); // 10000ms(3초)가 경과하면 이 함수가 실행됩니다.
+				
+				
+				
 		}else{
-			for(i =1;i<strArray.length;i++){
-				$(".chat_s").append("<div class='chat_bubble-1'>"+strArray[i]+"</div>");
+			if(strArray[0]==nickname){
+				for(i=1;i<strArray.length;i++){
+					$(".chat_s").append("<div class='chat_bubble-2'>"+strArray[i]+"</div>");
+				}
+			}else{
+				for(i =1;i<strArray.length;i++){
+					$(".chat_s").append("<div class='chat_bubble-1'>"+strArray[i]+"</div>");
+				}
 			}
 		}
-	}
+
+	
 	$(".chat_s").scrollTop($('.chat_s').prop('scrollHeight'));
 }
 
@@ -433,7 +451,8 @@ $(function() {
 
 	  recognition.onresult = function(event) {
 	    console.log('onresult', event);
-
+	   
+	    
 	    var interimTranscript = '';
 	    if (typeof(event.results) == 'undefined') {
 	      recognition.onend = null;
@@ -443,23 +462,25 @@ $(function() {
 
 	    for (var i = event.resultIndex; i < event.results.length; ++i) {
 	      if (event.results[i].isFinal) {
-	        finalTranscript += event.results[i][0].transcript;
+	        finalTranscript = event.results[i][0].transcript;
 	      } else {
-	        interimTranscript += event.results[i][0].transcript;
+	        interimTranscript = event.results[i][0].transcript;
 	      }
 	    }
 
-	    finalTranscript = capitalize(finalTranscript);
+	        finalTranscript = capitalize(finalTranscript);
 	    
-	    wsocket.send("msg:"+"jamaku"+"/" + interimTranscript);
-			    
-	    
-	    final_span.innerHTML = linebreak(finalTranscript);
-	    interim_span.innerHTML = linebreak(interimTranscript);
+	
+	        wsocket.send("msg:"+"jamaku"+"/" + finalTranscript);
+	    	final_span.innerHTML = linebreak(finalTranscript);
+	    	interim_span.innerHTML = linebreak(interimTranscript);
 
-	    console.log('finalTranscript', finalTranscript);
-	    console.log('interimTranscript', interimTranscript);
-	    fireCommand(interimTranscript);
+	    	console.log('finalTranscript', finalTranscript);
+	    	console.log('interimTranscript', interimTranscript);
+	    	fireCommand(interimTranscript);
+	    
+	  
+	  
 	  };
 
 	  
@@ -566,7 +587,7 @@ $(function() {
 <input type="hidden" value ="${sessionScope.customer.division}" id="check">
 
 
-<c:if test="${sessionScope.customer.division == 2 }">
+<%-- <c:if test="${sessionScope.customer.division == 2 }">
 	<input type="button" style="position: fixed; margin-top: 200px" value="자기진단 목록" onclick="selfCheckList()">
 	
 </c:if> 
@@ -576,7 +597,7 @@ $(function() {
 	<input type="button" value="원격진료 들어가기1" onClick="window.location.reload()" style="margin-top: 200px">    
 	
 	
-</c:if> 
+</c:if>  --%>
 
 <input type="button" id="enterBtn" value="입장" style="margin-top: 100px">
 <input type="button" id="exitBtn" value="나가기">
@@ -696,14 +717,15 @@ $(function() {
 
 <div class="bg"></div>
 <button id="btn-mic" class="off" style="margin-top: 480px; margin-left: 60px " >마이크</button>
+
 <div class="jamaku" id="me">
 <span class="final" id="final_span"></span>
 <span class="interim" id="interim_span"></span>
 </div>
 
 
-<div class="jamaku" id="you"></div>
-
+<div class="jamaku" id="you">
+</div>
 
 </body>
 </html>
