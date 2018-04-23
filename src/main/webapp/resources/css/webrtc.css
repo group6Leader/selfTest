@@ -1,90 +1,112 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+@import
+	url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
 html, body {
-  padding: 0px;
-  margin: 0px;
-  font-family: "Arial","Helvetica",sans-serif;
-  font-family: 'Open Sans Condensed', sans-serif;
+	padding: 0px;
+	margin: 0px;
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-family: 'Open Sans Condensed', sans-serif;
+	height: 100%;
+}
+body {
+	background: linear-gradient(135deg, #cce5ff, #80bdff);
+	background-size: cover;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	line-height: 1.3;
+	overflow: hidden;
+	color: #010483;
 }
 #loading_state {
-  top: 45%;
-  width: 80%;
-  font-size: 25px;
-  font-family: 'Open Sans Condensed', sans-serif;
+	top: 45%;
+	width: 80%;
+	font-size: 25px;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
+
 #open_call_state {
-  display: none;
+	display: none;
 }
+
 #local_video {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  width: 27.5%;
-  background: rgba(200,200,200,0.7);
+	position: absolute;
+	top: 10%;
+	left: 5%;
+	width: 27.5%;
+	background: rgba(200, 200, 200, 0.7);
 }
+
 #remote_video {
-  position: absolute;
-  top: 10%;
-  left: 40%;
-  width: 27.5%;
-  background: rgba(200,200,200,0.7);
+	position: absolute;
+	top: 10%;
+	left: 40%;
+	width: 27.5%;
+	background: rgba(200, 200, 200, 0.7);
 }
 /* 요기 밑에는 채팅 */
-.jamaku{
-	background-color: rgba(0,0,0,0.6);
-	width:20rem;
-	height:2.3rem;
+.jamaku {
+	background-color: rgba(0, 0, 0, 0.6);
+	width: 20rem;
+	height: 2.3rem;
 	max-height: 2.3rem;
 	max-width: 30rem;
-	color:white;
+	color: white;
 	display: inline-block;
-	position:absolute;
-	top:30rem;
+	position: absolute;
+	top: 30rem;
 }
-#me{
+
+#me {
 	left: 8rem;
 }
-#you{
+
+#you {
 	left: 33rem;
 }
 
 #chatArea {
-	width: 200px; height: 100px; overflow-y: auto; border: 1px solid black;
-	
+	width: 200px;
+	height: 100px;
+	overflow-y: auto;
+	border: 1px solid black;
 }
-#loading_state{
-  width: 26rem;
-  height: 10rem;
-  position: absolute;
-  left: 15rem;
-  right: 0;
-  top: 20rem;
-  bottom: 0;
-  text-align: right;
-  
+
+#loading_state {
+	width: 26rem;
+	height: 10rem;
+	position: absolute;
+	left: 15rem;
+	right: 0;
+	top: 20rem;
+	bottom: 0;
+	text-align: right;
 }
+
 #loading_state:before {
-  content: '';
-  width: 50px;
-  height: 5px;
-  background: #000;
-  opacity: 0.1;
-  position: absolute;
-  top: 59px;
-  left: 0;
-  border-radius: 50%;
-  animation: shadow .5s linear infinite;
+	content: '';
+	width: 50px;
+	height: 5px;
+	background: #000;
+	opacity: 0.1;
+	position: absolute;
+	top: 59px;
+	left: 0;
+	border-radius: 50%;
+	animation: shadow .5s linear infinite;
 }
+
 #loading_state:after {
-  content: '';
-  width: 50px;
-  height: 50px;
-  background: #6297f0;
-  animation: animate .5s linear infinite;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 3px;
+	content: '';
+	width: 50px;
+	height: 50px;
+	background: #6297f0;
+	animation: animate .5s linear infinite;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 3px;
 }
 @keyframes animate {
   17% {
@@ -124,441 +146,116 @@ html, body {
 	
 }
 
-
-
 /*--------------------
 Mixins
 --------------------*/
 /*--------------------
 Body
 --------------------*/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
 
-body {
-  background: linear-gradient(135deg, #cce5ff, #80bdff);
-  background-size: cover;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  line-height: 1.3;
-  overflow: hidden;
-  color: #010483;
-}
-/*--------------------
-Chat
---------------------*/
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+
 .chat {
-  position: absolute;
-  top: 10%;
-  left: 70%;
-  width: 25%;
-  height: 75%;
-  max-height:80%;
-  z-index: 2;
-  overflow: hidden;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+	width: 400px;
+	height: 35rem;
+	box-shadow: 0 0 30px -5px grey;
+	margin: 10vh calc(50vw - 200px);
+	background: #fafafa;
+	position: absolute;
+	left:32rem;
+	top:3rem;
+	font-family: 'Montserrat', sans-serif;
+	border-radius: 3px;
 }
 
-/*--------------------
-Chat Title
---------------------*/
-.chat-title {
-  flex: 0 1 45px;
-  position: relative;
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  text-transform: uppercase;
-  text-align: left;
-  padding: 10px 10px 10px 50px;
-}
-.chat-title h1, .chat-title h2 {
-  font-weight: normal;
-  font-size: 10px;
-  margin: 0;
-  padding: 0;
-}
-.chat-title h2 {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 8px;
-  letter-spacing: 1px;
-}
-.chat-title .avatar {
-  position: absolute;
-  z-index: 1;
-  top: 8px;
-  left: 9px;
-  border-radius: 30px;
-  width: 30px;
-  height: 30px;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  border: 2px solid rgba(255, 255, 255, 0.24);
-}
-.chat-title .avatar img {
-  width: 100%;
-  height: auto;
+.chat_header {
+	padding: 15px;
+	border-bottom: 4px solid teal;
+	background: #f0f0f0;
+	color: teal
 }
 
-/*--------------------
-Messages
---------------------*/
-.messages {
-  flex: 1 1 auto;
-  color: rgba(255, 255, 255, 0.5);
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-.messages .messages-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 101%;
-  width: 100%;
-}
-.messages .message {
-  clear: both;
-  float: left;
-  padding: 6px 10px 7px;
-  border-radius: 10px 10px 10px 0;
-  background: rgba(0, 0, 0, 0.3);
-  margin: 8px 0;
-  font-size: 11px;
-  line-height: 1.4;
-  margin-left: 35px;
-  position: relative;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-.messages .message .timestamp {
-  position: absolute;
-  bottom: -15px;
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.3);
-}
-.messages .message::before {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  border-top: 6px solid rgba(0, 0, 0, 0.3);
-  left: 0;
-  border-right: 7px solid transparent;
-}
-.messages .message .avatar {
-  position: absolute;
-  z-index: 1;
-  bottom: -15px;
-  left: -35px;
-  border-radius: 30px;
-  width: 30px;
-  height: 30px;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  border: 2px solid rgba(255, 255, 255, 0.24);
-}
-.messages .message .avatar img {
-  width: 100%;
-  height: auto;
-}
-.messages .message.message-personal {
-  float: right;
-  color: #fff;
-  text-align: right;
-  background: linear-gradient(120deg, #248A52, #257287);
-  border-radius: 10px 10px 0 10px;
-}
-.messages .message.message-personal::before {
-  left: auto;
-  right: 0;
-  border-right: none;
-  border-left: 5px solid transparent;
-  border-top: 4px solid #257287;
-  bottom: -4px;
-}
-.messages .message:last-child {
-  margin-bottom: 30px;
-}
-.messages .message.new {
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-animation: bounce 500ms linear both;
-          animation: bounce 500ms linear both;
-}
-.messages .message.loading::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  content: '';
-  display: block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  z-index: 2;
-  margin-top: 4px;
-  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-  border: none;
-  -webkit-animation-delay: .15s;
-          animation-delay: .15s;
-}
-.messages .message.loading span {
-  display: block;
-  font-size: 0;
-  width: 20px;
-  height: 10px;
-  position: relative;
-}
-.messages .message.loading span::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  content: '';
-  display: block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  z-index: 2;
-  margin-top: 4px;
-  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-  margin-left: -7px;
-}
-.messages .message.loading span::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  content: '';
-  display: block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  z-index: 2;
-  margin-top: 4px;
-  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-  margin-left: 7px;
-  -webkit-animation-delay: .3s;
-          animation-delay: .3s;
+.chat_status {
+	font-size: 11px;
+	margin: 4px 0 -4px
 }
 
-/*--------------------
-Message Box
---------------------*/
-.message-box {
-  flex: 0 1 40px;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  position: relative;
-}
-.message-box .message-input {
-  background: none;
-  border: none;
-  outline: none !important;
-  resize: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 11px;
-  height: 17px;
-  margin: 0;
-  padding-right: 20px;
-  width: 265px;
-}
-.message-box textarea:focus:-webkit-placeholder {
-  color: transparent;
-}
-.message-box .message-submit {
-  position: absolute;
-  z-index: 1;
-  top: 9px;
-  right: 10px;
-  color: #fff;
-  border: none;
-  background: #5eaeff;
-  font-size: 10px;
-  text-transform: uppercase;
-  line-height: 1;
-  padding: 6px 10px;
-  border-radius: 10px;
-  outline: none !important;
-  transition: background .2s ease;
-}
-.message-box .message-submit:hover {
-  background: #0080ff;
+.chat_avatar {
+	float: right;
+	width: 42px;
+	border-radius: 50%;
+	margin-top: -3px
 }
 
-/*--------------------
-Custom Srollbar
---------------------*/
-.mCSB_scrollTools {
-  margin: 1px -3px 1px 0;
-  opacity: 0;
+.chat_input {
+	position: absolute;
+	bottom: 0;
+	width:100%;
+	padding: 10px 4px 6px;
+	background: #c8c8c8
 }
 
-.mCSB_inside > .mCSB_container {
-  margin-right: 0px;
-  padding: 0 10px;
+.chat_text {
+	width: 80%;
+	padding: 10px;
+	margin-left:5px;
+	box-sizing: border-box;
+	vertical-align: top;
+	font-family: 'Montserrat', sans-serif
 }
 
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+.chat_submit {
+	width: 15%;
+	padding: 10px;
+	box-sizing: border-box;
+	margin: 0 5px 5px 0;
+	vertical-align: top;
+	border: 1px solid teal;
+	cursor: pointer;
+	color: teal;
+	border-radius: 0 8px 8px 0;
+	transition: all .4s
 }
 
-/*--------------------
-Bounce
---------------------*/
-@-webkit-keyframes bounce {
-  0% {
-    -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  4.7% {
-    -webkit-transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  9.41% {
-    -webkit-transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  14.11% {
-    -webkit-transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  18.72% {
-    -webkit-transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  24.32% {
-    -webkit-transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  29.93% {
-    -webkit-transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  35.54% {
-    -webkit-transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  41.04% {
-    -webkit-transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  52.15% {
-    -webkit-transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  63.26% {
-    -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  85.49% {
-    -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  100% {
-    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-}
-@keyframes bounce {
-  0% {
-    -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  4.7% {
-    -webkit-transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  9.41% {
-    -webkit-transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  14.11% {
-    -webkit-transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  18.72% {
-    -webkit-transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  24.32% {
-    -webkit-transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  29.93% {
-    -webkit-transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  35.54% {
-    -webkit-transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  41.04% {
-    -webkit-transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  52.15% {
-    -webkit-transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  63.26% {
-    -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  85.49% {
-    -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-  100% {
-    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-}
-@-webkit-keyframes ball {
-  from {
-    -webkit-transform: translateY(0) scaleY(0.8);
-            transform: translateY(0) scaleY(0.8);
-  }
-  to {
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
-  }
-}
-@keyframes ball {
-  from {
-    -webkit-transform: translateY(0) scaleY(0.8);
-            transform: translateY(0) scaleY(0.8);
-  }
-  to {
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
-  }
+.chat_submit:hover {
+	background: teal;
+	color: #fff
 }
 
+.chat_bubble-1, .chat_bubble-2 {
+	padding: 10px;
+	margin: 13px 17px;
+	width: 200px;
+	font-size: 14px
+}
 
+.chat_bubble-1 {
+	border: 1px solid teal;
+	border-radius: 12px 12px 12px 0
+}
+
+.chat_bubble-2 {
+	border: 1px solid grey;
+	border-radius: 12px 12px 0 12px;
+	margin-left: 160px
+}
+
+.chat_s {
+	max-height:76%;
+	overflow: scroll;
+	padding: 15px 0 0
+}
+
+::-webkit-scrollbar {
+	width: 13px
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 0 4px #fff;
+	background: rgba(0, 0, 0, 0.2)
+}

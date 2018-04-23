@@ -85,24 +85,39 @@ function onClose(evt) {
 	appendMessage("연결을 끊었습니다.");
 }
 
+
 function send() {
-	
 	var nickname = $("#nickname").val();
 	var msg = $("#message").val();
-	wsocket.send("msg:"+nickname+":" + msg);
-	$("#message").val("");
+	wsocket.send("msg:"+nickname+"/"+msg);
+	$(".chat_text").val("");
 }
-
 
 function appendMessage(msg) {
-	$("#chatMessageArea").append(msg+"<br>");
-	$("#chatMessageArea2").append(msg+"<br>");
-	
-	
-	var chatAreaHeight = $("#chatArea").height();
-	var maxScroll = $("#chatMessageArea").height() - chatAreaHeight;
-	$("#chatArea").scrollTop(maxScroll);
+	var strArray = msg.split("/");
+	var nickname = $("#nickname").val();
+	var i;
+	if(strArray.length==1){
+		/*시스템 메세지*/
+		$(".chat_s").append("<div class='chat_bubble-1'>"+msg+"</div>");
+	}else if(strArray[0]=="jamaku"){
+			for(i=1;i<strArray.length;i++){
+		$("#you").append("<span>"+strArray[i]+"</span>");
+			}
+	}else{
+		if(strArray[0]==nickname){
+			for(i=1;i<strArray.length;i++){
+				$(".chat_s").append("<div class='chat_bubble-2'>"+strArray[i]+"</div>");
+			}
+		}else{
+			for(i =1;i<strArray.length;i++){
+				$(".chat_s").append("<div class='chat_bubble-1'>"+strArray[i]+"</div>");
+			}
+		}
+	}
+	$(".chat_s").scrollTop($('.chat_s').prop('scrollHeight'));
 }
+
 
 $(document).ready(function() {
 	$('#message').keypress(function(event){
@@ -436,8 +451,7 @@ $(function() {
 
 	    finalTranscript = capitalize(finalTranscript);
 	    
-	    var nickname = $("#nickname").val();
-	    wsocket.send("msg:"+nickname+":" + interimTranscript);
+	    wsocket.send("msg:"+"jamaku"+"/" + interimTranscript);
 			    
 	    
 	    final_span.innerHTML = linebreak(finalTranscript);
@@ -571,7 +585,6 @@ $(function() {
 <input type="button" value="원격진료 들어가기2" onClick="window.location.reload()" style="margin-top: 200px">    
 
 <input type="hidden" id="nickname" value="${sessionScope.customer.cust_Name }">
-
 <div class="container">
 		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
 			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
@@ -651,6 +664,7 @@ $(function() {
 				</sec:authorize>
 			</li>
 		</ul>
+		</div>
   <div id="loading_state">
     loading...
   </div>
@@ -658,45 +672,19 @@ $(function() {
     <video id="remote_video"></video>
     <video id="local_video"></video>
   </div>
-  
-<div class="chat">
-  
-  <c:if test="${sessionScope.customer.division == 1 }">
-						 
-					
-  <div class="chat-title">
-    <h1>${sessionScope.customer.cust_Name } </h1>
-    <h2>${sessionScope.customer.cust_Major }</h2>
-    <figure class="avatar">
-      <img src="download?saved=${sessionScope.customer.saved_File}" /></figure>
+   <div class="chat">
+  <div class="chat_header">
+  <img class="chat_avatar"src="download?saved=${sessionScope.customer.saved_File}" />
+  ${sessionScope.customer.cust_Name }
+  <div class="chat_status">${sessionScope.customer.cust_Major }</div>
   </div>
-  </c:if>
-  
-  <c:if test="${sessionScope.customer.division == 2 }">
-  <div class="chat-title">
-    <h1>${sessionScope.customer.cust_Name } </h1>
-    <h2>${sessionScope.customer.cust_Major }</h2>
-    <figure class="avatar">
-      <img src="download?saved=${sessionScope.customer.saved_File}" />
-      </figure>
+ <div class="chat_s">
   </div>
-  </c:if>
-  
-	
-    <h1>대화 영역</h1>
-    <div id="chatArea">
-    <div id="chatMessageArea">
-    </div>
-    </div>
-   
- 
-  <div class="messages">
-    <div class="messages-content"></div>
+  <div class="chat_input">
+    <input id="message" placeholder="Type here..." class="chat_text">
+    <button type="button" id="sendBtn" class="chat_submit fa fa-send" value="전송">전송</button>
   </div>
-  <div class="message-box">
-    <input  id="message" type="text" class="message-input" placeholder="Type message...">
-    <button type="button" class="message-submit" id="sendBtn" value="전송">Send</button>
-  </div>
+</div>  
  <!--  
   <div class="messages">
     <div class="messages-content"></div>
@@ -706,11 +694,7 @@ $(function() {
     <button type="submit" class="message-submit">Send</button>
   </div> -->
 
-</div>
-<div class="bg">
-<input  id="message_test" type="text" class="message-input" placeholder="Type message...">
-</div>
-
+<div class="bg"></div>
 <button id="btn-mic" class="off" style="margin-top: 480px; margin-left: 60px " >마이크</button>
 <div class="jamaku" id="me">
 <span class="final" id="final_span"></span>
@@ -719,7 +703,7 @@ $(function() {
 
 
 <div class="jamaku" id="you"></div>
-<div id="chatMessageArea2">
-</div>
+
+
 </body>
 </html>
