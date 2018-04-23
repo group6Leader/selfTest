@@ -48,6 +48,8 @@ package com.seltest.www.vo;
 	        String telno = null;	        
 	        String xPos = null;
 	        String yPos = null;
+	        String sgguCdNm = null;
+	        String sidoCd = null;
 	        while (event_type != XmlPullParser.END_DOCUMENT) {
 	            if (event_type == XmlPullParser.START_TAG) {
 	                tag = xpp.getName();
@@ -73,17 +75,25 @@ package com.seltest.www.vo;
 	                if(tag.equals("YPos")){
 	                	yPos = xpp.getText();
 	                }
+	                if(tag.equals("sgguCdNm")){
+	                	 sgguCdNm = xpp.getText();
+	                }
+	                if(tag.equals("sidoCd")){
+	                	sidoCd = xpp.getText();
+	                }
 	            } else if (event_type == XmlPullParser.END_TAG) {
 	                tag = xpp.getName();
 	                if (tag.equals("item")) {
 	                	Hospital hos = new Hospital();
-	                    hos.setYadmNm(yadmNm);
+	                   hos.setYadmNm(yadmNm);
 	                    hos.setAddr(addr);
 	                    hos.setHospUrl(hospUrl);
 	                    hos.setTelno(telno);
 	                    hos.setxPos(xPos);
 	                    hos.setyPos(yPos);
-	                    list.add(hos);
+	                    /*hos.setSgguCdNm(sgguCdNm);
+	                    hos.setSidoCd(sidoCd);*/
+	                	list.add(hos);
 	                }
 	            }
 	 
@@ -107,7 +117,7 @@ package com.seltest.www.vo;
 	    //검색
 	    private String getURLParam(String searchStr){
 	    	String url = HOSPITAL_URL+"?ServiceKey="+KEY+"&numOfRows="+search.getNumOfRows()+"&dgsbjtCd="+search.getDgsbjtCd()+
-	        		"&xPos="+search.getxPos()+"&yPos="+search.getyPos()+"&radius="+search.getRadius();
+	        		"&xPos="+search.getxPos()+"&yPos="+search.getyPos()+"&radius="+search.getRadius()/*+"&setSidoCd="+search.sidoCd*/;
 	        if(url != null){
 	        url = url+"";	        
 	        }

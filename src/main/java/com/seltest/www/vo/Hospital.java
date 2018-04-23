@@ -9,17 +9,18 @@ public class Hospital {
     String xPos;				//병원 x좌표
     String yPos;				//병원 y좌표
     int numOfRows;			//한 페이지 결과 수
-    int sidoCd;					//시도 코드
-    String clCd;					//종별 코드
+    String sidoCd;					//시도 코드
+    String clCd;				//종별 코드
     String dgsbjtCd;			//진료 과목 코드
 	int radius;					//반경
+    String sgguCdNm;		//시군구코드
     
     public Hospital() {
 		super();
-	}
+	}   
 
-    public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
-			int sidoCd, String clCd, String dgsbjtCd, int radius) {
+	public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
+			String sidoCd, String clCd, String dgsbjtCd, int radius, String sgguCdNm) {
 		super();
 		this.yadmNm = yadmNm;
 		this.addr = addr;
@@ -32,6 +33,7 @@ public class Hospital {
 		this.clCd = clCd;
 		this.dgsbjtCd = dgsbjtCd;
 		this.radius = radius;
+		this.sgguCdNm = sgguCdNm;
 	}
 
 	public String getYadmNm() {
@@ -90,11 +92,11 @@ public class Hospital {
 		this.numOfRows = numOfRows;
 	}
 
-	public int getSidoCd() {
+	public String getSidoCd() {
 		return sidoCd;
 	}
 
-	public void setSidoCd(int sidoCd) {
+	public void setSidoCd(String sidoCd) {
 		this.sidoCd = sidoCd;
 	}
 
@@ -122,10 +124,22 @@ public class Hospital {
 		this.radius = radius;
 	}
 
+	
+	
+	public String getSgguCdNm() {
+		return sgguCdNm;
+	}
+
+	public void setSgguCdNm(String sgguCdNm) {
+		this.sgguCdNm = sgguCdNm;
+	}
+
 	@Override
 	public String toString() {
 		return "Hospital [yadmNm=" + yadmNm + ", addr=" + addr + ", hospUrl=" + hospUrl + ", telno=" + telno + ", xPos="
-				+ xPos + ", yPos=" + yPos + "]";
-	}      
+				+ xPos + ", yPos=" + yPos + ", sgguCdNm=" + sgguCdNm + "]";
+	}
+
+	
 	
 }
