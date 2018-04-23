@@ -3,10 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/selfCheckList.css"></c:url>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>prescription/prescriptionList</title>
-	<style type="text/css">
+<!-- 	<style type="text/css">
 		table {
 			border: 1px solid black;
 			border-collapse: collapse;
@@ -17,14 +18,14 @@
 			background-color: #F0F8FF;	
 		}
 		
-	</style>
+	</style> -->
 
 </head>
 <body>
 
 	<h1>환자 명단</h1>
 	
-	<table border="1">
+	<%-- <table border="1">
 		<tr>
 			<th> 고객번호 </th>
 			<th> 아이디 </th>
@@ -44,7 +45,37 @@
 	
 		</c:forEach>	
 		
-	</table>
+	</table> --%>
+	
+	<div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th> 고객번호 </th>
+          <th> 아이디 </th>
+          <th> 이름 </th>
+          <th> 생년월일 </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+   
+        <c:forEach var="vo" items="${cList }">
+		
+		<tr>
+			<th> ${vo.cust_Num } </th>
+			<th> ${vo.cust_Id } </th>
+			<th> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </th>
+			<th> ${vo.cust_Birth } </th>
+		</tr>
+	
+		</c:forEach>
+      </tbody>
+    </table>
+  </div>
 	
 	
 

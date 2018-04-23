@@ -3,9 +3,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>prescription/readOne</title>
 <link rel="stylesheet" type="text/css"  href="../resources/css/prescription.css">
+	
+	<script type="text/javascript">
+	window.onload = function() {
+		/* alert(333); */
+		var add = document.getElementById('add');
+		add.onclick = function() {
+			/* alert('1'); */
+			
+			var div = document.createElement('div');
+	        div.innerHTML = document.getElementById('pre_set').innerHTML;
+	        document.getElementById('field').appendChild(div);
+	        
+	        return false;
+		}
+	}
+		
+		/* function add() {
+			alert('1');
+			
+			var div = document.createElement('div');
+	        div.innerHTML = document.getElementById('pre_set').innerHTML;
+	        document.getElementById('field').appendChild(div);
+	        
+	        return false;
+		} */
+		
+		function remove(obj){
+			alert(3);
+	        // obj.parentNode 를 이용하여 삭제
+	        document.getElementById('field').removeChild(obj.parentNode);
+	    }
+		
+		function checkForm() {
+			alert('2');
+			var med_Name = getElementById('med_Name').value;
+			var med_Amount = getElementById('med_Amount').value;
+			var med_Count = getElementById('med_Count').value;
+			var med_Content = getElementById('med_Content').value;
+			
+			if (med_Name = ''){
+				alert('555');
+				return false;
+			}
+			
+			console.log(med_Name);
+			console.log(med_Amount);
+			console.log(med_Count);
+			console.log(med_Content);
+			
+			return false;
+		}
+		
+	</script>
+
 </head>
 <body>
 
@@ -14,7 +69,7 @@
 			<div class="register">
 				<!-- <h3>No.처방전번호:  </h3>  -->
 				<h3 style="text-align: right;">날짜 ${date }</h3>
-				<form id="reg-form" action="goPrescription" method="post">
+				<form id="reg-form" action="goPrescription" method="post" onsubmit="return checkForm()">
 					
 					<!-- 환자 -->
 					<div>
@@ -77,44 +132,38 @@
 						<span class="or">처방약</span>
 					</div>
 					
-					<button style="margin-left: 410px;">+</button>
-					
-					<div>
+								
+					<div id="pre_set">
 						<label for="medicineName">처방의약품</label> 
-						<input type="text" id="medicineName" name="med_Name" placeholder="처방의약품" />
-					</div>
+						<input type="text" id="med_Name" name="med_Name" placeholder="처방의약품" />
 					
-					<div>
 						<label for="medicineVolume">1회 투여량</label> 
-						<input type="text" id="medicineVolume" name="med_Amount" placeholder="1회 투여량(1정)" />
-					</div>
+						<input type="text" id="med_Amount" name="med_Amount" placeholder="1회 투여량(1정)" />
 					
-					<div>
 						<label for="medicineCount">하루 투여횟수</label>
 						<!--  <input type="text" id="medicineCount" placeholder="1회"/> -->
-						<select id="medicineCount" name="med_Count">
+						<select id="med_Count" name="med_Count">
 							<option>하루 1번</option>
 							<option>하루 2번</option>
 							<option>하루 3번</option>
 						</select>
-					</div>
 					
-					<div>
 						<label for="medicineDay">복용법</label> 
-						<input type="text" id="medicineContent" name="med_Content" placeholder="복용법" />
+						<input type="text" id="med_Content" name="med_Content" placeholder="복용법" />
 					</div>
+
+					<div id="field"></div>
 					
-					<div>
-						<label></label>
-						<input type="submit" value="Print Out" id="create-account" class="button" />
-					</div>
+					<button id="add" style="margin-left: 400px;"> 추가 </button> <br><br>
+
+					<label></label>
+					<input type="submit" value="Print Out" id="create-account" class="button" />
+					
 				</form>
 
 			</div>
 		</div>
 	</div>
-
-
 
 </body>
 </html>

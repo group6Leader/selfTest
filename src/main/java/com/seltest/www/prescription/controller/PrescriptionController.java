@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.seltest.www.dao.CustomerDAO;
+import com.seltest.www.dao.PrescriptionDAO;
 import com.seltest.www.vo.Customer;
 import com.seltest.www.vo.Prescription;
 
@@ -23,6 +24,9 @@ public class PrescriptionController {
 	
 	@Autowired
 	CustomerDAO customerDAO;
+	
+	@Autowired
+	PrescriptionDAO prescriptionDAO;
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.GET)
 	public String cList(Model model) {
@@ -35,25 +39,6 @@ public class PrescriptionController {
 		
 		return "prescription/prescriptionList";
 	}
-
-	/*@RequestMapping(value="goPrescription", method = RequestMethod.GET)
-	public String prescriptionForm(HttpSession session) {
-		
-		System.out.println("PrescriptionForm");
-		
-		Customer c = (Customer)session.getAttribute("customer");
-		System.out.println(c);
-		
-		return "prescription/prescriptionForm";
-	}*/
-	
-	/*@RequestMapping(value="goPrescription", method = RequestMethod.POST)
-	public String prescriptionResult() {
-		
-		System.out.println("PrescriptionResult");
-		
-		return "";
-	}*/
 		
 	@RequestMapping(value="readOne", method = RequestMethod.GET)
 	public String readOne(int cust_Num, Model model) {
@@ -65,17 +50,11 @@ public class PrescriptionController {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
-//		System.out.println(dateFormat.format(date));
-		
-		/*for (int i = 0; i < 1000; i++) {
-			System.out.println(i);
-			i++;
-		}*/
 			
 		model.addAttribute("c", c);
 		model.addAttribute("date", dateFormat.format(date));
 		
-		return "prescription/readOne";
+		return "prescription/prescriptionForm";
 	}
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.POST)
@@ -85,7 +64,20 @@ public class PrescriptionController {
 		
 		System.out.println(prescription);
 		
+		int insert = prescriptionDAO.insertPrescription(prescription);
+		System.out.println("Insert: " + insert);
+		
+		/*prescription.getMed_Name();*/
+		
+		String[] array = prescription.getMed_Name().split(",");
+		
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);			
+		}
+		
 		return "prescription/prescriptionResult";
 	}
+	
+	
 
 }

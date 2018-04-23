@@ -111,8 +111,7 @@
 	</update>
 
 
-	<select id="searchCustomerOne" parameterType="String"
-		resultType="customer">
+	<select id="searchCustomerOne" parameterType="String" resultType="customer">
 
 		select * from customer where cust_Id = #{cust_Id}
 
@@ -122,6 +121,7 @@
 		
 		select *
 		from customer
+		where division = 1
 	
 	</select>
 	

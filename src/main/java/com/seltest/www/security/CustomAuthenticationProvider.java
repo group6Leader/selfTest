@@ -74,7 +74,7 @@ public static final Logger logger = LoggerFactory.getLogger(CustomAuthentication
 		//유저가 가진 권한을 읽어온다.
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>)userInfo.getAuthorities();
 		if(userInfo.getCustomer().getDivision() == 1) {
-			authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER")); // 여기 부분이 이해가 잘 안 되는데
+			authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
 			System.out.println("Role_Customer");
 		}
 		

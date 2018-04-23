@@ -8,7 +8,18 @@
 </head>
 <body>
 
-	<h1>prescriptionResult</h1>
+	<h1>처방전</h1>
+	
+	<table>
+		<tr>
+			<th>  </th>
+	
+	
+	
+	
+	
+	
+	</table>
 	
 	
 
