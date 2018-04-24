@@ -40,12 +40,12 @@
 <script type="text/javascript">
 	function selfCheckList() {
 		/* alert('1'); */
-		window.open("../selfCheck/goSelfCheckList", "newWindow", "top=50, left=400, height=700, width=700, resizable=no");
+		window.open("../selfCheck/goSelfCheckList", "newWindow", "top=50, left=400, height=500, width=1000, resizable=no");
 	}
 	
 	function selfCheckOne() {
 		/* alert('1'); */
-		window.open("../selfCheck/goSelfCheck3", "newWindow", "top=50, left=400, height=700, width=700, resizable=no");
+		window.open("../selfCheck/goSelfCheck3", "newWindow", "top=50, left=400, height=500, width=1000, resizable=no");
 	}
 </script>
 
@@ -240,16 +240,13 @@ function start() {
     // create the unique token for this call 
     
     var check = $("#check").val();
-    
-  	alert(check);
-  	
+     	
   	if(check == 2){
   		var token = "12345678910"+"-"+"Remote";
   	    call_token = "#"+token;
   	}else if(check == 1){
   		var token = "12345678910"+"-"+"Remote";
   		call_token = "#"+token;
-  		alert("환자");
   	}
   
     /* var token = Date.now()+"-"+"Remote";
@@ -276,7 +273,8 @@ function start() {
     
     
     document.title = "You are the Caller";
-    document.getElementById("loading_state").innerHTML = "Ready for a call...ask your friend to visit:<br/><br/>"+document.location;
+    document.getElementById("loading_state").innerHTML = "Ready for a call...ask your friend to visit:<br/><br/>";
+    /*+document.location;*/
 
   } else { // you have a hash fragment so you must be the Callee 
     

@@ -33,16 +33,16 @@ body {
 #local_video {
 	position: absolute;
 	top: 10%;
-	left: 5%;
-	width: 27.5%;
+	left: 13%;
+	width: 22.5%;
 	background: rgba(200, 200, 200, 0.7);
 }
 
 #remote_video {
 	position: absolute;
 	top: 10%;
-	left: 40%;
-	width: 27.5%;
+	left: 37.5%;
+	width: 22.5%;
 	background: rgba(200, 200, 200, 0.7);
 }
 #webRtcbtn{
@@ -109,12 +109,11 @@ body {
 /* 요기 밑에는 채팅 */
 .jamaku {
 	background-color: rgba(0, 0, 0, 0.6);
-	height: 2.3rem;
 	color: white;
 	display: inline-block;
 	position: absolute;
 	top: 30rem;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 #me {
@@ -133,19 +132,20 @@ body {
 }
 
 #loading_state {
-	width: 26rem;
+	width: 35rem;
 	height: 10rem;
 	position: absolute;
-	left: 15rem;
+	left: 16rem;
 	right: 0;
-	top: 20rem;
+	top: 22rem;
 	bottom: 0;
 	text-align: right;
+	font-size: 2rem;
 }
 
 #loading_state:before {
 	content: '';
-	width: 50px;
+	width: 55px;
 	height: 5px;
 	background: #000;
 	opacity: 0.1;

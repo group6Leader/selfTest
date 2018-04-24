@@ -1,82 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/selfCheckList.css"></c:url>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
+	<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-latest.js"></c:url>"></script>
+	<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery.tablesorter.js"></c:url>"></script>
 <title>prescription/prescriptionList</title>
-<!-- 	<style type="text/css">
-		table {
-			border: 1px solid black;
-			border-collapse: collapse;
-			height: 600px; width: 600px;	
-		}
-		
-		body {
-			background-color: #F0F8FF;	
-		}
-		
-	</style> -->
-
+<script type="text/javascript">
+$(function(){
+	  $('#keywords').tablesorter(); 
+	});
+	</script>
 </head>
 <body>
 
+
+	<div id="wrapper">
 	<h1>환자 명단</h1>
-	
-	<%-- <table border="1">
-		<tr>
-			<th> 고객번호 </th>
-			<th> 아이디 </th>
-			<th> 이름 </th>
-			<th> 생년월일 </th>
-			
-		</tr>
-			
-		<c:forEach var="vo" items="${cList }">
-		
-		<tr>
-			<th> ${vo.cust_Num } </th>
-			<th> ${vo.cust_Id } </th>
-			<th> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </th>
-			<th> ${vo.cust_Birth } </th>
-		</tr>
-	
-		</c:forEach>	
-		
-	</table> --%>
-	
-	<div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
+    <table id="keywords" cellpadding="0" cellspacing="0">
       <thead>
         <tr>
-          <th> 고객번호 </th>
-          <th> 아이디 </th>
-          <th> 이름 </th>
-          <th> 생년월일 </th>
+          <th><span>고객번호</span></th>
+          <th><span>아이디 </span></th>
+          <th><span>이름</span></th>
+          <th><span>생년월일</span> </th>
         </tr>
       </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
-   
         <c:forEach var="vo" items="${cList }">
-		
 		<tr>
-			<th> ${vo.cust_Num } </th>
-			<th> ${vo.cust_Id } </th>
-			<th> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </th>
-			<th> ${vo.cust_Birth } </th>
+			<td class="lalign"> ${vo.cust_Num } </td>
+			<td> ${vo.cust_Id } </td>
+			<td> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </td>
+			<td> ${vo.cust_Birth } </td>
 		</tr>
-	
 		</c:forEach>
       </tbody>
     </table>
   </div>
-	
 	
 
 	

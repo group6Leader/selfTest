@@ -8,7 +8,6 @@
 	<link rel="stylesheet" type="text/css"
 		href="<c:url value="/resources/css/selfCheck.css"></c:url>">
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.menu-trigger').trigger('click');
@@ -17,6 +16,7 @@
 			});
 		});
 	</script>
+	
 	
 	<title>selfCheck/selfCheck2</title>
 </head>
@@ -40,7 +40,7 @@
 			<!-- 맨 첫 화면 문구창  -->
           	<div class="page" id="p1">
           		<span id="title">아픈 부위를 선택하시고 부위에 따른 증상을 체크해주세요.</span> <br><br>
-          		<button class="button" onclick="location.href='../'">종료하기</button>
+          		<button class="button button-inline button-large" onclick="location.href='../'">종료하기</button>
           	</div>
 
 	<!-- 머리 -->
