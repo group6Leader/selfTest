@@ -108,27 +108,7 @@
 			cust_Pw.focus();
 			return false;
 		}
-		
-		/* alert(JSON.stringify(cust_Id2.value));
-		alert(JSON.stringify(cust_Pw2.value)); */
-
-		/* $.ajax({
-			type : "post",
-			url : "customer/emailCheck",
-
-			data : {
-				cust_Id : cust_Id2.value,
-				cust_Pw : cust_Pw2.value
-			},
-
-			success : function(message) {
-				alert(message);
-			},
-			
-			error : function(e) {
-				alert('!');
-			}
-		}); */
+	
 	}
 
 	function remoteCheck() {
@@ -215,7 +195,7 @@ $(window).scroll(function(){
                            	
                            	<c:if test="${sessionScope.customer != null}">
 							<li>
-								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
+								<a class="gn-icon gn-icon-cog" href="healthRecord/goHealthRecord">Settings</a>
 							</li>
 							</c:if>
 							

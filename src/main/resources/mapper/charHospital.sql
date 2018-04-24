@@ -49,7 +49,7 @@ create table board (
 );
     
 create table healthrecord(
-	dia_Num		varchar2(20)		primary key
+	dia_Num		number()		primary key
 	, dis_Name		varchar2(100)			not null
 	, final_Diagnosis		varchar2(300)
 	, dis_Category		varchar2(20)		not null
