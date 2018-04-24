@@ -18,7 +18,8 @@
 		<intercept-url pattern="/selfCheck/selfCheckForm3" access="isAuthenticated()" />
 		<intercept-url pattern="/selfCheck/selfCheckList" access="isAuthenticated()" />
 		<intercept-url pattern="/reservation/**" access="isAuthenticated()" />
-		<intercept-url pattern="/prescription/**" access="hasRole('DOCTOR')" />
+		<intercept-url pattern="/prescription/prescriptionForm" access="hasRole('DOCTOR')" />
+		<intercept-url pattern="/prescription/prescriptionIndList" access="isAuthenticated()" />
 
 		<form-login 
 			login-page="/customer/loginForm"

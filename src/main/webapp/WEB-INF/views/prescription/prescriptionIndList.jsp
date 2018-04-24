@@ -22,23 +22,18 @@ $(function(){
 <body>
 
 	<div id="wrapper">
-	<h1>환자 명단</h1>
+	<h1>처방전 리스트</h1>
     <table id="keywords" cellpadding="0" cellspacing="0">
       <thead>
         <tr>
-          <th><span>고객번호</span></th>
-          <th><span>아이디 </span></th>
-          <th><span>이름</span></th>
-          <th><span>생년월일</span> </th>
+          <th><span>처방전번호</span></th>
+          
         </tr>
       </thead>
       <tbody>
-        <c:forEach var="vo" items="${cList }">
+        <c:forEach var="vo" items="${pList }">
 		<tr>
-			<td class="lalign"> ${vo.cust_Num } </td>
-			<td> ${vo.cust_Id } </td>
-			<td> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </td>
-			<td> ${vo.cust_Birth } </td>
+			<th> <a href="prescriptionIndResult?pre_Num=${vo.pre_Num }"> ${vo.pre_Num } </a></th>
 		</tr>
 		</c:forEach>
       </tbody>

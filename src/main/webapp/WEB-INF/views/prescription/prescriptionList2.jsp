@@ -37,7 +37,7 @@ $(function(){
 		<tr>
 			<td class="lalign"> ${vo.cust_Num } </td>
 			<td> ${vo.cust_Id } </td>
-			<td> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </td>
+			<td> <a href="prescriptionIndList?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a> </td>
 			<td> ${vo.cust_Birth } </td>
 		</tr>
 		</c:forEach>

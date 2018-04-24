@@ -40,7 +40,7 @@
 	    }
 		
 		function checkForm() {
-			alert('2');
+			/* alert('2'); */
 			var med_Name = getElementById('med_Name').value;
 			var med_Amount = getElementById('med_Amount').value;
 			var med_Count = getElementById('med_Count').value;
@@ -78,7 +78,7 @@
 					</div>
 
 					<div>
-						<label for="name">환자이름</label> 
+						<label for="name">환자성함</label> 
 						<input type="text" id="name" value="${c.cust_Name }" spellcheck="false" />
 					</div>
 
@@ -103,29 +103,29 @@
 					</div>
 					
 					<div>
-						<label for="hospitalName">병원이름</label> 
-						<input type="text" id="hospitalName" placeholder="병원이름" />
+						<label for="hos_Name">병원이름</label> 
+						<input type="text" id="hos_Name" placeholder="병원이름" />
+					</div>
+
+					<div>
+						<label for="hos_Address">주소</label> 
+						<input type="text" id="hos_Address" spellcheck="false" placeholder="주소" />
 					</div>
 					
 					<div>
-						<label for="phone">전화번호</label> 
-						<input type="text" id="hospitalphone" spellcheck="false" placeholder="전화번호" />
+						<label for="hos_Phone">전화번호</label> 
+						<input type="text" id="hos_Phone" spellcheck="false" placeholder="전화번호" />
 					</div>
 					
-					<div>
+					<!-- <div>
 						<label for="hospitalfax">팩스</label> <input type="text"
 							id="hospitalfax" spellcheck="false" placeholder="팩스" />
-					</div>
+					</div> -->
 
-					<div>
-						<label for="hospitalemail">Email</label> <input type="text"
-							id="hospitalemail" spellcheck="false" placeholder="Email" />
-					</div>
-
-					<div>
+					<!-- <div>
 						<label for="doctorName">의사성함</label> <input type="text"
 							id="doctorName" spellcheck="false" placeholder="의사성함" />
-					</div>
+					</div> -->
 
 					<!-- 처방약 -->
 					<div class="sep">

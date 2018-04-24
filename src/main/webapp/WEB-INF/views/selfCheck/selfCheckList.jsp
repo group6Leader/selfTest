@@ -4,25 +4,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/selfCheckList.css"></c:url>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
+	
 	<script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-latest.js"></c:url>"></script>
+	
 	<script type="text/javascript"
 	src="<c:url value="/resources/js/jquery.tablesorter.js"></c:url>"></script>
+
 <script type="text/javascript">
 $(function(){
 	  $('#keywords').tablesorter(); 
 	});
 </script>
+
+
+
 <title>selfCheck/selfCheckList</title>
+
 </head>
 <body>
 
 <div id="wrapper">
 <h1>자가진단 리스트</h1>
+
+
+
 <table id="keywords" cellspacing="0" cellpadding="0">
+
 	<thead>
 		<tr>
 			<th><span>자가진단번호</span></th>
@@ -33,6 +46,7 @@ $(function(){
 			<th><span>자가진단일</span></th>
 		</tr>
      </thead>
+
      <tbody>
         <c:forEach var="vo" items="${sList }">
 		<tr>

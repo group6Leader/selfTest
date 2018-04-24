@@ -8,6 +8,7 @@
 	
 	<!-- 처방전 -->
 	<insert id="insertPrescription" parameterType="prescription">
+		
 		insert into prescription (
 			pre_Num
 			, med_Name
@@ -25,6 +26,29 @@
 			, #{med_Content}
 			, #{cust_Num}		
 		)
+		
 	</insert>
+	
+	<!-- 한 명의 처방전 리스트 -->
+	<select id="prescriptionIndList" resultType="prescription">
+		
+		select *
+		from prescription
+		where cust_Num = #{cust_Num}
+		order by pre_Num desc
+        <!-- and
+        rownum = 1
+		order by pre_Num desc; -->
+	
+	</select>
+	
+	<!-- 처방전 하나 -->
+	<select id="readOne" resultType="prescription">
+		
+		select *
+		from prescription
+		where pre_Num = #{pre_Num}
+	
+	</select>
 	
 </mapper>

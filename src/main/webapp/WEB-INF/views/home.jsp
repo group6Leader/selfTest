@@ -199,13 +199,21 @@ $(window).scroll(function(){
 							</li>
 							</c:if>
 							
+							<sec:authorize access="hasRole('DOCTOR')">
 							<li>
 								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전 작성</a>
 							</li>
 							
 							<li>
-								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionResult">처방전</a>
+								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionResult">처방전 리스트</a>
 							</li>
+							</sec:authorize>
+							
+							<sec:authorize access="hasRole('CUSTOMER')">
+							<li>
+								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionIndList2">개인 처방전</a>
+							</li>
+							</sec:authorize>
 							
 							<li>
 								<a class="gn-icon gn-icon-archive">WebRTC</a>
