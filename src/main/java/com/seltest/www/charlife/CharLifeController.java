@@ -18,16 +18,35 @@ public class CharLifeController {
 	public String gocharlife() {
 		logger.info("charlife로 이동합니다-c");
 
-		return "charlife/charlife";
-
-	
+		return "charlife/charlife";	
 	}
+	
 	@RequestMapping(value = "gocontent", method = RequestMethod.GET)
 	public String gocharlifeContent() {
 		logger.info("charlifecontent로 이동합니다-c");
 
 		return "charlife/charlifeContent";
-
-	
 	}
+	
+	@RequestMapping(value = "gocontent2", method = RequestMethod.GET)
+	public String gocharlifeContent2() {
+		logger.info("charlifecontent2로 이동합니다-c");
+
+		return "charlife/charlifeContent2";
+	}
+	
+	@RequestMapping(value = "gocontent3", method = RequestMethod.GET)
+	public String gocharlifeContent3() {
+		logger.info("charlifecontent3로 이동합니다-c");
+
+		return "charlife/charlifeContent3";
+	}
+
+	@RequestMapping(value = "gocontent4", method = RequestMethod.GET)
+	public String gocharlifeContent4() {
+		logger.info("charlifecontent4로 이동합니다-c");
+
+		return "charlife/charlifeContent4";
+	}
+	
 }

@@ -24,7 +24,7 @@
 	<div class="wrapper">
 		<div class="row">
 			<div class="cell row header">환자</div>
-			<div class="cell"></div>
+			<!-- <div class="cell"></div> -->
 		</div>
 		
 		<div class="row">
@@ -46,10 +46,10 @@
 		<div class="row">
 			<div class="cell row header"></div>
 			<div class="cell"></div>
-		</div>
+		</div> <br>
 		<div class="row">
 			<div class="cell row header">병원</div>
-			<div class="cell"></div>
+			<!-- <div class="cell"></div> -->
 		</div>
 		<div class="row">
 			<div class="cell row header">병원이름</div>
@@ -64,44 +64,9 @@
 			<div class="cell">${s.overseas_Visits }</div>
 		</div>
 	</div> <br>
-
- 	<%-- <div id="patient"></div>
-	<div>
-	환자성함
-	${c.cust_Name }
-	</div>	
-
-	<div>
-	성별
-	${c.cust_Sex }
-	</div>	
-
-	<div>
-	주소
-	${c.cust_Address }
-	</div>	
 	
-	<div>
-	전화번호
-	${c.cust_Phone }
-	</div>
-	
-	<div id="hospital">
-		<div>
-		병원이름
-		</div>
-
-		<div>
-		주소
-		</div>		
-		
-		<div>
-		전화번호
-		</div>		
-	</div> --%>
-		
-	
-	<table border="1">
+	<p style="margin-left: 100px;"> 처방전 </p>
+	<table border="1" style="margin-left: 100px;">
 		<tr>
 			<th> 처방의약품 </th>
 			<th> 투여량 </th>

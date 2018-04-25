@@ -304,7 +304,7 @@ $(window).scroll(function(){
 			                <div class="carousel-caption">
 		               			<h1>providing</h1>
 		               			<p>highquality service for men &amp; women</p>
-		               			<button>learn more</button>
+		               			<!-- <button>learn more</button> -->
 			                </div>
 			            </div>
 			            <div class="item">
@@ -312,7 +312,7 @@ $(window).scroll(function(){
 			                <div class="carousel-caption">
 		               			<h1>providing</h1>
 		               			<p>highquality service for men &amp; women</p>
-		               			<button>learn more</button>
+		               			<!-- <button>learn more</button> -->
 			                </div>
 			            </div>
 			            <div class="item">
@@ -320,7 +320,7 @@ $(window).scroll(function(){
 			                <div class="carousel-caption">
 		               			<h1>providing</h1>
 		               			<p>highquality service for men &amp; women</p>
-		               			<button>learn more</button>
+		               			<!-- <button>learn more</button> -->
 			                </div>
 			            </div>
 			            <div class="item">
@@ -328,7 +328,7 @@ $(window).scroll(function(){
 			                <div class="carousel-caption">
 		               			<h1>providing</h1>
 		               			<p>highquality service for men &amp; women</p>
-		               			<button>learn more</button>
+		               			<!-- <button>learn more</button> -->
 			                </div>
 			            </div>
 			        </div>
@@ -351,7 +351,8 @@ $(window).scroll(function(){
 		<div class="container">
 			<div class="row">
 				<h2>about us</h2>
-				<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</h4>
+				<h4>Char Hospital has been leading Korea's 21st century's medical industry. We are proud to present for having won the #1 award 10 years consecutively</h4>
+				
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail clearfix">
 						<div class="about-img">
@@ -361,8 +362,8 @@ $(window).scroll(function(){
 							<div class="pentagon-text">
 								<h1>C</h1>
 							</div>
-							<h3>Children’s specialist</h3>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+							<h3>Accurate Care</h3>
+							<p>Char Hospital is known to be Korea's number one for accurate care</p>
 						</div>
 					</div>
 				</div>
@@ -373,11 +374,11 @@ $(window).scroll(function(){
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
-								<h1>W</h1>
+								<h1>S</h1>
 							</div>
 
-							<h3>Children’s specialist</h3>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+							<h3>Best Services</h3>
+							<p>Char Hospital provides patients and their families the best services!</p>
 						</div>
 					</div>
 				</div>
@@ -388,10 +389,10 @@ $(window).scroll(function(){
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
-								<h1>M</h1>
+								<h1>S</h1>
 							</div>
-							<h3>Children’s specialist</h3>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+							<h3>Comfort Space</h3>
+							<p>Char Hospital recorded the best satisfaction among patients</p>
 						</div>
 					</div>
 				</div>
@@ -405,7 +406,7 @@ $(window).scroll(function(){
 		<div class="container">
 			<div class="row">
 				<h2>our services</h2>
-				<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h4>
+				<h4>Char Hospital is progressing forward to become the nation's standards</h4>
 				<div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">

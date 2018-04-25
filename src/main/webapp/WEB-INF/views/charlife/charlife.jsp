@@ -20,7 +20,7 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="charlife/gocharlife">Home</a></li>
+					<li><a href="gocharlife">Home</a></li>
 					<li><a href="gocontent">Generic</a></li>
 					<li><a href="#">Elements</a></li>
 				</ul>
@@ -35,7 +35,8 @@
 			<section id="banner" class="bg-img" data-bg="../../resources/image/banner.jpg">
 				<div class="inner">
 					<header>
-						<h1>This is Road Trip</h1>
+						<h1>This is Char Life</h1>
+						<h3>Meet our Health Infos</h3>
 					</header>
 				</div>
 				<a href="#one" class="more">Learn More</a>
@@ -46,18 +47,22 @@
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Nibh non lobortis mus nibh</h2>
-							<p>01.01.2017</p>
+							<h2>좋은 관계가 건강에 영향을 미친다</h2>
+							<!-- <p>최정석 정신건강의학과 교수</p> -->
 						</header>
 						<div class="content">
-							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+							<p>유전, 환경, 스트레스, 운동, 식습관 등이 건강에 직간접적인 영향을 미친다는 사실은 누구나 잘 알고 있다. <br>
+							그런데 우리가 잘 알지 못하는 흥미로운 사실이 하나 있다. 바로, 좋은 관계가  건강에 영향을 미친다는 것이다. <br>
+							좋은 친구는 체온을 올려준다. 관계란 온도, 언어 등 매우 기본적인 요소에 영향을 주기 때문이다. <br>
+							네덜란드 VU대학교 심리학과 한스 이저먼 교수</p>
 						</div>
+						
 						<footer>
-							<a href="#" class="button alt">Learn More</a>
 						</footer>
+							<a href="gocontent" class="button alt">Learn More</a>
 					</article>
 				</div>
-				<a href="#two" class="more">Learn More</a>
+				<!-- <a href="gocontent" class="more">Learn More</a> -->
 			</section>
 
 		<!-- Two -->
@@ -65,18 +70,19 @@
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Mus elit a ultricies at</h2>
-							<p>12.21.2016</p>
+							<h2>약 안쓰고 아이 키우기?</h2>
+							<!-- <p>12.21.2016</p> -->
 						</header>
 						<div class="content">
-							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+							<p>최근 ‘약 안 쓰고 아이 키우기(이하 안아키)’ 온라인 카페에 대한 논란이 사회적으로 뜨겁다. <br>
+							의학적 치료를 거부하고 검증되지 않은 또는 개인의 경험에 의한 자연주의 치료법으로 아이를 키우는 것이 의료방임에 의한 아동학대로 비춰지고 있기 때문이다.</p>
 						</div>
 						<footer>
-							<a href="generic.html" class="button alt">Learn More</a>
+							<a href="gocontent2" class="button alt">Learn More</a>
 						</footer>
 					</article>
 				</div>
-				<a href="#three" class="more">Learn More</a>
+				<!-- <a href="#three" class="more">Learn More</a> -->
 			</section>
 
 		<!-- Three -->
@@ -84,18 +90,20 @@
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Varius a cursus aliquet</h2>
-							<p>11.11.2016</p>
+							<h2>당신의 눈은 안녕하신가요?</h2>
+							<!-- <p>11.11.2016</p> -->
 						</header>
 						<div class="content">
-							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+							<p>컴퓨터, TV, 스마트폰 등 하루 종일 화면을 보는 일이 많은 현대인들은 안구 건조, 시력 저하 등 눈 건강을 해치는 일이 습관화되어 있다. 
+							방심하기 쉬운 눈의 건강을 위해서는 온풍기 사용도 줄이고 녹색을 많이 보는 일이 중요하며, 눈에 좋은 음식들을 꾸준히 섭취하는 것도 방법이 될 것이다. 
+							지쳐있는 눈을 위한 음식 습관을 제안한다.</p>
 						</div>
 						<footer>
-							<a href="generic.html" class="button alt">Learn More</a>
+							<a href="gocontent3" class="button alt">Learn More</a>
 						</footer>
 					</article>
 				</div>
-				<a href="#four" class="more">Learn More</a>
+				<!-- <a href="#four" class="more">Learn More</a> -->
 			</section>
 
 		<!-- Four -->
@@ -103,14 +111,17 @@
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Luctus blandit mi lectus in nascetur</h2>
-							<p>10.30.2016</p>
+							<h2>스트레스를 줄이는 아주 간단한 습관 7</h2>
+							<p>일러스트</p>
 						</header>
 						<div class="content">
-							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+							<p>하고 있는 일도 많고 앞으로 진행해야할 일도 많은 현대인에게는 ‘해야 할 일’ 목록을 정리하는 것 역시 중요한 업무다. 
+							그런데 해야할 일의 목록을 적고 하나씩 해치우다 보면 또다시 해야할 일이 생겨난다. 우리네 바쁜 삶이 그러니 어쩌겠는가!
+							다음에서 소개하는 내용 역시 해야 할 목록들이다. 그러나 당신의 스트레스를 줄이는 습관들이니 매일 실천해보길 바란다. 
+							작은 실천으로 스트레스도 줄이고 업무의 효율성도 높인다면 마다할 이유가 없지 않은가!</p>
 						</div>
 						<footer>
-							<a href="generic.html" class="button alt">Learn More</a>
+							<a href="gocontent4" class="button alt">Learn More</a>
 						</footer>
 					</article>
 				</div>
