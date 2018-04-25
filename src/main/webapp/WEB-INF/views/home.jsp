@@ -230,7 +230,7 @@ $(window).scroll(function(){
 					<!-- /gn-scroller -->
 				</nav>
 			</li>
-			<li><a href="./">Char LIFE</a></li>
+			<li><a href="charlife/gocharlife">Char LIFE</a></li>
 			<li><a href="javascript:map()">지도</a></li>
 			<c:if test="${sessionScope.customer != null}">
 			<li><a href="customer/goFix">My Page</a></li>
