@@ -193,13 +193,11 @@ $(window).scroll(function(){
 									</ul>
 							</li>
                            	
-                           	<c:if test="${sessionScope.customer != null}">
-							<li>
-								<a class="gn-icon gn-icon-cog" href="healthRecord/goHealthRecord">Settings</a>
-							</li>
-							</c:if>
-							
+                  
 							<sec:authorize access="hasRole('DOCTOR')">
+							<li>
+								<a class="gn-icon gn-icon-cog" href="healthRecord/goHealthRecord">진단서 작성</a>
+							</li>
 							<li>
 								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전 작성</a>
 							</li>
@@ -212,6 +210,9 @@ $(window).scroll(function(){
 							<sec:authorize access="hasRole('CUSTOMER')">
 							<li>
 								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionIndList2">개인 처방전</a>
+							</li>
+							<li>
+								<a class="gn-icon gn-icon-cog" href="healthRecord/goHealthRecord">개인 진단서</a>
 							</li>
 							</sec:authorize>
 							
