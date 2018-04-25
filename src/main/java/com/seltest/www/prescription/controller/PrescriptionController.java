@@ -126,6 +126,27 @@ public class PrescriptionController {
 		
 		String med_Name = p.getMed_Name();
 		String[] med_NameArray = med_Name.split(",");
+		model.addAttribute("med_Name", med_NameArray);
+		
+		/*for (int i = 0; i < med_NameArray.length; i++) {
+			System.out.println(med_NameArray[i]);
+		};*/
+		
+		String med_Amount = p.getMed_Amount();
+		String[] med_AmountArray = med_Amount.split(",");
+		model.addAttribute("med_Amount", med_AmountArray);
+		
+		/*for (int i = 0; i < med_AmountArray.length; i++) {
+			System.out.println(med_AmountArray[i]);
+		};*/
+		
+		String med_Count = p.getMed_Count();
+		String[] med_CountArray = med_Count.split(",");
+		model.addAttribute("med_Count", med_CountArray);
+		
+		String med_Content = p.getMed_Content();
+		String[] med_ContentArray = med_Content.split(",");
+		model.addAttribute("med_Content", med_ContentArray);
 		
 		int cust_Num = (int) session.getAttribute("cust_Num");
 		Customer c = customerDAO.readOne(cust_Num);

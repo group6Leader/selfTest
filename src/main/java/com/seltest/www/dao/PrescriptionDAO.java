@@ -32,17 +32,17 @@ public class PrescriptionDAO {
 		
 		ArrayList<Prescription> prescriptionIndList = null;
 		
-		System.out.println("DAOpres");
+//		System.out.println("DAOpres");
 		
 		try {
-			System.out.println("DAOpres2");
+//			System.out.println("DAOpres2");
 			PrescriptionMapper mapper = sqlSession.getMapper(PrescriptionMapper.class);
 			prescriptionIndList = mapper.prescriptionIndList(cust_Num);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("DAOpres3");
+//		System.out.println("DAOpres3");
 		
 		return prescriptionIndList;
 	}
