@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 
@@ -30,6 +31,21 @@ public class HealthRecordController {
 
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "insertHealthRecord", method = RequestMethod.POST)
+	public String insertHealthRecord() {
+
+		logger.info("HealthRecord insert 중 c");
+
+		
+		
+		
+		
+		
+		
+		return "healthRecord/healthRecordForm";
+
+	}
 	
 	
 }
