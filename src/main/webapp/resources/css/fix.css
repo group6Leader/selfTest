@@ -613,8 +613,8 @@ font-family: 'Open Sans Condensed', sans-serif;
 		background-color:rgba(222,222,222,0.8);
         display: inline-block;
          position: relative;
-        left:15rem;
-        top: 1.8rem;
+        left:4rem;
+        top: -0.2rem;
     }
 .fixfileDrop {
         width:180px;
@@ -624,7 +624,7 @@ font-family: 'Open Sans Condensed', sans-serif;
         display: inline-block;
         position: relative;
         top:-12rem;
-        left:-0.5rem;
+        left:0.3rem;
         
     }
 .photo{

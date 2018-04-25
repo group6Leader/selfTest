@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/join.css"></c:url>">
+	href="<c:url value="/resources/css/healthRecordForm.css"></c:url>">
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
