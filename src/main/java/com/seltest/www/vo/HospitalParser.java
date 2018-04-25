@@ -50,6 +50,7 @@ package com.seltest.www.vo;
 	        String yPos = null;
 	        String sgguCdNm = null;
 	        String sidoCd = null;
+	        String radius = null;
 	        while (event_type != XmlPullParser.END_DOCUMENT) {
 	            if (event_type == XmlPullParser.START_TAG) {
 	                tag = xpp.getName();
@@ -91,6 +92,7 @@ package com.seltest.www.vo;
 	                    hos.setTelno(telno);
 	                    hos.setxPos(xPos);
 	                    hos.setyPos(yPos);
+	                    hos.setRadius(radius);
 	                    /*hos.setSgguCdNm(sgguCdNm);
 	                    hos.setSidoCd(sidoCd);*/
 	                	list.add(hos);

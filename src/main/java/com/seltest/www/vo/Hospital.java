@@ -12,7 +12,7 @@ public class Hospital {
     String sidoCd;					//시도 코드
     String clCd;				//종별 코드
     String dgsbjtCd;			//진료 과목 코드
-	int radius;					//반경
+	String radius;					//반경
     String sgguCdNm;		//시군구코드
     
     public Hospital() {
@@ -20,7 +20,7 @@ public class Hospital {
 	}   
 
 	public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
-			String sidoCd, String clCd, String dgsbjtCd, int radius, String sgguCdNm) {
+			String sidoCd, String clCd, String dgsbjtCd, String radius, String sgguCdNm) {
 		super();
 		this.yadmNm = yadmNm;
 		this.addr = addr;
@@ -116,11 +116,11 @@ public class Hospital {
 		this.dgsbjtCd = dgsbjtCd;
 	}
 
-	public int getRadius() {
+	public String getRadius() {
 		return radius;
 	}
 
-	public void setRadius(int radius) {
+	public void setRadius(String radius) {
 		this.radius = radius;
 	}
 

@@ -27,6 +27,7 @@
 	var markers;
 	var arrX = [];  //lat
 	var arrY = [];  //lng
+	var hosInfoArr = [];	//병원정보 저장 배열
 	var markersArr = [];  //마커 삭제를 위한 배열
 	var clickedLocation;
 	var hosLocation;
@@ -86,49 +87,53 @@
 			map : map
 		});
 		google.maps.event.addListener(marker, 'click', toggleBounce(marker));
-
-		// This event listener will call addMarker() when the map is clicked.
+		
 		/* 지도에서 마우스 클릭시 마커 생성 */
 		google.maps.event.addListener(map, 'click', function(event) {			
 			addMarker(event.latLng);
+			if(Array.isArray(markersArr) & (markersArr.length > 0)){
+				removeMarker();				
+				markersArr = [];
+				
+				alert("삭제하러 들어오나");
+			}	
+			
 			var clickedLocation = event.latLng.toString();
+						
 			$.ajax({
 			      url:"currentLocation",
 			      type:'GET',
 			      data: {clickedLocation: clickedLocation},
 			      dataType:"JSON",
-			      success:function(data){	
-			    				    	  
+			      success:function(data){				    		
+			    	  markersArr = [];
+			    	  arrY = [];
+			    	  arrX = [];
+			    	  
 			    	  for(let ele of data) {
 			    	  		var yadmNm = ele.yadmNm;
 				    		var addr = ele.addr;
 				    		var hospUrl = ele.hospUrl;
 				    		var telno = ele.telno;
 							var xPos = ele.xPos;
-							var yPos = ele.yPos;					
+							var yPos = ele.yPos;							
 							arrX.push(xPos);
 							arrY.push(yPos);
 							//console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);							
 					  }			    	 			    	  
-			    	  
+			    	  			    	  
 			    	  for(var i=0; i<arrY.length; i++){
 				    	  	hosLocation = new google.maps.LatLng(arrY[i], arrX[i]);
-						  	addMarkers(hosLocation);
+				    	  	addMarkers(hosLocation);
 				      }			    	  
 			      },
 			      error:function(jqXHR, textStatus, errorThrown){
-			    	 
+			    	  
 			      }
-			  });
-			
+			  });			
 		});
 	}
 
-	// Add a marker to the map and push to the array.
-	/*
-	 * 이 소스는 마커를 하나만 추가할 수 있도록 구현해놓습니다.
-	 * 개발자분들 재량에 따라 코드를 응용하도록 하세요.  
-	 */
 	function addMarker(location) {
 		/* 기존에 있던 마커 삭제 후 */
 		/*새 마커 추가하기. */ 
@@ -143,14 +148,25 @@
 
 	//검색한 병원 마커들 띠우기
 	function addMarkers(hosLocation){
-		//기존에 있던 마커 삭제 후
-		//새 마커 추가하기
+			
 		markers = new google.maps.Marker({
 			position : hosLocation,
 			map : map
 		});
+		markersArr.push(markers);
 		
 	}	
+	
+	//마커들 지우기
+	function removeMarker() {
+		for ( var i = 0; i < markersArr.length; i++ ) {
+			//infowindow.close();
+			markersArr[i].setMap(null);	
+			delete markersArr[i];
+			alert("!!!!지우기"+markersArr[i]);
+		}
+	}
+	
 	
 	function toggleBounce(marker) {
 		if (marker.getAnimation() != null) {
@@ -194,8 +210,8 @@ $(document).ready(function() {
 		if(radius == null || radius ==""){
 			alert("반경을 설정해주세요.");
 			return false;
-		}
-		return true;		
+		}	
+	}
 </script>
 
 </head>

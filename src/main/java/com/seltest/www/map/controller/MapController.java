@@ -31,7 +31,7 @@ public class MapController {
 	@ResponseBody
 	@RequestMapping(value="currentLocation", method = RequestMethod.GET)
 	public JSONArray currentLocation(HttpSession session, Model model, HttpServletRequest request
-			, String yadmNm, String DgsbjtCd, String sgguCdNm, int radius){
+			, String yadmNm, String DgsbjtCd, String sgguCdNm, String radius){
 		
 		//현재 위도와 경도
 		String latitude = request.getParameter("lat");			//위도 : yPos   36.
@@ -47,16 +47,16 @@ public class MapController {
 		Hospital search = new Hospital();
 		search.setxPos(longitude);
 		search.setyPos(latitude);
-		search.setNumOfRows(1000);
+		search.setNumOfRows(3);
 		search.setDgsbjtCd("49");
 		search.setSidoCd("110000");
-		search.setRadius(3000);
+		search.setRadius("1000");
 		
 		ArrayList<Hospital> hosList = hp.HospitalParser1(search);
 		JSONArray jsonArray = new JSONArray();
+		jsonArray.removeAll(jsonArray);
 		jsonArray.addAll(hosList);
 		System.out.println(jsonArray);		
-		
 		return jsonArray;
 	}
 	
