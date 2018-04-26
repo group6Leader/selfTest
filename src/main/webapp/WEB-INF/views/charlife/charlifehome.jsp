@@ -13,7 +13,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="/www">charHospital<span>by charlife</span></a></div>
+				<div class="logo"><a href="/www"><span>Back To</span> CharHospital</a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -22,16 +22,12 @@
 				<ul class="links">
 					<li><a href="gocharlife">Home</a></li>
 					<li><a href="gocontent">Generic</a></li>
-					<li><a href="#">Elements</a></li>
+					<li><a href="boardList">Board</a></li>
 				</ul>
 			</nav>
 
 		<!-- Banner -->
-		<!--
-			Note: To show a background image, set the "data-bg" attribute below
-			to the full filename of your image. This is used in each section to set
-			the background image.
-		-->
+
 			<section id="banner" class="bg-img" data-bg="../../resources/image/banner.jpg">
 				<div class="inner">
 					<header>

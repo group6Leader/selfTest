@@ -51,9 +51,9 @@ $(function(){
         <c:forEach var="vo" items="${sList }">
 		<tr>
 			<td class="lalign"> ${vo.selfCheck_Num } </td>
-			<td> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Num } </a> </td>
+			<td> ${vo.cust_Num } </td>
 			<td> ${vo.cust_Id } </td>
-			<td> ${vo.cust_Name } </td>
+			<td> <a href="readOne?cust_Num=${vo.cust_Num }"> ${vo.cust_Name } </a></td>
 			<td> ${vo.cust_Birth } </td>
 			<td> ${vo.outbreak_Day } </td>
 		</tr>
@@ -61,12 +61,6 @@ $(function(){
 	</tbody>
 </table>
 </div>
-<!-- follow me template -->
-<!-- <div class="made-with-love">
-  Made with
-  <i>♥</i> by
-  <a target="_blank" href="https://codepen.io/nikhil8krishnan">Nikhil Krishnan</a>
-</div> -->
 	
 </body>
 </html>

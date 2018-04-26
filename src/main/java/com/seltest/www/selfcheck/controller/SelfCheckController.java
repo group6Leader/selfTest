@@ -89,17 +89,6 @@ public class SelfCheckController {
 
 		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
 		System.out.println(s);
-			
-		/*String symptoms = s.getSymptom();
-		System.out.println(symptoms);
-		
-		String[] array = symptoms.split(",");*/
-		
-		/*for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);			
-		}*/
-		
-//		System.out.println(array[]);
 		
 		model.addAttribute("s", s);
 		
@@ -154,21 +143,8 @@ public class SelfCheckController {
 		Customer c = customerDAO.readOne(cust_Num);
 		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
 		
-		
 		System.out.println(s);
 
-		/*Member member = (Member) session.getAttribute("member");
-
-		String cust_Id = member.getCustomer().getCust_Id();
-		int cust_Num = member.getCustomer().getCust_Num();*/
-		
-		/*Customer c = customerDAO.searchCustomerOne(cust_Id);
-		
-		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
-
-		System.out.println(c);
-		System.out.println(s);*/
-		
 		model.addAttribute("c", c);
 		model.addAttribute("s", s);
 		
