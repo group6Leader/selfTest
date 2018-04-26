@@ -1,11 +1,16 @@
 package com.seltest.www.charlife;
 
+import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.seltest.www.dao.BoardDAO;
 import com.seltest.www.vo.Board;
 
 
@@ -13,9 +18,11 @@ import com.seltest.www.vo.Board;
 @RequestMapping(value = "charlife")
 public class CharLifeController {
 
-
 	private static final Logger logger = LoggerFactory.getLogger(CharLifeController.class);
 
+	@Autowired
+	BoardDAO boardDAO;
+	
 	@RequestMapping(value = "gocharlife", method = RequestMethod.GET)
 	public String gocharlife() {
 		logger.info("charlife로 이동합니다-c");
@@ -52,10 +59,17 @@ public class CharLifeController {
 	}
 	
 	@RequestMapping(value = "boardList", method = RequestMethod.GET)
-	public String boardList() {
+	public String boardList(Model model) {
 		
 		logger.info("boardList로 이동");
 		
+		ArrayList<Board> bList = boardDAO.bList();
+		
+		/*for (int i = 0; i < bList.size(); i++) {
+			System.out.println(bList);
+		}*/
+		
+		model.addAttribute("bList", bList);
 		
 		return "charlife/board/list";
 	}
@@ -72,10 +86,73 @@ public class CharLifeController {
 	@RequestMapping(value = "write", method = RequestMethod.POST)
 	public String writeResult(Board board) {
 		
-		logger.info("writeResult로 이동");
+		logger.info("writeResult로 이동");	
+		logger.info("{}", board);
 		
+		int insert = boardDAO.insertBoard(board);
+		logger.info("insert: " + insert);
 		
-		return "redirect: ./";
+		return "redirect: ./boardList";
+	}
+	
+	@RequestMapping(value = "readOne", method = RequestMethod.GET)
+	public String readOne(int board_Num, Model model) {
+		
+		boardDAO.hits(board_Num);
+		logger.info("readOne으로 이동");
+		
+		Board board = boardDAO.readOne(board_Num);
+		
+		logger.info("{}", board);
+		
+		model.addAttribute("b", board);
+		
+		return "charlife/board/readOne";
+	}
+	
+	/*@RequestMapping(value = "write", method = RequestMethod.POST)
+	public String writeResult(Board board) {
+		
+		logger.info("writeResult로 이동");	
+		logger.info("{}", board);
+		
+		int insert = boardDAO.insertBoard(board);
+		logger.info("insert: " + insert);
+		
+		return "redirect: ./boardList";
+	}*/
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int board_Num) {
+		
+		boardDAO.delete(board_Num);
+		logger.info("delete으로 이동");
+		
+		return "redirect: ./boardList";
+	}
+	
+	@RequestMapping(value = "edit", method = RequestMethod.GET)
+	public String editForm(int board_Num, Model model) {
+
+		logger.info("editForm으로 이동");
+		
+		Board board = boardDAO.readOne(board_Num);
+		logger.info("{}", board);
+		
+		model.addAttribute("b", board);
+		
+		return "charlife/board/editForm";
+	}
+	
+	@RequestMapping(value = "edit", method = RequestMethod.POST)
+	public String editResult(Board board) {
+
+		logger.info("editResult으로 이동");
+		logger.info("{}", board);
+		
+		boardDAO.update(board);
+		
+		return "redirect: ./boardList";
 	}
 	
 }

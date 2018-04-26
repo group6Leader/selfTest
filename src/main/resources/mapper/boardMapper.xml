@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="com.seltest.www.dao.BoardMapper">
+
+	<insert id="insertBoard" parameterType="board">
+		insert into board (
+		
+		board_Num
+		, board_Title
+		, hos_Name
+		, content
+		, cust_Num
+		
+		)
+		
+		values(
+		
+		board_Num_sequence.nextval
+		, #{board_Title}
+		, #{hos_Name}
+		, #{content}
+		, 1
+		
+		)
+
+		<!-- private int board_Num;
+				private String board_Title;
+				private String hos_Name;
+				private String content;
+				private String input_Date;
+				private int hits;
+				private int score;
+				private String original_File;
+				private String saved_File;
+				private int cust_Num; -->
+		
+	
+	</insert>
+
+	<select id="bList" resultType="board">
+		
+		select *
+		from board
+	
+	</select>
+	
+	<select id="readOne" resultType="board">
+	
+		select *
+		from board
+		where board_Num = #{board_Num}
+	
+	</select>
+	
+	<update id="hits">
+	
+		update board
+		set hits = hits + 1
+		where board_Num = #{board_Num}
+	
+	</update>
+	
+	<delete id="delete">
+		
+		delete from board
+		where board_Num = #{board_Num}
+	
+	</delete>
+	
+	<update id="update" parameterType="board">
+	
+		update board
+		set board_Title = #{board_Title}
+		, hos_Name = #{hos_Name}
+		, content = #{content}
+		where board_Num = #{board_Num}
+	
+	</update>
+
+
+
+
+</mapper>

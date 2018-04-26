@@ -1,21 +1,26 @@
 package com.seltest.www.prescription.controller;
 
 import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.seltest.www.customer.controller.CustomerController;
 import com.seltest.www.dao.CustomerDAO;
 import com.seltest.www.dao.PrescriptionDAO;
 import com.seltest.www.vo.Customer;
+import com.seltest.www.vo.HealthRecord;
 import com.seltest.www.vo.Prescription;
 
 @Controller
@@ -27,6 +32,7 @@ public class PrescriptionController {
 	
 	@Autowired
 	PrescriptionDAO prescriptionDAO;
+
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.GET)
 	public String prescriptionList(Model model) {
@@ -41,8 +47,6 @@ public class PrescriptionController {
 	@RequestMapping(value="readOne", method = RequestMethod.GET)
 	public String prescriptionForm(int cust_Num, Model model) {
 		
-		System.out.println("readOne");
-		
 		System.out.println(cust_Num);
 		Customer c = customerDAO.readOne(cust_Num);
 		
@@ -56,16 +60,23 @@ public class PrescriptionController {
 	}
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.POST)
-	public String prescriptionResult(Prescription prescription) {
+	public String prescriptionResult(Prescription prescription, HealthRecord healthRecord) {
 		
 		System.out.println("goPrescriptionPost");
 		
 		System.out.println(prescription);
+		System.out.println();
 		
 		int insert = prescriptionDAO.insertPrescription(prescription);
 		System.out.println("Insert: " + insert);
 		
-		return "redirect: ../";
+		return "prescription/prescriptionSuccess";
+	}
+	
+	@RequestMapping(value = "prescriptionSuccess", method = RequestMethod.POST)
+	public String prescriptionSuccess() {
+		
+		return "redirect: prescriptionSuccess";
 	}
 	
 	@RequestMapping(value = "prescriptionResult", method = RequestMethod.GET)
@@ -97,12 +108,12 @@ public class PrescriptionController {
 	}
 	
 	@RequestMapping(value = "prescriptionIndList2", method = RequestMethod.GET)
-	public String prescriptionIndList2(Model model, HttpSession session) {
+	public String prescriptionIndList2(Model model, HttpSession session, int cust_Num) {
 		
 		System.out.println("prescriptionIndList2");
 		
 		Customer c = (Customer) session.getAttribute("customer");
-		int cust_Num = c.getCust_Num();
+		cust_Num = c.getCust_Num();
 		System.out.println(c);
 		
 		ArrayList<Prescription> pList = prescriptionDAO.prescriptionIndList(cust_Num);
@@ -128,17 +139,9 @@ public class PrescriptionController {
 		String[] med_NameArray = med_Name.split(",");
 		model.addAttribute("med_Name", med_NameArray);
 		
-		/*for (int i = 0; i < med_NameArray.length; i++) {
-			System.out.println(med_NameArray[i]);
-		};*/
-		
 		String med_Amount = p.getMed_Amount();
 		String[] med_AmountArray = med_Amount.split(",");
 		model.addAttribute("med_Amount", med_AmountArray);
-		
-		/*for (int i = 0; i < med_AmountArray.length; i++) {
-			System.out.println(med_AmountArray[i]);
-		};*/
 		
 		String med_Count = p.getMed_Count();
 		String[] med_CountArray = med_Count.split(",");

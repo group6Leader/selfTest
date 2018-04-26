@@ -4,16 +4,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>board/writeForm</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../resources/css/charlife.css" />
-	</head>
+<title>board/readOne</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../resources/css/charlife.css" />
+		
+	<script type="text/javascript">
+		function del(board_Num) {
+			alert('1');
+			alert(board_Num);
+			
+			location.href='./delete?board_Num=' + board_Num;
+		}
+		
+		function edit(board_Num) {
+			alert('2');
+			alert(board_Num);
+			
+			location.href='./edit?board_Num=' + board_Num;
+		}
+	
+	</script>
+		
+		
+</head>
+
 	<body class="subpage">
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<diSv class="logo"><a href="gocharlife"><span>Back To</span> CharLife</a></div>
+				<div class="logo"><a href="gocharlife"><span>Back To</span> CharLife</a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 		
@@ -23,24 +43,27 @@
 				<article class="box">
 					
 					
-					<h2>Write Your Comment</h2>
+					<h2>${b.board_Num } Board Message</h2>
 
 					<form action="write" method="post">
 
 						<div class="field half first">
 							<label for="Title">Title</label>
-							<input name="board_Title" id="board_Title" type="text" placeholder="Title">
+							<input name="board_Title" id="board_Title" type="text" value="${b.board_Title }">
 						</div>
 						<div class="field half">
 							<label for="Hospital Name">Hospital Name</label>
-							<input name="hos_Name" id="hos_Name" type="text" placeholder="Hospital Name">
+							<input name="hos_Name" id="hos_Name" type="text" value="${b.hos_Name }">
 						</div>
 						<div class="field">
 							<label for="comment">Comment</label>
-							<textarea name="content" id="content" rows="6" placeholder="Comment"></textarea>
+							<textarea name="content" id="content" rows="6"> ${b.content } </textarea>
 						</div>
 						<ul class="actions">
-							<li><input value="Send" class="button alt" type="submit" style="margin-left: 200px;"></li>
+							<li><input value="Back" class="button alt" type="button" onclick="location.href='./boardList'"></li>
+							<li><input value="Delete" class="button alt" type="button" onclick="del(${b.board_Num})"></li>
+							
+							<li><input value="Edit" class="button alt" type="button" onclick="edit(${b.board_Num})"></li>
 						</ul>
 					</form>
 

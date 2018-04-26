@@ -9,9 +9,10 @@ public class Prescription {
 	private String med_Content;
 	private int cust_Num;
 	private int pre_Del;
+	private String cust_Id; // 의사 ID 
 	
 	public Prescription(int pre_Num, String med_Name, String med_Amount, String med_Count, String med_Content,
-			int cust_Num, int pre_Del) {
+			int cust_Num, int pre_Del, String cust_Id) {
 		this.pre_Num = pre_Num;
 		this.med_Name = med_Name;
 		this.med_Amount = med_Amount;
@@ -19,6 +20,7 @@ public class Prescription {
 		this.med_Content = med_Content;
 		this.cust_Num = cust_Num;
 		this.pre_Del = pre_Del;
+		this.cust_Id = cust_Id;
 	}
 
 	public Prescription() {
@@ -80,12 +82,19 @@ public class Prescription {
 	public void setPre_Del(int pre_Del) {
 		this.pre_Del = pre_Del;
 	}
+	
+	public String getCust_Id() {
+		return cust_Id;
+	}
+
+	public void setCust_Id(String cust_Id) {
+		this.cust_Id = cust_Id;
+	}
 
 	@Override
 	public String toString() {
 		return "Prescription [pre_Num=" + pre_Num + ", med_Name=" + med_Name + ", med_Amount=" + med_Amount
 				+ ", med_Count=" + med_Count + ", med_Content=" + med_Content + ", cust_Num=" + cust_Num + ", pre_Del="
-				+ pre_Del + "]";
+				+ pre_Del + ", cust_Id=" + cust_Id + "]";
 	}
-
 }

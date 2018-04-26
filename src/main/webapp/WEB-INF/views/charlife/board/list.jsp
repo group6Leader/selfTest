@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,15 +28,38 @@
 				</ul>
 			</nav>
 		
-			<section id="post" class="wrapper bg-img" data-bg="banner2.jpg">
+			<section id="post" class="wrapper bg-img">
 				<div class="inner">
 					<article class="box">
 						<header>
 							<h2>Board</h2>
 							<p>Evaluating Hospitals</p>
 						</header>
-						<div class="content">			
-							<button onclick="location.href='write'">Write</button>
+						<div class="content">
+							<%-- <sec:authorize access="isAuthenticated()"> --%>
+							<button onclick="location.href='write'">Write</button> <br><br>
+							<%-- </sec:authorize> --%>
+							
+							<table border="1">
+								<tr>
+									<th style="width: 80px;"> Num </th>
+									<th> Title </th>
+									<th> Hits </th>
+								</tr>
+								
+								<c:forEach items="${bList }" var="vo">
+								<tr>
+									<th> ${vo.board_Num } </th>
+									<th> <a href="readOne?board_Num=${vo.board_Num }"> ${vo.board_Title } </a></th>
+									<%-- <th> <a href="read?boardnum=${vo.boardnum }"> ${vo.title } </a> </th> --%>
+									
+									<th> ${vo.hits } </th>
+								</tr>
+								
+								
+								</c:forEach>
+								
+							</table>
 											
 						</div>
 

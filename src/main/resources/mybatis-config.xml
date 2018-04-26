@@ -10,6 +10,7 @@
 		<typeAlias type="com.seltest.www.vo.SelfCheck2" alias="selfCheck2" />
 		<typeAlias type="com.seltest.www.vo.Prescription" alias="prescription" />
 		<typeAlias type="com.seltest.www.vo.HealthRecord" alias="healthRecord" />
+		<typeAlias type="com.seltest.www.vo.Board" alias="board" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/customerMapper.xml" />
@@ -17,5 +18,6 @@
 		<mapper resource="mapper/selfCheckMapper.xml" />
 		<mapper resource="mapper/prescriptionMapper.xml" />
 		<mapper resource="mapper/healthRecordMapper.xml"/>
+		<mapper resource="mapper/boardMapper.xml"/>
 	</mappers>
 </configuration>

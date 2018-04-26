@@ -33,11 +33,11 @@
 	        return false;
 		} */
 		
-		function remove(obj){
+		/* function remove(obj){
 			alert(3);
 	        // obj.parentNode 를 이용하여 삭제
 	        document.getElementById('field').removeChild(obj.parentNode);
-	    }
+	    } */
 		
 		function checkForm() {
 			/* alert('2'); */
@@ -104,17 +104,22 @@
 					
 					<div>
 						<label for="hos_Name">병원이름</label> 
-						<input type="text" id="hos_Name" placeholder="병원이름" />
+						<input type="text" id="hos_Name" name="hos_Name" placeholder="병원이름" />
 					</div>
 
 					<div>
 						<label for="hos_Address">주소</label> 
-						<input type="text" id="hos_Address" spellcheck="false" placeholder="주소" />
+						<input type="text" id="hos_Address" name="hos_Address" spellcheck="false" placeholder="주소" />
 					</div>
 					
 					<div>
 						<label for="hos_Phone">전화번호</label> 
-						<input type="text" id="hos_Phone" spellcheck="false" placeholder="전화번호" />
+						<input type="text" id="hos_Phone" name="hos_Phone" spellcheck="false" placeholder="전화번호" />
+					</div>
+
+					<div>
+						<label for="doctorName">의사성함</label> 
+						<input type="text" id="cust_Id" name="cust_Id" spellcheck="false" placeholder="의사성함" />
 					</div>
 					
 					<!-- <div>
@@ -122,10 +127,6 @@
 							id="hospitalfax" spellcheck="false" placeholder="팩스" />
 					</div> -->
 
-					<!-- <div>
-						<label for="doctorName">의사성함</label> <input type="text"
-							id="doctorName" spellcheck="false" placeholder="의사성함" />
-					</div> -->
 
 					<!-- 처방약 -->
 					<div class="sep">
