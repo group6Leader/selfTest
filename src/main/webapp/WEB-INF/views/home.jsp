@@ -205,8 +205,8 @@ $(window).scroll(function(){
 											data-toggle="dropdown" role="button" aria-haspopup="true">의사메뉴</a>
 											<ul class="dropdown-menu">
 												<li><a href="healthRecord/goHealthRecord">진단서 작성</a></li>
-												<li><a href="prescription/readOne">처방전 작성</a></li>
-												<li><a href="prescription/goPrescription">처방전 리스트</a></li>
+												<li><a href="prescription/goPrescription">처방전 작성</a></li>
+												<!-- <li><a href="prescription/goPrescription">처방전 리스트</a></li> -->
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="hasRole('CUSTOMER')">
@@ -295,12 +295,33 @@ $(window).scroll(function(){
 							<div class="col-sm-5 col-sm-push-1">
 								<div class="single_about">
 									<div class="separator2"></div>
-									<p>Char Hospital에 오신것을 환영합니다.</p>
-									<p>저희는 원격진료 시스템과 통합병원예약사이트, Char life로 
+									<h3> Welcome to Char Hospital </h3>
+
+									<p> Char Hospital proudly presents our state of the art
+									remote medical treatment system. </p> <br>
+									
+									<h4> How to use </h4>
+											
+									<p> First. Please Make An Account </p>
+									
+									<!-- 자가진단을 하세요 -->
+									<p> Second. Fill out Your Self Assessment </p>
+									
+									<p> Third. Make a Reservation </p>
+									
+									<p> Fourth. Enter Remote Medical Treatment System </p>
+									
+									
+									
+									<!-- Experience the state of the art facilities and services. -->
+								
+									<!-- We specialize on remote medical treatment support system.
+									
+									저희는 원격진료 시스템과 통합병원예약사이트, Char life로 
 										의료적인 도움을 드립니다. 첨단기술과 의학이 만나 더 편리하고
-										섬세하게 여러분은 질병을 케어합니다.				
-										</p>
-									<p>언제 어디서든 간편하게 나를 가장 잘아는 주치의에게 진료를 받으세요.</p>
+										섬세하게 여러분은 질병을 케어합니다.		 -->		
+								
+									<!-- <p>언제 어디서든 간편하게 나를 가장 잘아는 주치의에게 진료를 받으세요.</p> -->
 
 									<a href="" class="btn btn-default">get in touch</a>
 								</div>
