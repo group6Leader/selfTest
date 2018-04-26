@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +10,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>selfCheck/readOne</title>
 
-<style type="text/css">
-body {
-	background-color: #F0F8FF;
-}
+	<style type="text/css">
+	body {
+		background-color: #F0F8FF;
+	}
+	
+	table {
+		border: 1px solid black;
+		border-collapse: collapse;
+		height: 700px;
+		width: 800px;
+	}
+	</style>
 
-table {
-	border: 1px solid black;
-	border-collapse: collapse;
-	height: 700px;
-	width: 800px;
-}
-</style>
+	<script type="text/javascript">
+	function goIndPrescription() {
+		alert(1);
+		/* alert('${c.cust_Num}'); */
+		var cust_Num = document.getElementById('prescription').value;
+		alert(cust_Num);
+		
+		
+		location.href = '../prescription/readOne?cust_Num='+ cust_Num;
+	
+	}
+	
+	</script>
+
 
 </head>
 <body>
@@ -91,9 +107,15 @@ table {
 			<div class="cell row header">최종수정일</div>
 			<div class="cell">${s.outbreak_Day }</div>
 		</div>
-	</div>
+	</div> <br>
 	
-	<button onclick="location.href='./goSelfCheckList'"> Back </button>
+	<button onclick="location.href='./goSelfCheckList'" style="margin-left: 30px;"> Back </button>
+	
+	<sec:authorize access="hasRole('DOCTOR')">
+	<button onclick="goIndPrescription()" > Prescription </button>
+	</sec:authorize>
+	
+	<input type="hidden" id="prescription" value="${s.cust_Num}">
 
 </body>
 </html>

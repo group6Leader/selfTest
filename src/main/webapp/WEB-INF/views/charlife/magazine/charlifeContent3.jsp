@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Generic - Road Trip by TEMPLATED</title>
+<title>CharLife</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../resources/css/charlife.css" />
@@ -13,7 +13,7 @@
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<div class="logo"><a href="gocharlife">Road Trip <span>by TEMPLATED</span></a></div>
+				<div class="logo"><a href="gocharlife"><span>Back To</span> CharLife</a></div>
 				<a href="#menu"><span>Menu</span></a>
 			</header>
 
@@ -42,13 +42,13 @@
 						</header>
 						<div class="content">
 							
-						<img alt="" src="../resources/image/goodfood3.png">
+						<img alt="" src="../resources/image/goodfood4.png" width="870px;">
 							
 						</div>
 						<footer>
 							<ul class="actions">
-								<li><a href="#" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a></li>
-								<li><a href="#" class="button alt icon fa-chevron-right"><span class="label">Next</span></a></li>
+								<li><a href="gocontent2" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a></li>
+								<li><a href="gocontent4" class="button alt icon fa-chevron-right"><span class="label">Next</span></a></li>
 							</ul>
 						</footer>
 					
