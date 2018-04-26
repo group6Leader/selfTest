@@ -204,9 +204,9 @@ $(window).scroll(function(){
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">의사메뉴</a>
 											<ul class="dropdown-menu">
-												<li><a href="">진단서 작성</a></li>
-												<li><a href="">처방전 작성</a></li>
-												<li><a href="">처방전 리스트</a></li>
+												<li><a href="healthRecord/goHealthRecord">진단서 작성</a></li>
+												<li><a href="prescription/readOne">처방전 작성</a></li>
+												<li><a href="prescription/goPrescription">처방전 리스트</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="hasRole('CUSTOMER')">

@@ -2,25 +2,26 @@ package com.seltest.www.vo;
 
 public class HealthRecord {
 
-	int dia_Num;
-	String dis_Name;
-	String final_Diagnosis;
-	String dis_Category;
-	String first_Date;
-	String dia_Date;
-	String care_Opinions;
-	String ect;
-	String usage;
-	String issue_Date;
-	String hos_Name;
-	String hos_Address;
-	String hos_Phone;
-	int cust_Num;
-	int dia_del;
+	private int dia_Num;
+	private String dis_Name;
+	private String final_Diagnosis;
+	private String dis_Category;
+	private String first_Date;
+	private String dia_Date;
+	private String care_Opinions;
+	private String ect;
+	private String usage;
+	private String issue_Date;
+	private String hos_Name;
+	private String hos_Address;
+	private String hos_Phone;
+	private int cust_Num;
+	private int dia_del;
+	private String cust_Id;
 
 	public HealthRecord(int dia_Num, String dis_Name, String final_Diagnosis, String dis_Category, String first_Date,
 			String dia_Date, String care_Opinions, String ect, String usage, String issue_Date, String hos_Name,
-			String hos_Address, String hos_Phone, int cust_Num, int dia_del) {
+			String hos_Address, String hos_Phone, int cust_Num, int dia_del, String cust_Id) {
 		this.dia_Num = dia_Num;
 		this.dis_Name = dis_Name;
 		this.final_Diagnosis = final_Diagnosis;
@@ -36,6 +37,7 @@ public class HealthRecord {
 		this.hos_Phone = hos_Phone;
 		this.cust_Num = cust_Num;
 		this.dia_del = dia_del;
+		this.cust_Id = cust_Id;
 	}
 
 	public HealthRecord() {
@@ -161,13 +163,21 @@ public class HealthRecord {
 		this.dia_del = dia_del;
 	}
 
+	public String getCust_Id() {
+		return cust_Id;
+	}
+
+	public void setCust_Id(String cust_Id) {
+		this.cust_Id = cust_Id;
+	}
+
 	@Override
 	public String toString() {
 		return "HealthRecord [dia_Num=" + dia_Num + ", dis_Name=" + dis_Name + ", final_Diagnosis=" + final_Diagnosis
 				+ ", dis_Category=" + dis_Category + ", first_Date=" + first_Date + ", dia_Date=" + dia_Date
 				+ ", care_Opinions=" + care_Opinions + ", ect=" + ect + ", usage=" + usage + ", issue_Date="
 				+ issue_Date + ", hos_Name=" + hos_Name + ", hos_Address=" + hos_Address + ", hos_Phone=" + hos_Phone
-				+ ", cust_Num=" + cust_Num + ", dia_del=" + dia_del + "]";
+				+ ", cust_Num=" + cust_Num + ", dia_del=" + dia_del +"cust_Id"+cust_Id+"]";
 	}
 
 }

@@ -42,7 +42,7 @@ $( function() {
 		<fieldset class="form-fieldset">
 			<legend class="form-legend">HealthRecord</legend>
 			
-	int dia_Num;
+<!-- 	int dia_Num;
 	String dis_Name; text
 	String final_Diagnosis; text	
 	String dis_Category; radio - select;
@@ -56,7 +56,8 @@ $( function() {
 	String hos_Address;
 	String hos_Phone;
 	int cust_Num; //가져오기. 리스트
-	int dia_del; //
+	String doctor id
+	int dia_del; // -->
 			
 			<div class="form-element form-input">
 				<input id="dis_Name" name="dis_Name" class="form-element-field"
@@ -76,7 +77,7 @@ $( function() {
 			
 			
 			<div class="form-element form-input">
-				<input id="dis_Category" name="dis_Category" class="form-element-field" placeholder=""
+				<input id="dis_Category" name="dis_Category" class="form-element-field" placeholder="Select dis_Category."
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">dis_Category</label>
@@ -86,11 +87,11 @@ $( function() {
 			
 			<div class="form-radio form-radio-block">
 				<div class="form-radio-legend">usage</div>
-				<label class="form-radio-label"> <input name=cust_Sex
-					class="form-radio-field" type="radio" value="M" /> <i
+				<label class="form-radio-label"> <input name="usage"
+					class="form-radio-field" type="radio" value="submit" /> <i
 					class="form-radio-button"></i> <span>제출용</span>
-				</label> <label class="form-radio-label"> <input name=cust_Sex
-					class="form-radio-field" type="radio" value="F" /> <i
+				</label> <label class="form-radio-label"> <input name="usage"
+					class="form-radio-field" type="radio" value="save" /> <i
 					class="form-radio-button"></i> <span>보관용 </span>
 				</label>
 				
@@ -123,21 +124,21 @@ $( function() {
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
+				<input id="cust_Address" name="care_Opinions" class="form-element-field" placeholder="Write care_Opinions"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">care_Opinions</label>
 			</div>
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
+				<input id="cust_Address" name="ect" class="form-element-field" placeholder="Write ect"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">ect</label>
 			</div>
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
+				<input id="cust_Address" name="hos_Name" class="form-element-field" placeholder="hospital_Name"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Name</label>
@@ -145,7 +146,7 @@ $( function() {
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
+				<input id="cust_Address" name="hos_Address" class="form-element-field" placeholder="hospital_Address"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Address</label>
@@ -153,20 +154,26 @@ $( function() {
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Phone" name="cust_Phone" class="form-element-field"
-					placeholder="Please your PhoneNumber" type="number" required />
+				<input id="cust_Phone" name="hos_Phone" class="form-element-field"
+					placeholder="hospital_Phone" type="number" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Phone</label>
 			</div>
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Major" name="cust_Major" class="form-element-field"
-					placeholder="Please your job // if you doctor please enter major" type="text" required />
+				<input id="cust_Major" name="cust_Name" class="form-element-field"
+					placeholder="write customer name" type="text" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">cust_Num</label>
+				<label class="form-element-label">cust_Name</label>
 			</div>
 			
+			<div class="form-element form-input">
+				<input id="doctor_Name" name="doctor_Name" class="form-element-field"
+					placeholder="sign dictor name" type="text" value = "${record.cust_Id }"required />
+				<div class="form-element-bar"></div>
+				<label class="form-element-label">doctor_Name</label>
+			</div>
 			
 		</fieldset>
 		<div class="form-actions">
