@@ -79,8 +79,7 @@ public class MapController {
 				search.setRadius("3000");
 			}
 		}
-		
-				
+						
 		ArrayList<Hospital> hosList = hp.HospitalParser1(search);
 		JSONArray jsonArray = new JSONArray();
 		jsonArray.addAll(hosList);

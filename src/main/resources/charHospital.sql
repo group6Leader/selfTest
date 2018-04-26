@@ -4,6 +4,7 @@ drop table board cascade constraints;
 drop table healthrecord cascade constraints;
 drop table reservation cascade constraints;
 drop table prescription cascade constraints;
+drop table diseasecord cascade constraints;
 drop sequence cust_Num_sequence;
 drop sequence board_Num_sequence;
 drop sequence dia_Num_sequence;
@@ -31,6 +32,7 @@ create table customer (
     , original_File		varchar2(30)
     , saved_File		varchar2(30)
     , emailverify		char(1)		default 'N'
+    , division		number		not null		default 1
     , constraint  fk_role_Id foreign key (role_Id) references role (role_Id)
 );
   
@@ -63,6 +65,7 @@ create table healthrecord(
 	, hos_Address		varchar2(50)		not null
 	, hos_Phone		varchar2(50)		not null
 	, cust_Num		number		not null
+	, cust_Id		varchar2(20)		not null		unique
 	, constraint  fk_hr_cust_Num foreign key (cust_Num) references customer (cust_Num)
 );
 
@@ -71,6 +74,7 @@ create table reservation(
 	, res_Date		date		not null
 	, res_Hos		varchar2(20)		not null
 	, cust_Num		number		not null
+	, cust_Id		varchar2(20)		not null		unique
 	, constraint  fk_res_cust_Num foreign key (cust_Num) references customer (cust_Num)
 );
 
@@ -81,6 +85,7 @@ create table prescription(
 	, med_Count		number		not null
 	, med_Content		varchar2(200)		not null
 	, cust_Num		number		not null
+	, cust_Id		varchar2(20)		not null		unique
 	, constraint  fk_pre_cust_Num foreign key (cust_Num) references customer (cust_Num)
 );
 
@@ -107,6 +112,9 @@ create table selftest(
 	, constraint  fk_selftest_cust_Num foreign key (cust_Num) references customer (cust_Num)
 );
 
+create table diseaseCode(
+	dis_Code	varchar2(300)		primary key	
+);
 
 create sequence cust_Num_sequence start with 1 increment by 1;
 create sequence board_Num_sequence start with 1 increment by 1;
