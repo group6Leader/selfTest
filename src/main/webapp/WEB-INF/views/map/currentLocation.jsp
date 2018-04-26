@@ -87,23 +87,27 @@
 			map : map
 		});
 		google.maps.event.addListener(marker, 'click', toggleBounce(marker));
-		
+				
 		/* 지도에서 마우스 클릭시 마커 생성 */
 		google.maps.event.addListener(map, 'click', function(event) {			
 			addMarker(event.latLng);
 			if(Array.isArray(markersArr) & (markersArr.length > 0)){
 				removeMarker();				
-				markersArr = [];
-				
-				alert("삭제하러 들어오나");
+				markersArr = [];				
 			}	
+			
+			var yadmNm = document.getElementById("yadmNm").value;
+			var dgsbjtCd = document.getElementById("dgsbjtCd").value;
+			var sgguCd = document.getElementById("sgguCd").value;
+			var radius = document.getElementById("radius").value;
+			alert(sgguCd);
 			
 			var clickedLocation = event.latLng.toString();
 						
 			$.ajax({
 			      url:"currentLocation",
 			      type:'GET',
-			      data: {clickedLocation: clickedLocation},
+			      data: {clickedLocation: clickedLocation, yadmNm: yadmNm, dgsbjtCd: dgsbjtCd, sgguCd: sgguCd, radius: radius},
 			      dataType:"JSON",
 			      success:function(data){				    		
 			    	  markersArr = [];
@@ -163,7 +167,6 @@
 			//infowindow.close();
 			markersArr[i].setMap(null);	
 			delete markersArr[i];
-			alert("!!!!지우기"+markersArr[i]);
 		}
 	}
 	
@@ -176,6 +179,7 @@
 		}
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
+	
 </script>
 
 <script type="text/javascript">
@@ -188,30 +192,8 @@ $(document).ready(function() {
 	$('.gn-menu-wrapper').hover(function() {
 		$(this).toggleClass('gn-open-all');
 	});
-
+	$('.btn btn-update-map').on('click', google.maps.event.addListener);
 });
-</script>
-
-<script type="text/javascript">
-	function hosSearch(){
-		var yadmNm = document.getElementById("yadmNm").value;
-		var dgsbjtCd = document.getElementById("dgsbjtCd").value;
-		var sgguCdNm = document.getElementById("sgguCdNm").value;
-		var radius = document.getElementById("radius").value;
-		
-		if(dgsbjtCd == null || dgsbjtCd ==""){
-			alert("진료과목을 선택하세요.");
-			return false;
-		}
-		if(sgguCdNm == null || sgguCdNm ==""){
-			alert("지역을 선택하세요.");
-			return false;
-		}
-		if(radius == null || radius ==""){
-			alert("반경을 설정해주세요.");
-			return false;
-		}	
-	}
 </script>
 
 </head>
@@ -318,16 +300,16 @@ $(document).ready(function() {
 		<div class="" id="map_canvas"></div>
 		<div class="map_menu">
 				<div class="map-controls">
-			<form action="currentLocation" method="get" onsubmit="return hosSearch()">
+				<form action="">
 			    <h6 class="title">
 			      	병원명
 			    </h6>
-			    <input type="text" id="yadmNm" value="" class="input-color" placeholder="차 병원">
+			    <input type="text" name="yadmNm" id="yadmNm" value="" class="input-color" placeholder="차 병원">
 			    <h6 class="title">
 					진료과목
 			    </h6>		    
 			    <select name="dgsbjtCd" id="dgsbjtCd">
-						<option disabled="disabled" selected="selected">진료과목</option>
+						<option value="" disabled="disabled" selected="selected">진료과목</option>
 						<option value="00">일반의</option>
 						<option value="01">내과</option>
 						<option value="02">신경과</option>
@@ -349,7 +331,7 @@ $(document).ready(function() {
 			    <h6 class="title">
 					지역
 			    </h6>
-			    <select name="sgguCdNm" id="sgguCdNm">
+			    <select name="sgguCd" id="sgguCd">
 						<option value="" disabled="disabled" selected="selected">지역</option>
 						<option value="110001">강남구</option>
 						<option value="110002">강동구</option>
@@ -380,10 +362,11 @@ $(document).ready(function() {
 				<h6 class="title">
 					반경
 			    </h6>
-				<input type="range" name="radius" id="radius" value="1" step="1" min="1" max="100">
+				<input type="range" name="radius" id="radius" value="1" step="10" min="1" max="101">
 			    <hr>
-			    <button class="btn btn-update-map">search </button>			  
-		    </form>
+			   <input type="hidden" class="btn btn-update-map">
+			   <input type="reset" class="btn btn-reset-map">
+			   </form>
 	  </div>
   	  
 	  <div class="map" id="map">

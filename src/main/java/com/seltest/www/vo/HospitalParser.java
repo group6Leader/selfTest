@@ -48,9 +48,6 @@ package com.seltest.www.vo;
 	        String telno = null;	        
 	        String xPos = null;
 	        String yPos = null;
-	        String sgguCdNm = null;
-	        String sidoCd = null;
-	        String radius = null;
 	        while (event_type != XmlPullParser.END_DOCUMENT) {
 	            if (event_type == XmlPullParser.START_TAG) {
 	                tag = xpp.getName();
@@ -75,54 +72,60 @@ package com.seltest.www.vo;
 	                }
 	                if(tag.equals("YPos")){
 	                	yPos = xpp.getText();
-	                }
-	                if(tag.equals("sgguCdNm")){
-	                	 sgguCdNm = xpp.getText();
-	                }
-	                if(tag.equals("sidoCd")){
-	                	sidoCd = xpp.getText();
-	                }
+	                }	              
 	            } else if (event_type == XmlPullParser.END_TAG) {
 	                tag = xpp.getName();
 	                if (tag.equals("item")) {
 	                	Hospital hos = new Hospital();
-	                   hos.setYadmNm(yadmNm);
+	                    hos.setYadmNm(yadmNm);
 	                    hos.setAddr(addr);
 	                    hos.setHospUrl(hospUrl);
 	                    hos.setTelno(telno);
 	                    hos.setxPos(xPos);
 	                    hos.setyPos(yPos);
-	                    hos.setRadius(radius);
-	                    /*hos.setSgguCdNm(sgguCdNm);
-	                    hos.setSidoCd(sidoCd);*/
 	                	list.add(hos);
 	                }
 	            }
 	 
 	            event_type = xpp.next();
 	        }
-	       // printList(list);
+	        //print(list);
 	        return list;
-	    }
+	    }  
 	    
-	    /**
-	     * 결과 값을 출력
-	     * @param list
-	     */
-	   /* private void printList(ArrayList<Hospital> list){
-	        Hospital hosInfo = null;
-	    	for(int i=0; i<list.size(); i++){
-	        	hosInfo = list.get(i);
-	        } 
+	    //출력
+	  /*  private void print(ArrayList<Hospital> list){
+	    	for(int i = 0; i<list.size(); i++){
+	    		System.out.println(list);
+	    	}
 	    }*/
-	    	    
+	    
 	    //검색
 	    private String getURLParam(String searchStr){
-	    	String url = HOSPITAL_URL+"?ServiceKey="+KEY+"&numOfRows="+search.getNumOfRows()+"&dgsbjtCd="+search.getDgsbjtCd()+
-	        		"&xPos="+search.getxPos()+"&yPos="+search.getyPos()+"&radius="+search.getRadius()/*+"&setSidoCd="+search.sidoCd*/;
+	    	String url = HOSPITAL_URL+"?ServiceKey="+KEY+"&numOfRows="+search.getNumOfRows();
+	    	if(search.getDgsbjtCd() != null){
+	    		url = url + "&dgsbjtCd=" + search.getDgsbjtCd();
+	    	}
+	    	if(search.getxPos() != null){
+	    		url = url + "&xPos=" + search.getxPos();
+	    	}
+	    	if(search.getyPos() != null){
+	    		url = url + "&yPos=" + search.getyPos();
+	    	}
+	    	if(search.getRadius() != null){
+	    		url = url + "&radius="+search.getRadius();
+	    	}
+	    	if(search.getSgguCd() != null){
+	    		url = url + "&sgguCd="+search.getSgguCd();
+	    	}
+	    	if(search.getYadmNm() != null){
+	    		url = url + "&yadmNm="+search.getYadmNm();
+	    	}
+	    	
+	    	System.out.println(url);
 	        if(url != null){
-	        url = url+"";	        
-	        }
+		        url = url+"";	        
+		        }
 	        return url;
 	    }
 	 

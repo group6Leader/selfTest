@@ -30,13 +30,12 @@ public class MapController {
 	
 	@ResponseBody
 	@RequestMapping(value="currentLocation", method = RequestMethod.GET)
-	public JSONArray currentLocation(HttpSession session, Model model, HttpServletRequest request
-			, String yadmNm, String DgsbjtCd, String sgguCdNm, String radius){
+	public JSONArray currentLocation(HttpSession session, Model model, HttpServletRequest request){
 		
 		//현재 위도와 경도
 		String latitude = request.getParameter("lat");			//위도 : yPos   36.
 		String longitude = request.getParameter("lon");		//경도 : xPos   127.
-		if(request.getParameter("clickedLocation") != null){
+		if(request.getParameter("clickedLocation") != null & request.getParameter("clickedLocation") != ""){
 			String clickedLocation = request.getParameter("clickedLocation");
 			String clickedLocation2 = clickedLocation.substring(1,clickedLocation.length()-1);
 			String[] split = clickedLocation2.split(",");
@@ -48,13 +47,42 @@ public class MapController {
 		search.setxPos(longitude);
 		search.setyPos(latitude);
 		search.setNumOfRows(3);
-		search.setDgsbjtCd("49");
-		search.setSidoCd("110000");
-		search.setRadius("1000");
+		if(request.getParameter("yadmNm") != null & request.getParameter("yadmNm") != ""){
+			search.setYadmNm(request.getParameter("yadmNm"));
+		}
+		if(request.getParameter("dgsbjtCd") != null & request.getParameter("dgsbjtCd") != ""){
+			search.setDgsbjtCd(request.getParameter("dgsbjtCd"));
+		}else{
+			search.setDgsbjtCd("01");
+		}
+		if(request.getParameter("sgguCd") != null & request.getParameter("sgguCd") != ""){
+			search.setSgguCd(request.getParameter("sgguCd"));
+		}
+		if(request.getParameter("sgguCd") == null || request.getParameter("sgguCd") == ""){
+			if(request.getParameter("radius") != null & request.getParameter("radius") != ""){
+				String radius = null;
+				switch(request.getParameter("radius")){
+					case "1": radius = "100"; break;
+					case "11": radius = "500"; break;
+					case "21": radius = "1000"; break;
+					case "31": radius = "1500"; break;
+					case "41": radius = "2000"; break;
+					case "51": radius = "2500"; break;
+					case "61": radius = "3000"; break;
+					case "71": radius = "4000"; break;
+					case "81": radius = "5000"; break;
+					case "91": radius = "7000"; break;
+					case "101": radius = "10000"; break;
+				}
+				search.setRadius(radius);
+			}else{
+				search.setRadius("3000");
+			}
+		}
 		
+				
 		ArrayList<Hospital> hosList = hp.HospitalParser1(search);
 		JSONArray jsonArray = new JSONArray();
-		jsonArray.removeAll(jsonArray);
 		jsonArray.addAll(hosList);
 		System.out.println(jsonArray);		
 		return jsonArray;

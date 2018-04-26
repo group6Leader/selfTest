@@ -13,14 +13,15 @@ public class Hospital {
     String clCd;				//종별 코드
     String dgsbjtCd;			//진료 과목 코드
 	String radius;					//반경
-    String sgguCdNm;		//시군구코드
+    String sgguCdNm;		//시군구코드명
+    String sgguCd;			//시군구코드
     
     public Hospital() {
 		super();
-	}   
+	}
 
 	public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
-			String sidoCd, String clCd, String dgsbjtCd, String radius, String sgguCdNm) {
+			String sidoCd, String clCd, String dgsbjtCd, String radius, String sgguCdNm, String sgguCd) {
 		super();
 		this.yadmNm = yadmNm;
 		this.addr = addr;
@@ -34,6 +35,7 @@ public class Hospital {
 		this.dgsbjtCd = dgsbjtCd;
 		this.radius = radius;
 		this.sgguCdNm = sgguCdNm;
+		this.sgguCd = sgguCd;
 	}
 
 	public String getYadmNm() {
@@ -124,8 +126,6 @@ public class Hospital {
 		this.radius = radius;
 	}
 
-	
-	
 	public String getSgguCdNm() {
 		return sgguCdNm;
 	}
@@ -134,12 +134,20 @@ public class Hospital {
 		this.sgguCdNm = sgguCdNm;
 	}
 
+	public String getSgguCd() {
+		return sgguCd;
+	}
+
+	public void setSgguCd(String sgguCd) {
+		this.sgguCd = sgguCd;
+	}
+
 	@Override
 	public String toString() {
 		return "Hospital [yadmNm=" + yadmNm + ", addr=" + addr + ", hospUrl=" + hospUrl + ", telno=" + telno + ", xPos="
-				+ xPos + ", yPos=" + yPos + ", sgguCdNm=" + sgguCdNm + "]";
-	}
-
-	
+				+ xPos + ", yPos=" + yPos + ", numOfRows=" + numOfRows + ", sidoCd=" + sidoCd + ", clCd=" + clCd
+				+ ", dgsbjtCd=" + dgsbjtCd + ", radius=" + radius + ", sgguCdNm=" + sgguCdNm + ", sgguCd=" + sgguCd
+				+ "]";
+	}   
 	
 }
