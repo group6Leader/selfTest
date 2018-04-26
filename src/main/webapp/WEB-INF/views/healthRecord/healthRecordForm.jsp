@@ -5,75 +5,31 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/healthRecordForm.css"></c:url>">
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	href="<c:url value="/resources/css/join.css"></c:url>">
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
+	
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
-document.addEventListener("change", function(event) {
-	let
-	element = event.target;
-	if (element && element.matches(".form-element-field")) {
-		element.classList[element.value ? "add" : "remove"]("-hasvalue");
-	}
-});
-window.onload = function() {
-	appendYear();
-	appendMonth();
-	appendDay();
-}
 
-function appendYear() {
+$( function() {
+    $( "#first_Date" ).datepicker();
+  } );
 
-	var date = new Date();
+$( function() {
+    $( "#dia_Date" ).datepicker();
+  } );
 
-	var year = date.getFullYear();
-
-	var selectValue = document.getElementById("year");
-
-	var optionIndex = 0;
-
-	for (var i = year - 100; i <= year; i++) {
-
-		selectValue.add(new Option(i + "년", i), optionIndex++);
-
-	}
-
-}
-
-function appendMonth() {
-
-	var selectValue = document.getElementById("month");
-
-	var optionIndex = 0;
-
-	for (var i = 1; i <= 12; i++) {
-
-		selectValue.add(new Option(i + "월", i), optionIndex++);
-
-	}
-
-}
-
-function appendDay() {
-
-	var selectValue = document.getElementById("day");
-
-	var optionIndex = 0;
-
-	for (var i = 1; i <= 31; i++) {
-
-		selectValue.add(new Option(i + "일", i), optionIndex++);
-
-	}
-
-}
-
-
-
+$( function() {
+    $( "#issue_Date" ).datepicker();
+  } );
 	
 </script>
 
@@ -104,14 +60,14 @@ function appendDay() {
 			
 			<div class="form-element form-input">
 				<input id="dis_Name" name="dis_Name" class="form-element-field"
-					placeholder="" type="text" required />
+					placeholder="Enter disease name" type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">Diseases Name</label>
 			</div>
-			
+		
 			
 			<div class="form-element form-input">
-				<input id="final_Diagnosis" name="final_Diagnosis" class="form-element-field" placeholder=""
+				<input id="final_Diagnosis" name="final_Diagnosis" class="form-element-field" placeholder="Enter final_Diagnosis."
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">final_Diagnosis</label>
@@ -129,108 +85,41 @@ function appendDay() {
 			
 			
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">성별</div>
+				<div class="form-radio-legend">usage</div>
 				<label class="form-radio-label"> <input name=cust_Sex
 					class="form-radio-field" type="radio" value="M" /> <i
-					class="form-radio-button"></i> <span>남자</span>
+					class="form-radio-button"></i> <span>제출용</span>
 				</label> <label class="form-radio-label"> <input name=cust_Sex
 					class="form-radio-field" type="radio" value="F" /> <i
-					class="form-radio-button"></i> <span>여자</span>
+					class="form-radio-button"></i> <span>보관용 </span>
 				</label>
 				
 				
 			</div>
-			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">first_Date </div>
-			</div>
-			
-			
-			<div class="form-element form-select1">
-				<select class="form-element-field" id="year" name="birth_Year">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Year</label>
-			</div>
-			
-			
-			<div class="form-element form-select1">
-				<select class="form-element-field" id="month" name="birth_Month">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Month</label>
-			</div>
-			
-			
-			<div class="form-element form-select">
-				<select class="form-element-field" id="day" name="birth_Day">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Day</label>
-			</div>
 			
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">dia_Date </div>
+				<div class="form-radio-legend">first_Date 
+				<input type="text" id="first_Date" name="first_Date"></div>
+				
 			</div>
 			
 			
-			<div class="form-element form-select1">
-				<select class="form-element-field" id="year" name="birth_Year">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Year</label>
-			</div>
 			
 			
-			<div class="form-element form-select1">
-				<select class="form-element-field" id="month" name="birth_Month">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Month</label>
-			</div>
-			
-			
-			<div class="form-element form-select">
-				<select class="form-element-field" id="day" name="birth_Day">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Day</label>
-			</div>
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">issue_Date </div>
+				<div class="form-radio-legend">dia_Date 
+				<input type="text" id="dia_Date" name="dia_Date"></div>
 			</div>
 			
 			
-			<div class="form-element form-select1">
-				<select class="form-element-field" id="year" name="birth_Year">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Year</label>
+			
+			<div class="form-radio form-radio-block">
+				<div class="form-radio-legend">issue_Date 
+				<input type="text" id="issue_Date" name="issue_Date"></div>
 			</div>
 			
 			
-			<div class="form-element form-select1">
-				<select class="form-element-field" id="month" name="birth_Month">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Month</label>
-			</div>
 			
-			
-			<div class="form-element form-select">
-				<select class="form-element-field" id="day" name="birth_Day">
-					<option disabled selected value="" class="form-select-placeholder"></option>
-				</select>
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Day</label>
-			</div>
 			
 			
 			<div class="form-element form-input">
@@ -251,7 +140,15 @@ function appendDay() {
 				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
 					type="text" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">care_Opinions</label>
+				<label class="form-element-label">hos_Name</label>
+			</div>
+			
+			
+			<div class="form-element form-input">
+				<input id="cust_Address" name="cust_Address" class="form-element-field" placeholder="Please your Address"
+					type="text" required />
+				<div class="form-element-bar"></div>
+				<label class="form-element-label">hos_Address</label>
 			</div>
 			
 			
@@ -259,17 +156,7 @@ function appendDay() {
 				<input id="cust_Phone" name="cust_Phone" class="form-element-field"
 					placeholder="Please your PhoneNumber" type="number" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">PhoneNumber</label>
-			</div>
-			
-			
-			
-			<div class="form-element form-input">
-				<input id="cust_Email" name="cust_Email" class="form-element-field" placeholder=" " type="email"
-					required />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Email</label> <small
-					class="form-element-hint">We will never spam you!</small>
+				<label class="form-element-label">hos_Phone</label>
 			</div>
 			
 			
@@ -277,7 +164,7 @@ function appendDay() {
 				<input id="cust_Major" name="cust_Major" class="form-element-field"
 					placeholder="Please your job // if you doctor please enter major" type="text" required />
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">Job</label>
+				<label class="form-element-label">cust_Num</label>
 			</div>
 			
 			
