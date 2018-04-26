@@ -62,17 +62,17 @@ public class MapController {
 			if(request.getParameter("radius") != null & request.getParameter("radius") != ""){
 				String radius = null;
 				switch(request.getParameter("radius")){
-					case "1": radius = "100"; break;
-					case "11": radius = "500"; break;
-					case "21": radius = "1000"; break;
-					case "31": radius = "1500"; break;
-					case "41": radius = "2000"; break;
-					case "51": radius = "2500"; break;
-					case "61": radius = "3000"; break;
-					case "71": radius = "4000"; break;
-					case "81": radius = "5000"; break;
-					case "91": radius = "7000"; break;
-					case "101": radius = "10000"; break;
+					case "1": radius = "1000"; break;
+					case "11": radius = "2000"; break;
+					case "21": radius = "3000"; break;
+					case "31": radius = "4000"; break;
+					case "41": radius = "5000"; break;
+					case "51": radius = "6000"; break;
+					case "61": radius = "7000"; break;
+					case "71": radius = "8000"; break;
+					case "81": radius = "9000"; break;
+					case "91": radius = "10000"; break;
+					case "101": radius = "20000"; break;
 				}
 				search.setRadius(radius);
 			}else{

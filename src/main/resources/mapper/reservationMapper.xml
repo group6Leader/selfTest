@@ -13,34 +13,32 @@
 			,res_Date
 			,res_Hos
 			,cust_Num
-			,res_Check
 		)
 		values (
 			res_Num_sequence.nextval
 			, #{res_Date}
 			, #{res_Hos}
-			, #{cust_Num}
-			, #{res_Check}		
+			, #{cust_Num}	
 		)
 	</insert>	
 	
 	<!-- 모든 예약시간 -->
 	<select id="selectReservation" parameterType="reservation" resultType="reservation">
-		select res_Num, res_Date, res_Hos, cust_Num, res_Check
+		select res_Num, res_Date, res_Hos, cust_Num
 		from reservation	
 		order by res_Date asc
 	</select>
 	
 	<!-- 나의 예약시간 -->
 	<select id ="selectMyReservation" parameterType="int" resultType="reservation">
-		select res_Num, res_Date, res_Hos, cust_Num, res_Check
+		select res_Num, res_Date, res_Hos, cust_Num
 		from reservation
 		where cust_Num = #{cust_Num}	
 	</select>
 
 	<!-- 해당 날짜에 예약된 시간 -->
 	<select id="checkReservation" parameterType="String" resultType="reservation">
-		select res_Num, res_Date, res_Hos, cust_Num, res_Check
+		select res_Num, res_Date, res_Hos, cust_Num
 		from reservation
 		where res_Date LIKE '%' || #{res_Date} || '%'	
 	</select>
