@@ -2,37 +2,38 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-<link rel="stylesheet" type="text/css"
-	href="./resources/css/sideBar.css">
-<link rel="stylesheet" type="text/css" href="./resources/css/main.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Char Hospital</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="./resources/assets/css/fonticons.css">
+<link rel="stylesheet" href="./resources/assets/css/slider-pro.css">
+<link rel="stylesheet" href="./resources/assets/css/stylesheet.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+<link rel="stylesheet" href="./resources/assets/css/bootstrap.min.css">
+<!--For Plugins external css-->
+<link rel="stylesheet" href="./resources/assets/css/plugins.css" />
+<!--Theme custom css -->
+<link rel="stylesheet" href="./resources/assets/css/home.css">
+<!--Theme Responsive css-->
+<link rel="stylesheet" href="./resources/assets/css/responsive.css" />
+<script src="./resources/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./resources/css/login.css">
-<link
-	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<link rel="stylesheet" href="./resources/css/font-awesome.min.css">
-	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./resources/css/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
-	<script src="./resources/js/modernizr.js"></script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+<script src="./resources/js/modernizr.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -149,403 +150,494 @@ $(window).scroll(function(){
 	}
 </script>
 
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home</title>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar-collapse">
+	<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+	<div class='preloader'>
+		<div class='loaded'>&nbsp;</div>
+	</div>
+	<header id="main_menu" class="header navbar-fixed-top">
+		<div class="main_menu_bg">
+			<div class="container">
+				<div class="row">
+					<div class="nave_menu">
+						<nav class="navbar navbar-default" id="navmenu">
+							<div class="container-fluid">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle collapsed"
+										data-toggle="collapse"
+										data-target="#bs-example-navbar-collapse-1"
+										aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span> <span
+											class="icon-bar"></span> <span class="icon-bar"></span> <span
+											class="icon-bar"></span>
+									</button>
+									<a class="navbar-brand" href=""> <img src="./resources/assets/images/logo.jpg" />
+									</a>
+								</div>
 
-	 <div class="container">
-		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
-			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-				<nav class="gn-menu-wrapper">
-					<div class="gn-scroller">
-						<ul class="gn-menu">
-							
-							<li class="gn-search-item">
-							<input placeholder="Search" type="search" class="gn-search"> 
-								<a class="gn-icon gn-icon-search">
-									<span>Search</span>
-								</a>
-							</li>
-							
-							<li>
-								<a class="gn-icon gn-icon-download">진료</a>
-									<ul class="gn-submenu">
+								<!-- Collect the nav links, forms, and other content for toggling -->
+
+
+
+								<div class="collapse navbar-collapse"
+									id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav navbar-right">
+										<li><a href="/www">Char Hospital</a></li>
+										<sec:authorize access="hasRole('CUSTOMER')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">자가진단</a>
+											<ul class="dropdown-menu">
+												<li><a href="selfCheck/goSelfCheck">자가진단 하러가기</a></li>
+												<li><a href="selfCheck/goSelfCheck3">자가진단 결과보기</a></li>
+											</ul></li>
+										</sec:authorize>
 										<sec:authorize access="isAuthenticated()">
-										<c:if test="${sessionScope.customer.division != 2}">
-										<li>
-											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
-										</li>
+										<li><a href="customer/goFix">My Page</a></li>
+										<li><a href="javascript:loginCheck()">예약</a></li>
+										<li><a href="webrtc/goWebRtc">원격진료</a></li>
+										</sec:authorize>
+										
+										<sec:authorize access="hasRole('DOCTOR')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-haspopup="true">의사메뉴</a>
+											<ul class="dropdown-menu">
+												<li><a href="">진단서 작성</a></li>
+												<li><a href="">처방전 작성</a></li>
+												<li><a href="">처방전 리스트</a></li>
+											</ul></li>
+										</sec:authorize>
+										<sec:authorize access="hasRole('CUSTOMER')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-haspopup="true">환자메뉴</a>
+											<ul class="dropdown-menu">
+												<li><a href="prescription/prescriptionIndList2">개인 처방전</a></li>
+												<li><a href="healthRecord/goHealthRecord">개인 진단서</a></li>
+											</ul></li>
+										</sec:authorize>
+										
+										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
+										<li><a href="javascript:map()">MAP</a></li>
+										<sec:authorize access="isAnonymous()">
+										<c:if test="${sessionScope.customer == null}">
+										<li><a id="SignIn">LOGIN</a></li>
 										</c:if>
 										</sec:authorize>
-										
-										<sec:authorize access="hasRole('CUSTOMER')">
-										<li>
-											<a class="gn-icon gn-icon-photoshop" href="selfCheck/goSelfCheck3">자가진단 결과</a>
-										</li>
+										<sec:authorize access="isAuthenticated()">
+						    				<c:if test="${sessionScope.customer != null}">
+										<li><a href="customer/logout" id='Logout'>Logout</a></li>
+											</c:if>
 										</sec:authorize>
 										
 										
-										<li>
-											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
-										</li>
+			
+										<c:if test="${param.error != null}">
+							        		<li> 이메일 인증을 하셔야 합니다. </li>
+								    		</c:if>
+										
 									</ul>
-							</li>
-                           	
-                  
-							<sec:authorize access="hasRole('DOCTOR')">
-							<li>
-								<a class="gn-icon gn-icon-cog" href="healthRecord/goHealthRecord">진단서 작성</a>
-							</li>
-							<li>
-								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전 작성</a>
-							</li>
-							
-							<li>
-								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionResult">처방전 리스트</a>
-							</li>
-							</sec:authorize>
-							
-							<sec:authorize access="hasRole('CUSTOMER')">
-							<li>
-								<a class="gn-icon gn-icon-photoshop" href="prescription/prescriptionIndList2">개인 처방전</a>
-							</li>
-							<li>
-								<a class="gn-icon gn-icon-cog" href="healthRecord/goHealthRecord">개인 진단서</a>
-							</li>
-							</sec:authorize>
-							
-							<li>
-								<a class="gn-icon gn-icon-archive">WebRTC</a>
-								<ul class="gn-submenu">
-									<li>
-										<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
-									</li>
-									
-								</ul>
-							</li>
-						</ul>
+								</div>
+
+							</div>
+						</nav>
 					</div>
-					<!-- /gn-scroller -->
-				</nav>
-			</li>
-			<li><a href="charlife/gocharlife">Char LIFE</a></li>
-			<li><a href="javascript:map()">지도</a></li>
-			<c:if test="${sessionScope.customer != null}">
-			<li><a href="customer/goFix">My Page</a></li>
-			<li>
-				<a class="codrops-icon codrops-icon-prev">
-					<span>VOC</span>
-				</a>
-			</li>
-			</c:if>
-			<c:if test="${sessionScope.myReservation != null}">
-				<li>
-					${myReservation}
-				</li>
-			
-			</c:if>
-			
-			<c:if test="${param.error != null}">
-        		<li> 이메일 인증을 하셔야 합니다. </li>
-    		</c:if>
-    		
-			<li>
-				<sec:authorize access="isAnonymous()">
-				<c:if test="${sessionScope.customer == null}">
-				<a class="codrops-icon codrops-icon-drop" id='SignIn'>
-					<span>Login</span>
-				</a>
-				</c:if>
-				</sec:authorize>
-				
-				
-				<sec:authorize access="isAuthenticated()">
-    				<c:if test="${sessionScope.customer != null}">
-					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
-						<span>Logout</span>
-					</a>
-					</c:if>
-					
-					<c:if test="${sessionScope.customer == null}">
-					<a class="codrops-icon codrops-icon-drop" id='SignIn'>
-					<span>Login</span>
-					</a>
-					</c:if>
-				
-				</sec:authorize>
-			</li>
-		</ul>
- 		<header>
-			<h1>
-				Char Hospital<span>Welcome To <a> CHAR HOSPITAL </a> page <br>
-					<c:if test="${sessionScope.customer.division == 1 }">
-						${sessionScope.customer.cust_Name } 고객님 환영합니다.
-					</c:if> 
-					<c:if test="${sessionScope.customer.division == 2 }">
-						${sessionScope.customer.cust_Name } 선생님 환영합니다.
-					</c:if> 
-					
-				</span>
-			</h1>
-		</header> 
-	</div>
+				</div>
+
+			</div>
+
+		</div>
+	</header>
+	<!--End of header -->
 	
-<section class="slider" id="home">
-		<div class="container-fluid">
-			<div class="row">
-			    <div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
-					<div class="header-backup"></div>
-			        <!-- Wrapper for slides -->
-			        <div class="carousel-inner" role="listbox">
-			            <div class="item active">
-			            	<img src="./resources/img/slide-one.jpg" alt="">
-			                <div class="carousel-caption">
-		               			<h1>providing</h1>
-		               			<p>highquality service for men &amp; women</p>
-		               			<!-- <button>learn more</button> -->
-			                </div>
-			            </div>
-			            <div class="item">
-			            	<img src="./resources/img/slide-two.jpg" alt="">
-			                <div class="carousel-caption">
-		               			<h1>providing</h1>
-		               			<p>highquality service for men &amp; women</p>
-		               			<!-- <button>learn more</button> -->
-			                </div>
-			            </div>
-			            <div class="item">
-			            	<img src="./resources/img/slide-three.jpg" alt="">
-			                <div class="carousel-caption">
-		               			<h1>providing</h1>
-		               			<p>highquality service for men &amp; women</p>
-		               			<!-- <button>learn more</button> -->
-			                </div>
-			            </div>
-			            <div class="item">
-			            	<img src="./resources/img/slide-four.jpg" alt="">
-			                <div class="carousel-caption">
-		               			<h1>providing</h1>
-		               			<p>highquality service for men &amp; women</p>
-		               			<!-- <button>learn more</button> -->
-			                </div>
-			            </div>
-			        </div>
-			        <!-- Controls -->
-			        <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
-			            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			            <span class="sr-only">Previous</span>
-			        </a>
-			        <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
-			            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			            <span class="sr-only">Next</span>
-			        </a>
-			    </div>
-			</div>
-		</div>
-	</section><!-- end of slider section -->
+	<c:if test="${sessionScope.myReservation != null}">
+		<div id="container-floating"> 
+  			<div class="nd1 nds" data-toggle="tooltip" data-placement="left"><img class="reminder">
+    		<p class="letter">${myReservation}</p>
+  		</div>
+  			<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create">
+    			<p class="plus"><i class="far fa-bell"></i></p>
+    			<p class="edit"><i class="fas fa-bell"></i></p>
+  			</div>
 
-	<!-- about section -->
-	<section class="about text-center" id="about">
+		</div>
+	</c:if>
+
+	<!-- About Section -->
+	<section id="aboutus" class="aboutus margin-top-120">
 		<div class="container">
 			<div class="row">
-				<h2>about us</h2>
-				<h4>Char Hospital has been leading Korea's 21st century's medical industry. We are proud to present for having won the #1 award 10 years consecutively</h4>
-				
-				<div class="col-md-4 col-sm-6">
-					<div class="single-about-detail clearfix">
-						<div class="about-img">
-							<img class="img-responsive" src="./resources/img/item1.jpg" alt="">
-						</div>
-						<div class="about-details">
-							<div class="pentagon-text">
-								<h1>C</h1>
-							</div>
-							<h3>Accurate Care</h3>
-							<p>Char Hospital is known to be Korea's number one for accurate care</p>
-						</div>
+				<div class="col-sm-12">
+					<div class="head_title text-center margin-top-80">
+						<h1>CHAR HOSPITAL</h1>
 					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="single-about-detail">
-						<div class="about-img">
-							<img class="img-responsive" src="./resources/img/item2.jpg" alt="">
-						</div>
-						<div class="about-details">
-							<div class="pentagon-text">
-								<h1>S</h1>
+					<!-- End of head title -->
+
+					<div class="main_about_area">
+						<div class="row">
+
+							<div class="col-sm-6">
+								<div class="signle_about_left">
+									<img src="./resources/assets/images/service3.jpg" alt="" />
+									<div class="single_about_left_text">
+										<div class="separator2"></div>
+										<h4>
+											우수<br />능률<br />서비스정신<br />
+											첨단기술
+										</h4>
+									</div>
+								</div>
+
+
 							</div>
 
-							<h3>Best Services</h3>
-							<p>Char Hospital provides patients and their families the best services!</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="single-about-detail">
-						<div class="about-img">
-							<img class="img-responsive" src="./resources/img/item3.jpg" alt="">
-						</div>
-						<div class="about-details">
-							<div class="pentagon-text">
-								<h1>S</h1>
+							<div class="col-sm-5 col-sm-push-1">
+								<div class="single_about">
+									<div class="separator2"></div>
+									<p>Char Hospital에 오신것을 환영합니다.</p>
+									<p>저희는 원격진료 시스템과 통합병원예약사이트, Char life로 
+										의료적인 도움을 드립니다. 첨단기술과 의학이 만나 더 편리하고
+										섬세하게 여러분은 질병을 케어합니다.				
+										</p>
+									<p>언제 어디서든 간편하게 나를 가장 잘아는 주치의에게 진료를 받으세요.</p>
+
+									<a href="" class="btn btn-default">get in touch</a>
+								</div>
 							</div>
-							<h3>Comfort Space</h3>
-							<p>Char Hospital recorded the best satisfaction among patients</p>
+
 						</div>
 					</div>
 				</div>
+				<!-- End of col-sm-12 -->
 			</div>
+			<!-- End of row -->
 		</div>
-	</section><!-- end of about section -->
+		<!-- End of Container -->
+		<hr />
+	</section>
+	<!-- End of about Section -->
 
 
-	<!-- service section starts here -->
-	<section class="service text-center" id="service">
+
+	<!-- counter Seection -->
+	<section id="counter" class="counter">
 		<div class="container">
 			<div class="row">
-				<h2>our services</h2>
-				<h4>Char Hospital is progressing forward to become the nation's standards</h4>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service">
-						<div class="single-service-img">
-							<div class="service-img">
-								<img class="heart img-responsive" src="./resources/img/service1.png" alt="">
+				<div class="col-sm-12">
+					<div class="main_counter sections text-center">
+						<div class="row">
+							<div class="col-sm-4 col-xs-12">
+								<div class="single_counter_right">
+									<h4 class="statistic-counter">3,852</h4>
+									<div class="separator"></div>
+									<p>doctor</p>
+								</div>
 							</div>
+							<!-- End of col-sm-4 -->
+
+							<div class="col-sm-4 col-xs-12">
+								<div class="single_counter_right">
+									<h4 class="statistic-counter">4,510</h4>
+									<div class="separator"></div>
+									<p>patient</p>
+								</div>
+							</div>
+							<!-- End of col-sm-4 -->
+
+							<div class="col-sm-4 col-xs-12">
+								<div class="single_counter_right">
+									<h4 class="statistic-counter">2,894</h4>
+									<div class="separator"></div>
+									<p>Telemedicine</p>
+								</div>
+							</div>
+							<!-- End of col-sm-4 -->
+
 						</div>
-						<h3>Heart problem</h3>
+						<!-- End of row -->
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service">
-						<div class="single-service-img">
-							<div class="service-img">
-								<img class="brain img-responsive" src="./resources/img/service2.png" alt="">
-							</div>
-						</div>
-						<h3>brain problem</h3>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service">
-						<div class="single-service-img">
-							<div class="service-img">
-								<img class="knee img-responsive" src="./resources/img/service3.png" alt="">
-							</div>
-						</div>
-						<h3>knee problem</h3>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service">
-						<div class="single-service-img">
-							<div class="service-img">
-								<img class="bone img-responsive" src="./resources/img/service4.png" alt="">
-							</div>
-						</div>
-						<h3>human bones problem</h3>
-					</div>
-				</div>
+				<!-- End of col-sm-12 -->
 			</div>
+			<!-- End of row -->
 		</div>
-	</section><!-- end of service section -->
+		<!-- End of Container -->
+	</section>
+	<!-- End of counter Section -->
 
 
-	<!-- team section -->
-	<section class="team" id="team">
+
+	<!-- Team Section -->
+	<section id="team" class="team colorsbg sections">
 		<div class="container">
 			<div class="row">
-				<div class="team-heading text-center">
-					<h2>our team</h2>
-					<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</h4>
-				</div>
-				<div class="col-md-2 single-member col-sm-4">
-					<div class="person">
-						<img class="img-responsive" src="./resources/img/member1.jpg" alt="member-1">
+				<div class="main_team_area">
+					<div class="head_title text-center">
+						<h1>best team</h1>
 					</div>
-					<div class="person-detail">
-						<div class="arrow-bottom"></div>
-						<h3>Dr. M. Weiner, M.D.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-					</div>
-				</div>
-				<div class="col-md-2 single-member col-sm-4">
-					<div class="person-detail">
-						<div class="arrow-top"></div>
-						<h3>Dr. Danielle, M.D.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-					</div>
-					<div class="person">
-						<img class="img-responsive" src="./resources/img/member2.jpg" alt="member-2">
-					</div>
-				</div>
-				<div class="col-md-2 single-member col-sm-4">
-					<div class="person">
-						<img class="img-responsive" src="./resources/img/member3.jpg" alt="member-3">
-					</div>
-					<div class="person-detail">
-						<div class="arrow-bottom"></div>
-						<h3>Dr. Caitlin, M.D.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-					</div>
-				</div>
-				<div class="col-md-2 single-member col-sm-4">
-					<div class="person-detail">
-						<div class="arrow-top"></div>
-						<h3>Dr. Joseph, M.D.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-					</div>
-					<div class="person">
-						<img class="img-responsive" src="./resources/img/member4.jpg" alt="member-4">
-					</div>
-				</div>
-				<div class="col-md-2 single-member col-sm-4">
-					<div class="person">
-						<img class="img-responsive" src="./resources/img/member5.jpg" alt="member-5">
-					</div>
-					<div class="person-detail">
-						<div class="arrow-bottom"></div>
-						<h3>Dr. Michael, M.D.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-					</div>
-				</div>
-				<div class="col-md-2 single-member col-sm-4">
-					<div class="person-detail">
-						<div class="arrow-top"></div>
-						<h3>Dr. Hasina, M.D.</h3>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-					</div>
-					<div class="person">
-						<img class="img-responsive" src="./resources/img/member6.jpg" alt="member-5">
+					<!-- End of head title -->
+					<div class="main_team text-center">
+						<div class="single_team">
+							<div class="col-sm-10 col-sm-offset-1">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>paul hall</h4>
+											<div class="separator"></div>
+											<p>art director</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team2.jpg" alt="" />
+											<h4>joshua spencer</h4>
+											<div class="separator"></div>
+											<p>founder</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team3.jpg" alt="" />
+											<h4>diane lewis</h4>
+											<div class="separator"></div>
+											<p>artist, designer</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+								</div>
+							</div>
+							<!-- End of col-sm-10 -->
+						</div>
+						<div class="single_team">
+							<div class="col-sm-10 col-sm-offset-1">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>paul hall</h4>
+											<div class="separator"></div>
+											<p>art director</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>joshua spencer</h4>
+											<div class="separator"></div>
+											<p>founder</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>diane lewis</h4>
+											<div class="separator"></div>
+											<p>artist, designer</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+								</div>
+							</div>
+							<!-- End of col-sm-10 -->
+						</div>
+						<div class="single_team">
+							<div class="col-sm-10 col-sm-offset-1">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>paul hall</h4>
+											<div class="separator"></div>
+											<p>art director</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>joshua spencer</h4>
+											<div class="separator"></div>
+											<p>founder</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+									<div class="col-sm-4">
+										<div class="team">
+											<img class="img-circle"
+												src="./resources/assets/images/team1.jpg" alt="" />
+											<h4>diane lewis</h4>
+											<div class="separator"></div>
+											<p>artist, designer</p>
+										</div>
+									</div>
+									<!-- End of col-sm-4 -->
+								</div>
+							</div>
+							<!-- End of col-sm-10 -->
+						</div>
 					</div>
 				</div>
 			</div>
+			<!-- End of row -->
 		</div>
-	</section><!-- end of team section -->
+		<!-- End of Container -->
+	</section>
+	<!-- End of counter Section -->
 
-	<!-- footer starts here -->
-	<footer class="footer clearfix">
+	<!-- Contact Section -->
+	<section id="contact" class="contact">
+		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-6 footer-para">
-					<p>&copy;Mostafizur All right reserved</p>
+				<div class="col-sm-12">
+					<div class="main_contact sections">
+						<div class="head_title text-center whitetext">
+							<h1>get in touch</h1>
+						</div>
+
+						<div class="row">
+							<div class="contact_contant">
+								<div class="col-sm-6 col-xs-12">
+									<div class="single_message_right_info">
+										<ul class="whitetext">
+											<li><i class="fa fa-map-marker"></i> <span>23
+													Mulholland Drive, Suite 721. Los Angeles 10010 100 S. Main
+													Street. Los Angeles 90012</span></li>
+
+											<li><i class="fa fa-mobile-phone"></i> <span>+1-670-567-5590</span></li>
+
+											<li><i class="fa fa-envelope-o"></i> <span>hello@clemocreative.com</span></li>
+										</ul>
+
+										<div class="contact_socail transition margin-top-80">
+											<a href=""><i class="fa fa-facebook img-circle"></i></a> <a
+												href=""><i class="fa fa-twitter img-circle"></i></a> <a
+												href=""><i class="fa fa-google-plus img-circle"></i></a> <a
+												href=""><i class="fa fa-pinterest img-circle"></i></a> <a
+												href=""><i class="fa fa-instagram img-circle"></i></a>
+										</div>
+									</div>
+								</div>
+								<!-- End of col-sm-6 -->
+
+								<div class="col-sm-6 col-xs-12">
+									<div class="single_contant_left margin-top-60">
+										<form action="#" id="formid">
+											<!--<div class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">-->
+
+											<div class="form-group">
+												<label>name</label> <input type="text" class="form-control"
+													name="name" required="">
+											</div>
+
+											<div class="form-group">
+												<label>e-mail</label> <input type="email"
+													class="form-control" name="email" required="">
+											</div>
+
+											<div class="form-group">
+												<label>your message</label>
+												<textarea class="form-control" name="message" rows="8"></textarea>
+											</div>
+
+											<div class="">
+												<input type="submit" value="submit" class="btn btn-default">
+											</div>
+											<!--</div>-->
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- End of messsage contant-->
+						</div>
+					</div>
 				</div>
-				<div class="col-xs-6 text-right">
-					<a href=""><i class="fa fa-facebook"></i></a>
-					<a href=""><i class="fa fa-twitter"></i></a>
-					<a href=""><i class="fa fa-skype"></i></a>
+			</div>
+			<!-- End of row -->
+		</div>
+		<!-- End of container -->
+	</section>
+	<!-- End of contact Section -->
+
+
+
+
+	<!-- footer section -->
+	<footer id="footer" class="footer">
+		<div class="container">
+			<div class="main_footer">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="copyright_text text-center">
+							<p class=" wow fadeInRight" data-wow-duration="1s">
+								Made with <i class="fa fa-heart"></i> by <a target="_blank"
+									href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All
+								Rights Reserved
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!-- End of container -->
 	</footer>
+	<!-- End of footer Section-->
 
-	<!-- script tags
-	============================================================= -->
-	<script src="./resources/js/jquery-2.1.1.js"></script>
-	<script src="./resources/js/bootstrap.min.js"></script>
 
-	<c:url value="/login" var="loginUrl" />
+
+	<!-- START SCROLL TO TOP  -->
+
+	<div class="scrollup">
+		<a href="#"><i class="fa fa-chevron-up"></i></a>
+	</div>
+
+	<script src="./resources/assets/js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="./resources/assets/js/vendor/bootstrap.min.js"></script>
+
+	<script src="./resources/assets/js/jquery.easing.1.3.js"></script>
+	<script src="./resources/assets/js/masonry/masonry.min.js"></script>
+	<script type="text/javascript">
+            $('.mixcontent').masonry();
+        </script>
+
+	<script src="./resources/assets/js/jquery.sliderPro.min.js"></script>
+	<script type="text/javascript">
+            $(document).ready(function ($) {
+                $('#example3').sliderPro({
+                    width: 960,
+                    height: 200,
+                    fade: true,
+                    arrows: false,
+                    buttons: true,
+                    fullScreen: false,
+                    shuffle: true,
+                    smallSize: 500,
+                    mediumSize: 1000,
+                    largeSize: 3000,
+                    thumbnailArrows: true,
+                    autoplay: false,
+                    thumbnailsContainerSize: 960
+
+                });
+            });
+        </script>
+	<script src="./resources/assets/js/plugins.js"></script>
+	<script src="./resources/assets/js/home.js"></script>
+<c:url value="/login" var="loginUrl" />
 
 	<div class='login'>
 		<button class='close' id='close'></button>
