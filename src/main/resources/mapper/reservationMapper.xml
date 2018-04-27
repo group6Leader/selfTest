@@ -47,7 +47,7 @@
 	
 	<!-- 모든 예약시간 -->
 	<select id="selectReservation" parameterType="reservation" resultType="reservation">
-		select res_Num, res_Date, hos_Name, cust_Num, cust_Id
+		select *
 		from reservation
 		where cust_Id = #{cust_Id}	
 		order by res_Date asc
@@ -55,7 +55,7 @@
 	
 	<!-- 나의 예약시간 -->
 	<select id ="selectMyReservation" parameterType="int" resultType="reservation">
-		select res_Num, res_Date, hos_Name, cust_Num, cust_Id
+		select *
 		from reservation
 		where cust_Num = #{cust_Num}	
 	</select>

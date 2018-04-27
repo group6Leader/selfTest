@@ -3,11 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 회원정보 처리 SQL -->
+
 <mapper namespace="com.seltest.www.dao.HealthRecordMapper">
 
+
 	<insert id="insertHealthRecord" parameterType="healthRecord">
-		insert into customer (
+		insert into healthRecord (
 
 		dia_Num
 		,dis_Name
@@ -42,12 +43,19 @@
 		,#{hos_Address}
 		,#{hos_Phone}
 		,#{cust_Num}
-		,${dia_del}
+		,#{dia_del}
 		
 		)
 	</insert>
 	
-	
+	<select id="searchDisCode" parameterType="String" resultType="disCode">
+
+		select * 
+		from diseaseCode 
+		where dis_code like '%' || #{discode} || '%'
+		order by dis_code
+
+	</select>
 	
 
 

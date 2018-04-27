@@ -1,12 +1,15 @@
 package com.seltest.www.dao;
 
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.seltest.www.vo.DiseaseCode;
 import com.seltest.www.vo.HealthRecord;
 
 @Repository
@@ -59,7 +62,29 @@ public class HealthRecordDAO {
 		
 	}
 	
+	public ArrayList<DiseaseCode> searchDisCode(String search){
+		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
+		
+		ArrayList<DiseaseCode> disList = null;
+		
+		try{
+			
+			disList = mapper.searchDisCode(search);
+			
+			System.out.println(disList+" dao disList");
+			
+			
+			
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 	
+		return disList;
+		
+	}
 	
 	
 	

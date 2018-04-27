@@ -17,19 +17,71 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	
+	$('#dis_Category').on('keyup',dis_Category_Chk);
+	
+	
+	function dis_Category_Chk(){
+		var dis_Category = $('#dis_Category').val();
+	
+		$.ajax({
+			url:'dis_Category_chk'
+			,type:'post'
+			,data:{
+				dis_Category:dis_Category
+			}
+			,dataType:'json'
+			,success:function(disCode){
+				console.log(disCode);
+				
+				var html = '<span id="check">';
+				
+				if(disCode!=""){
+				
+					$.each(disCode, function(index , item){
+						
+						html += index + ' : ' + item.dis_Code + '<br />'; 
+						console.log(item);
 
+					})
+				
+				}else{
+					html += '없는 코드 입니다.';
+				}
+				html += '</span>';
+				
+				$('#check').html(html);
+			}
+			,error:function(err){
+				console.log(JSON.stringify(err));
+			}
+		});
+	}	
+});
+	
+	
+	
 
 $( function() {
-    $( "#first_Date" ).datepicker();
+    $( "#first_Date" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
 
 $( function() {
-    $( "#dia_Date" ).datepicker();
+    $( "#dia_Date" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
 
 $( function() {
-    $( "#issue_Date" ).datepicker();
+    $( "#issue_Date" ).datepicker({ dateFormat: 'yy-mm-dd' });
   } );
+	
+
+function docReserveList() {
+	/* alert('1'); */
+	
+	window.open("findCust", "newWindow", "top=50, left=400, height=500, width=1000, resizable=no");
+
+}	
 	
 </script>
 
@@ -38,9 +90,19 @@ $( function() {
 </head>
 <body>
 	
+	<div class="form-element form-input">
+				<input id="cust_Name" name="cust_Name" class="form-element-field"
+					placeholder="sign dictor name" type="text" disabled="disabled"/>
+				<div class="form-element-bar"></div>
+				<label class="form-element-label">cust_Name</label>
+			</div>
 	<form class="form-card" action="insertHealthRecord" method="post" enctype="multipart/form-data">
 		<fieldset class="form-fieldset">
-			<legend class="form-legend">HealthRecord</legend>
+			<legend class="form-legend">HealthRecord
+			
+			
+			
+			</legend>
 			
 <!-- 	int dia_Num;
 	String dis_Name; text
@@ -72,7 +134,7 @@ $( function() {
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">final_Diagnosis</label>
-				<div id="check"></div>
+				
 			</div>
 			
 			
@@ -81,6 +143,7 @@ $( function() {
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">dis_Category</label>
+				<div id="check"></div>
 			</div>
 			
 			
@@ -124,56 +187,65 @@ $( function() {
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="care_Opinions" class="form-element-field" placeholder="Write care_Opinions"
+				<input id="care_Opinions" name="care_Opinions" class="form-element-field" placeholder="Write care_Opinions"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">care_Opinions</label>
 			</div>
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="ect" class="form-element-field" placeholder="Write ect"
+				<input id="ect" name="ect" class="form-element-field" placeholder="Write ect"
 					type="text" required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">ect</label>
 			</div>
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="hos_Name" class="form-element-field" placeholder="hospital_Name"
-					type="text" required />
+				<input id="hos_Name" name="hos_Name" class="form-element-field" placeholder="hospital_Name"
+					type="text" required disabled="disabled"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Name</label>
 			</div>
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Address" name="hos_Address" class="form-element-field" placeholder="hospital_Address"
-					type="text" required />
+				<input id="hos_Address" name="hos_Address" class="form-element-field" placeholder="hospital_Address"
+					type="text" required disabled="disabled" />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Address</label>
 			</div>
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Phone" name="hos_Phone" class="form-element-field"
-					placeholder="hospital_Phone" type="number" required />
+				<input id="hos_Phone" name="hos_Phone" class="form-element-field"
+					placeholder="hospital_Phone" type="number" required disabled="disabled"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Phone</label>
 			</div>
 			
 			
 			<div class="form-element form-input">
-				<input id="cust_Major" name="cust_Name" class="form-element-field"
-					placeholder="write customer name" type="text" required />
+				<input id="cust_Num" name="cust_Num" class="form-element-field"
+					placeholder="write customer name" type="text" required disabled="disabled"/>
 				<div class="form-element-bar"></div>
-				<label class="form-element-label">cust_Name</label>
+				<label class="form-element-label">cust_Num</label>
+				<c:if test="${sessionScope.customer.division == 2 }">
+				<button class="docReserveList" onclick="docReserveList()" value="findCust">FIND_CUST</button>
+				</c:if> 
+				
+			
 			</div>
 			
+			
+			
 			<div class="form-element form-input">
-				<input id="doctor_Name" name="doctor_Name" class="form-element-field"
+				<input id="cust_Id" name="cust_Id" class="form-element-field"
 					placeholder="sign dictor name" type="text" value = "${record.cust_Id }"required />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">doctor_Name</label>
 			</div>
+			
+			
 			
 		</fieldset>
 		<div class="form-actions">
@@ -182,5 +254,8 @@ $( function() {
 		</div>
 
 	</form>
+	
+	
+	
 </body>
 </html>
