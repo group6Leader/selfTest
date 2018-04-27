@@ -76,6 +76,21 @@ public class CustomerController {
 
 		return "customer/joinCustomer";
 
+	}	
+	
+	@RequestMapping(value = "goAdmin", method = RequestMethod.GET)
+	public String adminPage(Customer customer, HttpSession session,Model model) {
+
+		logger.info("관리페이지으로 이동합니다-c");
+
+		Customer loginCust = (Customer) session.getAttribute("customer");
+		String loginId = loginCust.getCust_Id();
+		
+		Customer login = custDao.searchCustomerOne(loginId);
+		
+		model.addAttribute("login", login);
+		return "customer/customerManagement";
+
 	}
 	
 	@RequestMapping(value = "loginForm", method = RequestMethod.GET)

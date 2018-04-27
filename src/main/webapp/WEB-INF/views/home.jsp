@@ -222,6 +222,7 @@ $(window).scroll(function(){
 										
 										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
+										<li><a href="customer/goAdmin">page</a></li>
 										
 										<sec:authorize access="isAnonymous()">
 											<c:if test="${sessionScope.customer == null}">
