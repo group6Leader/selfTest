@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.seltest.www.dao.BoardDAO;
+import com.seltest.www.dao.ReplyDAO;
 import com.seltest.www.vo.Board;
+import com.seltest.www.vo.Reply;
 
 
 @Controller
@@ -22,6 +24,9 @@ public class CharLifeController {
 
 	@Autowired
 	BoardDAO boardDAO;
+	
+	@Autowired
+	ReplyDAO replyDAO;
 	
 	@RequestMapping(value = "gocharlife", method = RequestMethod.GET)
 	public String gocharlife() {
@@ -102,10 +107,15 @@ public class CharLifeController {
 		logger.info("readOne으로 이동");
 		
 		Board board = boardDAO.readOne(board_Num);
-		
 		logger.info("{}", board);
 		
+		ArrayList<Reply> rList = replyDAO.rList(board_Num);
+		/*for (int i = 0; i < rList.size(); i++) {
+			System.out.println(rList);
+		}*/
+		
 		model.addAttribute("b", board);
+		model.addAttribute("rList", rList);
 		
 		return "charlife/board/readOne";
 	}

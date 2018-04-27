@@ -9,8 +9,6 @@
 <body>
 
 	<h1>처방전 작성이 완료됐습니다!</h1>
-	
-	<button onclick="location.href= '../'">홈으로</button>
 
 </body>
 </html>

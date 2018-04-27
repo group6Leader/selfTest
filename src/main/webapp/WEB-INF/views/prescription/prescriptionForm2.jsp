@@ -61,7 +61,7 @@
 			<div class="register">
 				<!-- <h3>No.처방전번호:  </h3>  -->
 				<h3 style="text-align: right;">날짜 ${date }</h3>
-				<form id="reg-form" action="goPrescription" method="post" onsubmit="return checkForm()">
+				<form id="reg-form" action="goPrescription2" method="post" onsubmit="return checkForm()">
 					
 					<!-- 환자 -->
 					<div>

@@ -11,6 +11,7 @@
 		<typeAlias type="com.seltest.www.vo.Prescription" alias="prescription" />
 		<typeAlias type="com.seltest.www.vo.HealthRecord" alias="healthRecord" />
 		<typeAlias type="com.seltest.www.vo.Board" alias="board" />
+		<typeAlias type="com.seltest.www.vo.Reply" alias="reply" />
 		<typeAlias type="com.seltest.www.vo.DiseaseCode" alias="disCode" />
 	
 	</typeAliases>
@@ -21,5 +22,6 @@
 		<mapper resource="mapper/prescriptionMapper.xml" />
 		<mapper resource="mapper/healthRecordMapper.xml"/>
 		<mapper resource="mapper/boardMapper.xml"/>
+		<mapper resource="mapper/replyMapper.xml"/>
 	</mappers>
 </configuration>

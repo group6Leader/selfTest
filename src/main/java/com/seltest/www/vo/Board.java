@@ -4,7 +4,7 @@ public class Board {
 
 	private int board_Num;
 	private String board_Title;
-	private String hos_Name;
+	private String board_Category;
 	private String content;
 	private String input_Date;
 	private int hits;
@@ -13,11 +13,11 @@ public class Board {
 	private String saved_File;
 	private int cust_Num;
 	
-	public Board(int board_Num, String board_Title, String hos_Name, String content, String input_Date, int hits,
+	public Board(int board_Num, String board_Title, String board_Category, String content, String input_Date, int hits,
 			int score, String original_File, String saved_File, int cust_Num) {
 		this.board_Num = board_Num;
 		this.board_Title = board_Title;
-		this.hos_Name = hos_Name;
+		this.board_Category = board_Category;
 		this.content = content;
 		this.input_Date = input_Date;
 		this.hits = hits;
@@ -47,12 +47,13 @@ public class Board {
 		this.board_Title = board_Title;
 	}
 
-	public String getHos_Name() {
-		return hos_Name;
+	
+	public String getBoard_Category() {
+		return board_Category;
 	}
 
-	public void setHos_Name(String hos_Name) {
-		this.hos_Name = hos_Name;
+	public void setBoard_Category(String board_Category) {
+		this.board_Category = board_Category;
 	}
 
 	public String getContent() {
@@ -113,7 +114,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [board_Num=" + board_Num + ", board_Title=" + board_Title + ", hos_Name=" + hos_Name
+		return "Board [board_Num=" + board_Num + ", board_Title=" + board_Title + ", board_Category=" + board_Category
 				+ ", content=" + content + ", input_Date=" + input_Date + ", hits=" + hits + ", score=" + score
 				+ ", original_File=" + original_File + ", saved_File=" + saved_File + ", cust_Num=" + cust_Num + "]";
 	}

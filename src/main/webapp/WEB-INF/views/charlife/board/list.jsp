@@ -36,9 +36,9 @@
 							<p>Evaluating Hospitals</p>
 						</header>
 						<div class="content">
-							<%-- <sec:authorize access="isAuthenticated()"> --%>
+							<sec:authorize access="isAuthenticated()">
 							<button onclick="location.href='write'">Write</button> <br><br>
-							<%-- </sec:authorize> --%>
+							</sec:authorize>
 							
 							<table border="1">
 								<tr>

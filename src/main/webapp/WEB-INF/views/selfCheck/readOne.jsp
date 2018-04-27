@@ -25,14 +25,12 @@
 
 	<script type="text/javascript">
 	function goIndPrescription() {
-		alert(1);
+		/* alert(1); */
 		/* alert('${c.cust_Num}'); */
 		var cust_Num = document.getElementById('prescription').value;
-		alert(cust_Num);
+		/* alert(cust_Num); */
 		
-		
-		location.href = '../prescription/readOne?cust_Num='+ cust_Num;
-	
+		location.href = '../prescription/readOne2?cust_Num='+ cust_Num;
 	}
 	
 	</script>

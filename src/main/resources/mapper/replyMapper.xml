@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="com.seltest.www.dao.ReplyMapper">
+
+	<insert id="insertReply" parameterType="reply">
+		insert into reply (
+		
+		reply_Num
+		, board_Num
+		, cust_Num
+		, text
+		)
+		
+		values(
+		reply_Num_sequence.nextval
+		, #{board_Num}
+		, #{cust_Num}
+		, #{text}		
+		)
+		
+	<!-- private int reply_Num;
+	private int board_Num;
+	private int cust_Num;
+	private String text;
+	private String inputDate; -->
+	
+	</insert>
+	
+	<select id="rList" resultType="reply">
+
+		select *
+		from reply
+		where board_Num = #{board_Num}
+		order by reply_Num desc	
+	
+	</select>
+	
+	<delete id="delete">
+	
+		delete from reply
+		where reply_Num = #{reply_Num}
+	
+	</delete>
+	
+</mapper>

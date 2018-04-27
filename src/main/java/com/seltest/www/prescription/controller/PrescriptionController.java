@@ -65,8 +65,38 @@ public class PrescriptionController {
 		return "prescription/prescriptionForm";
 	}
 	
+	@RequestMapping(value="readOne2", method = RequestMethod.GET)
+	public String prescriptionForm2(int cust_Num, Model model, HttpSession session) {
+		
+		System.out.println(cust_Num);
+		Customer customer = customerDAO.readOne(cust_Num);
+		
+		Customer doctor = (Customer) session.getAttribute("customer");
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = new Date();
+			
+		model.addAttribute("c", customer);
+		model.addAttribute("date", dateFormat.format(date));
+		model.addAttribute("d", doctor);
+		
+		return "prescription/prescriptionForm2";
+	}
+	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.POST)
 	public String prescriptionResult(Prescription prescription) {
+		
+		System.out.println("goPrescriptionPost");
+		System.out.println(prescription);
+		
+		int insert = prescriptionDAO.insertPrescription(prescription);
+		System.out.println("Insert: " + insert);
+		
+		return "redirect: ../";
+	}
+	
+	@RequestMapping(value = "goPrescription2", method = RequestMethod.POST)
+	public String prescriptionResult2(Prescription prescription) {
 		
 		System.out.println("goPrescriptionPost");
 		System.out.println(prescription);

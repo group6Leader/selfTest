@@ -11,8 +11,9 @@
 		
 		board_Num
 		, board_Title
-		, hos_Name
+		, board_Category
 		, content
+		, score
 		, cust_Num
 		
 		)
@@ -21,23 +22,12 @@
 		
 		board_Num_sequence.nextval
 		, #{board_Title}
-		, #{hos_Name}
+		, #{board_Category}
 		, #{content}
+		, #{score}
 		, 1
 		
 		)
-
-		<!-- private int board_Num;
-				private String board_Title;
-				private String hos_Name;
-				private String content;
-				private String input_Date;
-				private int hits;
-				private int score;
-				private String original_File;
-				private String saved_File;
-				private int cust_Num; -->
-		
 	
 	</insert>
 
@@ -45,6 +35,7 @@
 		
 		select *
 		from board
+		order by board_Num desc
 	
 	</select>
 	
