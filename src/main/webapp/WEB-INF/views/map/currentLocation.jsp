@@ -256,7 +256,7 @@ $(document).ready(function() {
 	$('.btn btn-update-map').on('click', google.maps.event.addListener);
 });
 
-
+</script>
 </head>
 <body>
 <div class='preloader'>
