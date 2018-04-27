@@ -69,16 +69,16 @@ public class ReservationController {
 				if(myRes != null){
 					String haveRes = "예약 정보가 이미 존재합니다.";
 					model.addAttribute("haveRes", haveRes);
-					int res_Check = myRes.getRes_Check();
-					String resCheck = "";
+					//int res_Check = myRes.getRes_Check();
+					/*String resCheck = "";
 						if(res_Check == 1)	resCheck = "병원진료";
-						if(res_Check == 2) resCheck = "원격진료";
+						if(res_Check == 2) resCheck = "원격진료";*/
 					String my_Res = myRes.getRes_Date();
 					String year = my_Res.substring(0, 4);
 					String month = my_Res.substring(4, 6);
 					String date = my_Res.substring(6, 8);
 					String hour = my_Res.substring(8, 10);
-					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " +resCheck+ "를 예약하셨습니다.";					
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시"+ " 예약하셨습니다.";					
 					model.addAttribute("myReservation", myReservation);
 					session.setAttribute("myReservation", myReservation);
 				}				
@@ -145,10 +145,10 @@ public class ReservationController {
 			}
 				
 			res.setRes_Date(res_Date);
-			res.setRes_Hos("차병원");
+			//res.setRes_Hos("차병원");
 			
 			res.setCust_Num(cust_Num);
-			res.setRes_Check(res_Check);
+			//res.setRes_Check(res_Check);
 			int result = 0;
 			result = dao.insertReservation(res);
 			if(result == 1){
@@ -160,7 +160,7 @@ public class ReservationController {
 					myRes = dao.selectMyReservation(cust_Num);
 					//나의 예약정보 확인
 					if(myRes != null){
-						res_Check = myRes.getRes_Check();
+						//res_Check = myRes.getRes_Check();
 						String resCheck = "";
 							if(res_Check == 1)	resCheck = "병원진료";
 							if(res_Check == 2) resCheck = "원격진료";

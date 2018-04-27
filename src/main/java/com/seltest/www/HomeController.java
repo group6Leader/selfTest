@@ -38,16 +38,16 @@ public class HomeController {
 			myRes = dao.selectMyReservation(cust_Num);
 			//나의 예약정보 확인
 			if(myRes != null){
-				int res_Check = myRes.getRes_Check();
-				String resCheck = "";
+				//int res_Check = myRes.getRes_Check();
+				/*String resCheck = "";
 					if(res_Check == 1)	resCheck = "병원진료";
-					if(res_Check == 2) resCheck = "원격진료";
+					if(res_Check == 2) resCheck = "원격진료";*/
 				String my_Res = myRes.getRes_Date();
 				String year = my_Res.substring(0, 4);
 				String month = my_Res.substring(4, 6);
 				String date = my_Res.substring(6, 8);
 				String hour = my_Res.substring(8, 10);
-				String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " +resCheck+ "를 예약하셨습니다.";
+				String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 예약하셨습니다.";
 				session.setAttribute("myReservation", myReservation);
 			}		
 		}
