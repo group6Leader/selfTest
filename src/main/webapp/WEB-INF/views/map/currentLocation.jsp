@@ -139,9 +139,9 @@
 								      '</div>'+
 								      '<h1 id="firstHeading" class="firstHeading">'+yadmNm+'</h1>'+
 								      '<div id="bodyContent">'+
-								      '<p><b>홈페이지 : </b>' + '<a href=' + hospUrl + '</a></p>'+
+								      '<p><b>홈페이지 : </b>' + '<a href=' + hospUrl + ' target="_blank">' + hospUrl + '</a></p>'+
 								      '<p><b>주소 : </b>' + addr + '</p>' +
-								      '<p><b>전화번호 : </b>' + telno + '</p>');
+								      '<p><b>전화번호 : </b>' + telno + '</p></div>');
 							//hosInfoArr.push("홈페이지: " + hospUrl + "\n주소: " + addr + "\n전화번호: " + telno);
 							hosLocation.push(new google.maps.LatLng(yPos, xPos));
 							//console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);							
