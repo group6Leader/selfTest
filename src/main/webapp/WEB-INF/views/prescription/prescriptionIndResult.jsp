@@ -53,15 +53,20 @@
 		</div>
 		<div class="row">
 			<div class="cell row header">병원이름</div>
-			<div class="cell"></div>
+			<div class="cell">차병원</div>
 		</div>
 		<div class="row">
 			<div class="cell row header">주소</div>
-			<div class="cell">${s.allergy }</div>
+			<div class="cell">서울 강남구 삼성동 코엑스</div>
 		</div>
 		<div class="row">
 			<div class="cell row header">전화번호</div>
-			<div class="cell">${s.overseas_Visits }</div>
+			<div class="cell">119</div>
+		</div>
+		
+		<div class="row">
+			<div class="cell row header">의사성함</div>
+			<div class="cell">${p.cust_Id}</div>
 		</div>
 	</div> <br>
 	

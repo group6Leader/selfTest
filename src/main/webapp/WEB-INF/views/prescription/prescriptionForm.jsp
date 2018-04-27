@@ -104,22 +104,22 @@
 					
 					<div>
 						<label for="hos_Name">병원이름</label> 
-						<input type="text" id="hos_Name" name="hos_Name" placeholder="병원이름" />
+						<input type="text" id="hos_Name" name="hos_Name" placeholder="병원이름" value="차병원" />
 					</div>
 
 					<div>
 						<label for="hos_Address">주소</label> 
-						<input type="text" id="hos_Address" name="hos_Address" spellcheck="false" placeholder="주소" />
+						<input type="text" id="hos_Address" name="hos_Address" spellcheck="false" placeholder="주소" value="서울시 강남구 삼성동 코엑스" />
 					</div>
 					
 					<div>
 						<label for="hos_Phone">전화번호</label> 
-						<input type="text" id="hos_Phone" name="hos_Phone" spellcheck="false" placeholder="전화번호" />
+						<input type="text" id="hos_Phone" name="hos_Phone" spellcheck="false" placeholder="전화번호" value="119" />
 					</div>
 
 					<div>
 						<label for="doctorName">의사성함</label> 
-						<input type="text" id="cust_Id" name="cust_Id" spellcheck="false" placeholder="의사성함" />
+						<input type="text" id="cust_Id" name="cust_Id" spellcheck="false" placeholder="의사성함" value="${d.cust_Name }" />
 					</div>
 					
 					<!-- <div>

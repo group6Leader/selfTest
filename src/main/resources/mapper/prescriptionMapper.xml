@@ -16,6 +16,7 @@
 			, med_Count
 			, med_Content
 			, cust_Num
+			, cust_Id
 		)
 		
 		values (
@@ -24,7 +25,8 @@
 			, #{med_Amount}
 			, #{med_Count}
 			, #{med_Content}
-			, #{cust_Num}		
+			, #{cust_Num}
+			, #{cust_Id}		
 		)
 		
 	</insert>

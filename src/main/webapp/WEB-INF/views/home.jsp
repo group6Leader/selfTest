@@ -286,9 +286,16 @@ $(window).scroll(function(){
 									<img src="./resources/assets/images/service3.jpg" alt="" />
 									<div class="single_about_left_text">
 										<div class="separator2"></div>
+										<h3>
+											Our Motto <br>
+											
+										</h3>
+										
 										<h4>
-											우수<br />능률<br />서비스정신<br />
-											첨단기술
+											Excellency<br/> 
+											Efficiency<br/> 
+											Service Oriented<br/>
+											State of the Art Technology
 										</h4>
 									</div>
 								</div>
@@ -314,8 +321,6 @@ $(window).scroll(function(){
 									<p> Third. Make a Reservation </p>
 									
 									<p> Fourth. Enter Remote Medical Treatment System </p>
-									
-									
 									
 									<!-- Experience the state of the art facilities and services. -->
 								

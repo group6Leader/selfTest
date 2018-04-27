@@ -5,10 +5,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,9 +33,12 @@ public class PrescriptionController {
 	@Autowired
 	PrescriptionDAO prescriptionDAO;
 
+	private static final Logger logger = LoggerFactory.getLogger(PrescriptionController.class);
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.GET)
 	public String prescriptionList(Model model) {
+		
+		logger.info("처방전 작성으로 이동");
 		
 		ArrayList<Customer> cList = customerDAO.cList();
 		
@@ -45,27 +48,28 @@ public class PrescriptionController {
 	}
 		
 	@RequestMapping(value="readOne", method = RequestMethod.GET)
-	public String prescriptionForm(int cust_Num, Model model) {
+	public String prescriptionForm(int cust_Num, Model model, HttpSession session) {
 		
 		System.out.println(cust_Num);
-		Customer c = customerDAO.readOne(cust_Num);
+		Customer customer = customerDAO.readOne(cust_Num);
+		
+		Customer doctor = (Customer) session.getAttribute("customer");
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
 			
-		model.addAttribute("c", c);
+		model.addAttribute("c", customer);
 		model.addAttribute("date", dateFormat.format(date));
+		model.addAttribute("d", doctor);
 		
 		return "prescription/prescriptionForm";
 	}
 	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.POST)
-	public String prescriptionResult(Prescription prescription, HealthRecord healthRecord) {
+	public String prescriptionResult(Prescription prescription) {
 		
 		System.out.println("goPrescriptionPost");
-		
 		System.out.println(prescription);
-		System.out.println();
 		
 		int insert = prescriptionDAO.insertPrescription(prescription);
 		System.out.println("Insert: " + insert);
@@ -128,7 +132,7 @@ public class PrescriptionController {
 	@RequestMapping(value = "prescriptionIndResult", method = RequestMethod.GET)
 	public String prescriptionIndResult(int pre_Num, Model model, HttpSession session) {
 		
-		System.out.println("prescriptionIndResult");
+		logger.info("PresciprtionIndResult로 가기");
 		
 		System.out.println("pre_Num: " + pre_Num);
 		
