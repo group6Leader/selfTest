@@ -181,7 +181,9 @@ $(window).scroll(function(){
 
 								<!-- Collect the nav links, forms, and other content for toggling -->
 
-
+								<c:if test="${param.error != null}">
+							        <p> 이메일 인증을 하셔야 합니다. </p>
+								</c:if>
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
@@ -206,7 +208,7 @@ $(window).scroll(function(){
 											<ul class="dropdown-menu">
 												<li><a href="healthRecord/goHealthRecord">진단서 작성</a></li>
 												<li><a href="prescription/goPrescription">처방전 작성</a></li>
-												<!-- <li><a href="prescription/goPrescription">처방전 리스트</a></li> -->
+												<li><a href="prescription/prescriptionResult">처방전 리스트</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="hasRole('CUSTOMER')">
@@ -220,22 +222,24 @@ $(window).scroll(function(){
 										
 										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
+										
 										<sec:authorize access="isAnonymous()">
-										<c:if test="${sessionScope.customer == null}">
-										<li><a id="SignIn">LOGIN</a></li>
-										</c:if>
-										</sec:authorize>
-										<sec:authorize access="isAuthenticated()">
-						    				<c:if test="${sessionScope.customer != null}">
-										<li><a href="customer/logout" id='Logout'>Logout</a></li>
+											<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
 											</c:if>
 										</sec:authorize>
 										
+					    				<sec:authorize access="isAuthenticated()">
+										<li>
+										<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+											<span>Logout</span>
+										</a>
+										</li>
 										
-			
-										<c:if test="${param.error != null}">
-							        		<li> 이메일 인증을 하셔야 합니다. </li>
-								    		</c:if>
+										<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+										</c:if>
+										</sec:authorize>
 										
 									</ul>
 								</div>
