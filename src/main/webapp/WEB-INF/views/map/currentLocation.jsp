@@ -24,13 +24,12 @@
 	var nav = null;
 	var map;
 	var marker;
-	var markers;
-	var arrX = [];  //lat
-	var arrY = [];  //lng
+	var iterator = 0;
+	var yadmNmArr = [];	//병워이름 저장 배열
 	var hosInfoArr = [];	//병원정보 저장 배열
 	var markersArr = [];  //마커 삭제를 위한 배열
-	var clickedLocation;
-	var hosLocation;
+	var clickedLocation;	//클릭한 위치
+	var hosLocation = [];		//병원 lng, lat 위치
 	/* 현재 위치(위도/경도)를 받아오기 위한 부분 */
 	$(function() {
 		if (nav == null) {
@@ -94,13 +93,12 @@
 			if(Array.isArray(markersArr) & (markersArr.length > 0)){
 				removeMarker();				
 				markersArr = [];				
-			}	
+			}				   	  	
 			
 			var yadmNm = document.getElementById("yadmNm").value;
 			var dgsbjtCd = document.getElementById("dgsbjtCd").value;
 			var sgguCd = document.getElementById("sgguCd").value;
 			var radius = document.getElementById("radius").value;
-			alert(sgguCd);
 			
 			var clickedLocation = event.latLng.toString();
 						
@@ -113,23 +111,37 @@
 			    	  markersArr = [];
 			    	  arrY = [];
 			    	  arrX = [];
-			    	  
+			    	  yadmNmArr = [];
+			    	  hosInfoArr = [];
+			    	  hosLocation = [];
+			    	  iterator = 0;
+			    	  var hospUrl = "";
 			    	  for(let ele of data) {
 			    	  		var yadmNm = ele.yadmNm;
 				    		var addr = ele.addr;
-				    		var hospUrl = ele.hospUrl;
+				    		hospUrl = "";
+				    		if(ele.hospUrl == ''){
+				    			hospUrl = '없음.';
+				    		}else if(ele.hospUrl == null){
+				    			hospUrl = '없음.';
+				    		}else if(ele.hospUrl.indexOf("http") != -1){
+				    			hospUrl = ele.hospUrl;
+				    		}else {
+				    			hospUrl = ele.hospUrl;
+				    		}
+				    		
 				    		var telno = ele.telno;
 							var xPos = ele.xPos;
-							var yPos = ele.yPos;							
-							arrX.push(xPos);
-							arrY.push(yPos);
+							var yPos = ele.yPos;
+							yadmNmArr.push(yadmNm);
+							hosInfoArr.push("홈페이지: " + hospUrl + "주소: " + addr + "전화번호: " + telno);
+							hosLocation.push(new google.maps.LatLng(yPos, xPos));
 							//console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);							
 					  }			    	 			    	  
 			    	  			    	  
-			    	  for(var i=0; i<arrY.length; i++){
-				    	  	hosLocation = new google.maps.LatLng(arrY[i], arrX[i]);
-				    	  	addMarkers(hosLocation);
-				      }			    	  
+			    	  for(var i=0; i<hosLocation.length; i++){			    		  
+			    		  addMarkers();			    		  
+			      	  }
 			      },
 			      error:function(jqXHR, textStatus, errorThrown){
 			    	  
@@ -137,6 +149,7 @@
 			  });			
 		});
 	}
+	
 
 	function addMarker(location) {
 		/* 기존에 있던 마커 삭제 후 */
@@ -151,23 +164,32 @@
 	}
 
 	//검색한 병원 마커들 띠우기
-	function addMarkers(hosLocation){
+	function addMarkers(){
 			
-		markers = new google.maps.Marker({
-			position : hosLocation,
-			map : map
+		var markers = new google.maps.Marker({
+			position : hosLocation[iterator],
+			map : map,
+            title: yadmNmArr[iterator] 	// 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
 		});
-		markersArr.push(markers);
-		
-	}	
+			markersArr.push(markers);
+		    
+			var infowindow = new google.maps.InfoWindow({
+		    	content: hosInfoArr[iterator]
+		    });	// 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
+  	  			    		  	
+		    google.maps.event.addListener(markers, 'click', function(){
+		          infowindow.open(map, markers);		//페이지 로딩시 말풍선 실행
+		    });
+		    iterator ++;
+    }	
 	
 	//마커들 지우기
 	function removeMarker() {
-		for ( var i = 0; i < markersArr.length; i++ ) {
-			//infowindow.close();
+		for ( var i = 0; i < markersArr.length; i++ ) {			
 			markersArr[i].setMap(null);	
-			delete markersArr[i];
+			delete markersArr[i];			
 		}
+		//infowindow.close();
 	}
 	
 	
