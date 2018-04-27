@@ -1087,18 +1087,40 @@ font-family: 'Anton', sans-serif;
 }
 
 
+/*예약 알림*/
+
 
 #floating-button{
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: #F19CA2;
+  background: linear-gradient(320deg, rgba(237,84,129,0.8382703423166141) 0%, rgba(251,38,100,0.7234244039412641) 30%, rgba(246,125,160,0.6281863087031687) 69%, rgba(253,193,211,1) 100%);;
   position: fixed;
   top:15rem;
   right: 30px;
   cursor: pointer;
   box-shadow: 0px 2px 5px #666;
+  animation:bounce 5s infinite;
 }
+@keyframes bounce{
+	0%{transform:rotate(0deg);}
+	10%{transform:rotate(0deg);}
+    20%{transform:rotate(0deg);}
+    30%{transform:rotate(0deg);}
+    40%{transform:rotate(0deg);}
+    50%{transform:rotate(0deg);}
+    60%{transform:rotate(0deg);}
+    70%{transform:rotate(0deg);}
+    80%{transform:rotate(0deg);}
+    89%{transform:rotate(0deg);}
+    94% {transform:rotate(15deg);}
+    95%{transform:rotate(-15deg);}
+    96%{transform:rotate(15deg);}
+    97%{transform:rotate(-15deg);}
+    98%{transform:rotate(15deg);}
+    100%{transform:rotate(0deg);}
+}
+
 
 .plus{
   color: white;
@@ -1142,19 +1164,18 @@ font-family: 'Anton', sans-serif;
 .edit{
   position: absolute;
   top: 0;
-  display: block;
   bottom: 0;
-  left: 0;
+  left: 14px;
   display: block;
   right: 0;
   padding: 0;
   opacity: 0;
-  margin: auto;
-  line-height: 65px;
+  line-height: 60px;
   transform: rotateZ(-70deg);
   transition: all 0.3s;
   animation: edit-out 0.3s;
   font-size: 30px;
+  color:white;
 }
 
 #container-floating:hover .edit{
