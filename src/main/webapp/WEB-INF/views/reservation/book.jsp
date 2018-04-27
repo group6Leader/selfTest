@@ -311,7 +311,7 @@ addEventButton.onclick = function (e) {
   $.ajax({
       url:"reservation",
       type:'GET',
-      data: {hour: desc, selectRes: title},
+      data: {hour: desc, doctor: title},
       success:function(data){      	  
     	  if(${haveRes != null}){
     	  		alert("예약이 존재합니다.");
@@ -471,15 +471,17 @@ addEventButton.onclick = function (e) {
 						<a class="addEvent" id="changeFormButton">Add new</a>
 					</div>
 					<div class="addForm" id="addForm">
-						<h4>진료종류와 예약시간을 선택해주세요.</h4>
+						<h4>담당의사와 예약시간을 선택해주세요.</h4>
 
 						<div class="row">
 							<div class="input-field col s6">
 								<div class="column-6 form-select">
 									<select name="" id="eventTitleInput">
 										<option value="" disabled="disabled">진료종류</option>
-										<option selected="selected">병원진료</option>
-										<option>원격진료</option>
+										<option selected="selected">Dr차예진</option>
+										<option>Dr조민제</option>
+										<option>Dr김준형</option>
+										<option>Dr신동철</option>
 									</select>
 								</div>
 							</div>

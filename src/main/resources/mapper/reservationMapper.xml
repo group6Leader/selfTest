@@ -14,20 +14,42 @@
 			,hos_Name
 			,cust_Num
 			,cust_Id
+			<if test="hos_Addr != null">
+				,hos_Addr
+			</if>
+			<if test="hos_Homepage != null">
+				,hos_Homepage
+			</if>
+			<if test="hos_Phone != null">
+				,hos_Phone
+			</if>			
 		)
 		values (
 			res_Num_sequence.nextval
 			, #{res_Date}
 			, #{hos_Name}
 			, #{cust_Num}
-			, #{cust_Id}	
+			, #{cust_Id}
+			<if test="hos_Addr != null">
+				, #{hos_Addr}
+			</if>
+			<if test="hos_Homepage != null">
+				, #{hos_Homepage}
+			</if>
+			<if test="hos_Phone != null">
+				, #{hos_Phone}
+			</if>
+			
+			
+				
 		)
 	</insert>	
 	
 	<!-- 모든 예약시간 -->
 	<select id="selectReservation" parameterType="reservation" resultType="reservation">
 		select res_Num, res_Date, hos_Name, cust_Num, cust_Id
-		from reservation	
+		from reservation
+		where cust_Id = #{cust_Id}	
 		order by res_Date asc
 	</select>
 	

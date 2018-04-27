@@ -26,11 +26,11 @@ public class ReservationDAO {
 		return result;		
 	}
 	
-	public ArrayList<Reservation> selectReservation(){		
+	public ArrayList<Reservation> selectReservation(String cust_Id){		
 		ReservationMapper mapper = sqlSession.getMapper(ReservationMapper.class);		
 		ArrayList<Reservation> list = new ArrayList<Reservation>();	
 		try{
-			list = mapper.selectReservation();			
+			list = mapper.selectReservation(cust_Id);			
 		}catch(Exception e){
 			e.printStackTrace();			
 		}

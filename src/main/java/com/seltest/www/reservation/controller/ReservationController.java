@@ -69,16 +69,18 @@ public class ReservationController {
 				if(myRes != null){
 					String haveRes = "예약 정보가 이미 존재합니다.";
 					model.addAttribute("haveRes", haveRes);
-					//int res_Check = myRes.getRes_Check();
-					/*String resCheck = "";
-						if(res_Check == 1)	resCheck = "병원진료";
-						if(res_Check == 2) resCheck = "원격진료";*/
+					String res_Check = myRes.getCust_Id();
+					String resCheck = "";
+						if(res_Check.equals("1234"))	resCheck = "Dr차예진";
+						if(res_Check.equals("kanna")) resCheck = "Dr조민제";
+						if(res_Check.equals("1235")) resCheck = "Dr김준형";
+						if(res_Check.equals("aaa")) resCheck = "Dr신동철";
 					String my_Res = myRes.getRes_Date();
 					String year = my_Res.substring(0, 4);
 					String month = my_Res.substring(4, 6);
 					String date = my_Res.substring(6, 8);
 					String hour = my_Res.substring(8, 10);
-					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시"+ " 예약하셨습니다.";					
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ resCheck + " 에게" +" 예약하셨습니다.";					
 					model.addAttribute("myReservation", myReservation);
 					session.setAttribute("myReservation", myReservation);
 				}				
@@ -90,18 +92,19 @@ public class ReservationController {
 	//의사용 예약확인 페이지
 	@RequestMapping(value="book2", method = RequestMethod.GET)
 	public String book2(HttpSession session, Model model){
+		Member member = (Member) session.getAttribute("member");
+		String cust_Id = member.getCustomer().getCust_Id();
 		ArrayList<Reservation> list = new ArrayList<Reservation>();
-		list = dao.selectReservation();
+		list = dao.selectReservation(cust_Id);
 		model.addAttribute("list", list);
+		
 		return "reservation/book";
 	}
 	
 	//예약 하기
 	@RequestMapping(value="reservation", method = RequestMethod.GET)
-	public String revservation(HttpSession session, Model model, HttpServletRequest request){
-				
-			String selectRes = request.getParameter("selectRes");
-			int res_Check = 0;
+	public String revservation(HttpSession session, Model model, HttpServletRequest request){				
+			
 			int cust_Num = 0;
 			Member member = (Member) session.getAttribute("member");
 			if(member != null){
@@ -113,14 +116,6 @@ public class ReservationController {
 			//나의 예약정보 확인
 			if(myRes != null){				
 				return "reservation/book";
-			}
-		
-			
-			if(selectRes.equals("병원진료")){
-				res_Check = 1; 
-			}
-			if(selectRes.equals("원격진료")){
-				res_Check = 2;
 			}
 			
 			String hourStr = request.getParameter("hour");
@@ -145,10 +140,23 @@ public class ReservationController {
 			}
 				
 			res.setRes_Date(res_Date);
-			//res.setRes_Hos("차병원");
-			
+			res.setHos_Name("차병원");			
 			res.setCust_Num(cust_Num);
-			//res.setRes_Check(res_Check);
+			String doc_Name = request.getParameter("doctor");
+			String cust_Id = "";
+			if(doc_Name.equals("Dr차예진")){
+				cust_Id = "1234";
+			}
+			if(doc_Name.equals("Dr조민제")){
+				cust_Id = "kanna";
+			}
+			if(doc_Name.equals("Dr김준형")){
+				cust_Id = "1235";
+			}
+			if(doc_Name.equals("Dr신동철")){
+				cust_Id = "aaa";
+			}
+			res.setCust_Id(cust_Id);
 			int result = 0;
 			result = dao.insertReservation(res);
 			if(result == 1){
@@ -160,16 +168,18 @@ public class ReservationController {
 					myRes = dao.selectMyReservation(cust_Num);
 					//나의 예약정보 확인
 					if(myRes != null){
-						//res_Check = myRes.getRes_Check();
-						String resCheck = "";
-							if(res_Check == 1)	resCheck = "병원진료";
-							if(res_Check == 2) resCheck = "원격진료";
+						cust_Id = myRes.getCust_Id();
+						String docName = "";
+							if(cust_Id.equals("1234")) docName = "Dr 차예진";
+							if(cust_Id.equals("kanna")) docName = "Dr 조민제";
+							if(cust_Id.equals("1235")) docName = "Dr 김준형";
+							if(cust_Id.equals("aaa")) docName = "Dr 신동철";
 						String my_Res = myRes.getRes_Date();
 						String year = my_Res.substring(0, 4);
 						String month = my_Res.substring(4, 6);
 						String date = my_Res.substring(6, 8);
 						hour = my_Res.substring(8, 10);
-						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " +resCheck+ "를 예약하셨습니다.";					
+						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + docName+ " 에게 예약하셨습니다.";					
 						model.addAttribute("myReservation", myReservation);
 						session.setAttribute("myReservation", myReservation);
 					}
