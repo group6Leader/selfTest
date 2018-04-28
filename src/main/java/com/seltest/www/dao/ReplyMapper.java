@@ -11,4 +11,6 @@ public interface ReplyMapper {
 	ArrayList<Reply> rList(int board_Num);
 	
 	void delete(int reply_Num);
+	
+	void update(Reply reply);
 }

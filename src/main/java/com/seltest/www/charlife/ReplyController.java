@@ -55,6 +55,21 @@ public class ReplyController {
 		
 		return "redirect:../charlife/readOne?board_Num=" + board_Num;
 	}
-
 	
+	@RequestMapping(value = "edit", method = RequestMethod.POST)
+	public String edit(int reply_Num, int board_Num, String text, HttpSession session) {
+		
+		logger.info("replyEdit 하는 곳 ~ ");
+		
+		Customer customer = (Customer)session.getAttribute("customer");
+		int cust_Num = customer.getCust_Num();
+		
+		Reply reply = new Reply(reply_Num, board_Num, cust_Num, text);
+		
+		logger.info("{}", reply);
+		
+		replyDAO.update(reply);
+		
+		return "redirect:../charlife/readOne?board_Num=" + board_Num;
+	}
 }

@@ -157,7 +157,7 @@ public class CharLifeController {
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	public String editResult(Board board) {
 
-		logger.info("editResult으로 이동");
+		logger.info("BoardEditResult으로 이동");
 		logger.info("{}", board);
 		
 		boardDAO.update(board);

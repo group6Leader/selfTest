@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,26 +10,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../resources/css/charlife.css" />
         <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-				
-		<style type="text/css">
-		x-star-rating {
-		    font-family: 'Ionicons';
-		    font-size: 48px;
-		    display: inline-flex;
-		    cursor: pointer;
-		}
+		<link rel="stylesheet" type="text/css"  href="../resources/css/rating.css">
 		
-		x-star-rating > .star::after {
-		    content: '\f3ae';
-		    color: #777;
-		}
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('.rating').hide();
+			$('.gn-icon-menu').hover(function() {
+				$('.gn-menu-wrapper').toggleClass('gn-open-part');
+			});
+
+			$('.gn-menu-wrapper').hover(function() {
+				$(this).toggleClass('gn-open-all');
+			});
+		});
 		
-		x-star-rating > .star.full::after {
-		    content: '\f2fc';
-		    color: #fd0;
-		}
-		
-		</style>
+		</script>
 		
 	</head>
 	<body class="subpage">
@@ -51,8 +47,8 @@
 
 						<div class="field half" style="width: 200px; font">
 							<label for="Category">Category</label>
-							<select name="board_Category">
-								<option style="color: black;" value="병원 평가"> 병원 평가 </option>
+							<select id="board_Category" name="board_Category" >
+								<option style="color: black;" value="병원 평가" > 병원 평가 </option>
 								<option style="color: black;" value="자유 게시판"> 자유 게시판 </option>
 								<option style="color: black;" value="고객의 목소리"> 고객의 목소리 </option>
 							</select>							
@@ -64,27 +60,47 @@
 							<input name="board_Title" id="board_Title" type="text" placeholder="Title">
 						</div>
 						
-						
-						<!-- 5 star rating -->
-						
-						<div class="field half first">
-						<label for="ratings">Ratings</label>
-						
-							
-							Low &nbsp;<input type="radio" name="score" id="star1" value=1> 
-							<label for="star1"></label>
-						 	<input type="radio" name="score" id="star2" value=2> 
-						 	<label for="star2"></label>
-						 	<input type="radio" name="score" id="star3" value=3> 
-						 	<label for="star3"></label>
-						 	<input type="radio" name="score" id="star4" value=4> 
-						 	<label for="star4"></label>
-						 	<input type="radio" name="score" id="star5" value=5 checked="checked"> 
-						 	<label for="star5">High</label>
-						
-						</div>
-						
-						<!--  -->	
+						<c:if test="$(#board_Category).value">
+						<!-- Ratings -->
+						<label>Ratings</label>
+						 <div class="rating">
+						  
+						  <label>
+						    <input type="radio" name="score" value="1"/>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="2" />
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="3" />
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>   
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="4" />
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="5" checked="checked"/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						 </div> <br><br>	
+						</c:if>
 						
 						<div class="field">
 							<label for="content">Content</label>

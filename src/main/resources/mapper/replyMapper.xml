@@ -21,12 +21,6 @@
 		, #{cust_Num}
 		, #{text}		
 		)
-		
-	<!-- private int reply_Num;
-	private int board_Num;
-	private int cust_Num;
-	private String text;
-	private String inputDate; -->
 	
 	</insert>
 	
@@ -45,5 +39,13 @@
 		where reply_Num = #{reply_Num}
 	
 	</delete>
+	
+	<update id="update" parameterType="reply">
+	
+		update reply
+		set text = #{text}
+		where reply_Num = #{reply_Num}
+		
+	</update>
 	
 </mapper>

@@ -16,6 +16,13 @@ public class Reply {
 		this.inputDate = inputDate;
 	}
 	
+	public Reply(int reply_Num, int board_Num, int cust_Num, String text) {
+		this.reply_Num = reply_Num;
+		this.board_Num = board_Num;
+		this.cust_Num = cust_Num;
+		this.text = text;
+	}
+	
 	public Reply() {
 	}
 

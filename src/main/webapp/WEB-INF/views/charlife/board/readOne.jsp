@@ -10,69 +10,74 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="../resources/css/charlife.css" />
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css"  href="../resources/css/rating.css">
+	
+	<style type="text/css">
+	td.white {
+		background-color: #ffffff;
+	}
+	
+	</style>
 	
 	<script type="text/javascript">
 		function del(board_Num) {
-			/* alert('1');
-			alert(board_Num); */
 			
-			location.href='./delete?board_Num=' + board_Num;
+			if(confirm("정말 삭제하시겠습니까?")){
+				location.href='./delete?board_Num=' + board_Num;
+			}
 		}
 		
 		function edit(board_Num) {
-			/* alert('2');
-			alert(board_Num); */
 			
-			location.href='./edit?board_Num=' + board_Num;
+			if(confirm("정말 수정하시겠습니까?")){
+				location.href='./edit?board_Num=' + board_Num;
+			}
 		}
 		
 		function del2(board_Num, reply_Num) {
-			alert('1');
 			
-			location.href='../reply/delete?board_Num=' + board_Num + '&reply_Num=' + reply_Num;
+			if(confirm("정말 삭제하시겠습니까?")){
+				location.href='../reply/delete?board_Num=' + board_Num + '&reply_Num=' + reply_Num;
+			}
 		}
-	
-	</script>
-	
-	<style type="text/css">
-	/* .rating {
-		transform: translate(-50%, -50%);
-		display: flex;	
-	}
-	
-	.rating input {
-		display: none;
-	
-	}
-	
-	.rating label {
-		/* display: block; */
-		cursor: pointer;
-		/* width: 50px; */
-		background: #ccc;
-	}
-	
-	.rating label:before {
-		content: '\f005';
-		font-family: fontAwesome;
-		/* position: relative; */
-		/* display: block; */
-		font-size: 50px;
-		color: #101010;
-	}
-	
-	.rating label:after {
-		content: '\f005';
-		font-family: fontAwesome;
-		/* position: absolute; */
-		/* display: block; */
-		font-size: 50px;
-		color: #1f9cff;
-	} */
-	
-	
-	</style>
 		
+			
+
+           	
+		function editForm(board_Num, reply_Num, text) {
+			
+			var div = document.getElementById("div"+reply_Num);
+			
+			var str = '<form name="editForm' + reply_Num + '" action="../reply/edit" method="post">';
+			str += '<input type="hidden" name="reply_Num" value="'+reply_Num+'">';
+			str += '<input type="hidden" name="board_Num" value="'+board_Num+'">';
+			str += '&nbsp;';
+			str += '<input type="text" name="text" value="' + text + '" style="width:530px;">';
+			str += '&nbsp;';
+			str += '<a href="javascript:editResult(document.editForm' + reply_Num + ')">[저장]</a>';
+			str += '&nbsp;';
+			str += '<a href="javascript:editCancel(document.getElementById(\'div' + reply_Num + '\'))">[취소]</a>';
+			str += '</form>';
+			div.innerHTML = str;
+			
+		}
+		
+		function editResult(form) {
+			if (confirm('수정된 내용을 저장하시겠습니까?')) {
+				form.submit();
+			}
+		}
+		
+		function editCancel(div) {
+
+			div.innerHTML = '';
+		}
+		
+		$(':radio').change(function() {
+			  console.log('New star rating: ' + this.value);
+		});
+	
+	</script>		
 		
 </head>
 
@@ -89,43 +94,73 @@
 				<div class="inner">
 				<article class="box">
 					
-					
 					<h2>${b.board_Num } Board Message</h2>
 
 					<form action="write" method="post">
+		
+					<div class="field half" style="width: 200px; font">
+						<label for="Category">Category</label>
+						<select id="board_Category" name="board_Category">
+							<option style="color: black;" value="병원 평가"> 병원 평가 </option>
+							<option style="color: black;" value="자유 게시판"> 자유 게시판 </option>
+							<option style="color: black;" value="고객의 목소리"> 고객의 목소리 </option>
+						</select>							
+					</div>
 
+						<!-- Title -->
 						<div class="field half first">
 							<label for="Title">Title</label>
-							<input name="board_Title" id="board_Title" type="text" value="${b.board_Title }">
+							<input name="board_`Title" id="board_Title" type="text" value="${b.board_Title }" readonly="readonly">
 						</div>
 						
 						
 						<!-- Ratings -->
-						<div class="rating">
-							
-							
-							Low &nbsp; <input type="radio" name="score" id="star1" value=1 checked="checked" <c:if test="${b.score == 1 }"> checked="checked" </c:if>/>
-							<label for="star1"></label>
-						 	
-						 	<input type="radio" name="score" id="star2" value="2" <c:if test="${b.score == 2 }"> checked="checked" </c:if>/> 
-						 	<label for="star2"></label>
-						 	
-						 	<input type="radio" name="score" id="star3" value="3" <c:if test="${b.score == 3 }"> checked="checked" </c:if>> 
-						 	<label for="star3"></label>
-						 	
-						 	<input type="radio" name="score" id="star4" value="4" <c:if test="${b.score == 4 }"> checked="checked" </c:if>> 
-						 	<label for="star4"></label>
-						 	
-						 	<input type="radio" name="score" id="star5" value="5" <c:if test="${b.score == 5 }"> checked="checked" </c:if>> 
-						 	<label for="star5">High</label>
+						<label>Ratings</label>
 						
-						</div> <br>
+						 <div class="rating">
+						  
+						  <label>
+						    <input type="radio" name="score" value="1" readonly="readonly" <c:if test="${b.score == 1 }"> checked="checked" </c:if>/>
+						    <%-- <input id="noSmoking" type="radio" name='smoking' checked='checked' value="없음" <c:if test="${s.smoking == '없음' }"> checked="checked" </c:if>/> --%>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="2" readonly="readonly" <c:if test="${b.score == 2 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="3" readonly="readonly" <c:if test="${b.score == 3 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>   
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="4" readonly="readonly" <c:if test="${b.score == 4 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="5" readonly="readonly" <c:if test="${b.score == 5 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						 </div> <br><br>
 						
-						<!--  -->
-						
+	
+						<!-- Content -->					
 						<div class="field">
-							<label for="comment">Comment</label>
-							<textarea name="content" id="content" rows="6"> ${b.content } </textarea>
+							<label for="comment">Content</label>
+							<textarea name="content" id="content" rows="6" readonly="readonly"> ${b.content } </textarea>
 						</div>
 					</form>
 						
@@ -153,14 +188,18 @@
 					
 					<c:forEach var="vo" items="${rList }">
 						<tr>
-							<td> ${vo.reply_Num } </td>
-							<td> ${vo.text } </td>
+							<td id="reply_Num"> ${vo.reply_Num } </td>
+							<td class="text" data-num=""> ${vo.text } </td>
 							
 							<c:if test="${sessionScope.customer.cust_Num == vo.cust_Num }">
-							<td> <input type="button" value="수정" onclick="edit2(${vo.board_Num}, ${vo.reply_Num})"> </td>
+							<td> <input type="button" value="수정" onclick="editForm(${vo.board_Num}, ${vo.reply_Num }, '${vo.text }')"> </td>
 							<td> <input type="button" value="삭제" onclick="del2(${vo.board_Num}, ${vo.reply_Num})"> </td>
 							</c:if>
-						</tr>		
+						</tr>
+						<tr>
+							<!-- 리플 수정 폼이 나타날 위치 -->
+							<td colspan="4"><div id="div${vo.reply_Num}"></div></td>
+						</tr>
 					
 					</c:forEach>
 						
@@ -175,30 +214,17 @@
 						<li><input value="Edit" class="button alt" type="button" onclick="edit(${b.board_Num})"></li>
 					</ul>
 
-
-				<!-- private int board_Num;
-				private String board_Title;
-				private String hos_Name;
-				private String content;
-				private String input_Date;
-				private int hits;
-				private int score;
-				private String original_File;
-				private String saved_File;
-				private int cust_Num; -->
-
 				</article>
 				</div>
 			</section>
 
 		<!-- Scripts -->
-					<script src="../resources/js/jquery.min.js"></script>
+			<script src="../resources/js/jquery.min.js"></script>
 			<script src="../resources/js/jquery.scrolly.min.js"></script>
 			<script src="../resources/js/jquery.scrollex.min.js"></script>
 			<script src="../resources/js/skel.min.js"></script>
 			<script src="../resources/js/util.js"></script>
 			<script src="../resources/js/charlife.js"></script>
-		
-
+	
 	</body>
 </html>

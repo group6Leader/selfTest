@@ -51,5 +51,15 @@ public class ReplyDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void update(Reply reply) {
+		
+		try {
+			ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+			mapper.update(reply);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
  	
 }
