@@ -548,7 +548,7 @@ $(window).scroll(function(){
 												迷惑メールフォルダやごみ箱に振り分けられていないかご確認頂き、これでも確認出来ない
 												場合は、別のメールアドレスよりお問い合わせ頂くようお願い致します。</span></li>
 											<li><i class="fa fa-mobile-phone"></i> <span>病院、薬の情報に関しては、正確ではない場合もあります。</span></li>
-											<li><i class="fa fa-envelope-o"></i> <span>hello@clemocreative.com</span></li>
+											<li><i class="fa fa-envelope-o"></i> <span>question@charhospital.com</span></li>
 										</ul>
 
 										<div class="contact_socail transition margin-top-80">
@@ -612,9 +612,10 @@ $(window).scroll(function(){
 					<div class="col-sm-12">
 						<div class="copyright_text text-center">
 							<p class=" wow fadeInRight" data-wow-duration="1s">
-								Made with <i class="fa fa-heart"></i> by <a target="_blank"
-									href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All
-								Rights Reserved
+								Made by <i class="fa fa-heart"></i> Char Yejin<i class="fa fa-heart"></i>Kim Joonhyung<i class="fa fa-heart"></i>
+								Jo Minje<i class="fa fa-heart"></i>Sin Dongcheol<a target="_blank"
+									href="http://bootstrapthemes.co">Project CharHospital</a>2018. All
+								Rights Reserved CharProjectTeam
 							</p>
 						</div>
 					</div>
