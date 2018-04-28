@@ -177,7 +177,7 @@ public class HealthRecord {
 				+ ", dis_Category=" + dis_Category + ", first_Date=" + first_Date + ", dia_Date=" + dia_Date
 				+ ", care_Opinions=" + care_Opinions + ", ect=" + ect + ", usage=" + usage + ", issue_Date="
 				+ issue_Date + ", hos_Name=" + hos_Name + ", hos_Address=" + hos_Address + ", hos_Phone=" + hos_Phone
-				+ ", cust_Num=" + cust_Num + ", dia_del=" + dia_del +"cust_Id"+cust_Id+"]";
+				+ ", cust_Num=" + cust_Num + ", dia_del=" + dia_del +", cust_Id"+cust_Id+"]";
 	}
 
 }

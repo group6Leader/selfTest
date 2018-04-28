@@ -152,6 +152,24 @@ public class HealthRecordController {
 		return find;
 	}
 	
+	@RequestMapping(value = "goHealthRecordList", method = RequestMethod.GET)
+	public String goHealthRecordList(Model model , HttpSession session ,HealthRecord healthRecord) {
+
+		logger.info("HealthRecord form으로 이동합니다-c");
+
+		  Customer customer = (Customer) session.getAttribute("customer");
+		  
+		  System.out.println(customer);
+		  		
+		  ArrayList<HealthRecord> selectHR_cust = new ArrayList<>();
+		
+		  System.out.println("개인 진단서 출력 "+selectHR_cust);
+		  
+		  model.addAttribute("HR_List", selectHR_cust);
+		
+		return "healthRecord/healthRecordList";
+
+	}
 	
 	
 }

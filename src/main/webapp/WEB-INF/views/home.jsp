@@ -207,6 +207,7 @@ $(window).scroll(function(){
 											data-toggle="dropdown" role="button" aria-haspopup="true">의사메뉴</a>
 											<ul class="dropdown-menu">
 												<li><a href="healthRecord/goHealthRecord">진단서 작성</a></li>
+												<li><a href="healthRecord/goHealthRecordList">진단서 리스트</a></li>
 												<li><a href="prescription/goPrescription">처방전 작성</a></li>
 												<li><a href="prescription/prescriptionResult">처방전 리스트</a></li>
 											</ul></li>
@@ -216,7 +217,7 @@ $(window).scroll(function(){
 											data-toggle="dropdown" role="button" aria-haspopup="true">환자메뉴</a>
 											<ul class="dropdown-menu">
 												<li><a href="prescription/prescriptionIndList2">개인 처방전</a></li>
-												<li><a href="healthRecord/goHealthRecord">개인 진단서</a></li>
+												<li><a href="healthRecord/goHealthRecordList">개인 진단서</a></li>
 											</ul></li>
 										</sec:authorize>
 										

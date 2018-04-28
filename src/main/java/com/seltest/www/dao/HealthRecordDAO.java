@@ -1,6 +1,5 @@
 package com.seltest.www.dao;
 
-
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,76 +15,101 @@ import com.seltest.www.vo.HealthRecord;
 public class HealthRecordDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(HealthRecordDAO.class);
-	
+
 	@Autowired
 	SqlSession sqlSession;
-	
-	public boolean insertHealthRecord(HealthRecord healthRecord){
-		
+
+	public boolean insertHealthRecord(HealthRecord healthRecord) {
+
 		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
-		
-		
+
 		boolean result = false;
 		int insertHr = 0;
-		
-		try{
+
+		try {
 			insertHr = mapper.insertHealthRecord(healthRecord);
-			
+
 			logger.info("INSERT HEALTHRECORD : " + insertHr);
-			System.out.println(healthRecord+"Dao");
-			
-			
-			
-			
-			
-		}catch(Exception e){
+			System.out.println(healthRecord + "Dao");
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		if(insertHr == 1){
-			
+
+		if (insertHr == 1) {
+
 			logger.info("INSERT HEALTHRECORD SUCCESS");
-			
+
 			result = true;
-			
-		} else{
-			
+
+		} else {
 
 			logger.info("INSERT HEALTHRECORD FAIL");
-			
+
 			result = false;
-			
+
 		}
-		
-		
+
 		return result;
-		
+
 	}
-	
-	public ArrayList<DiseaseCode> searchDisCode(String search){
+
+	public ArrayList<DiseaseCode> searchDisCode(String search) {
 		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
-		
+
 		ArrayList<DiseaseCode> disList = null;
-		
-		try{
-			
+
+		try {
+
 			disList = mapper.searchDisCode(search);
-			
-			System.out.println(disList+" dao disList");
-			
-			
-			
-			
-			
-		}catch(Exception e){
+
+			System.out.println(disList + " dao disList");
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	
+
 		return disList;
-		
+
 	}
-	
-	
-	
+
+	public ArrayList<HealthRecord> selectHR_doc(String doctor_id) {
+		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
+
+		ArrayList<HealthRecord> selectHR_doc = null;
+
+		try {
+
+			selectHR_doc = mapper.selectHR_doc(doctor_id);
+
+			System.out.println(selectHR_doc + "dao selectHR_doc");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return selectHR_doc;
+
+	}
+
+	public ArrayList<HealthRecord> selectHR_cust(int cust_num) {
+
+		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
+
+		ArrayList<HealthRecord> selectHR_cust = null;
+
+		try {
+
+			selectHR_cust = mapper.selectHR_cust(cust_num);
+
+			System.out.println(selectHR_cust + "dao selectHR_cust");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return selectHR_cust;
+
+	}
+
 }

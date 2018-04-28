@@ -104,22 +104,7 @@ function docReserveList() {
 			
 			</legend>
 			
-<!-- 	int dia_Num;
-	String dis_Name; text
-	String final_Diagnosis; text	
-	String dis_Category; radio - select;
-	String first_Date; // 질병 발병일 달력.	
-	String dia_Date; // 초기 진단일 달력
-	String care_Opinions; //text		
-	String ect; //text
-	String usage; //용도 radio 
-	String issue_Date; // 발행일 sysdate 
-	String hos_Name; // 예약 병원. char hosptial
-	String hos_Address;
-	String hos_Phone;
-	int cust_Num; //가져오기. 리스트
-	String doctor id
-	int dia_del; // -->
+
 			
 			<div class="form-element form-input">
 				<input id="dis_Name" name="dis_Name" class="form-element-field"
@@ -202,7 +187,7 @@ function docReserveList() {
 			
 			<div class="form-element form-input">
 				<input id="hos_Name" name="hos_Name" class="form-element-field" placeholder="hospital_Name"
-					type="text" required disabled="disabled"/>
+					type="text" readonly="readonly"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Name</label>
 			</div>
@@ -210,7 +195,7 @@ function docReserveList() {
 			
 			<div class="form-element form-input">
 				<input id="hos_Address" name="hos_Address" class="form-element-field" placeholder="hospital_Address"
-					type="text" required disabled="disabled" />
+					type="text" readonly="readonly" />
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Address</label>
 			</div>
@@ -218,7 +203,7 @@ function docReserveList() {
 			
 			<div class="form-element form-input">
 				<input id="hos_Phone" name="hos_Phone" class="form-element-field"
-					placeholder="hospital_Phone" type="number" required disabled="disabled"/>
+					placeholder="hospital_Phone" type="number" readonly="readonly"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">hos_Phone</label>
 			</div>
@@ -226,7 +211,7 @@ function docReserveList() {
 			
 			<div class="form-element form-input">
 				<input id="cust_Num" name="cust_Num" class="form-element-field"
-					placeholder="write customer name" type="text" required disabled="disabled"/>
+					placeholder="write customer name" type="text" readonly="readonly"/>
 				<div class="form-element-bar"></div>
 				<label class="form-element-label">cust_Num</label>
 				<c:if test="${sessionScope.customer.division == 2 }">

@@ -12,5 +12,10 @@ public interface HealthRecordMapper {
 	
 	public ArrayList<DiseaseCode> searchDisCode(String search);
 	
+	public ArrayList<HealthRecord> selectHR_doc(String doctor_id);
+
+	public ArrayList<HealthRecord> selectHR_cust(int cust_num);
+
+	
 	
 }
