@@ -26,10 +26,10 @@ $(function(){
 	</script>
 </head>
 <body>
-<c:if test="${HR_List==[]}">
+<c:if test="${HR_List=='[]'}">
 등록된 진단서가 없습니다.
 </c:if>
-	<c:if test="${HR_List!=[]}">
+	<c:if test="${HR_List!='[]'}">
 	<div id="wrapper">
 	<h1>개인 진단서 리스트</h1>
     <table id="keywords" cellpadding="0" cellspacing="0">

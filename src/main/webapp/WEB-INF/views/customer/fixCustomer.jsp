@@ -106,7 +106,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			url : "custFix"
-			,type : "post"			
+			,type : "POST"			
 			,data : {			
 
 				cust_Id: cust_Id
@@ -142,7 +142,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			url : "custDel"
-			,type : "post"			
+			,type : "POST"			
 			,data : {			
 
 				cust_Id: cust_Id
@@ -380,10 +380,11 @@ $(document).ready(function() {
                             <!-- Tab panes -->
                             <div class="card-body">
                                 <form class="form-horizontal form-material" method="post" enctype="multipart/form-data">
+                                   <input type="hidden" id="cust_Id" value="${login.cust_Id }">
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="cust_Id" name="cust_Id" disabled="disabled" value="${login.cust_Id }" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                            <input type="text" id="cust_Name" name="cust_Name" disabled="disabled" value="${login.cust_Name }" placeholder="Johnathan Doe" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
