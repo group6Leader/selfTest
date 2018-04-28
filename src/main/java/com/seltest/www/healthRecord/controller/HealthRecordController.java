@@ -160,16 +160,101 @@ public class HealthRecordController {
 		  Customer customer = (Customer) session.getAttribute("customer");
 		  
 		  System.out.println(customer);
-		  		
+		  
+		  if(customer.getDivision()==1){
 		  ArrayList<HealthRecord> selectHR_cust = new ArrayList<>();
 		
+		  selectHR_cust = healthRecordDao.selectHR_cust(customer.getCust_Num());
+		 
 		  System.out.println("개인 진단서 출력 "+selectHR_cust);
 		  
 		  model.addAttribute("HR_List", selectHR_cust);
+		  
+		  }else if(customer.getDivision()==2){
+		  ArrayList<HealthRecord> selectHR_doc = new ArrayList<>();
+			  
+		  
+		  selectHR_doc = healthRecordDao.selectHR_doc(customer.getCust_Id());
+		  
+		  System.out.println("의사 진단서 리스트 출력 "+selectHR_doc);
+		  
+		  model.addAttribute("HR_List", selectHR_doc);
+		  }
+		  
+		  
+		  
 		
 		return "healthRecord/healthRecordList";
 
 	}
 	
+	@RequestMapping(value="selectHRone", method = RequestMethod.GET)
+	public String selectHRone(int dia_Num , Model model){
+		
+		
+		logger.info("선택중 : 진단서 ");
+		
+		System.out.println(dia_Num);
+		
+		HealthRecord select = new HealthRecord();
+		
+		select = healthRecordDao.selectHRone(dia_Num);
+		
+		System.out.println(select+"선택된 진단서");
+		
+		model.addAttribute("select", select);
+		
+		return "healthRecord/selectHRonePage";
+	}
+	
+	@RequestMapping(value="deleteHR", method = RequestMethod.GET)
+	public String deleteHR(int dia_Num , Model model , HttpSession session){
+		
+		
+		logger.info("삭제중 : 진단서 ");
+		
+		System.out.println(dia_Num);
+		
+		Customer customer = (Customer) session.getAttribute("customer");
+		
+		if(healthRecordDao.deleteHR_cust(dia_Num)){
+			
+			System.out.println("삭제완료");
+			
+			
+			  
+			  System.out.println(customer);
+			  
+			  if(customer.getDivision()==1){
+			  ArrayList<HealthRecord> selectHR_cust = new ArrayList<>();
+			
+			  selectHR_cust = healthRecordDao.selectHR_cust(customer.getCust_Num());
+			 
+			  System.out.println("개인 진단서 출력 "+selectHR_cust);
+			  
+			  model.addAttribute("HR_List", selectHR_cust);
+			  
+			  }
+			
+		}else{
+			
+			System.out.println("삭제실패");
+			
+			System.out.println(dia_Num);
+			
+			HealthRecord select = new HealthRecord();
+			
+			select = healthRecordDao.selectHRone(dia_Num);
+			
+			System.out.println(select+"선택된 진단서");
+			
+			model.addAttribute("select", select);
+			
+			return "healthRecord/selectHRonePage";
+		}
+		
+		
+		return "healthRecord/healthRecordList";
+	}
 	
 }

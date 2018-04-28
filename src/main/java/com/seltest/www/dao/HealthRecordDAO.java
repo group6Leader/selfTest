@@ -111,5 +111,50 @@ public class HealthRecordDAO {
 		return selectHR_cust;
 
 	}
+	public HealthRecord selectHRone(int dia_Num){
+		
+		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
+		
+		HealthRecord select = null;
+		
+		try{
+			
+			select = mapper.selectHRone(dia_Num);
+			System.out.println("개인 진단서 선택중"+select);
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return select;
+		
+	}
+	
+	public boolean deleteHR_cust(int dia_Num){
+		
+		HealthRecordMapper mapper = sqlSession.getMapper(HealthRecordMapper.class);
+		
+		
+		int check = 0;
+		boolean flag = false;
+		try{
+			check = mapper.deleteHR_cust(dia_Num);
+			
+			if(check == 1){
+				flag = true;
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+		
+		return flag;
+	}
+
+	
+	
 
 }

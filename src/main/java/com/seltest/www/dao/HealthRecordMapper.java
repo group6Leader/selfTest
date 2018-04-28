@@ -15,6 +15,10 @@ public interface HealthRecordMapper {
 	public ArrayList<HealthRecord> selectHR_doc(String doctor_id);
 
 	public ArrayList<HealthRecord> selectHR_cust(int cust_num);
+		
+	public HealthRecord selectHRone(int dia_Num);
+	
+	public int deleteHR_cust(int dia_Num);
 
 	
 	

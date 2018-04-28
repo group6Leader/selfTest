@@ -62,7 +62,7 @@
 
 		select * 
 		from healthRecord 
-		where cust_Id = #{cust_Id} and dia_del = 0
+		where cust_Id = #{cust_Id}
 		order by dia_Num
 
 	</select>
@@ -75,10 +75,25 @@
 		order by dia_Num
 
 	</select>
-
-
 	
+	<select id="selectHRone" parameterType="int" resultType="healthRecord">
 
+		select *
+		from healthRecord 
+		where dia_Num = #{dia_Num}
+	
+	</select>
+
+	<update id="deleteHR_cust" parameterType="int">
+		
+		update healthRecord
+		set dia_del = 1
+		where dia_Num = #{dia_Num}
+	
+	
+	</update>
+	
+	
 
 
 
