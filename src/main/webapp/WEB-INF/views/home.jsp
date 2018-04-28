@@ -277,6 +277,16 @@ $(window).scroll(function(){
 				<div class="col-sm-12">
 					<div class="head_title text-center margin-top-80">
 						<h1>CHAR HOSPITAL</h1>
+						<c:if test="${sessionScope.customer.division == 1 }">
+							<h3>${sessionScope.customer.cust_Name } 고객님 환영합니다.</h3>
+							
+						</c:if>
+						
+						<c:if test="${sessionScope.customer.division == 2 }">
+							<h3>${sessionScope.customer.cust_Name } 선생님 환영합니다.</h3>
+							
+						</c:if>
+						
 					</div>
 					<!-- End of head title -->
 
