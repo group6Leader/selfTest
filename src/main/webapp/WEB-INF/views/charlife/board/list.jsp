@@ -22,9 +22,9 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="gocharlife">Home</a></li>
+					<!-- <li><a href="generic.html">Generic</a></li> -->
+					<li><a href="boardList">Board</a></li>
 				</ul>
 			</nav>
 		
@@ -33,7 +33,7 @@
 					<article class="box">
 						<header>
 							<h2>Board</h2>
-							<p>Evaluating Hospitals</p>
+							<p>Write Your Needs</p>
 						</header>
 						<div class="content">
 							<sec:authorize access="isAuthenticated()">

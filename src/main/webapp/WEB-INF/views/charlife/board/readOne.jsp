@@ -40,10 +40,7 @@
 				location.href='../reply/delete?board_Num=' + board_Num + '&reply_Num=' + reply_Num;
 			}
 		}
-		
-			
 
-           	
 		function editForm(board_Num, reply_Num, text) {
 			
 			var div = document.getElementById("div"+reply_Num);
@@ -69,7 +66,7 @@
 		}
 		
 		function editCancel(div) {
-
+			
 			div.innerHTML = '';
 		}
 		
@@ -100,7 +97,7 @@
 		
 					<div class="field half" style="width: 200px; font">
 						<label for="Category">Category</label>
-						<select id="board_Category" name="board_Category">
+						<select id="board_Category" name="board_Category" disabled="disabled">
 							<option style="color: black;" value="병원 평가"> 병원 평가 </option>
 							<option style="color: black;" value="자유 게시판"> 자유 게시판 </option>
 							<option style="color: black;" value="고객의 목소리"> 고객의 목소리 </option>
@@ -120,26 +117,26 @@
 						 <div class="rating">
 						  
 						  <label>
-						    <input type="radio" name="score" value="1" readonly="readonly" <c:if test="${b.score == 1 }"> checked="checked" </c:if>/>
+						    <input type="radio" name="score" value="1" disabled="disabled" <c:if test="${b.score == 1 }"> checked="checked" </c:if>/>
 						    <%-- <input id="noSmoking" type="radio" name='smoking' checked='checked' value="없음" <c:if test="${s.smoking == '없음' }"> checked="checked" </c:if>/> --%>
 						    <span class="icon">★</span>
 						  </label>
 						  
 						  <label>
-						    <input type="radio" name="score" value="2" readonly="readonly" <c:if test="${b.score == 2 }"> checked="checked" </c:if>/>
+						    <input type="radio" name="score" value="2" disabled="disabled"  <c:if test="${b.score == 2 }"> checked="checked" </c:if>/>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
 						  </label>
 						  
 						  <label>
-						    <input type="radio" name="score" value="3" readonly="readonly" <c:if test="${b.score == 3 }"> checked="checked" </c:if>/>
+						    <input type="radio" name="score" value="3" disabled="disabled" <c:if test="${b.score == 3 }"> checked="checked" </c:if>/>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>   
 						  </label>
 						  
 						  <label>
-						    <input type="radio" name="score" value="4" readonly="readonly" <c:if test="${b.score == 4 }"> checked="checked" </c:if>/>
+						    <input type="radio" name="score" value="4" disabled="disabled" <c:if test="${b.score == 4 }"> checked="checked" </c:if>/>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
@@ -147,7 +144,7 @@
 						  </label>
 						  
 						  <label>
-						    <input type="radio" name="score" value="5" readonly="readonly" <c:if test="${b.score == 5 }"> checked="checked" </c:if>/>
+						    <input type="radio" name="score" value="5" disabled="disabled" <c:if test="${b.score == 5 }"> checked="checked" </c:if>/>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>

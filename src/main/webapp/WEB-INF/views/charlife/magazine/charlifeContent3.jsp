@@ -20,9 +20,9 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="gocharlife">Home</a></li>
+					<!-- <li><a href="gocontent">Generic</a></li> -->
+					<li><a href="boardList">Board</a></li>
 				</ul>
 			</nav>
 
@@ -56,7 +56,7 @@
 			</section>
 
 		<!-- Footer -->
-			<footer id="footer">
+			<!-- <footer id="footer">
 				<div class="inner">
 
 					<h2>Contact Me</h2>
@@ -91,7 +91,7 @@
 					</div>
 
 				</div>
-			</footer>
+			</footer> -->
 
 		<!-- Scripts -->
 					<script src="../resources/js/jquery.min.js"></script>
