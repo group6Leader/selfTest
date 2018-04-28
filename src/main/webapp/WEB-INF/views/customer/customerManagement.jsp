@@ -129,9 +129,6 @@
                         </li>
                         </sec:authorize>
                     </ul>
-                    <div class="text-center m-t-30">
-                        <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn-info hidden-md-down"> Upgrade to Pro</a>
-                    </div>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>

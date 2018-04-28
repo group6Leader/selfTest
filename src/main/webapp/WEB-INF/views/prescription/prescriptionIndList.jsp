@@ -169,6 +169,11 @@ $(function(){
                             <li class="breadcrumb-item active">Patient Prescription</li>
                         </ol>
                     </div>
+                    <div class="col-md-7 align-self-center">
+                        <a href="readOne?cust_Num=${cust_Num}" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down">New PreScription</a>
+                    </div>
+
+                    
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
