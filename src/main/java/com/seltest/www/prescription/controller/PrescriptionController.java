@@ -1,5 +1,7 @@
 package com.seltest.www.prescription.controller;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
@@ -89,8 +91,9 @@ public class PrescriptionController {
 		System.out.println("goPrescriptionPost");
 		System.out.println(prescription);
 		
-		int insert = prescriptionDAO.insertPrescription(prescription);
-		System.out.println("Insert: " + insert);
+			int insert = prescriptionDAO.insertPrescription(prescription);
+			System.out.println("Insert: " + insert);
+		
 		
 		return "redirect: ../";
 	}
@@ -135,7 +138,6 @@ public class PrescriptionController {
 		ArrayList<Prescription> pList = prescriptionDAO.prescriptionIndList(cust_Num);
 		session.setAttribute("cust_Num", cust_Num);
 		System.out.println(pList.size());
-		
 		model.addAttribute("pList", pList);
 		
 		return "prescription/prescriptionIndList";
@@ -166,31 +168,46 @@ public class PrescriptionController {
 		
 		System.out.println("pre_Num: " + pre_Num);
 		
-		Prescription p = prescriptionDAO.readOne(pre_Num);
-		System.out.println(p);
-		
-		String med_Name = p.getMed_Name();
+		Prescription prescription = prescriptionDAO.readOne(pre_Num);
+		System.out.println(prescription);
+
+		String med_Name = prescription.getMed_Name();
 		String[] med_NameArray = med_Name.split(",");
-		model.addAttribute("med_Name", med_NameArray);
 		
-		String med_Amount = p.getMed_Amount();
+		String med_Amount = prescription.getMed_Amount();
 		String[] med_AmountArray = med_Amount.split(",");
-		model.addAttribute("med_Amount", med_AmountArray);
 		
-		String med_Count = p.getMed_Count();
+		String med_Count = prescription.getMed_Count();
 		String[] med_CountArray = med_Count.split(",");
-		model.addAttribute("med_Count", med_CountArray);
 		
-		String med_Content = p.getMed_Content();
+		String med_Content = prescription.getMed_Content();
 		String[] med_ContentArray = med_Content.split(",");
-		model.addAttribute("med_Content", med_ContentArray);
 		
+		ArrayList<Prescription> plist = new ArrayList<>();
+		int last = med_NameArray.length;
+		for(int i =0;i<last;i++){
+			System.out.println("i = "+i);
+			Prescription p = new Prescription();
+			p.setCust_Id(prescription.getCust_Id());
+			p.setCust_Num(prescription.getCust_Num());
+			p.setMed_Amount(med_AmountArray[i]);
+			p.setMed_Content(med_ContentArray[i]);
+			p.setMed_Count(med_CountArray[i]);
+			p.setMed_Name(med_NameArray[i]);
+			p.setPre_Num(prescription.getPre_Num());
+			plist.add(p);
+		}		
+		
+		if(session.getAttribute("cust_Num") != null){
 		int cust_Num = (int) session.getAttribute("cust_Num");
 		Customer c = customerDAO.readOne(cust_Num);
 		System.out.println(c);
-		
-		model.addAttribute("p", p);
 		model.addAttribute("c", c);
+		}
+		model.addAttribute("pre_Num",plist.get(0).getPre_Num());
+		model.addAttribute("doctor_Name",plist.get(0).getCust_Id());
+	
+		model.addAttribute("p", plist);
 		
 		return "prescription/prescriptionIndResult";
 	}

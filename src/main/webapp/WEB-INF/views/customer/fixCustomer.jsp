@@ -297,11 +297,11 @@ $(document).ready(function() {
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        <li> <a class="waves-effect waves-dark" href="goAdmin" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck3" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">SelfCheck</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Icons</span></a>
                         </li>
@@ -352,13 +352,26 @@ $(document).ready(function() {
                                 <center class="m-t-30">
                                     <div id="filecontainer">
 									    	<img src="download?saved=${login.saved_File}" class="img-circle" width="150" />			
-											<img class='photo' alt="" src="download?saved=${login.saved_File}" >
 									</div>
-                                    <h4 class="card-title m-t-10">Hanna Gover</h4>
-                                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                                    <h4 class="card-title m-t-10">${login.cust_Name }</h4>
+                                    <h6 class="card-subtitle">${login.cust_Major }</h6>
                                 </center>
                             </div>
                         </div>
+                    	<div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30">
+			                   		<div class="fileDrop" id="fileDropdiv">
+    								<!-- 업로드된 파일 목록 -->
+   										<div class="uploadedList">
+   											<!-- '<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">' -->
+    									</div>
+   									</div>
+    									<h4 class="card-title m-t-10">드래그 해주세요.</h4>
+                                    <h6 class="card-subtitle">수정을 원하시는 사진을 드래그 해주세요.</h6>
+   								</center>
+   							</div>
+   						</div>
                     </div>
                     <!-- Column -->
                     <!-- Column -->
@@ -435,22 +448,6 @@ $(document).ready(function() {
                     <!-- Column -->
                 </div>
                 <!-- Row -->
-                <div class="row">
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
-                    	<div class="card">
-                            <div class="card-body">
-                                <center class="m-t-30">
-			                   		<div class="fileDrop" id="fileDropdiv">
-    								<!-- 업로드된 파일 목록 -->
-   										<div class="uploadedList">
-   											<!-- '<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">' -->
-    									</div>
-   									</div>
-   								</center>
-   							</div>
-   						</div>
-                   	</div>
-               </div>
                 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

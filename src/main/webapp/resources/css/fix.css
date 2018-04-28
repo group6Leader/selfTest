@@ -607,25 +607,13 @@ font-family: 'Open Sans Condensed', sans-serif;
   font-family: 'Nanum Myeongjo', serif;
 }
 .fileDrop {
-        width:180px;
+        width:250px;
         height: 200px;
-        border: 2px solid rgba(200,200,200,0.8);
-		background-color:rgba(222,222,222,0.8);
-        display: inline-block;
+        border: 0.8px solid rgba(200,200,200,0.8);
+		background-color:rgba(222,222,222,0.2);
+        display: block;
          position: relative;
-        left:15rem;
-        top: -0.25rem;
-    }
-.fixfileDrop {
-        width:180px;
-        height: 200px;
-        border: 2px solid rgba(200,200,200,0.8);
-		background-color:rgba(222,222,222,0.8);
-        display: inline-block;
-        position: absolute;
-        top:9.5rem;
-        left:34rem;
-        
+         margin-bottom: 1rem;
     }
 .photo{
 width: 100%;
