@@ -142,12 +142,12 @@ public class PrescriptionController {
 	}
 	
 	@RequestMapping(value = "prescriptionIndList2", method = RequestMethod.GET)
-	public String prescriptionIndList2(Model model, HttpSession session, int cust_Num) {
+	public String prescriptionIndList2(Model model, HttpSession session) {
 		
 		System.out.println("prescriptionIndList2");
 		
 		Customer c = (Customer) session.getAttribute("customer");
-		cust_Num = c.getCust_Num();
+		int cust_Num = c.getCust_Num();
 		System.out.println(c);
 		
 		ArrayList<Prescription> pList = prescriptionDAO.prescriptionIndList(cust_Num);
