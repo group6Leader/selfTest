@@ -360,28 +360,28 @@ addEventButton.onclick = function (e) {
 										<sec:authorize access="isAuthenticated()">
 										<c:if test="${sessionScope.customer.division != 2}">
 										<li>
-											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
+											<a class="gn-icon gn-icon-illustrator" href="../selfCheck/goSelfCheck">자가진단</a>
 										</li>
 										</c:if>
 										</sec:authorize>
 										<li>
-											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
+											<a class="gn-icon gn-icon-photoshop" href="../webrtc/goWebRtc">원격진료</a>
 										</li>
 										<li>
-											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
+											<a href="../reservation/book" class="gn-icon gn-icon-photoshop" >예약하기</a>
 										</li>
 									</ul>
 							</li>
                            <c:if test="${sessionScope.customer != null}">
 							<li>
-								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
+								<a class="gn-icon gn-icon-cog" href="../customer/goFix">Settings</a>
 							</li>
 							</c:if>
 							<li>
-								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
+								<a class="gn-icon gn-icon-help" href="../prescription/prescriptionIndList2">처방전</a>
 							</li>
 							<li>
-								<a class="gn-icon gn-icon-archive">WebRTC</a>
+								<a class="gn-icon gn-icon-archive" href="../webrtc/goWebRtc">WebRTC</a>
 									<ul class="gn-submenu">
 										<li>
 											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
@@ -394,14 +394,15 @@ addEventButton.onclick = function (e) {
 					<!-- /gn-scroller -->
 				</nav>
 			</li>
-			<li><a href="charlife/charlifehome">Char LIFE</a></li>
-			<c:if test="${sessionScope.customer != null}">
-			<li><a href="">My Page</a></li>
 			<li>
-				<a class="codrops-icon codrops-icon-prev">
-					<span>VOC</span>
+				<a href="/www" class="codrops-icon codrops-icon-prev">
+					<span>Char Hospital</span>
 				</a>
 			</li>
+			<li><a href="../charlife/gocharlife">Char LIFE</a></li>
+			<c:if test="${sessionScope.customer != null}">
+			<li><a href="../customer/goFix">My Page</a></li>
+			
 			</c:if>
 			<c:if test="${sessionScope.myReservation != null}">
 				<li>

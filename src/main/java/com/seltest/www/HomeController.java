@@ -28,6 +28,7 @@ public class HomeController {
 		
 		int cust_Num = 0;
 		Reservation myRes = new Reservation();
+		String res_Check ="";
 		Member member = (Member) session.getAttribute("member");
 		if(member != null){
 			cust_Num = member.getCustomer().getCust_Num();
@@ -38,17 +39,26 @@ public class HomeController {
 			myRes = dao.selectMyReservation(cust_Num);
 			//나의 예약정보 확인
 			if(myRes != null){
-				//int res_Check = myRes.getRes_Check();
-				/*String resCheck = "";
-					if(res_Check == 1)	resCheck = "병원진료";
-					if(res_Check == 2) resCheck = "원격진료";*/
 				String my_Res = myRes.getRes_Date();
 				String year = my_Res.substring(0, 4);
 				String month = my_Res.substring(4, 6);
 				String date = my_Res.substring(6, 8);
 				String hour = my_Res.substring(8, 10);
-				String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 예약하셨습니다.";
-				session.setAttribute("myReservation", myReservation);
+				String resCheck = "";
+				if(myRes.getCust_Id() != null){
+					res_Check = myRes.getCust_Id();
+					if(res_Check.equals("1234")) resCheck = "Dr차예진";
+					if(res_Check.equals("kanna")) resCheck = "Dr조민제";
+					if(res_Check.equals("1235")) resCheck = "Dr김준형";
+					if(res_Check.equals("aaa")) resCheck = "Dr신동철";
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + resCheck + " 에게 원격진료를 예약하셨습니다.";
+					session.setAttribute("myReservation", myReservation);
+				}
+				if(myRes.getHos_Name() != null && myRes.getCategory() != null){
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ myRes.getHos_Name() + " " + myRes.getCategory() + " 진료를 예약하셨습니다.";
+					session.setAttribute("myReservation", myReservation);
+				}
+				
 			}		
 		}
 		return "home";
