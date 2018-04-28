@@ -264,8 +264,12 @@ function clickBtn(){
 }
 
 if(${haveRes != null}){
-		alert("예약이 존재합니다. 예약 취소 후 시도해주세요.");
+	alert("예약이 존재합니다. 예약 취소 후 시도해주세요.");
 }  
+
+if(${resSuccess != null}){
+	alert("예약이 완료되었습니다.");
+}
 
 $(function() {
 

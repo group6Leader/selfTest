@@ -37,6 +37,15 @@ public class MapController {
 		return "map/currentMap";
 	}
 	
+	@RequestMapping(value="mapSuccess", method = RequestMethod.GET)
+	public String mapSuccess(HttpSession session, Model model, String resSuccess){		
+		if(resSuccess != null || resSuccess != ""){
+			model.addAttribute("resSuccess", resSuccess);
+		}
+		
+		return "map/currentMap";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="currentLocation", method = RequestMethod.GET)
 	public JSONArray currentLocation(HttpSession session, Model model, HttpServletRequest request){

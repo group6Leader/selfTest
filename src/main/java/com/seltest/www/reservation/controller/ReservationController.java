@@ -238,22 +238,19 @@ public class ReservationController {
 		String day = date.substring(0, 2);
 		
 		String[] split = time.split(":");
-		String oclock ="";
 		if(split[0].length()==1){
-			oclock = "0" + split[0];
+			hour = "0" + split[0];
 		}else{
-			oclock = split[0];
+			hour = split[0];
 		}		
 		
-		if(time.contains("PM") && oclock.equals("01")) oclock="13";
-		if(time.contains("PM") && oclock.equals("02")) oclock="14";
-		if(time.contains("PM") && oclock.equals("03")) oclock="15";
-		if(time.contains("PM") && oclock.equals("04")) oclock="16";
-		if(time.contains("PM") && oclock.equals("05")) oclock="17";
-		if(time.contains("PM") && oclock.equals("06")) oclock="18";
+		if(time.contains("PM") && hour.equals("01")) hour="13";
+		if(time.contains("PM") && hour.equals("02")) hour="14";
+		if(time.contains("PM") && hour.equals("03")) hour="15";
+		if(time.contains("PM") && hour.equals("04")) hour="16";
+		if(time.contains("PM") && hour.equals("05")) hour="17";
+		if(time.contains("PM") && hour.equals("06")) hour="18";
 		
-		String minute = split[1].substring(0, 2);
-		hour = oclock+minute;
 		res_Date = year+month+day+hour;
 		System.out.println("병원: " + yadmNm);
 		System.out.println("진료과목: " +category);
@@ -293,19 +290,22 @@ public class ReservationController {
 					String my_Res = myRes.getRes_Date();
 					year = my_Res.substring(0, 4);
 					month = my_Res.substring(4, 6);
-					date = my_Res.substring(6, 8);
+					day = my_Res.substring(6, 8);
 					hour = my_Res.substring(8, 10);
-					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + hos_Name + category + " 진료를 예약하셨습니다.";					
+					String myReservation = year+"년 "+month+"월 "+day+"일 "+hour+"시 " + hos_Name + category + " 진료를 예약하셨습니다.";					
 					model.addAttribute("myReservation", myReservation);
 					session.setAttribute("myReservation", myReservation);
 				}
 			}
 			System.out.println("예약 완료");
+			String resSuccess = "예약 완료되었습니다.";
+			model.addAttribute("resSuccess", resSuccess);
+			return "redirect:../mapping/mapSuccess?resSuccess="+resSuccess;
 		}else{
 			System.out.println("예약 실패");
 			return "../map/currentMap";
 		}	
-		return "redirect:../mapping/map";
+		
 	}
 	
 	//예약 삭제

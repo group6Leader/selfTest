@@ -182,7 +182,7 @@ $(window).scroll(function(){
 								<!-- Collect the nav links, forms, and other content for toggling -->
 
 								<c:if test="${param.error != null}">
-							        <p> 이메일 인증을 하셔야 합니다. </p>
+							        <p> メールの認証をしてください。 </p>
 								</c:if>
 
 								<div class="collapse navbar-collapse"
@@ -190,34 +190,34 @@ $(window).scroll(function(){
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
 										<sec:authorize access="hasRole('CUSTOMER')">
-										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">자가진단</a>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
 											<ul class="dropdown-menu">
-												<li><a href="selfCheck/goSelfCheck">자가진단 하러가기</a></li>
-												<li><a href="selfCheck/goSelfCheck3">자가진단 결과보기</a></li>
+												<li><a href="selfCheck/goSelfCheck">自己診断作成</a></li>
+												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="isAuthenticated()">
 										<li><a href="customer/goFix">My Page</a></li>
-										<li><a href="javascript:loginCheck()">예약</a></li>
-										<li><a href="webrtc/goWebRtc">원격진료</a></li>
+										<li><a href="javascript:loginCheck()">予約</a></li>
+										<li><a href="webrtc/goWebRtc">遠隔診療</a></li>
 										</sec:authorize>
 										
 										<sec:authorize access="hasRole('DOCTOR')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">의사메뉴</a>
+											data-toggle="dropdown" role="button" aria-haspopup="true">医者さんのメニュー</a>
 											<ul class="dropdown-menu">
-												<li><a href="healthRecord/goHealthRecord">진단서 작성</a></li>
-												<li><a href="healthRecord/goHealthRecordList">진단서 리스트</a></li>
-												<li><a href="prescription/goPrescription">처방전 작성</a></li>
-												<li><a href="prescription/prescriptionResult">처방전 리스트</a></li>
+												<li><a href="healthRecord/goHealthRecord">診断書作成</a></li>
+												<li><a href="healthRecord/goHealthRecordList">診断書リスト</a></li>
+												<li><a href="prescription/goPrescription">処方箋作成</a></li>
+												<li><a href="prescription/prescriptionResult">処方箋リスト</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">환자메뉴</a>
+											data-toggle="dropdown" role="button" aria-haspopup="true">患者さんのメニュー</a>
 											<ul class="dropdown-menu">
-												<li><a href="prescription/prescriptionIndList2">개인 처방전</a></li>
-												<li><a href="healthRecord/goHealthRecordList">개인 진단서</a></li>
+												<li><a href="prescription/prescriptionIndList2">個人処方箋</a></li>
+												<li><a href="healthRecord/goHealthRecordList">個人診断書</a></li>
 											</ul></li>
 										</sec:authorize>
 										
@@ -278,12 +278,12 @@ $(window).scroll(function(){
 					<div class="head_title text-center margin-top-80">
 						<h1>CHAR HOSPITAL</h1>
 						<c:if test="${sessionScope.customer.division == 1 }">
-							<h3>${sessionScope.customer.cust_Name } 고객님 환영합니다.</h3>
+							<h3>${sessionScope.customer.cust_Name } 様を歓迎します。</h3>
 							
 						</c:if>
 						
 						<c:if test="${sessionScope.customer.division == 2 }">
-							<h3>${sessionScope.customer.cust_Name } 선생님 환영합니다.</h3>
+							<h3>${sessionScope.customer.cust_Name } 様を歓迎します。</h3>
 							
 						</c:if>
 						
@@ -296,20 +296,6 @@ $(window).scroll(function(){
 							<div class="col-sm-6">
 								<div class="signle_about_left">
 									<img src="./resources/assets/images/service3.jpg" alt="" />
-									<div class="single_about_left_text">
-										<div class="separator2"></div>
-										<h3>
-											Our Motto <br>
-											
-										</h3>
-										
-										<h4>
-											Excellency<br/> 
-											Efficiency<br/> 
-											Service Oriented<br/>
-											State of the Art Technology
-										</h4>
-									</div>
 								</div>
 
 
@@ -320,19 +306,18 @@ $(window).scroll(function(){
 									<div class="separator2"></div>
 									<h3> Welcome to Char Hospital </h3>
 
-									<p> Char Hospital proudly presents our state of the art
-									remote medical treatment system. </p> <br>
+									<p> Char Hospitalは患者さんと医者さんの架け橋になるホームページです。 </p> <br>
 									
 									<h4> How to use </h4>
 											
-									<p> First. Please Make An Account </p>
+									<p> First. アカウントを作ります。 </p>
 									
 									<!-- 자가진단을 하세요 -->
-									<p> Second. Fill out Your Self Assessment </p>
+									<p> Second. 自己診断を作成します。 </p>
 									
-									<p> Third. Make a Reservation </p>
+									<p> Third. 遠隔診療をするために予約をします。 </p>
 									
-									<p> Fourth. Enter Remote Medical Treatment System </p>
+									<p> Fourth. 遠隔診療を通して医者さんから正確な診断を受けます。</p>
 									
 									<!-- Experience the state of the art facilities and services. -->
 								
@@ -371,7 +356,7 @@ $(window).scroll(function(){
 						<div class="row">
 							<div class="col-sm-4 col-xs-12">
 								<div class="single_counter_right">
-									<h4 class="statistic-counter">3,852</h4>
+									<h4 class="statistic-counter">4</h4>
 									<div class="separator"></div>
 									<p>doctor</p>
 								</div>
@@ -380,7 +365,7 @@ $(window).scroll(function(){
 
 							<div class="col-sm-4 col-xs-12">
 								<div class="single_counter_right">
-									<h4 class="statistic-counter">4,510</h4>
+									<h4 class="statistic-counter">20</h4>
 									<div class="separator"></div>
 									<p>patient</p>
 								</div>
@@ -389,7 +374,7 @@ $(window).scroll(function(){
 
 							<div class="col-sm-4 col-xs-12">
 								<div class="single_counter_right">
-									<h4 class="statistic-counter">2,894</h4>
+									<h4 class="statistic-counter">0</h4>
 									<div class="separator"></div>
 									<p>Telemedicine</p>
 								</div>
@@ -416,7 +401,7 @@ $(window).scroll(function(){
 			<div class="row">
 				<div class="main_team_area">
 					<div class="head_title text-center">
-						<h1>best team</h1>
+						<h1>遠隔診療が可能な医者</h1>
 					</div>
 					<!-- End of head title -->
 					<div class="main_team text-center">
@@ -427,9 +412,9 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>paul hall</h4>
+											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
-											<p>art director</p>
+											<p>外科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
@@ -437,9 +422,9 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/assets/images/team2.jpg" alt="" />
-											<h4>joshua spencer</h4>
+											<h4>キム‧ジュンヒョン</h4>
 											<div class="separator"></div>
-											<p>founder</p>
+											<p>内科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
@@ -447,9 +432,9 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/assets/images/team3.jpg" alt="" />
-											<h4>diane lewis</h4>
+											<h4>ぞ‧ミンゼ</h4>
 											<div class="separator"></div>
-											<p>artist, designer</p>
+											<p>精神医学科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
@@ -464,9 +449,9 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>paul hall</h4>
+											<h4>シン‧ドンチュル</h4>
 											<div class="separator"></div>
-											<p>art director</p>
+											<p>歯科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
@@ -548,7 +533,7 @@ $(window).scroll(function(){
 				<div class="col-sm-12">
 					<div class="main_contact sections">
 						<div class="head_title text-center whitetext">
-							<h1>get in touch</h1>
+							<h1>お問い合わせ</h1>
 						</div>
 
 						<div class="row">
@@ -556,12 +541,13 @@ $(window).scroll(function(){
 								<div class="col-sm-6 col-xs-12">
 									<div class="single_message_right_info">
 										<ul class="whitetext">
-											<li><i class="fa fa-map-marker"></i> <span>23
-													Mulholland Drive, Suite 721. Los Angeles 10010 100 S. Main
-													Street. Los Angeles 90012</span></li>
-
-											<li><i class="fa fa-mobile-phone"></i> <span>+1-670-567-5590</span></li>
-
+											<li><i class="fa fa-map-marker"></i> <span>お問い合わせの前に</span></li>
+											<li><i class="fa fa-mobile-phone"></i> <span>原則、土日祝祭日を除く3営業日以内に返信をさせて頂きます。</span></li>
+											<li><i class="fa fa-mobile-phone"></i> <span>3営業日を過ぎても返信がない場合、お問い合わせが送信出来ていないか、返信させて頂いた<br>
+												メールがうまく受信出来ていない可能性がございます。<br>
+												迷惑メールフォルダやごみ箱に振り分けられていないかご確認頂き、これでも確認出来ない
+												場合は、別のメールアドレスよりお問い合わせ頂くようお願い致します。</span></li>
+											<li><i class="fa fa-mobile-phone"></i> <span>病院、薬の情報に関しては、正確ではない場合もあります。</span></li>
 											<li><i class="fa fa-envelope-o"></i> <span>hello@clemocreative.com</span></li>
 										</ul>
 
@@ -582,18 +568,18 @@ $(window).scroll(function(){
 											<!--<div class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">-->
 
 											<div class="form-group">
-												<label>name</label> <input type="text" class="form-control"
-													name="name" required="">
+												<label>名前</label> <input type="text" class="form-control"
+													name="name" required="" style="color: white;">
 											</div>
 
 											<div class="form-group">
-												<label>e-mail</label> <input type="email"
-													class="form-control" name="email" required="">
+												<label>メール</label> <input type="email"
+													class="form-control" name="email" required="" style="color: white;">
 											</div>
 
 											<div class="form-group">
-												<label>your message</label>
-												<textarea class="form-control" name="message" rows="8"></textarea>
+												<label>メッセージ</label>
+												<textarea class="form-control" name="message" rows="8" style="color: white;"></textarea>
 											</div>
 
 											<div class="">
