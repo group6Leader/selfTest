@@ -13,7 +13,9 @@
 			,res_Date
 			,hos_Name
 			,cust_Num
-			,cust_Id
+			<if test="cust_Id != null">
+				,cust_Id
+			</if>			
 			<if test="hos_Addr != null">
 				,hos_Addr
 			</if>
@@ -22,6 +24,9 @@
 			</if>
 			<if test="hos_Phone != null">
 				,hos_Phone
+			</if>	
+			<if test="category != null">
+				,category
 			</if>			
 		)
 		values (
@@ -29,7 +34,9 @@
 			, #{res_Date}
 			, #{hos_Name}
 			, #{cust_Num}
-			, #{cust_Id}
+			<if test="cust_Id != null">
+				, #{cust_Id}
+			</if>			
 			<if test="hos_Addr != null">
 				, #{hos_Addr}
 			</if>
@@ -39,8 +46,9 @@
 			<if test="hos_Phone != null">
 				, #{hos_Phone}
 			</if>
-			
-			
+			<if test="category != null">
+				, #{category}
+			</if>			
 				
 		)
 	</insert>	

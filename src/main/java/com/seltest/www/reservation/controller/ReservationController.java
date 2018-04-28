@@ -62,27 +62,36 @@ public class ReservationController {
 			
 			Reservation myRes = new Reservation();
 			
+			String res_Check ="";
 			//로그인 체크
 			if(member != null){			
 				myRes = dao.selectMyReservation(cust_Num);
 				//나의 예약정보 확인
 				if(myRes != null){
 					String haveRes = "예약 정보가 이미 존재합니다.";
-					model.addAttribute("haveRes", haveRes);
-					String res_Check = myRes.getCust_Id();
-					String resCheck = "";
-						if(res_Check.equals("1234"))	resCheck = "Dr차예진";
-						if(res_Check.equals("kanna")) resCheck = "Dr조민제";
-						if(res_Check.equals("1235")) resCheck = "Dr김준형";
-						if(res_Check.equals("aaa")) resCheck = "Dr신동철";
+					model.addAttribute("haveRes", haveRes);					
 					String my_Res = myRes.getRes_Date();
 					String year = my_Res.substring(0, 4);
 					String month = my_Res.substring(4, 6);
 					String date = my_Res.substring(6, 8);
 					String hour = my_Res.substring(8, 10);
-					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ resCheck + " 에게" +" 예약하셨습니다.";					
-					model.addAttribute("myReservation", myReservation);
-					session.setAttribute("myReservation", myReservation);
+					String resCheck = "";
+					if(myRes.getCust_Id() != null){
+						res_Check = myRes.getCust_Id();
+						if(res_Check.equals("1234")) resCheck = "Dr차예진";
+						if(res_Check.equals("kanna")) resCheck = "Dr조민제";
+						if(res_Check.equals("1235")) resCheck = "Dr김준형";
+						if(res_Check.equals("aaa")) resCheck = "Dr신동철";
+						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ resCheck + " 에게" +" 원격진료를 예약하셨습니다.";	
+						model.addAttribute("myReservation", myReservation);
+						session.setAttribute("myReservation", myReservation);
+					}
+					
+					if(myRes.getHos_Name() != null && myRes.getCategory() != null){
+						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ myRes.getHos_Name() + " " + myRes.getCategory() + " 진료를 예약하셨습니다.";
+						model.addAttribute("myReservation", myReservation);
+						session.setAttribute("myReservation", myReservation);
+					}
 				}				
 			}
 								
@@ -139,8 +148,7 @@ public class ReservationController {
 				model.addAttribute("resErrorMsg", resErrorMsg);
 			}
 				
-			res.setRes_Date(res_Date);
-			res.setHos_Name("차병원");			
+			res.setRes_Date(res_Date);		
 			res.setCust_Num(cust_Num);
 			String doc_Name = request.getParameter("doctor");
 			String cust_Id = "";
@@ -179,7 +187,7 @@ public class ReservationController {
 						String month = my_Res.substring(4, 6);
 						String date = my_Res.substring(6, 8);
 						hour = my_Res.substring(8, 10);
-						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + docName+ " 에게 예약하셨습니다.";					
+						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + docName+ " 에게 원격진료를 예약하셨습니다.";					
 						model.addAttribute("myReservation", myReservation);
 						session.setAttribute("myReservation", myReservation);
 					}
@@ -192,6 +200,112 @@ public class ReservationController {
 			}
 						
 			return "redirect:book";
+	}
+	
+	//예약 하기2
+	@RequestMapping(value="reservation2", method = RequestMethod.GET)
+	public String revservation2(HttpSession session, Model model, String yadmNm, String dgsbjtCd, String date, String time){
+		System.out.println(yadmNm);
+		System.out.println(dgsbjtCd);
+		System.out.println(date);
+		System.out.println(time);
+		
+		
+		String hos_Name = "";
+		String category = "";
+		String res_Date = "";
+		String hour = "";
+		hos_Name = yadmNm;
+		if(dgsbjtCd.equals("00")) category = "일반의";
+		if(dgsbjtCd.equals("01")) category = "내과";
+		if(dgsbjtCd.equals("02")) category = "신경과";
+		if(dgsbjtCd.equals("03")) category = "정신건강의학과";
+		if(dgsbjtCd.equals("04")) category = "외과";
+		if(dgsbjtCd.equals("05")) category = "정형외과";
+		if(dgsbjtCd.equals("06")) category = "신경외과";
+		if(dgsbjtCd.equals("07")) category = "흉부외과";
+		if(dgsbjtCd.equals("08")) category = "성형외과";
+		if(dgsbjtCd.equals("10")) category = "산부인과";
+		if(dgsbjtCd.equals("11")) category = "소아청소년과";
+		if(dgsbjtCd.equals("12")) category = "안과";
+		if(dgsbjtCd.equals("13")) category = "이비인후과";
+		if(dgsbjtCd.equals("14")) category = "피부과";
+		if(dgsbjtCd.equals("15")) category = "비뇨기과";
+		if(dgsbjtCd.equals("49")) category = "치과";
+		if(dgsbjtCd.equals("80")) category = "한방내과";
+		String year = date.substring(6, 10);
+		String month = date.substring(3, 5);
+		String day = date.substring(0, 2);
+		
+		String[] split = time.split(":");
+		String oclock ="";
+		if(split[0].length()==1){
+			oclock = "0" + split[0];
+		}else{
+			oclock = split[0];
+		}		
+		
+		if(time.contains("PM") && oclock.equals("01")) oclock="13";
+		if(time.contains("PM") && oclock.equals("02")) oclock="14";
+		if(time.contains("PM") && oclock.equals("03")) oclock="15";
+		if(time.contains("PM") && oclock.equals("04")) oclock="16";
+		if(time.contains("PM") && oclock.equals("05")) oclock="17";
+		if(time.contains("PM") && oclock.equals("06")) oclock="18";
+		
+		String minute = split[1].substring(0, 2);
+		hour = oclock+minute;
+		res_Date = year+month+day+hour;
+		System.out.println("병원: " + yadmNm);
+		System.out.println("진료과목: " +category);
+		System.out.println("예약일자: " + res_Date);
+		int cust_Num = 0;
+		Member member = (Member) session.getAttribute("member");
+		if(member != null){
+			cust_Num = member.getCustomer().getCust_Num();
+		}
+	
+		Reservation myRes = new Reservation();
+		Reservation res = new Reservation();
+		myRes = dao.selectMyReservation(cust_Num);
+		//나의 예약정보 확인
+		if(myRes != null){				
+			String haveRes = "예약 정보가 이미 존재합니다.";
+			model.addAttribute("haveRes", haveRes);
+			return "redirect:../mapping/maps?haveRes="+haveRes;
+		}
+		
+		res.setCust_Num(cust_Num);
+		res.setHos_Name(hos_Name);
+		res.setRes_Date(res_Date);		
+		res.setCategory(category);
+		int result = 0;
+		result = dao.insertReservation(res);
+		if(result == 1){
+			myRes = new Reservation();
+			
+			//로그인 체크
+			if(member != null){			
+				myRes = dao.selectMyReservation(cust_Num);
+				//나의 예약정보 확인
+				if(myRes != null){
+					hos_Name = myRes.getHos_Name();
+					category = myRes.getCategory();
+					String my_Res = myRes.getRes_Date();
+					year = my_Res.substring(0, 4);
+					month = my_Res.substring(4, 6);
+					date = my_Res.substring(6, 8);
+					hour = my_Res.substring(8, 10);
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + hos_Name + category + " 진료를 예약하셨습니다.";					
+					model.addAttribute("myReservation", myReservation);
+					session.setAttribute("myReservation", myReservation);
+				}
+			}
+			System.out.println("예약 완료");
+		}else{
+			System.out.println("예약 실패");
+			return "../map/currentMap";
+		}	
+		return "redirect:../mapping/map";
 	}
 	
 	//예약 삭제

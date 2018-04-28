@@ -8,7 +8,7 @@ public class Hospital {
     String telno;				//병원 전화번호
     String xPos;				//병원 x좌표
     String yPos;				//병원 y좌표
-    int numOfRows;			//한 페이지 결과 수
+    String numOfRows;			//한 페이지 결과 수
     String sidoCd;					//시도 코드
     String clCd;				//종별 코드
     String dgsbjtCd;			//진료 과목 코드
@@ -20,7 +20,7 @@ public class Hospital {
 		super();
 	}
 
-	public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, int numOfRows,
+	public Hospital(String yadmNm, String addr, String hospUrl, String telno, String xPos, String yPos, String numOfRows,
 			String sidoCd, String clCd, String dgsbjtCd, String radius, String sgguCdNm, String sgguCd) {
 		super();
 		this.yadmNm = yadmNm;
@@ -86,11 +86,11 @@ public class Hospital {
 		this.yPos = yPos;
 	}
 
-	public int getNumOfRows() {
+	public String getNumOfRows() {
 		return numOfRows;
 	}
 
-	public void setNumOfRows(int numOfRows) {
+	public void setNumOfRows(String numOfRows) {
 		this.numOfRows = numOfRows;
 	}
 

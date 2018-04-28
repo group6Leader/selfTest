@@ -23,9 +23,18 @@ public class MapController {
 
 			
 	@RequestMapping(value="map", method = RequestMethod.GET)
-	public String map(HttpSession session, Model model){		
-			
-		return "map/currentLocation";
+	public String map(HttpSession session, Model model, String haveRes){		
+				
+		return "map/currentMap";
+	}
+	
+	@RequestMapping(value="maps", method = RequestMethod.GET)
+	public String maps(HttpSession session, Model model, String haveRes){		
+		if(haveRes != null || haveRes != ""){
+			model.addAttribute("haveRes", haveRes);
+		}
+		
+		return "map/currentMap";
 	}
 	
 	@ResponseBody
@@ -46,7 +55,26 @@ public class MapController {
 		Hospital search = new Hospital();
 		search.setxPos(longitude);
 		search.setyPos(latitude);
-		search.setNumOfRows(3);
+		
+		if(request.getParameter("numOfRows") != null & request.getParameter("numOfRows") != ""){
+			String numOfRows = null;
+			switch(request.getParameter("numOfRows")){
+			case "1": numOfRows = "3"; break;
+			case "11": numOfRows = "10"; break;
+			case "21": numOfRows = "20"; break;
+			case "31": numOfRows = "50"; break;
+			case "41": numOfRows = "100"; break;
+			case "51": numOfRows = "200"; break;
+			case "61": numOfRows = "400"; break;
+			case "71": numOfRows = "800"; break;
+			case "81": numOfRows = "1200"; break;
+			case "91": numOfRows = "1600"; break;
+			case "101": numOfRows = "2000"; break;
+			}
+			search.setNumOfRows(numOfRows);
+		}else{
+			search.setNumOfRows("3");
+		}				
 		if(request.getParameter("yadmNm") != null & request.getParameter("yadmNm") != ""){
 			search.setYadmNm(request.getParameter("yadmNm"));
 		}

@@ -9,13 +9,14 @@ public class Reservation {
 	private String hos_Addr;
 	private String hos_Homepage;
 	private String hos_Phone;
-
+	private String category;
+	
 	public Reservation() {
 		super();
 	}
 
 	public Reservation(int res_Num, String res_Date, String hos_Name, int cust_Num, String cust_Id, String hos_Addr,
-			String hos_Homepage, String hos_Phone) {
+			String hos_Homepage, String hos_Phone, String category) {
 		super();
 		this.res_Num = res_Num;
 		this.res_Date = res_Date;
@@ -25,6 +26,7 @@ public class Reservation {
 		this.hos_Addr = hos_Addr;
 		this.hos_Homepage = hos_Homepage;
 		this.hos_Phone = hos_Phone;
+		this.category = category;
 	}
 
 	public int getRes_Num() {
@@ -91,11 +93,21 @@ public class Reservation {
 		this.hos_Phone = hos_Phone;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [res_Num=" + res_Num + ", res_Date=" + res_Date + ", hos_Name=" + hos_Name + ", cust_Num="
 				+ cust_Num + ", cust_Id=" + cust_Id + ", hos_Addr=" + hos_Addr + ", hos_Homepage=" + hos_Homepage
-				+ ", hos_Phone=" + hos_Phone + "]";
+				+ ", hos_Phone=" + hos_Phone + ", category=" + category + "]";
 	}
+
+	
 
 }

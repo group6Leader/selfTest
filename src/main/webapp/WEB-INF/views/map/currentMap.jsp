@@ -9,7 +9,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Savory &mdash; Free Website Template, Free HTML5 Template by GetTemplates.co</title>
+	<title>Map &mdash; 병원검색</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -130,13 +130,13 @@
 			var dgsbjtCd = document.getElementById("dgsbjtCd").value;
 			var sgguCd = document.getElementById("sgguCd").value;
 			var radius = document.getElementById("radius").value;
-			
+			var numOfRows = document.getElementById("numOfRows").value;
 			var clickedLocation = event.latLng.toString();
-						
+			
 			$.ajax({
 			      url:"currentLocation",
 			      type:'GET',
-			      data: {clickedLocation: clickedLocation, yadmNm: yadmNm, dgsbjtCd: dgsbjtCd, sgguCd: sgguCd, radius: radius},
+			      data: {clickedLocation: clickedLocation, yadmNm: yadmNm, dgsbjtCd: dgsbjtCd, sgguCd: sgguCd, radius: radius, numOfRows: numOfRows},
 			      dataType:"JSON",
 			      success:function(data){				    		
 			    	  markersArr = [];
@@ -168,27 +168,27 @@
 							hosInfoArr.push('<div id="content">'+
 								      '<div id="siteNotice">'+
 								      '</div>'+
-								      '<h1 id="firstHeading" class="firstHeading">'+yadmNm+'</h1>'+
+								      '<input type="button" id=firstHeading class="hospitalName" onclick="clickBtn()" value="'+yadmNm+'">'+
 								      '<div id="bodyContent">'+
 								      '<p><b>홈페이지 : </b>' + '<a href=' + hospUrl + ' target="_blank">' + hospUrl + '</a></p>'+
 								      '<p><b>주소 : </b>' + addr + '</p>' +
 								      '<p><b>전화번호 : </b>' + telno + '</p></div>');
 							//hosInfoArr.push("홈페이지: " + hospUrl + "\n주소: " + addr + "\n전화번호: " + telno);
 							hosLocation.push(new google.maps.LatLng(yPos, xPos));
-							//console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);							
-					  }			    	 			    	  
+							//console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);
+					  }
 			    	  			    	  
 			    	  for(var i=0; i<hosLocation.length; i++){			    		  
 			    		  addMarkers();			    		  
-			      	  }
+			      	  }		  			
+			    	  			    	  
 			      },
 			      error:function(jqXHR, textStatus, errorThrown){
 			    	  
 			      }
 			  });			
 		});
-	}
-	
+	}	
 
 	function addMarker(location) {
 		/* 기존에 있던 마커 삭제 후 */
@@ -217,7 +217,8 @@
 		    });	// 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
   	  			    		  	
 		    google.maps.event.addListener(markers, 'click', function(){
-		          infowindow.open(map, markers);		//페이지 로딩시 말풍선 실행
+		          infowindow.open(map, markers);		//페이지 로딩시 말풍선 실행	
+		        
 		    });
 		    iterator ++;
     }	
@@ -229,8 +230,7 @@
 			delete markersArr[i];			
 		}
 		//infowindow.close();
-	}
-	
+	}	
 	
 	function toggleBounce(marker) {
 		if (marker.getAnimation() != null) {
@@ -253,10 +253,89 @@ $(document).ready(function() {
 	$('.gn-menu-wrapper').hover(function() {
 		$(this).toggleClass('gn-open-all');
 	});
-	$('.btn btn-update-map').on('click', google.maps.event.addListener);
+		
+	
 });
-
 </script>
+<script type="text/javascript">
+function clickBtn(){
+	var hospitalName = document.querySelector('.hospitalName');
+	document.getElementById("hosName").innerHTML = '<input type="text" name="yadmNm" id="yadmNm" value="'+ hospitalName.value +'" class="form-control">';
+}
+
+if(${haveRes != null}){
+		alert("예약이 존재합니다. 예약 취소 후 시도해주세요.");
+}  
+
+$(function() {
+
+	$('#SignIn').on('click', function(event) {
+		event.preventDefault();//href 사용 안함
+		$('.login').show();
+	});
+	// close
+	$('#close').on('click', function() {
+		$('.login').hide('fast');
+	});
+
+	var input = document.createElement("input");
+	if (('placeholder' in input) == false) {
+		$('[placeholder]').focus(function() {
+			var i = $(this);
+			if (i.val() == i.attr('placeholder')) {
+				i.val('').removeClass('placeholder');
+				if (i.hasClass('password')) {
+					i.removeClass('password');
+					this.type = 'password';
+				}
+			}
+		}).blur(function() {
+			var i = $(this);
+			if (i.val() == '' || i.val() == i.attr('placeholder')) {
+				if (this.type == 'password') {
+					i.addClass('password');
+					this.type = 'text';
+				}
+				i.addClass('placeholder').val(i.attr('placeholder'));
+			}
+		}).blur().parents('form').submit(function() {
+			$(this).find('[placeholder]').each(function() {
+				var i = $(this);
+				if (i.val() == i.attr('placeholder'))
+					i.val('');
+			})
+		});
+	}
+
+});
+</script>
+<script type="text/javascript">
+function check(){
+	var yadmNm = document.getElementById('yadmNm').value;
+	var dgsbjtCd = document.getElementById('dgsbjtCd').value;
+	var date = document.getElementById('date').value;
+	var time = document.getElementById('time').value;
+	
+	if(yadmNm == null || yadmNm ==""){
+		alert("예약하실 병원을 선택하세요.");
+		return false;
+	}
+	if(dgsbjtCd == null || dgsbjtCd == ""){
+		alert("예약하실 진료과목을 선택하세요.");
+		return false;
+	}
+	if(date == null || date == ""){
+		alert("예약 날짜를 선택하세요.");
+		return false;
+	}
+	if(time == null || time == ""){
+		alert("예약 시간을 선택하세요.");
+		return false;
+	}
+	return true;	
+}
+</script>
+
 </head>
 <body>
 <div class='preloader'>
@@ -279,13 +358,11 @@ $(document).ready(function() {
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href=""> <img src="../resources/assets/images/logo.jpg" />
+									<a class="navbar-brand" href="/www"> <img src="../resources/assets/images/logo.jpg" />
 									</a>
 								</div>
 
 								<!-- Collect the nav links, forms, and other content for toggling -->
-
-
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
@@ -294,14 +371,14 @@ $(document).ready(function() {
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">자가진단</a>
 											<ul class="dropdown-menu">
-												<li><a href="selfCheck/goSelfCheck">자가진단 하러가기</a></li>
-												<li><a href="selfCheck/goSelfCheck3">자가진단 결과보기</a></li>
+												<li><a href="../selfCheck/goSelfCheck">자가진단 하러가기</a></li>
+												<li><a href="../selfCheck/goSelfCheck3">자가진단 결과보기</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="isAuthenticated()">
-										<li><a href="customer/goFix">My Page</a></li>
-										<li><a href="javascript:loginCheck()">예약</a></li>
-										<li><a href="webrtc/goWebRtc">원격진료</a></li>
+										<li><a href="../customer/goFix">My Page</a></li>
+										<li><a href="../reservation/book">예약</a></li>
+										<li><a href="../webrtc/goWebRtc">원격진료</a></li>
 										</sec:authorize>
 										
 										<sec:authorize access="hasRole('DOCTOR')">
@@ -317,44 +394,37 @@ $(document).ready(function() {
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">환자메뉴</a>
 											<ul class="dropdown-menu">
-												<li><a href="prescription/prescriptionIndList2">개인 처방전</a></li>
-												<li><a href="healthRecord/goHealthRecord">개인 진단서</a></li>
+												<li><a href="../prescription/prescriptionIndList2">개인 처방전</a></li>
+												<li><a href="../healthRecord/goHealthRecord">개인 진단서</a></li>
 											</ul></li>
 										</sec:authorize>
 										
-										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
-										<li><a href="javascript:map()">MAP</a></li>
+										<li><a href="../charlife/gocharlife">CHAR LIFE</a></li>
+										<li><a href="../mapping/map">MAP</a></li>
 										<sec:authorize access="isAnonymous()">
-										<c:if test="${sessionScope.customer == null}">
-										<li><a id="SignIn">LOGIN</a></li>
-										</c:if>
+											<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+											</c:if>
 										</sec:authorize>
 										<sec:authorize access="isAuthenticated()">
 						    				<c:if test="${sessionScope.customer != null}">
-										<li><a href="customer/logout" id='Logout'>Logout</a></li>
+										<li><a href="../customer/logout" id='Logout'>Logout</a></li>
 											</c:if>
-										</sec:authorize>
+										</sec:authorize>	
 										
-										
-			
 										<c:if test="${param.error != null}">
 							        		<li> 이메일 인증을 하셔야 합니다. </li>
-								    		</c:if>
-										
+								    		</c:if>										
 									</ul>
 								</div>
-
 							</div>
 						</nav>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</header>
 	<!--End of header -->
-
 	
 	<div id="page">
 
@@ -370,11 +440,11 @@ $(document).ready(function() {
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3 class="cursive-font">Hospital Reservation</h3>
-											<form action="#">
+											<form action="../reservation/reservation2" method="get" onsubmit="return check()">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="date-start">병원명</label>
-														<input type="text" name="yadmNm" id="yadmNm" placeholder="차 병원" class="form-control">
+														<div id="hosName"><input type="text" name="yadmNm" id="yadmNm" value="" class="form-control"></div>
 													</div>
 												</div>
 												<div class="row form-group">
@@ -385,8 +455,14 @@ $(document).ready(function() {
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
+														<label for="date-start">화면에 표시할 병원의 수</label>
+															<input type="range" name="numOfRows" id="numOfRows" value="1" step="10" min="1" max="101">
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
 														<label for="activities">진료과목</label>
-														<select name="dgsbjtCd" id="activities dgsbjtCd" class="form-control">
+														<select name="dgsbjtCd" id="dgsbjtCd" class="form-control">
 															<option value="" disabled="disabled" selected="selected">진료과목</option>
 															<option value="00">일반의</option>
 															<option value="01">내과</option>
@@ -411,7 +487,7 @@ $(document).ready(function() {
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="activities">지역</label>
-														<select  name="sgguCd" id="sgguCd activities" class="form-control">
+														<select  name="sgguCd" id="sgguCd" class="form-control">
 															<option value="" disabled="disabled" selected="selected">지역</option>
 															<option value="110001">강남구</option>
 															<option value="110002">강동구</option>
@@ -444,13 +520,13 @@ $(document).ready(function() {
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="date-start">Date</label>
-														<input type="text" id="date" class="form-control">
+														<input type="text" id="date" name="date" value="" class="form-control">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="date-start">Time</label>
-														<input type="text" id="time" class="form-control">
+														<input type="text" id="time" name="time" value="" class="form-control">
 													</div>
 												</div>
 
@@ -462,16 +538,12 @@ $(document).ready(function() {
 													</div>
 												</div>
 											</form>	
-										</div>
-
-										
+										</div>										
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-							
-					
+					</div>					
 				</div>
 			</div>
 		</div>
@@ -479,10 +551,6 @@ $(document).ready(function() {
 			</div>
 
 			<div class="map" id="map"></div>
-	
-	 
-	
-
 		
 	<!-- jQuery -->
 	<script src="../resources/js/jquery.min.js"></script>
@@ -515,12 +583,9 @@ $(document).ready(function() {
 	<div class='login'>
 		<button class='close' id='close'></button>
 
-
-
 		<div class='top'>
 			<h2>Login</h2>
 		</div>
-
 
 		<form:form name="f" action="${loginUrl}" method="POST" onsubmit="return formCheck()">
 			<div class='user'>
@@ -542,10 +607,6 @@ $(document).ready(function() {
 			<h3>회원이 아니신가요?</h3>
 			<a href='customer/goJoin'>click here</a> to join a new member
 		</div>
-
-	</div>
-	
-
+	</div>	
 </body>
-
 </html>
