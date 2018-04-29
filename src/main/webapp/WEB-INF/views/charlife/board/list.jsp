@@ -43,13 +43,15 @@
 							<table border="1">
 								<tr>
 									<th style="width: 80px;"> Num </th>
-									<th> Title </th>
+									<th style="width: 200px;"> Category </th>
+									<th style="width: 400px;"> Title </th>
 									<th> Hits </th>
 								</tr>
 								
 								<c:forEach items="${bList }" var="vo">
 								<tr>
 									<th> ${vo.board_Num } </th>
+									<th> ${vo.board_Category } </th>
 									<th> <a href="readOne?board_Num=${vo.board_Num }"> ${vo.board_Title } </a></th>
 									<%-- <th> <a href="read?boardnum=${vo.boardnum }"> ${vo.title } </a> </th> --%>
 									

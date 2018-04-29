@@ -6,25 +6,52 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>board/writeForm</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../resources/css/charlife.css" />
-        <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-		<link rel="stylesheet" type="text/css"  href="../resources/css/rating.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../resources/css/charlife.css" />
+       <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" type="text/css"  href="../resources/css/rating.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
 		
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$('.rating').hide();
-			$('.gn-icon-menu').hover(function() {
-				$('.gn-menu-wrapper').toggleClass('gn-open-part');
-			});
+		/* alert('1'); */
+		
+		$('.rating').hide(); 
+          	$('#board_Category').change(function(){
+			if($('#board_Category').val() == '병원 평가'){
+  				$('.rating').show()
+			}else{
+ 				$('.rating').hide()
+			}
+		})
+	})
+	
+	function checkForm() {
+		/* alert('1'); */
+		
+		var board_Title = $('#board_Title').val();
+		var content = $('#content').val();
+		
+		if(board_Title == '') {
+			/* alert('2') */
+			alert('Please Enter Title')
+			
+			return false;
+		}
+		
+		if(content == '') {
+			/* alert('3') */
+			alert('Please Enter Content')
+			
+			return false;
+		}
+		
+		return true;
+	}
 
-			$('.gn-menu-wrapper').hover(function() {
-				$(this).toggleClass('gn-open-all');
-			});
-		});
-		
-		</script>
+	</script>
 		
 	</head>
 	<body class="subpage">
@@ -40,29 +67,26 @@
 				<div class="inner">
 				<article class="box">
 					
-					
 					<h2>Write Your Comment</h2>
 
-					<form action="write" method="post">
+					<form action="write" method="post" onsubmit="return checkForm()">
 
 						<div class="field half" style="width: 200px; font">
 							<label for="Category">Category</label>
-							<select id="board_Category" name="board_Category" >
-								<option style="color: black;" value="병원 평가" > 병원 평가 </option>
+							<select id="board_Category" class="board_Category" name="board_Category" >
 								<option style="color: black;" value="자유 게시판"> 자유 게시판 </option>
+								<option style="color: black;" value="병원 평가">  병원 평가  </option>
 								<option style="color: black;" value="고객의 목소리"> 고객의 목소리 </option>
 							</select>							
 						</div>
-						
-						<!-- <input name="hos_Name" id="hos_Name" type="text" placeholder="Hospital Name"> -->
+					
 						<div class="field half first">
 							<label for="Title">Title</label>
 							<input name="board_Title" id="board_Title" type="text" placeholder="Title">
 						</div>
-						
-						<c:if test="$(#board_Category).value">
+					
 						<!-- Ratings -->
-						<label>Ratings</label>
+						<label for="Ratings">Ratings</label>
 						 <div class="rating">
 						  
 						  <label>
@@ -100,7 +124,6 @@
 						    <span class="icon">★</span>
 						  </label>
 						 </div> <br><br>	
-						</c:if>
 						
 						<div class="field">
 							<label for="content">Content</label>

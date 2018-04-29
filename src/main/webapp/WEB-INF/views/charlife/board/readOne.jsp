@@ -12,69 +12,15 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css"  href="../resources/css/rating.css">
 	
+	<script src="../resources/js/jquery-3.3.1.js"></script>
+	<script src="../resources/js/charlifeReadOne.js"></script>
+	
 	<style type="text/css">
-	td.white {
-		background-color: #ffffff;
-	}
+		td.white {
+			background-color: #ffffff;
+		}
 	
 	</style>
-	
-	<script type="text/javascript">
-		function del(board_Num) {
-			
-			if(confirm("정말 삭제하시겠습니까?")){
-				location.href='./delete?board_Num=' + board_Num;
-			}
-		}
-		
-		function edit(board_Num) {
-			
-			if(confirm("정말 수정하시겠습니까?")){
-				location.href='./edit?board_Num=' + board_Num;
-			}
-		}
-		
-		function del2(board_Num, reply_Num) {
-			
-			if(confirm("정말 삭제하시겠습니까?")){
-				location.href='../reply/delete?board_Num=' + board_Num + '&reply_Num=' + reply_Num;
-			}
-		}
-
-		function editForm(board_Num, reply_Num, text) {
-			
-			var div = document.getElementById("div"+reply_Num);
-			
-			var str = '<form name="editForm' + reply_Num + '" action="../reply/edit" method="post">';
-			str += '<input type="hidden" name="reply_Num" value="'+reply_Num+'">';
-			str += '<input type="hidden" name="board_Num" value="'+board_Num+'">';
-			str += '&nbsp;';
-			str += '<input type="text" name="text" value="' + text + '" style="width:530px;">';
-			str += '&nbsp;';
-			str += '<a href="javascript:editResult(document.editForm' + reply_Num + ')">[저장]</a>';
-			str += '&nbsp;';
-			str += '<a href="javascript:editCancel(document.getElementById(\'div' + reply_Num + '\'))">[취소]</a>';
-			str += '</form>';
-			div.innerHTML = str;
-			
-		}
-		
-		function editResult(form) {
-			if (confirm('수정된 내용을 저장하시겠습니까?')) {
-				form.submit();
-			}
-		}
-		
-		function editCancel(div) {
-			
-			div.innerHTML = '';
-		}
-		
-		$(':radio').change(function() {
-			  console.log('New star rating: ' + this.value);
-		});
-	
-	</script>		
 		
 </head>
 
@@ -98,9 +44,9 @@
 					<div class="field half" style="width: 200px; font">
 						<label for="Category">Category</label>
 						<select id="board_Category" name="board_Category" disabled="disabled">
-							<option style="color: black;" value="병원 평가"> 병원 평가 </option>
-							<option style="color: black;" value="자유 게시판"> 자유 게시판 </option>
-							<option style="color: black;" value="고객의 목소리"> 고객의 목소리 </option>
+							<option style="color: black;" value="자유 게시판" <c:if test="${b.board_Category == '자유 게시판' }"> selected="selected" </c:if>> 자유 게시판 </option>
+							<option style="color: black;" value="병원 평가" <c:if test="${b.board_Category == '병원 평가' }"> selected="selected" </c:if>> 병원 평가 </option>
+							<option style="color: black;" value="고객의 목소리" <c:if test="${b.board_Category == '고객의 목소리' }"> selected="selected" </c:if>> 고객의 목소리 </option>
 						</select>							
 					</div>
 
@@ -144,7 +90,7 @@
 						  </label>
 						  
 						  <label>
-						    <input type="radio" name="score" value="5" disabled="disabled" <c:if test="${b.score == 5 }"> checked="checked" </c:if>/>
+						    <input type="radio" name="score" value="5" disabled="disabled"  <c:if test="${b.score == 5 }"> checked="checked" </c:if>/>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
 						    <span class="icon">★</span>
@@ -165,7 +111,7 @@
 					<!-- 댓글 -->
 					<%-- ${sessionScope.loginId } <br> --%>
 
-					<form action="../reply/insert" method="post">
+					<form action="../reply/insert" method="post" onsubmit="return checkReply()">
 						<label for="Comment">Comment</label> 
 						
 						<input type="text" id="text" name="text" placeholder="Comment"> <br>
