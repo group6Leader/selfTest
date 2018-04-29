@@ -17,6 +17,7 @@
 			, med_Content
 			, cust_Num
 			, cust_Id
+			, cust_Name
 		)
 		
 		values (
@@ -26,7 +27,8 @@
 			, #{med_Count}
 			, #{med_Content}
 			, #{cust_Num}
-			, #{cust_Id}		
+			, #{cust_Id}	
+			, #{cust_Name}	
 		)
 		
 	</insert>
@@ -52,5 +54,33 @@
 		where pre_Num = #{pre_Num}
 	
 	</select>
+	
+	<select id="selectPS_doc" parameterType="String" resultType="prescription">
+
+		select * 
+		from prescription 
+		where cust_Id = #{cust_Id}
+		order by pre_Num
+
+	</select>
+	
+	<select id="selectPS_cust" parameterType="int" resultType="prescription">
+
+		select * 
+		from prescription 
+		where cust_Num = #{cust_Num} and pre_Del = 0
+		order by pre_Num
+
+	</select>
+	
+	<update id="deletePS_cust" parameterType="int">
+		
+		update prescription
+		set pre_Del = 1
+		where pre_Num = #{pre_Num}
+	
+	
+	</update>
+	
 	
 </mapper>
