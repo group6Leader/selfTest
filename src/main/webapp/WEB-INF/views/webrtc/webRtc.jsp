@@ -1,13 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html>
+<html style="font-size: 10px;">
 <head>
-
+<meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="../resources/assets/css/fonticons.css">
+<link rel="stylesheet" href="../resources/assets/css/slider-pro.css">
+<link rel="stylesheet" href="../resources/assets/css/stylesheet.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+<link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css">
+<!--For Plugins external css-->
+<link rel="stylesheet" href="../resources/assets/css/plugins.css" />
+<!--Theme custom css -->
+<link rel="stylesheet" href="../resources/assets/css/home.css">
+<!--Theme Responsive css-->
+<link rel="stylesheet" href="../resources/assets/css/responsive.css" />
+<script src="../resources/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PeerJS - 영상 채팅 예제</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 <link
@@ -582,104 +600,128 @@ $(function() {
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/webrtc.css"></c:url>">
 </head>
 
-<body onload="start()">
+<body onload="start()" style="font-size: 10px; margin: 0px;">
 <input type="hidden" value ="${sessionScope.customer.division}" id="check">
 
-
+<div id="btnTool" style="position: relative; left: 30rem; top:60rem;">
+<button onClick="window.location.reload()" id="webRtcbtn" class="btnTools"><i class='fas fa-play'></i></button>
 <c:if test="${sessionScope.customer.division == 2 }">
-	<button class="selfcheck" onclick="selfCheckList()"><i class="fas fa-clipboard"></i></button>
-	
+	<button class="selfcheck btntools" onclick="selfCheckList()"><i class="fas fa-clipboard"></i></button>
 </c:if> 
-
 <c:if test="${sessionScope.customer.division == 1 }">
-	<button class="selfcheck" onclick="selfCheckOne()"><i class="fas fa-clipboard"></i></button>
+	<button class="selfcheck btntools" onclick="selfCheckOne()"><i class="fas fa-clipboard"></i></button>
 </c:if> 
+<button id="btn-mic" class="off btntools"><i class="fas fa-microphone-slash"></i></button>
+    
+</div>
 
-
-
-<button onClick="window.location.reload()" id="webRtcbtn"><i class='fas fa-play'></i></button>    
 
 <input type="hidden" id="nickname" value="${sessionScope.customer.cust_Name }">
-<div class="container">
-		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
-			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-				<nav class="gn-menu-wrapper">
-					<div class="gn-scroller">
-						<ul class="gn-menu">
-							
-							<li class="gn-search-item">
-							<input placeholder="Search" type="search" class="gn-search"> 
-								<a class="gn-icon gn-icon-search">
-									<span>Search</span>
-								</a>
-							</li>
-							
-							<li>
-								<a class="gn-icon gn-icon-download">진료</a>
-									<ul class="gn-submenu">
-										<sec:authorize access="isAuthenticated()">
-										<c:if test="${sessionScope.customer.division != 2}">
-										<li>
-											<a class="gn-icon gn-icon-illustrator" href="selfCheck/goSelfCheck">자가진단</a>
-										</li>
-										</c:if>
+<body data-spy="scroll" data-target=".navbar-collapse">
+	<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+	
+	<header id="main_menu" style="" class="header navbar-fixed-top">
+		<div class="main_menu_bg">
+			<div class="container">
+				<div class="row">
+					<div class="nave_menu">
+						<nav class="navbar navbar-default" id="navmenu">
+							<div class="container-fluid">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header" >
+									<button type="button" class="navbar-toggle collapsed"
+										data-toggle="collapse"
+										data-target="#bs-example-navbar-collapse-1"
+										aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span> <span
+											class="icon-bar"></span> <span class="icon-bar"></span> <span
+											class="icon-bar"></span>
+									</button>
+									<a class="navbar-brand" href=""> <img src="../resources/assets/images/logo.jpg" />
+									</a>
+								</div>
+
+								<!-- Collect the nav links, forms, and other content for toggling -->
+
+								<c:if test="${param.error != null}">
+							        <p> メールの認証をしてください。 </p>
+								</c:if>
+
+								<div class="collapse navbar-collapse"
+									id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav navbar-right">
+										<li><a href="/www">Char Hospital</a></li>
+										<sec:authorize access="hasRole('CUSTOMER')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
+											<ul class="dropdown-menu">
+												<li><a href="selfCheck/goSelfCheck">自己診断作成</a></li>
+												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
+											</ul></li>
 										</sec:authorize>
+										<sec:authorize access="isAuthenticated()">
+										<li><a href="customer/goFix">My Page</a></li>
+										<li><a href="javascript:loginCheck()">予約</a></li>
+										<li><a href="webrtc/goWebRtc">遠隔診療</a></li>
+										</sec:authorize>
+										
+										<sec:authorize access="hasRole('DOCTOR')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-haspopup="true">医者さんのメニュー</a>
+											<ul class="dropdown-menu">
+												<li><a href="healthRecord/goHealthRecord">診断書作成</a></li>
+												<li><a href="healthRecord/goHealthRecordList">診断書リスト</a></li>
+												<li><a href="prescription/goPrescription">処方箋作成</a></li>
+												<li><a href="prescription/prescriptionResult">処方箋リスト</a></li>
+											</ul></li>
+										</sec:authorize>
+										<sec:authorize access="hasRole('CUSTOMER')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-haspopup="true">患者さんのメニュー</a>
+											<ul class="dropdown-menu">
+												<li><a href="prescription/prescriptionIndList2">個人処方箋</a></li>
+												<li><a href="healthRecord/goHealthRecordList">個人診断書</a></li>
+											</ul></li>
+										</sec:authorize>
+										
+										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
+										<li><a href="javascript:map()">MAP</a></li>
+										<li><a href="customer/goAdmin">page</a></li>
+										
+										<sec:authorize access="isAnonymous()">
+											<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+											</c:if>
+										</sec:authorize>
+										
+					    				<sec:authorize access="isAuthenticated()">
 										<li>
-											<a class="gn-icon gn-icon-photoshop" href="chat/goChat">원격진료</a>
-										</li>
-										<li>
-											<a href="javascript:loginCheck()" class="gn-icon gn-icon-photoshop" >예약하기</a>
-										</li>
-									</ul>
-							</li>
-                           <c:if test="${sessionScope.customer != null}">
-							<li>
-								<a class="gn-icon gn-icon-cog" href="customer/goFix">Settings</a>
-							</li>
-							</c:if>
-							<li>
-								<a class="gn-icon gn-icon-help" href="prescription/goPrescription">처방전</a>
-							</li>
-							<li>
-								<a class="gn-icon gn-icon-archive">WebRTC</a>
-									<ul class="gn-submenu">
-										<li>
-											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
+										<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+											<span>Logout</span>
+										</a>
 										</li>
 										
+										<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+										</c:if>
+										</sec:authorize>
+										
 									</ul>
-							</li>
-						</ul>
+								</div>
+
+							</div>
+						</nav>
 					</div>
-					<!-- /gn-scroller -->
-				</nav>
-			</li>
-			<li><a href="charlife/charlifehome">Char LIFE</a></li>
-			<c:if test="${sessionScope.customer != null}">
-			<li><a href="">My Page</a></li>
-			<li>
-				<a class="codrops-icon codrops-icon-prev">
-					<span>VOC</span>
-				</a>
-			</li>
-			</c:if>
-			<c:if test="${sessionScope.myReservation != null}">
-				<li>
-					${myReservation}
-				</li>
-			
-			</c:if>
-			<li>
-				<sec:authorize access="isAuthenticated()">
-    				<c:if test="${sessionScope.customer != null}">
-					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
-						<span>Logout</span>
-					</a>
-					</c:if>
-				</sec:authorize>
-			</li>
-		</ul>
+				</div>
+
+			</div>
+
 		</div>
+	</header>
+	<!--End of header -->
+
+
   <div id="loading_state">
     loading...
   </div>
@@ -689,8 +731,8 @@ $(function() {
   </div>
    <div class="chat">
    <div class="chat_controll">
-  <input type="button" id="enterBtn" value="      ">
-<input type="button" id="exitBtn" value="      ">
+  <input type="button" id="enterBtn" class="fa" value="      ">
+<input type="button" id="exitBtn" class="fa" value="      ">
 </div>
   <div class="chat_header">
   <img class="chat_avatar"src="download?saved=${sessionScope.customer.saved_File}" />
@@ -701,7 +743,7 @@ $(function() {
   </div>
   <div class="chat_input">
     <input id="message" placeholder="Type here..." class="chat_text">
-    <button type="button" id="sendBtn" class="chat_submit fa fa-send" value="전송">전송</button>
+    <button type="button" id="sendBtn" class="chat_submit fa fa-send"></button>
   </div>
 </div>  
  <!--  
@@ -714,7 +756,7 @@ $(function() {
   </div> -->
 
 <div class="bg"></div>
-<button id="btn-mic" class="off"><i class="fas fa-microphone"></i></button>
+
 <div class="jamaku" id="me">
 <span class="final" id="final_span"></span>
 <span class="interim" id="interim_span"></span>

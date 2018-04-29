@@ -3,21 +3,8 @@
 @import
 	url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
-html, body {
-	padding: 0px;
-	margin: 0px;
-	font-family: "Arial", "Helvetica", sans-serif;
-	font-family: 'Open Sans Condensed', sans-serif;
-	height: 100%;
-}
-body {
-	background: linear-gradient(135deg, #cce5ff, #80bdff);
-	background-size: cover;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
-	line-height: 1.3;
-	overflow: hidden;
-	color: #010483;
+body,html{
+	background-color: rgba(233,233,233,0.8);
 }
 #loading_state {
 	top: 45%;
@@ -46,16 +33,14 @@ body {
 	background: rgba(200, 200, 200, 0.7);
 }
 #webRtcbtn{
-	border-radius:10rem;
 	font-size: 3rem;
-	padding: 10px 15px 10px 22px;
+	padding: 10px 50px 10px 55px;
 	border:0;
 	outline:0;
-	background-color:#80d2b8;
-	position: absolute;
-	left: 2rem;
-	top:13rem;
+	background-color:rgb(153, 204, 255);
 	transition: box-shadow 1s;
+	display: inline-block;
+	
 }
 #webRtcbtn:HOVER{
 	border: 3px 3px solid rgba(255,255,255,0.3);
@@ -67,15 +52,12 @@ body {
 		0 0 90px #fff;
 }
 #btn-mic {
-	border-radius:10rem;
 	font-size: 3rem;
-	padding: 10px 20.5px 10px 20.5px;
+	padding: 10px 50px 10px 50px;
 	border:0;
 	outline:0;
-	position: absolute;
-	left: 2rem;
-	top:20rem;
 	transition: box-shadow 1s;
+	display: inline-block;
 }
 #btn-mic:hover{
 	box-shadow: 
@@ -86,15 +68,11 @@ body {
 		0 0 90px #fff;
 }
 .selfcheck{
-	border-radius:10rem;
 	font-size: 3rem;
-	padding: 10px 20px 10px 20px;
+	padding: 10px 53px 10px 53px;
 	border:0;
 	outline:0;
-	position: absolute;
-	left: 2rem;
-	top:27rem;
-	background-color: #ead368;
+	background-color: rgb(153, 204, 255);
 	transition: box-shadow 1s;
 }
 .selfcheck:hover{
@@ -105,7 +83,6 @@ body {
 		0 0 70px #fff,
 		0 0 90px #fff;
 }
-
 /* 요기 밑에는 채팅 */
 .jamaku {
 	background-color: rgba(0, 0, 0, 0.6);
@@ -135,9 +112,9 @@ body {
 	width: 35rem;
 	height: 10rem;
 	position: absolute;
-	left: 16rem;
+	left: 30rem;
 	right: 0;
-	top: 22rem;
+	top: 35rem;
 	bottom: 0;
 	text-align: right;
 	font-size: 2rem;
@@ -203,10 +180,11 @@ body {
 
 /* 요기 밑에는 마이크자막 */
 .on{
-	background-color: #9ad56a;
+	background-color: #a9e897;
+	content: "";
 }
 .off{
-	background-color: #ff6c6c;
+	background-color: #ff9f9f;
 }
 
 /*--------------------
@@ -224,13 +202,13 @@ Body
 
 .chat {
 	width: 400px;
-	height: 35rem;
+	height: 50rem;
 	box-shadow: 0 0 30px -5px grey;
 	margin: 10vh calc(50vw - 200px);
 	background: #fafafa;
 	position: absolute;
-	left:32rem;
-	top:3rem;
+	left:50rem;
+	top:8rem;
 	font-family: 'Montserrat', sans-serif;
 	opacity: 0.8;
 }
@@ -277,9 +255,9 @@ Body
 
 .chat_submit {
 	width: 15%;
-	padding: 10px;
+	padding: 13px;
 	box-sizing: border-box;
-	margin: 0 5px 5px 0;
+	margin: 0 10px 5px 0.5px;
 	vertical-align: top;
 	border: 1px solid #0984b9;
 	cursor: pointer;
@@ -354,16 +332,19 @@ Body
 
 #enterBtn{
 	background-color: #8ce855;
-	border:0;
+	border:0.3px solid rgba(180,180,180,0.3);
+	padding: 3px 3px;
 	outline:0;
 	border-radius: 4rem;
-	margin-left: 20rem;
+	margin-left: 31rem;
 	margin-top: 3px;
 	margin-bottom: 2px;
 	color:white;
 }
 #exitBtn{
 	background-color: #f56247;
+	border:0.3px solid rgba(180,180,180,0.3);
+	padding: 3px 3px;
 	border:0;
 	outline:0;
 	border-radius: 4rem;
