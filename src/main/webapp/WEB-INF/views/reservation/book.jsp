@@ -11,21 +11,44 @@
 <html>
 <head>
 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/assets2/images/favicon.png">
+	<link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../resources/assets2/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/assets2/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="../resources/assets2/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <!-- Custom CSS -->
+    <link href="../resources/assets2/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="../resources/assets2/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../resources/assets2/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../resources/css/sideBar.css">
 
 <link rel="canonical" href="https://codepen.io/anon/pen/GxVKLm" />
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css'>
 <link rel='stylesheet prefetch'
 	href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-<link rel='stylesheet prefetch'
-	href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -101,7 +124,7 @@ function createCalendar(date, side) {
     if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
       selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
-      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("ko-kr", {
+      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-us", {
         month: "long",
         day: "numeric",
         year: "numeric"
@@ -141,11 +164,11 @@ function createCalendar(date, side) {
 createCalendar(currentDate);
 
 var todayDayName = document.getElementById("todayDayName");
-todayDayName.innerHTML = "오늘은 " + currentDate.toLocaleString("ko-kr", {
+todayDayName.innerHTML = "Today is " + currentDate.toLocaleString("en-us", {
   weekday: "long",
   day: "numeric",
   month: "short"
-}) + " 입니다.";
+}) + " .";
 
 var prevButton = document.getElementById("prev");
 var nextButton = document.getElementById("next");
@@ -340,108 +363,143 @@ addEventButton.onclick = function (e) {
 </head>
 
 <body>
-<div class="container">
-		<ul id="gn-menu" class="gn-menu-main mainmenusetting">
-			<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-				<nav class="gn-menu-wrapper" id="gnmenuwrapper">
-					<div class="gn-scroller">
-						<ul class="gn-menu" id="gnmenu">
-							
-							<li class="gn-search-item">
-							<input placeholder="Search" type="search" class="gn-search" id="gnsearch"> 
-								<a class="gn-icon gn-icon-search">
-									<span>Search</span>
-								</a>
-							</li>
-							
-							<li>
-								<a class="gn-icon gn-icon-download">진료</a>
-									<ul class="gn-submenu">
-										<sec:authorize access="isAuthenticated()">
-										<c:if test="${sessionScope.customer.division != 2}">
-										<li>
-											<a class="gn-icon gn-icon-illustrator" href="../selfCheck/goSelfCheck">자가진단</a>
-										</li>
-										</c:if>
-										</sec:authorize>
-										<li>
-											<a class="gn-icon gn-icon-photoshop" href="../webrtc/goWebRtc">원격진료</a>
-										</li>
-										<li>
-											<a href="../reservation/book" class="gn-icon gn-icon-photoshop" >예약하기</a>
-										</li>
-									</ul>
-							</li>
-                           <c:if test="${sessionScope.customer != null}">
-							<li>
-								<a class="gn-icon gn-icon-cog" href="../customer/goFix">Settings</a>
-							</li>
-							</c:if>
-							<li>
-								<a class="gn-icon gn-icon-help" href="../prescription/prescriptionIndList2">처방전</a>
-							</li>
-							<li>
-								<a class="gn-icon gn-icon-archive" href="../webrtc/goWebRtc">WebRTC</a>
-									<ul class="gn-submenu">
-										<li>
-											<a class="gn-icon gn-icon-article" href="webrtc/goWebRtc">RemoteHP</a>
-										</li>
-										
-									</ul>
-							</li>
-						</ul>
-					</div>
-					<!-- /gn-scroller -->
-				</nav>
-			</li>
-			<li>
-				<a href="/www" class="codrops-icon codrops-icon-prev">
-					<span>Char Hospital</span>
-				</a>
-			</li>
-			<li><a href="../charlife/gocharlife">Char LIFE</a></li>
-			<c:if test="${sessionScope.customer != null}">
-			<li><a href="../customer/goFix">My Page</a></li>
-			
-			</c:if>
-			<c:if test="${sessionScope.myReservation != null}">
-				<li>
-					${myReservation}
-				</li>
-			
-			</c:if>
-			<li>
-				<sec:authorize access="isAuthenticated()">
-    				<c:if test="${sessionScope.customer != null}">
-					<a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
-						<span>Logout</span>
-					</a>
-					</c:if>
-				
-				</sec:authorize>
-			</li>
-		</ul>
- 	</div>
 
-	<div class="content-wrapper grey lighten-3">
-		<div class="container">
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">CHAR HOSPITAL</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/www">
+                        
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="../resources/assets/images/logo.png" style="width: 160px; padding-left: 60px;" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="../resources/assets/images/logo.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="download?saved=${login.saved_File}" alt="user" class="" />
+                            <span class="hidden-md-down">${login.cust_Name}&nbsp;</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="goAdmin" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        </li>
+                        <sec:authorize access="hasRole('CUSTOMER')">
+                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Let's Go SelfCheck</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck3" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">SelfCheck</span></a>
+                        </li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('DOCTOR')">
+                        <li> <a class="waves-effect waves-dark" href="../healthRecord/goHealthRecordList" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">HealthRecord</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="../prescription/prescriptionResult" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Prescription</span></a>
+                        </li>
+                        </sec:authorize>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+ <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Dashboard</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                  
+                </div>
+                <div class="container">
 
 			<div class="calendar-wrapper z-depth-2">
 
 				<div class="header-background">
 					<div class="calendar-header">
-
-						<a class="prev-button" id="prev"> <i class="material-icons">keyboard_arrow_left</i>
-						</a> <a class="next-button" id="next"> <i class="material-icons">keyboard_arrow_right</i>
-						</a>
-
+						<a class="prev-button" id="prev"> <i class="material-icons">keyboard_arrow_left</i></a>
+						<a class="next-button" id="next"> <i class="material-icons">keyboard_arrow_right</i></a>
 						<div class="row header-title">
-
 							<div class="header-text">
 								<h3 id="month-name">February</h3>
 								<h5 id="todayDayName">Today is Friday 7 Feb</h5>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -476,7 +534,7 @@ addEventButton.onclick = function (e) {
 
 						<div class="row">
 							<div class="input-field col s6">
-								<div class="column-6 form-select">
+								<div class="column-4 form-select">
 									<select name="" id="eventTitleInput">
 										<option value="" disabled="disabled">진료종류</option>
 										<option selected="selected">Dr차예진</option>
@@ -487,7 +545,7 @@ addEventButton.onclick = function (e) {
 								</div>
 							</div>
 							<div class="input-field col s6">
-								<div class="column-6 form-select">
+								<div class="column-4 form-select">
 									<select name="" id="eventDescInput">
 										<option value="" disabled="disabled">Time
 											Table</option>
@@ -508,9 +566,9 @@ addEventButton.onclick = function (e) {
 
 
 						<div class="addEventButtons">
-							<a class="waves-effect waves-light btn blue lighten-2"
+							<a class="addEvent"
 								id="addEventButton">Add</a> <a
-								class="waves-effect waves-light btn grey lighten-2"
+								class="addEvent"
 								id="cancelAdd">Cancel</a>
 						</div>
 
@@ -518,16 +576,11 @@ addEventButton.onclick = function (e) {
 				</div>
 
 			</div>
-
-		</div>
-	</div>
-
-	<div class="main-wrapper">
-		<div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar">
+		<div class="sidebar-wrapper z-depth-2" id="sidebar">
 
 			<div class="sidebar-title">
-				<h4>선택 일자</h4>
-				<h5 id="eventDayName">SIDEBAR SUB-TITLE</h5>
+				<h4 style="color: white;">선택 일자</h4>
+				<h5 id="eventDayName" style="color: white;">SIDEBAR SUB-TITLE</h5>
 			</div>
 			<div class="sidebar-events" id="sidebarEvents">
 				<div class="empty-message"></div>
@@ -540,18 +593,40 @@ addEventButton.onclick = function (e) {
 				<a href="./deleteBook"><button style="margin-left: 30px;">예약 취소</button></a>
 			</c:if>
 			<c:if test="${list != null }">
-				<c:forEach var="list" items="${list}">
-				   &emsp;&emsp; 예약번호 : ${list.res_Num},
-				   예약일 : ${list.res_Date},
-				   환자번호 : ${list.cust_Num}
-				    <br>
-				</c:forEach>
+				<div class="table-responsive" style="width: 25rem; margin-left: 2rem; margin-top: -8rem;padding:2px 25px; background-color: rgba(255,255,255,0.3);">
+                                    <table class="table" id="keywords">
+                                         <c:forEach var="list" items="${list}">
+                                        <thead>
+                                            <tr>
+                                                <th>Reservation Number</th>
+                                                <th>Reservation Date</th>
+                                                <th>Patient Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>${list.res_Num }</td>
+                                                <td>${list.res_Date }</td>
+                                                <td>${list.cust_Num }</td>
+                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
 			</c:if>
 		</div>
 		</div>
-		
-		
-	</div>
+
+		</div>
+                
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Notification And Feeds -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Page Content -->
+                <!-- ============================================================== -->
+            </div>
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
@@ -567,6 +642,40 @@ addEventButton.onclick = function (e) {
 	<script>
       $(".button-collapse").sideNav();
     </script>
-
+  <footer class="footer"> © 2018 Adminwrap by wrappixel.com </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
+    <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../resources/assets2/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="../resources/assets2/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../resources/assets2/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../resources/assets2/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="../resources/assets2/node_modules/raphael/raphael-min.js"></script>
+    <script src="../resources/assets2/node_modules/morrisjs/morris.min.js"></script>
+    <!--c3 JavaScript -->
+    <!-- Chart JS -->
+    <script src="../resources/assets2/js/dashboard1.js"></script>
 </body>
 </html>
