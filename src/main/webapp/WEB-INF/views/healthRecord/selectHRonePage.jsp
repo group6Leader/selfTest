@@ -1,12 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/join.css"></c:url>">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/assets2/images/favicon.png">
+    <title>Adminpage</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../resources/assets2/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/assets2/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="../resources/assets2/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <!-- Custom CSS -->
+    <link href="../resources/assets2/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="../resources/assets2/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../resources/assets2/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -60,193 +86,218 @@
 <title>Select HealthRecord</title>
 </head>
 <body>
-	<!-- div 영역 -->
-	<div id="printArea">
-
-
-
-
-		<input type="hidden" id="dia_Num" value="${select.dia_Num }">
-
-
-
-		<fieldset class="form-fieldset">
-			<legend class="form-legend">HealthRecord </legend>
-
-
-			<div class="form-element form-input">
-				<input id="cust_Name" name="cust_Name" class="form-element-field"
-					placeholder="Enter name" type="text" value="${select.cust_Name }"
-					disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Customer Name</label>
-			</div>
-
-
-
-
-			<div class="form-element form-input">
-				<input id="dis_Name" name="dis_Name" class="form-element-field"
-					placeholder="Enter disease name" type="text"
-					value="${select.dis_Name }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">Diseases Name</label>
-			</div>
-
-
-			<div class="form-element form-input">
-				<input id="final_Diagnosis" name="final_Diagnosis"
-					class="form-element-field" placeholder="Enter final_Diagnosis."
-					type="text" value="${select.final_Diagnosis }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">final_Diagnosis</label>
-
-			</div>
-
-
-			<div class="form-element form-input">
-				<input id="dis_Category" name="dis_Category"
-					class="form-element-field" placeholder="Select dis_Category."
-					type="text" value="${select.dis_Category }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">dis_Category</label>
-				<div id="check"></div>
-			</div>
-
-			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">usage</div>
-				<label class="form-radio-label"> <c:if
-						test="${select.usage == 'submit' }">
-
-						<input name="usage" class="form-radio-field" type="radio"
-							value="submit" checked="checked" readonly="readonly" />
-						<i class="form-radio-button"></i>
-						<span>제출용</span>
-					</c:if>
-
-
-				</label> <label class="form-radio-label"> <c:if
-						test="${select.usage == 'save' }">
-						<input name="usage" class="form-radio-field" type="radio"
-							value="save" checked="checked" readonly="readonly" />
-						<i class="form-radio-button"></i>
-						<span>보관용 </span>
-					</c:if>
-				</label>
-
-
-			</div>
-
-			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">
-					first_Date <input type="text" id="first_Date" name="first_Date"
-						value="${select.first_Date }" disabled="disabled">
-				</div>
-
-			</div>
-
-
-
-
-			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">
-					dia_Date <input type="text" id="dia_Date" name="dia_Date"
-						value="${select.dia_Date }" disabled="disabled">
-				</div>
-			</div>
-
-
-
-			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">
-					issue_Date <input type="text" id="issue_Date" name="issue_Date"
-						value="${select.issue_Date }" disabled="disabled">
-				</div>
-			</div>
-
-
-
-
-
-			<div class="form-element form-input">
-				<input id="care_Opinions" name="care_Opinions"
-					class="form-element-field" placeholder="Write care_Opinions"
-					type="text" value="${select.care_Opinions }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">care_Opinions</label>
-			</div>
-
-			<div class="form-element form-input">
-				<input id="ect" name="ect" class="form-element-field"
-					placeholder="Write ect" type="text" value="${select.ect }"
-					disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">ect</label>
-			</div>
-
-			<div class="form-element form-input">
-				<input id="hos_Name" name="hos_Name" class="form-element-field"
-					placeholder="hospital_Name" type="text" value="${select.hos_Name }"
-					disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">hos_Name</label>
-			</div>
-
-
-			<div class="form-element form-input">
-				<input id="hos_Address" name="hos_Address"
-					class="form-element-field" placeholder="hospital_Address"
-					type="text" value="${select.hos_Address }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">hos_Address</label>
-			</div>
-
-
-			<div class="form-element form-input">
-				<input id="hos_Phone" name="hos_Phone" class="form-element-field"
-					placeholder="hospital_Phone" type="number"
-					value="${select.hos_Phone }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">hos_Phone</label>
-			</div>
-
-
-			<div class="form-element form-input">
-				<input id="cust_Num" name="cust_Num" class="form-element-field"
-					placeholder="write customer name" type="text"
-					value="${select.cust_Num }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">cust_Num</label>
-				<c:if test="${sessionScope.customer.division == 2 }">
-					<button class="docReserveList" onclick="docReserveList()"
-						value="findCust">FIND_CUST</button>
-				</c:if>
-
-
-			</div>
-
-
-
-			<div class="form-element form-input">
-				<input id="cust_Id" name="cust_Id" class="form-element-field"
-					placeholder="sign dictor name" type="text"
-					value="${select.cust_Id }" disabled="disabled" />
-				<div class="form-element-bar"></div>
-				<label class="form-element-label">doctor_Name</label>
-			</div>
-
-
-
-		</fieldset>
-
-
-		<div class="form-actions"></div>
-		<button class="form-btn" onclick="del_check()">DELETE</button>
-		<!-- <button class="form-btn-cancel -nooutline" onclick="print_check()">PRINT</button> -->
-		<input type="button"
-			OnClick="print(document.getElementById('printArea').innerHTML)"
-			value="PRINT" />
+	
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">CHAR HOSPITAL</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/www">
+                        
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="../resources/assets/images/logo.png" style="width: 160px; padding-left: 60px;" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="../resources/assets/images/logo.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="download?saved=${login.saved_File}" alt="user" class="" />
+                            <span class="hidden-md-down">${login.cust_Name}&nbsp;</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+       
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+<div class="page-wrapper" style="margin-left: 0px;">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">HealthRecord</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/www">Home</a></li>
+                            <li class="breadcrumb-item active">HealthRecord</li>
+                        </ol>
+                    </div>
+                </div>
+                 <div id = "printArea">
+<input type="hidden" id="dia_Num" value="${select.dia_Num }">
+		<div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">${sessionScope.customer.cust_Name } HealthRecord</h4>
+                                <h6 class="card-subtitle">List</h6>
+                                <div class="table-responsive">
+                                    <table class="table" id="keywords">
+                                        <thead>
+                                            <tr>
+                                                <th>Diseases Name</th>
+                                                <th>Final Diagnosis</th>
+                                                <th>Diseases Category</th>
+                                                <th>Usage</th>
+                                                <th>First Date</th>
+                                                <th>Dia Date</th>
+                                                <th>Issue Date</th>
+                                                <th>Care Opinions</th>
+                                                <th>Ect</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>${select.dis_Name }</td>
+                                                <td>${select.final_Diagnosis }</td>
+                                                <td>${select.dis_Category }</td>
+                                                <td>${select.usage }</td>
+                                                <td>${select.first_Date }</td>
+                                                <td>${select.dia_Date }</td>
+                                                <td>${select.issue_Date }</td>
+                                                <td>${select.care_Opinions }</td>
+                                                <td>${select.ect }</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                     <table class="table" id="keywords">
+                                        <thead>
+                                            <tr>
+                                                <th>Hospital Name</th>
+                                                <th>Hospital Address</th>
+                                                <th>Hospital PhoneNumber</th>
+                                                <th>Customer Number</th>
+                                                <th>Doctor Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>${select.hos_Name }</td>
+                                                <td>${select.hos_Address }</td>
+                                                <td>${select.hos_Phone }</td>
+                                                <td>${select.cust_Num }</td>
+                                                <td>${select.cust_Id }</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+<button class="form-btn" onclick="del_check()">DELETE</button>
+<input type = "button" OnClick="print(document.getElementById('printArea').innerHTML)" value="PRINT"/>
 	</div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2018 Char Hospital by Null Team
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
+    <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../resources/assets2/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="../resources/assets2/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../resources/assets2/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../resources/assets2/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="../resources/assets2/node_modules/raphael/raphael-min.js"></script>
+    <script src="../resources/assets2/node_modules/morrisjs/morris.min.js"></script>
+    <!--c3 JavaScript -->
+    <!-- Chart JS -->
+    <script src="../resources/assets2/js/dashboard1.js"></script>
+		
+
 
 
 

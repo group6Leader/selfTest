@@ -447,25 +447,25 @@ function check(){
 											<form action="../reservation/reservation2" method="get" onsubmit="return check()">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="date-start">병원명</label>
+														<label for="date-start">Hospital Name</label>
 														<div id="hosName"><input type="text" name="yadmNm" id="yadmNm" value="" class="form-control"></div>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="date-start">반경</label>
+														<label for="date-start">Radius</label>
 															<input type="range" name="radius" id="radius" value="1" step="10" min="1" max="101">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="date-start">화면에 표시할 병원의 수</label>
+														<label for="date-start">Hospital Count</label>
 															<input type="range" name="numOfRows" id="numOfRows" value="1" step="10" min="1" max="101">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="activities">진료과목</label>
+														<label for="activities">Subject</label>
 														<select name="dgsbjtCd" id="dgsbjtCd" class="form-control">
 															<option value="" disabled="disabled" selected="selected">진료과목</option>
 															<option value="00">일반의</option>
@@ -490,7 +490,7 @@ function check(){
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="activities">지역</label>
+														<label for="activities">Area</label>
 														<select  name="sgguCd" id="sgguCd" class="form-control">
 															<option value="" disabled="disabled" selected="selected">지역</option>
 															<option value="110001">강남구</option>
@@ -538,7 +538,7 @@ function check(){
 													<div class="col-md-12">
 														<input type="submit" class="btn btn-primary btn-block" value="Reserve Now">
 														<input type="hidden" class="btn btn-primary btn-block btn-update-map"> 
-														<input type="reset" class="btn btn-primary btn-block btn-reset-map">
+														<input type="reset" value="Reset" class="btn btn-primary btn-block btn-reset-map">
 													</div>
 												</div>
 											</form>	
