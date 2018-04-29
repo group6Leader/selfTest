@@ -26,6 +26,7 @@
 		,cust_Num
 		,dia_del
 		,cust_Id
+		,cust_Name
 		
 		)values(
 		
@@ -45,6 +46,7 @@
 		,#{cust_Num}
 		,#{dia_del}
 		,#{cust_Id}
+		,#{cust_Name}
 		
 		)
 	</insert>

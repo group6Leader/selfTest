@@ -18,10 +18,11 @@ public class HealthRecord {
 	private int cust_Num;
 	private int dia_del;
 	private String cust_Id;
+	private String cust_Name;
 
 	public HealthRecord(int dia_Num, String dis_Name, String final_Diagnosis, String dis_Category, String first_Date,
 			String dia_Date, String care_Opinions, String ect, String usage, String issue_Date, String hos_Name,
-			String hos_Address, String hos_Phone, int cust_Num, int dia_del, String cust_Id) {
+			String hos_Address, String hos_Phone, int cust_Num, int dia_del, String cust_Id, String cust_Name) {
 		this.dia_Num = dia_Num;
 		this.dis_Name = dis_Name;
 		this.final_Diagnosis = final_Diagnosis;
@@ -38,6 +39,7 @@ public class HealthRecord {
 		this.cust_Num = cust_Num;
 		this.dia_del = dia_del;
 		this.cust_Id = cust_Id;
+		this.cust_Name = cust_Name;
 	}
 
 	public HealthRecord() {
@@ -171,13 +173,22 @@ public class HealthRecord {
 		this.cust_Id = cust_Id;
 	}
 
+	public String getCust_Name() {
+		return cust_Name;
+	}
+
+	public void setCust_Name(String cust_Name) {
+		this.cust_Name = cust_Name;
+	}
+
 	@Override
 	public String toString() {
 		return "HealthRecord [dia_Num=" + dia_Num + ", dis_Name=" + dis_Name + ", final_Diagnosis=" + final_Diagnosis
 				+ ", dis_Category=" + dis_Category + ", first_Date=" + first_Date + ", dia_Date=" + dia_Date
 				+ ", care_Opinions=" + care_Opinions + ", ect=" + ect + ", usage=" + usage + ", issue_Date="
 				+ issue_Date + ", hos_Name=" + hos_Name + ", hos_Address=" + hos_Address + ", hos_Phone=" + hos_Phone
-				+ ", cust_Num=" + cust_Num + ", dia_del=" + dia_del +", cust_Id"+cust_Id+"]";
+				+ ", cust_Num=" + cust_Num + ", dia_del=" + dia_del + ", cust_Id" + cust_Id + ", cust_Name" + cust_Name
+				+ "]";
 	}
 
 }

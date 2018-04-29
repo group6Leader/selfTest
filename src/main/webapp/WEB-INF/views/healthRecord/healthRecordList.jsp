@@ -46,7 +46,7 @@ $(function(){
         <c:forEach var="list" items="${HR_List }">
 		<tr>
 		<td><a href="selectHRone?dia_Num=${list.dia_Num }"> ${list.dia_Num } </a> </td>
-			<td class="lalign"> ${sessionScope.customer.cust_Name } </td>
+			<td class="lalign"> ${list.cust_Name } </td>
 			<td> ${list.hos_Name } </td>
 			<td> ${list.issue_Date } </td>
 			<td> ${list.cust_Id } </td>
