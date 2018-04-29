@@ -144,7 +144,7 @@ public class CustomerController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "custFix", method = RequestMethod.POST)
+	@RequestMapping(value = "custFix", method = {RequestMethod.GET,RequestMethod.POST})
 	public String custFix(Customer customer) {
 		
 		
@@ -506,7 +506,7 @@ public class CustomerController {
         return new ResponseEntity<String>("deleted", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "download", method = RequestMethod.GET)
+    @RequestMapping(value = "download", method = {RequestMethod.GET,RequestMethod.POST} )
 	public void fileDownload(HttpServletResponse response, String saved){
 		try {
 			response.setHeader("Content-Disposition", " attachment;filename="+ URLEncoder.encode(saved, "UTF-8"));

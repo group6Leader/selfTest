@@ -127,6 +127,7 @@ $(document).ready(function() {
 		
 		
 		});
+ 
  $('#delBtn').on('click',function(){
 		
 	 
