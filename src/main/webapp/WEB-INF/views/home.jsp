@@ -225,7 +225,17 @@ $(window).scroll(function(){
 										<li><a href="javascript:map()">MAP</a></li>
 										<li><a href="customer/goAdmin">page</a></li>
 										
-										<sec:authorize access="isAnonymous()">
+										<c:if test="${sessionScope.customer != null}">
+										<li><a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+											<span>Logout</span></a>
+										</li>
+										</c:if>
+										
+										<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+										</c:if>
+										
+										<%-- <sec:authorize access="isAnonymous()">
 											<c:if test="${sessionScope.customer == null}">
 											<li><a id="SignIn">LOGIN</a></li>
 											</c:if>
@@ -241,7 +251,7 @@ $(window).scroll(function(){
 										<c:if test="${sessionScope.customer == null}">
 											<li><a id="SignIn">LOGIN</a></li>
 										</c:if>
-										</sec:authorize>
+										</sec:authorize> --%>
 										
 									</ul>
 								</div>

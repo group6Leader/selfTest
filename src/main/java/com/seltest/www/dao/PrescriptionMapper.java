@@ -16,5 +16,5 @@ public interface PrescriptionMapper {
 
 	public ArrayList<Prescription> selectPS_cust(int cust_num);
 
-	public int deletePS_cust(int dia_Num);
+	public int deletePS_cust(int pre_Num);
 }

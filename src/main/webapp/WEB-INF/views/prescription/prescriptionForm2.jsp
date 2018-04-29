@@ -20,37 +20,6 @@
 	        return false;
 		};
 		
-		/* function remove(obj){
-			alert(3);
-	        // obj.parentNode 를 이용하여 삭제
-	        document.getElementById('field').removeChild(obj.parentNode);
-	    } */
-		
-		/* function checkForm() {
-			alert('2');
-			var med_Name = $('#med_Name').val();
-			var med_Amount = $('#med_Amount').val();
-			var med_Count = $('#med_Count').val();
-			var med_Content = $('#med_Content').val();
-			
-			console.log(med_Name);
-			
-			return false;
-			
-			alert(med_Name);
-			if (med_Name == ''){
-				alert('555');
-				return false;
-			}
-			
-			console.log(med_Name);
-			console.log(med_Amount);
-			console.log(med_Count);
-			console.log(med_Content);
-			
-			return false;
-		} */
-		
 	</script>
 
 </head>
@@ -71,7 +40,7 @@
 
 					<div>
 						<label for="name">환자성함</label> 
-						<input type="text" id="name" value="${c.cust_Name }" spellcheck="false" />
+						<input type="text" id="name" name="cust_Name" value="${c.cust_Name }" spellcheck="false" />
 					</div>
 
 					<div>

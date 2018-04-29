@@ -40,7 +40,7 @@ public class PrescriptionController {
 	@RequestMapping(value = "goPrescription", method = RequestMethod.GET)
 	public String prescriptionList(Model model) {
 		
-		logger.info("처방전 작성으로 이동");
+		logger.info("처방전 작성으로 이동~");
 		
 		ArrayList<Customer> cList = customerDAO.cList();
 		
@@ -52,10 +52,14 @@ public class PrescriptionController {
 	@RequestMapping(value="readOne", method = RequestMethod.GET)
 	public String prescriptionForm(int cust_Num, Model model, HttpSession session) {
 		
-		System.out.println(cust_Num);
+		logger.info("readOne으로 이동~");
+		logger.info("cust_Num: {}", cust_Num);
+		
 		Customer customer = customerDAO.readOne(cust_Num);
+		logger.info("{}", customer);
 		
 		Customer doctor = (Customer) session.getAttribute("customer");
+		logger.info("Doctor: {}", doctor);
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
@@ -88,12 +92,11 @@ public class PrescriptionController {
 	@RequestMapping(value = "goPrescription", method = RequestMethod.POST)
 	public String prescriptionResult(Prescription prescription) {
 		
-		System.out.println("goPrescriptionPost");
-		System.out.println(prescription);
+		logger.info("처방전 작성 완료");
+		logger.info("{}", prescription);
 		
-			int insert = prescriptionDAO.insertPrescription(prescription);
-			System.out.println("Insert: " + insert);
-		
+		int insert = prescriptionDAO.insertPrescription(prescription);
+		logger.info("Insert: {} ", insert);
 		
 		return "redirect: ../";
 	}
@@ -119,7 +122,7 @@ public class PrescriptionController {
 	@RequestMapping(value = "prescriptionResult", method = RequestMethod.GET)
 	public String prescriptionResult2(HttpSession session, Model model) {
 		
-		System.out.println("prescriptionResult");
+		logger.info("처방전 리스트로 이동~");
 		
 		ArrayList<Customer> cList = customerDAO.cList();
 
@@ -210,5 +213,42 @@ public class PrescriptionController {
 		model.addAttribute("p", plist);
 		
 		return "prescription/prescriptionIndResult";
+	}
+	
+	@RequestMapping(value="delete", method = RequestMethod.GET)
+	public String deleteHR(int pre_Num, int cust_Num){
+		
+		logger.info("삭제~ ");
+		logger.info("pre_Num: {}", pre_Num);
+		logger.info("cust_Num: {}", cust_Num);
+		
+		int delete = prescriptionDAO.deletePS_cust(pre_Num);
+		logger.info("delete: {}", delete);
+		
+		/*Customer customer = (Customer) session.getAttribute("customer");
+		logger.info("{}", customer);*/
+		
+		/*if(prescriptionDAO.deletePS_cust(pre_Num)){			
+			logger.info("삭제완료");
+			logger.info("{}", customer);
+				  
+		if(customer.getDivision() == 1){				  
+			ArrayList<Prescription> selectHR_cust = new ArrayList<>();
+			selectHR_cust = prescriptionDAO.selectPS_cust(customer.getCust_Num());
+			System.out.println("개인 진단서 출력 "+selectHR_cust);
+			model.addAttribute("HR_List", selectHR_cust);
+		}
+		
+		} else {
+			System.out.println("삭제실패");
+			System.out.println(dia_Num);
+			HealthRecord select = new HealthRecord();
+			select = healthRecordDao.selectHRone(dia_Num);
+			System.out.println(select+"선택된 진단서");
+			model.addAttribute("select", select);
+			return "healthRecord/selectHRonePage";
+		}*/
+		
+		return "redirect: ./prescriptionIndList?cust_Num=" + cust_Num;
 	}
 }

@@ -184,34 +184,39 @@
                             <!-- Tab panes -->
                             <div class="card-body">
                                 <div class="form-horizontal form-material">
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Patient Number</label>
                                         <div class="col-md-12">
-                                            <input disabled="disabled" type="text" id="cust_Num" name="cust_Num" value="${c.cust_Num }" class="form-control form-control-line">
+                                            <input type="text" id="cust_Num" name="cust_Num" value="${c.cust_Num }" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Patient Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="name" value="${c.cust_Name }" disabled="disabled" class="form-control form-control-line">
+                                            <input type="text" id="name" name="cust_Name" value="${c.cust_Name }" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Gender</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="gender" value="${c.cust_Sex }" class="form-control form-control-line">
+                                            <input type="text" id="gender" value="${c.cust_Sex }" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Address</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="address" value="${c.cust_Address }" class="form-control form-control-line">
+                                            <input type="text" id="address" value="${c.cust_Address }" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">PhoneNumber</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="phone" value="${c.cust_Phone }" class="form-control form-control-line">
+                                            <input type="text" id="phone" value="${c.cust_Phone }" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
                                   </div></div></div></div>
@@ -224,31 +229,31 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hos_Name" name="hos_Name" value="CHAR HOSPITAL" class="form-control form-control-line">
+                                            <input type="text" id="hos_Name" name="hos_Name" value="CHAR HOSPITAL" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital Address</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hos_Phone" name="hos_Phone" placeholder="PhoneNumber" value="021231234" class="form-control form-control-line">
+                                            <input type="text" id="hos_Phone" name="hos_Phone" placeholder="PhoneNumber" value="021231234" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital Phone</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hos_Address" name="hos_Address" placeholder="Address" value="서울시 강남구 삼성동 코엑스" class="form-control form-control-line">
+                                            <input type="text" id="hos_Address" name="hos_Address" placeholder="Address" value="서울시 강남구 삼성동 코엑스" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Doctor Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="cust_Id" name="cust_Id" placeholder="Doctor Name" value="${d.cust_Name }" class="form-control form-control-line">
+                                            <input type="text" id="cust_Id" name="cust_Id" placeholder="Doctor Name" readonly="readonly" value="${d.cust_Name }" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital Fax</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hospitalfax" name="hospitalfax" placeholder="Fax" value="029876543" class="form-control form-control-line">
+                                            <input type="text" id="hospitalfax" name="hospitalfax" placeholder="Fax" value="029876543" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
                       				</div></div></div></div>
@@ -258,32 +263,43 @@
                             <!-- Tab panes -->
                             <div class="card-body">
                                 <div class="form-horizontal form-material">
+                                	
+                                	<!-- 약 이름 -->
                                     <div class="form-group">
                                         <label class="col-md-12">Medicine Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="med_name" name="med_name" placeholder="Medicine Name" class="form-control form-control-line">
+                                            <input type="text" id="med_Name" name="med_Name" placeholder="Medicine Name" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
+                                    <!-- 투약량 -->
                                     <div class="form-group">
                                         <label class="col-md-12">Medicine Amount</label>
                                         <div class="col-md-12">
                                             <input type="text" id="med_Amount" name="med_Amount" placeholder="Medicine Amount" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
+                                    <!-- 투약횟수 -->
                                     <div class="form-group">
                                         <label class="col-md-12">Medicine Count</label>
-                                        <div class="col-md-12">
-                                            <input type="text" id="med_Count" name="med_Count" placeholder="Medicine Count" class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Medicine Count</label>
+                                        
                                         <div class="col-sm-12">
                                             <select name="med_Count" id="med_Count" class="form-control form-control-line">
-                                                	<option>once</option>
+                                                	<option>Once</option>
                                                 	<option>Twice</option>
-                                                	<option>Thrice</option>
+                                                	<option>Three Times</option>
                                             </select>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                  	<!-- 복용법 -->
+                                    <div class="form-group">
+                                        <label class="col-sm-12">How to</label>
+                                        
+                                        <div class="col-md-12">
+                                            <input type="text" id="med_Content" name="med_Content" placeholder="How to" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     </div>

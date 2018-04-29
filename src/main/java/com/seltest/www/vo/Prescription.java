@@ -10,7 +10,7 @@ public class Prescription {
 	private int cust_Num;
 	private int pre_Del;
 	private String cust_Id; // 의사 ID
-	private String cust_Name;
+	private String cust_Name; // 화자 이름
 
 	public Prescription(int pre_Num, String med_Name, String med_Amount, String med_Count, String med_Content,
 			int cust_Num, int pre_Del, String cust_Id, String cust_Name) {

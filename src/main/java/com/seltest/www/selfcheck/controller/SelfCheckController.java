@@ -28,19 +28,19 @@ public class SelfCheckController {
 	CustomerDAO customerDAO;
 	
 	@RequestMapping(value="goSelfCheck", method = RequestMethod.GET)
-	public String selfCheckForm(Model model, SelfCheck selfCheck, HttpSession session){
+	public String selfCheckForm(Model model, HttpSession session){
 		
 		System.out.println("selfCheckForm");
 	
 		Customer customer = (Customer) session.getAttribute("customer");
-		System.out.println("customer: " + customer);
+		System.out.println(customer);
 		
 		int cust_Num = customer.getCust_Num();
 		
-		SelfCheck s = selfCheckDAO.searchSelfCheckOne(cust_Num);
-		System.out.println(s);
+		SelfCheck selfCheck = selfCheckDAO.searchSelfCheckOne(cust_Num);
+		System.out.println(selfCheck);
 		
-		model.addAttribute("s", s);
+		model.addAttribute("s", selfCheck);
 		
 		return "selfCheck/selfCheckForm";
 	}

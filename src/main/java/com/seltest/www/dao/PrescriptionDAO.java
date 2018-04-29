@@ -98,25 +98,18 @@ public class PrescriptionDAO {
 		return selectPS_cust;
 	}
 
-	public boolean deletePS_cust(int dia_Num) {
-		PrescriptionMapper mapper = sqlSession.getMapper(PrescriptionMapper.class);
-
+	public int deletePS_cust(int pre_Num) {
+		
 		int check = 0;
-		boolean flag = false;
+//		boolean flag = false;
+		
 		try {
-			check = mapper.deletePS_cust(dia_Num);
-
-			if (check == 1) {
-				flag = true;
-			}
-
+			PrescriptionMapper mapper = sqlSession.getMapper(PrescriptionMapper.class);
+			check = mapper.deletePS_cust(pre_Num);
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 
-		return flag;
-
+		return check;
 	}
-
 }
