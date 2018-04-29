@@ -33,55 +33,10 @@ body,html{
 	background: rgba(200, 200, 200, 0.7);
 }
 #webRtcbtn{
-	font-size: 3rem;
-	padding: 10px 50px 10px 55px;
-	border:0;
-	outline:0;
-	background-color:rgb(153, 204, 255);
-	transition: box-shadow 1s;
-	display: inline-block;
-	
-}
-#webRtcbtn:HOVER{
-	border: 3px 3px solid rgba(255,255,255,0.3);
-	box-shadow: 
-		0 0 10px #fff, 
-		0 0 30px #fff, 
-		0 0 50px #fff, 
-		0 0 70px #fff,
-		0 0 90px #fff;
 }
 #btn-mic {
-	font-size: 3rem;
-	padding: 10px 50px 10px 50px;
-	border:0;
-	outline:0;
-	transition: box-shadow 1s;
-	display: inline-block;
-}
-#btn-mic:hover{
-	box-shadow: 
-		0 0 10px #fff, 
-		0 0 30px #fff, 
-		0 0 50px #fff, 
-		0 0 70px #fff,
-		0 0 90px #fff;
 }
 .selfcheck{
-	font-size: 3rem;
-	padding: 10px 53px 10px 53px;
-	border:0;
-	outline:0;
-	background-color: rgb(153, 204, 255);
-	transition: box-shadow 1s;
-}
-.selfcheck:hover{
-	box-shadow: 
-		0 0 10px #fff, 
-		0 0 30px #fff, 
-		0 0 50px #fff, 
-		0 0 70px #fff,
-		0 0 90px #fff;
 }
 /* 요기 밑에는 채팅 */
 .jamaku {
@@ -207,8 +162,8 @@ Body
 	margin: 10vh calc(50vw - 200px);
 	background: #fafafa;
 	position: absolute;
-	left:50rem;
-	top:8rem;
+	left:53rem;
+	top:7.5rem;
 	font-family: 'Montserrat', sans-serif;
 	opacity: 0.8;
 }
@@ -218,7 +173,7 @@ Body
 }
 .chat_header {
 	font-size:18px;
-	padding: 1px 10px 13px 13px;
+	padding: 10px 10px 13px 13px;
 	border-bottom: 4px solid #0984b9;
 	background: #f0f0f0;
 	color: #0984b9;
@@ -331,22 +286,53 @@ Body
 }
 
 #enterBtn{
-	background-color: #8ce855;
-	border:0.3px solid rgba(180,180,180,0.3);
-	padding: 3px 3px;
-	outline:0;
-	border-radius: 4rem;
-	margin-left: 31rem;
-	margin-top: 3px;
-	margin-bottom: 2px;
-	color:white;
 }
+
 #exitBtn{
-	background-color: #f56247;
-	border:0.3px solid rgba(180,180,180,0.3);
-	padding: 3px 3px;
+}
+	
+#btnTool{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 80vw;
+  }
+.btnTools{
 	border:0;
-	outline:0;
-	border-radius: 4rem;
-	color:white;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  font-size:20px;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+.btnTools:HOVER {
+	 background-position: right center; /* change the direction of the change here */
+}
+.btn-1 {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn-2 {
+  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.btn-3 {
+  background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+
+.btn-4 {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+.btn-5 {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
 }

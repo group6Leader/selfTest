@@ -603,16 +603,17 @@ $(function() {
 <body onload="start()" style="font-size: 10px; margin: 0px;">
 <input type="hidden" value ="${sessionScope.customer.division}" id="check">
 
-<div id="btnTool" style="position: relative; left: 30rem; top:60rem;">
-<button onClick="window.location.reload()" id="webRtcbtn" class="btnTools"><i class='fas fa-play'></i></button>
+<div id="btnTool" style="position: relative; height:10rem; top:66rem; width:100%; background-color: rgba(255,255,255,0.8); padding: 10px;">
+<button onClick="window.location.reload()" id="webRtcbtn" class="btnTools btn-1"><i class='fas fa-play'></i></button>
 <c:if test="${sessionScope.customer.division == 2 }">
-	<button class="selfcheck btntools" onclick="selfCheckList()"><i class="fas fa-clipboard"></i></button>
+	<button class="selfcheck btnTools btn-2" onclick="selfCheckList()"><i class="fas fa-clipboard"></i></button>
 </c:if> 
 <c:if test="${sessionScope.customer.division == 1 }">
-	<button class="selfcheck btntools" onclick="selfCheckOne()"><i class="fas fa-clipboard"></i></button>
+	<button class="selfcheck btnTools btn-2" onclick="selfCheckOne()"><i class="fas fa-clipboard"></i></button>
 </c:if> 
-<button id="btn-mic" class="off btntools"><i class="fas fa-microphone-slash"></i></button>
-    
+<button id="btn-mic" class="off btnTools btn-3"><i class="fas fa-microphone-slash"></i></button>
+     <input type="button" id="enterBtn" class="fa btnTools btn-4" value="">
+<input type="button" id="exitBtn" class="fa btnTools btn-5" value="">
 </div>
 
 
@@ -639,7 +640,7 @@ $(function() {
 											class="icon-bar"></span> <span class="icon-bar"></span> <span
 											class="icon-bar"></span>
 									</button>
-									<a class="navbar-brand" href=""> <img src="../resources/assets/images/logo.jpg" />
+									<a class="navbar-brand" href="/www"> <img src="../resources/assets/images/logo.jpg" />
 									</a>
 								</div>
 
@@ -731,8 +732,6 @@ $(function() {
   </div>
    <div class="chat">
    <div class="chat_controll">
-  <input type="button" id="enterBtn" class="fa" value="      ">
-<input type="button" id="exitBtn" class="fa" value="      ">
 </div>
   <div class="chat_header">
   <img class="chat_avatar"src="download?saved=${sessionScope.customer.saved_File}" />
