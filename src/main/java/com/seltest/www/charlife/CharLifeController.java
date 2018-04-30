@@ -3,21 +3,28 @@ package com.seltest.www.charlife;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.seltest.www.common.PageNavigator;
+import com.seltest.www.common.UploadFileUtils;
 import com.seltest.www.dao.BoardDAO;
 import com.seltest.www.dao.ReplyDAO;
 import com.seltest.www.vo.Board;
+import com.seltest.www.vo.Customer;
 import com.seltest.www.vo.Customer;
 import com.seltest.www.vo.Reply;
 
@@ -28,14 +35,44 @@ public class CharLifeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CharLifeController.class);
 
+	@Resource(name="uploadPath")
+    String uploadPath;
+	
+	Board fileboard = null;
+	
 	@Autowired
 	BoardDAO boardDAO;
 	
 	@Autowired
 	ReplyDAO replyDAO;
 	
+	
+	
 	final int countPerPage = 5;
 	final int pagePerGroup = 5;
+	
+	@ResponseBody
+    @RequestMapping(value="uploadboard", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+    public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
+		fileboard = new Board();
+        
+		fileboard.setOriginal_File(file.getOriginalFilename());
+        String saved_File = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+        fileboard.setSaved_File(saved_File);
+    	
+    	System.out.println(fileboard.getOriginal_File()+"!");
+    	System.out.println(fileboard.getSaved_File()+"!!");
+        
+    	logger.info("originalName : "+file.getOriginalFilename());
+        logger.info("size : "+file.getSize());
+        logger.info("contentType : "+file.getContentType());
+        
+        
+        
+        return new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.OK);
+    }
+	
+	
 	
 	@RequestMapping(value = "gocharlife", method = RequestMethod.GET)
 	public String gocharlife() {
@@ -98,15 +135,19 @@ public class CharLifeController {
 	}
 	
 	@RequestMapping(value = "write", method = RequestMethod.POST)
-	public String writeResult(Board board, HttpSession session) {
+	public String writeResult(Board board,MultipartFile upload) {
 		
-		logger.info("write 완료");	
+		
+		logger.info("writeResult로 이동");	
 		logger.info("{}", board);
 		
-		Customer customer = (Customer)session.getAttribute("customer");
-		int cust_Num = customer.getCust_Num();
+		if(fileboard != null){
+			logger.info("사진 넣는중");
+			board.setOriginal_File(fileboard.getOriginal_File());
+			board.setSaved_File(fileboard.getSaved_File());
 		
-		board.setCust_Num(cust_Num);
+		}
+		
 		int insert = boardDAO.insertBoard(board);
 		logger.info("insert: " + insert);
 		
@@ -134,13 +175,17 @@ public class CharLifeController {
 	}
 	
 	/*@RequestMapping(value = "write", method = RequestMethod.POST)
-	public String writeResult(Board board) {
+	public String writeResult(Board board,HttpSession session) {
 		
 		logger.info("writeResult로 이동");	
 		logger.info("{}", board);
+		Customer customer = (Customer)session.getAttribute("customer");
+		int cust_Num = customer.getCust_Num();
 		
+		board.setCust_Num(cust_Num);
 		int insert = boardDAO.insertBoard(board);
 		logger.info("insert: " + insert);
+		
 		
 		return "redirect: ./boardList";
 	}*/
