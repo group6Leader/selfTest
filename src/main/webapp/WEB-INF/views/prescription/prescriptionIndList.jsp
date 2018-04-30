@@ -219,7 +219,7 @@
                                          <c:forEach var="vo" items="${pList }">
                                             <tr>
                                                 <td><a href="prescriptionIndResult?pre_Num=${vo.pre_Num }"> ${vo.pre_Num }</a></td>
-                                                <sec:authorize access="hasRole('DOCTOR')">
+                                                <sec:authorize access="hasRole('CUSTOMER')">
                                                 <td> <input type="button" value="Delete" onclick="del(${vo.pre_Num}, ${vo.cust_Num})"> </td>
                                                 </sec:authorize>
                                             </tr>

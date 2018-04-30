@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>prescription/readOne</title>
 <link rel="stylesheet" type="text/css"  href="../resources/css/prescription.css">
+<script src="../resources/js/jquery-3.3.1.js"></script>
 	
 	<script type="text/javascript">
 		
@@ -19,6 +20,39 @@
 	        
 	        return false;
 		};
+		
+		function checkForm() {
+			var med_Name = $('#med_Name').val();
+			var med_Amount = $('#med_Amount').val();
+			var med_Count = $('#med_Count').val();
+			var med_Content = $('#med_Content').val();
+			
+			if(med_Name == '') {
+				alert("Please Enter the Medicine's Name");
+				
+				return false;
+			}
+			
+			if(med_Amount == '') {
+				alert("Please Enter How Many Pills Per Time");
+				
+				return false;
+			}
+			
+			if(med_Count == '') {
+				alert("Please Enter How Many Times a Day");
+				
+				return false;
+			}
+			
+			if(med_Content == '') {
+				alert("Please Enter How to Take the Medicine");
+				
+				return false;
+			}
+			
+			return true;
+		}
 		
 	</script>
 
