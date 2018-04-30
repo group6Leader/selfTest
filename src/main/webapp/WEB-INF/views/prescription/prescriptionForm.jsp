@@ -36,15 +36,49 @@
 <link rel="stylesheet" type="text/css"  href="../resources/css/prescription.css">
 <script type="text/javascript">
 		
-		function add() {
-			/* alert('1'); */
+	function add() {
+		/* alert('1'); */
+		
+		var div = document.createElement('div');
+		div.innerHTML = document.getElementById('pre_set').innerHTML;
+	    document.getElementById('field').appendChild(div);
+	       
+	};
+	
+	function checkForm() {
+		var med_Name = $('#med_Name').val();
+		var med_Amount = $('#med_Amount').val();
+		var med_Count = $('#med_Count').val();
+		var med_Content = $('#med_Content').val();
+		
+		if(med_Name == '') {
+			alert("Please Enter the Medicine's Name");
 			
-			var div = document.createElement('div');
-	        div.innerHTML = document.getElementById('pre_set').innerHTML;
-	        document.getElementById('field').appendChild(div);
-	        
-		};
-			</script>
+			return false;
+		}
+		
+		if(med_Amount == '') {
+			alert("Please Enter How Many Pills Per Time");
+			
+			return false;
+		}
+		
+		if(med_Count == '') {
+			alert("Please Enter How Many Times a Day");
+			
+			return false;
+		}
+		
+		if(med_Content == '') {
+			alert("Please Enter How to Take the Medicine");
+			
+			return false;
+		}
+		
+		return true;
+	};
+	
+</script>
 
 </head>
 <body class="fix-header fix-sidebar card-no-border">

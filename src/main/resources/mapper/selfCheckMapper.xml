@@ -59,6 +59,7 @@
 		select *
 		from selfCheck
 		where cust_Num = #{cust_Num}
+		<!-- order by selfCheck_Num asc -->
 	
 	</select>
 	
@@ -74,6 +75,7 @@
 		
 		from selfCheck, customer
 		where selfCheck.cust_Num = customer.cust_Num
+		order by selfCheck_Num asc
 	
 	</select>
 	

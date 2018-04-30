@@ -37,6 +37,7 @@ public class PrescriptionController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PrescriptionController.class);
 	
+	
 	@RequestMapping(value = "goPrescription", method = RequestMethod.GET)
 	public String prescriptionList(Model model) {
 		
@@ -59,7 +60,7 @@ public class PrescriptionController {
 		logger.info("{}", customer);
 		
 		Customer doctor = (Customer) session.getAttribute("customer");
-		logger.info("Doctor: {}", doctor);
+		logger.info("Doctor: {}", doctor);	
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
@@ -81,7 +82,7 @@ public class PrescriptionController {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
-			
+		
 		model.addAttribute("c", customer);
 		model.addAttribute("date", dateFormat.format(date));
 		model.addAttribute("d", doctor);
@@ -122,7 +123,7 @@ public class PrescriptionController {
 	@RequestMapping(value = "prescriptionResult", method = RequestMethod.GET)
 	public String prescriptionResult2(HttpSession session, Model model) {
 		
-		logger.info("처방전 리스트로 이동~");
+		logger.info("의사가 처방전 작성하려 이동~");
 		
 		ArrayList<Customer> cList = customerDAO.cList();
 
@@ -134,14 +135,17 @@ public class PrescriptionController {
 	@RequestMapping(value = "prescriptionIndList", method = RequestMethod.GET)
 	public String prescriptionIndList(int cust_Num, Model model, HttpSession session) {
 		
-		System.out.println("prescriptionIndList");
+		logger.info("의사가 환자 처방전 확인");
+		logger.info("cust_Num: {}", cust_Num);
 		
-		System.out.println("cust_Num: " + cust_Num);
+		/*Customer customer = (Customer) session.getAttribute("customer");*/
 		
 		ArrayList<Prescription> pList = prescriptionDAO.prescriptionIndList(cust_Num);
-		session.setAttribute("cust_Num", cust_Num);
-		System.out.println(pList.size());
+		
+		logger.info("pList.size(): {}", pList.size());
+		
 		model.addAttribute("pList", pList);
+		model.addAttribute("cust_Num", cust_Num);
 		
 		return "prescription/prescriptionIndList";
 	}
@@ -149,15 +153,14 @@ public class PrescriptionController {
 	@RequestMapping(value = "prescriptionIndList2", method = RequestMethod.GET)
 	public String prescriptionIndList2(Model model, HttpSession session) {
 		
-		System.out.println("prescriptionIndList2");
+		logger.info("환자가 본인 처방전 확인");
 		
 		Customer c = (Customer) session.getAttribute("customer");
 		int cust_Num = c.getCust_Num();
-		System.out.println(c);
-		
-		ArrayList<Prescription> pList = prescriptionDAO.prescriptionIndList(cust_Num);
-		session.setAttribute("cust_Num", cust_Num);
-		System.out.println(pList.size());
+		logger.info("{}", c);
+ 
+		ArrayList<Prescription> pList = prescriptionDAO.selectPS_cust(cust_Num);
+		logger.info("pList.size()", pList.size());
 		
 		model.addAttribute("pList", pList);
 		

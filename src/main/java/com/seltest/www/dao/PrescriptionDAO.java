@@ -68,9 +68,7 @@ public class PrescriptionDAO {
 		ArrayList<Prescription> selectPS_doc = null;
 
 		try {
-
 			selectPS_doc = mapper.selectPS_doc(doctor_id);
-
 			System.out.println(selectPS_doc + "dao selectPS_doc");
 
 		} catch (Exception e) {
@@ -80,15 +78,13 @@ public class PrescriptionDAO {
 		return selectPS_doc;
 	}
 
-	public ArrayList<Prescription> selectPS_cust(int cust_num) {
+	public ArrayList<Prescription> selectPS_cust(int cust_Num) {
 		PrescriptionMapper mapper = sqlSession.getMapper(PrescriptionMapper.class);
 
 		ArrayList<Prescription> selectPS_cust = null;
 
 		try {
-
-			selectPS_cust = mapper.selectPS_cust(cust_num);
-
+			selectPS_cust = mapper.selectPS_cust(cust_Num);
 			System.out.println(selectPS_cust + "dao selectPS_cust");
 
 		} catch (Exception e) {

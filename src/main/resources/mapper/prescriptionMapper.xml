@@ -33,14 +33,15 @@
 		
 	</insert>
 	
-	<!-- 한 명의 처방전 리스트 -->
+	<!-- 의사가 한 사람의 처방전 확인. 삭제된 것도 확인 할 수 있음 -->
 	<select id="prescriptionIndList" resultType="prescription">
 		
 		select *
 		from prescription
 		where cust_Num = #{cust_Num}
-		and pre_Del != 1
 		order by pre_Num desc
+
+		<!-- and pre_Del != 1 -->
         <!-- and
         rownum = 1
 		order by pre_Num desc; -->
@@ -69,7 +70,8 @@
 
 		select * 
 		from prescription 
-		where cust_Num = #{cust_Num} and pre_Del = 0
+		where cust_Num = #{cust_Num} 
+		and pre_Del = 0
 		order by pre_Num
 
 	</select>
