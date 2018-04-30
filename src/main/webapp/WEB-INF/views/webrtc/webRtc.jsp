@@ -65,6 +65,10 @@
 		/* alert('1'); */
 		window.open("../selfCheck/goSelfCheck3", "newWindow", "top=50, left=400, height=500, width=1000, resizable=no");
 	}
+	
+	function map(){
+		location.href="../mapping/map";		
+	}
 </script>
 
 
@@ -654,20 +658,37 @@ $(function() {
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
-										<sec:authorize access="hasRole('CUSTOMER')">
+										<c:if test="${sessionScope.customer != null}">
+										
+										<%-- <sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
 											<ul class="dropdown-menu">
 												<li><a href="selfCheck/goSelfCheck">自己診断作成</a></li>
 												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
 											</ul></li>
-										</sec:authorize>
+										</sec:authorize> --%>
+										
 										<sec:authorize access="isAuthenticated()">
-										<li><a href="customer/goFix">My Page</a></li>
-										<li><a href="javascript:loginCheck()">予約</a></li>
-										<li><a href="webrtc/goWebRtc">遠隔診療</a></li>
+										<li><a href="../webrtc/goWebRtc">遠隔診療</a></li>
+										<li><a href="../customer/goFix">My Page</a></li>
 										</sec:authorize>
 										
-										<sec:authorize access="hasRole('DOCTOR')">
+										</c:if>
+										
+										<li><a href="../charlife/gocharlife">CHAR LIFE</a></li>
+										<li><a href="javascript:map()">MAP</a></li>
+										
+										<c:if test="${sessionScope.customer != null}">
+										<li><a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+											<span>Logout</span></a>
+										</li>
+										</c:if>
+										
+										<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+										</c:if>
+										
+										<%-- <sec:authorize access="hasRole('DOCTOR')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
 											data-toggle="dropdown" role="button" aria-haspopup="true">医者さんのメニュー</a>
 											<ul class="dropdown-menu">
@@ -684,9 +705,9 @@ $(function() {
 												<li><a href="prescription/prescriptionIndList2">個人処方箋</a></li>
 												<li><a href="healthRecord/goHealthRecordList">個人診断書</a></li>
 											</ul></li>
-										</sec:authorize>
+										</sec:authorize> --%>
 										
-										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
+										<%-- <li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
 										<li><a href="customer/goAdmin">page</a></li>
 										
@@ -706,7 +727,7 @@ $(function() {
 										<c:if test="${sessionScope.customer == null}">
 											<li><a id="SignIn">LOGIN</a></li>
 										</c:if>
-										</sec:authorize>
+										</sec:authorize> --%>
 										
 									</ul>
 								</div>
