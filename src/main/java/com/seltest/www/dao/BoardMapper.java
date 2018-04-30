@@ -1,6 +1,9 @@
 package com.seltest.www.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.apache.ibatis.session.RowBounds;
 
 import com.seltest.www.vo.Board;
 
@@ -17,5 +20,9 @@ public interface BoardMapper {
 	void delete(int board_Num);
 	
 	void update(Board board);
+
+	int getTotal(HashMap<String, Object> hMap);
+
+	ArrayList<Board> selectBoardList(HashMap<String, Object> hMap, RowBounds rb);
 	
 }

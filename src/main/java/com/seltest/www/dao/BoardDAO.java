@@ -1,7 +1,9 @@
 package com.seltest.www.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -85,6 +87,33 @@ public class BoardDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	public ArrayList<Board> selectBoardList(HashMap<String, Object> hMap, int startRecord, int countPerPage) {
+
+		ArrayList<Board> bList = new ArrayList<>();
+		try {
+			BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+			RowBounds rb = new RowBounds(startRecord,countPerPage);
+			bList = mapper.selectBoardList(hMap, rb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return bList;
+	}
+
+	public int getTotal(HashMap<String, Object> hMap) {
+		int total =0;
+		try {
+			BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+			total = mapper.getTotal(hMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return total;
 	}
 	
 }

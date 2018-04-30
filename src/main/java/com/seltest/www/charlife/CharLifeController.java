@@ -1,6 +1,9 @@
 package com.seltest.www.charlife;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.seltest.www.common.PageNavigator;
 import com.seltest.www.dao.BoardDAO;
 import com.seltest.www.dao.ReplyDAO;
 import com.seltest.www.vo.Board;
@@ -27,6 +32,9 @@ public class CharLifeController {
 	
 	@Autowired
 	ReplyDAO replyDAO;
+	
+	final int countPerPage = 5;
+	final int pagePerGroup = 5;
 	
 	@RequestMapping(value = "gocharlife", method = RequestMethod.GET)
 	public String gocharlife() {
@@ -63,21 +71,21 @@ public class CharLifeController {
 		return "charlife/magazine/charlifeContent4";
 	}
 	
-	@RequestMapping(value = "boardList", method = RequestMethod.GET)
+	/*@RequestMapping(value = "boardList", method = RequestMethod.GET)
 	public String boardList(Model model) {
 		
 		logger.info("boardList로 이동");
 		
 		ArrayList<Board> bList = boardDAO.bList();
 		
-		/*for (int i = 0; i < bList.size(); i++) {
+		for (int i = 0; i < bList.size(); i++) {
 			System.out.println(bList);
-		}*/
+		}
 		
 		model.addAttribute("bList", bList);
 		
 		return "charlife/board/list";
-	}
+	}*/
 	
 	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String writeForm() {
@@ -163,6 +171,41 @@ public class CharLifeController {
 		boardDAO.update(board);
 		
 		return "redirect: ./boardList";
+	}
+	
+	
+	@RequestMapping(value="boardList" , method = RequestMethod.GET)
+	public String goBoard(Model model, HttpSession session 
+			,@RequestParam(value = "page",defaultValue = "1")int page
+			,@RequestParam(value = "searchText",defaultValue="")String searchText
+			,@RequestParam(value = "searchSelect",defaultValue="title")String searchSelect
+			){
+		
+		logger.info("글 목록 이동 시작-c");
+		
+		
+		HashMap<String , Object> hMap = new HashMap<>();
+		
+		hMap.put("searchSelect", searchSelect);
+		hMap.put("searchText", searchText);
+		
+		
+		int total = boardDAO.getTotal(hMap);
+		
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
+		
+		ArrayList<Board> bList = boardDAO.bList();
+		
+		bList = boardDAO.selectBoardList(hMap, navi.getStartRecord(), navi.getCountPerPage());
+		
+		model.addAttribute("bList", bList);
+		model.addAttribute("searchText", searchText);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("navi", navi);
+		session.setAttribute("cur", navi.getCurrentPage());
+		
+		
+		return "charlife/board/list";
 	}
 	
 }

@@ -10,6 +10,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../resources/css/charlife.css" />
+		<script type="text/javascript">
+		function pagingFormSubmit(currentPage) {
+
+			var form = document.getElementById("pagingForm");
+			var page = document.getElementById("page");
+			
+			page.value = currentPage;
+			
+			form.submit();
+		}
+		</script>
 	</head>
 	<body class="subpage">
 
@@ -62,6 +73,30 @@
 								</c:forEach>
 								
 							</table>
+							<a href="javascript:pagingFormSubmit(1)">◁◁</a>
+
+<a href="javascript:pagingFormSubmit(${navi.currentPage-1 })">◀</a>
+
+<c:forEach var="counter" begin="${navi.startPageGroup }" end="${navi.endPageGroup }">
+
+<c:if test="${counter == navi.currentPage }">
+
+</c:if>
+<a href="javascript:pagingFormSubmit(${counter })">${counter }</a>
+
+<c:if test="${counter == navi.currentPage }">
+
+</c:if>
+
+</c:forEach>
+
+<a href="javascript:pagingFormSubmit(${navi.currentPage+1})">▶</a>
+
+<a href="javascript:pagingFormSubmit(${navi.totalPageCount})">▷▷</a>
+   
+   <form action="boardList" id="pagingForm" method="get">
+   <input type="hidden" name="page" id="page">
+   </form>
 											
 						</div>
 

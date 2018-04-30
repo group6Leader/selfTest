@@ -71,8 +71,22 @@
 		where board_Num = #{board_Num}
 	
 	</update>
+	
+	<select id="getTotal" parameterType="hashMap" resultType="int">
+	
+	select count(*)
 
-
+	from board
+	
+	</select>
+	
+	<select id="selectBoardList" parameterType="hashMap" resultType="Board">
+	
+	select * 
+	from 
+	board
+	
+	</select>
 
 
 </mapper>
