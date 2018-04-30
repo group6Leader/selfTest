@@ -315,12 +315,9 @@ if(${list!=null}){
 				month = arrDate[i].substring(14, 16);	
 			}			
 			if(arrDate[i].substring(16,17) == 0){
-				alert("1 :"+arrDate[i].substring(16,17));
 				date = arrDate[i].substring(17,18);
-				alert("2 :"+arrDate[i].substring(17,18));
 			}else{
 				date = arrDate[i].substring(16, 18);
-				alert("3 :"+arrDate[i].substring(16, 18));
 			}
 			hour = arrDate[i].substr(18,2);
 			alert(year +"년 " + month+ "월 " + date + "일 " + hour +"시");
@@ -420,7 +417,6 @@ addEventButton.onclick = function (e) {
 
 </head>
 
-<body>
 
 <body class="fix-header fix-sidebar card-no-border">
     <!-- ============================================================== -->
