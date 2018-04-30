@@ -171,6 +171,9 @@ $(function(){
                             <li class="breadcrumb-item active">Prescription</li>
                         </ol>
                     </div>
+                    <div class="col-md-7 align-self-center">
+                        <a href="goHealthRecord" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down">New HealthRecord</a>
+                    </div>
                 </div>
                 
                 <!-- ============================================================== -->
@@ -260,6 +263,7 @@ $(function(){
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <!-- Bootstrap popper Core JavaScript -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
