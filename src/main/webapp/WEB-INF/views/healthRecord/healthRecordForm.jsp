@@ -189,23 +189,26 @@ function docReserveList() {
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="../customer/goAdmin" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../customer/goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <sec:authorize access="hasRole('CUSTOMER')">
+                        <li> <a class="waves-effect waves-dark" href="../reservation/book" aria-expanded="false"><i class="fa fa-calendar"></i><span class="hide-menu">Reservation</span></a>
+                        </li>
                         <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Let's Go SelfCheck</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck3" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">SelfCheck</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck3" aria-expanded="false"><i class="fa fa-check-square"></i><span class="hide-menu">SelfCheck</span></a>
                         </li>
                         </sec:authorize>
                         <sec:authorize access="hasRole('DOCTOR')">
-                        <li> <a class="waves-effect waves-dark" href="../healthRecord/goHealthRecordList" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">HealthRecord</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../reservation/book2" aria-expanded="false"><i class="fa fa-calendar"></i><span class="hide-menu">Reservation</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="../prescription/prescriptionResult" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Prescription</span></a>
+                        <li> <a class="waves-effect waves-dark" href="goHealthRecordList" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">HealthRecord</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="../prescription/prescriptionResult" aria-expanded="false"><i class="fa fa-list-alt"></i><span class="hide-menu">Prescription</span></a>
                         </li>
                         </sec:authorize>
                     </ul>
+                   
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -383,6 +386,7 @@ function docReserveList() {
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <!-- Bootstrap tether Core JavaScript -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
