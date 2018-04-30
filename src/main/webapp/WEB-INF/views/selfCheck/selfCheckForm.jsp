@@ -180,83 +180,83 @@ $('#smileys input').on('click', function() {
                                 <h6 class="card-subtitle">List</h6>
 								<h4>Blood Pressure</h4>
 								<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100" value="100"<c:if test="${s.blood_Pressure != 0}"> value="${s.blood_Pressure }"</c:if>>
-								<h3 class="small">*혈압의 평균값을 입력해주세요.</h3>
+								<h3 class="small">* 血圧の平均値を入力してください。</h3>
 								<h4>Smoking</h4>
 			<input id="noSmoking" type="radio" name='smoking' checked='checked' value="없음" <c:if test="${s.smoking == '없음' }"> checked="checked" </c:if>/>
-			<label for="noSmoking">없음</label> 
+			<label for="noSmoking">無し</label> 
 						
 			<input id='halfSmoking' type="radio" name='smoking' value="하루 한 갑 미만" <c:if test="${s.smoking == '하루 한 갑 미만' }"> checked="checked" </c:if>/>
-			<label for="halfSmoking">하루 한 갑 미만</label>
+			<label for="halfSmoking">タバコ一箱未満</label>
 			
 			<input id='oneSmoking' type="radio" name='smoking' value="하루 한 갑" <c:if test="${s.smoking == '하루 한 갑' }"> checked="checked" </c:if>/>
-			<label for="oneSmoking">하루 한 갑</label>
+			<label for="oneSmoking">タバコ一箱</label>
 			
 			<input id='moreSmoking' type="radio" name='smoking' value="하루 한 갑 이상" <c:if test="${s.smoking == '하루 한 갑 이상' }"> checked="checked" </c:if>/>
-			<label for="moreSmoking">하루 한 갑 이상</label>
+			<label for="moreSmoking">タバコ一箱以上</label>
 								<h4>Drinking</h4>
 			
 			<input id="noDrinking" type="radio" name='drinking' checked='checked' value="안함" <c:if test="${s.drinking == '안함' }"> checked="checked" </c:if>/>
-			<label for="noDrinking">음주 안함</label> 
+			<label for="noDrinking">お酒を飲まない</label> 
 			
 			<input id='oneDrinking' type="radio" name='drinking' value="일주일 1번 이하" <c:if test="${s.drinking == '일주일 1번 이하' }"> checked="checked" </c:if>/>
-			<label for="oneDrinking">일주일 1번 이하</label>
+			<label for="oneDrinking">週一回以下</label>
 			
 			<input id='twoDrinking' type="radio" name='drinking' value="일주일 2~3번" <c:if test="${s.drinking == '일주일 2~3번' }"> checked="checked" </c:if>/>
-			<label for="twoDrinking">일주일 2~3번</label>
+			<label for="twoDrinking">週2~3回</label>
 			
 			<input id='moreDrinking' type="radio" name='drinking' value="일주일 3번 이상" <c:if test="${s.drinking == '일주일 3번 이상' }"> checked="checked" </c:if>/>
-			<label for="moreDrinking">일주일 3번 이상</label>
+			<label for="moreDrinking">週3回以上</label>
 								<h4>Diabetes</h4>
 			<input id="noDiabetes" type="radio" name='diabetes' checked='checked' value="없음" <c:if test="${s.diabetes == '없음' }"> checked="checked" </c:if>/>
-			<label for="noDiabetes">당뇨 없음</label> 
+			<label for="noDiabetes">糖尿なし</label> 
 			<input id='yesDiabetes' type="radio" name='diabetes' value="있음" <c:if test="${s.diabetes == '있음' }"> checked="checked" </c:if>/>
-			<label for="yesDiabetes">당뇨 있음</label>
+			<label for="yesDiabetes">糖尿有り</label>
 			<h4>Surgery</h4>
 			<input id="noSurgery" type="radio" name='surgery' checked='checked' value="없음" <c:if test="${s.surgery == '없음' }"> checked="checked" </c:if>/>
-			<label for="noSurgery">수술 경력없음</label> 
+			<label for="noSurgery">手術経験無し</label> 
 			<input id='yesSurgery' type="radio" name='surgery' value="있음" <c:if test="${s.surgery == '있음' }"> checked="checked" </c:if>/>
-			<label for="yesSurgery">수술 경력있음</label>
+			<label for="yesSurgery">手術経験有り</label>
 			<h4>Obstacle</h4>
 			<input id="noDisability" type="radio" name='disability' checked='checked' value="없음" <c:if test="${s.disability == '없음' }"> checked="checked" </c:if>/>
-			<label for="noDisability">장애 없음</label> 
+			<label for="noDisability">障害無し</label> 
 			<input id='yesDisability' type="radio" name='disability' value="있음" <c:if test="${s.disability == '있음' }"> checked="checked" </c:if>/>
-			<label for="yesDisability">장애 있음</label>
+			<label for="yesDisability">障害有り</label>
 			<h4>Medicine</h4>
 			<input type="text" name="medicine" placeholder="ex) 없음" value="${s.medicine }">
-			<h3 class="small">*최근의 복용한 약을 입력해주세요.</h3>
+			<h3 class="small">*最近飲んだ薬を書いてください。</h3>
 			<h4>Allergy</h4>
 			<input type="text" name="allergy" placeholder="ex) 갑각류 알레르기" value="${s.allergy }">
 			<h4>Overseas Visits</h4>
 			<input id="noOverseas_Visits" type="radio" name='overseas_Visits' checked='checked' value="없음" <c:if test="${s.overseas_Visits== '없음' }"> checked="checked" </c:if>/>
-			<label for="noOverseas_Visits">없음</label> 
+			<label for="noOverseas_Visits">無し</label> 
 			<input id='yesOverseas_Visits' type="radio" name='overseas_Visits' value="있음" <c:if test="${s.overseas_Visits== '있음' }"> checked="checked" </c:if>/>
-			<label for="yesOverseas_Visits">있음</label>
-			<h3 class="small">*최근의 3개월 내의 해외여행 여부를 기입해주세요.</h3>
+			<label for="yesOverseas_Visits">有り</label>
+			<h3 class="small">*3か月以内に海外旅行可否を教えてください。</h3>
 			<h4>Sleep Time</h4>
 			<input id="4hour" type="radio" name='sleep_Time' checked='checked' value="4시간 이하" <c:if test="${s.sleep_Time == '4시간 이하' }"> checked="checked" </c:if>/>
-			<label for="4hour">4시간 이하</label> 
+			<label for="4hour">4時間以下</label> 
 			<input id='6hour'type="radio" name='sleep_Time' value="4~6시간" <c:if test="${s.sleep_Time == '5~6시간' }"> checked="checked" </c:if>/>
-			<label for="6hour">4~6시간</label>
+			<label for="6hour">4～6時間</label>
 			<input id='8hour'type="radio" name='sleep_Time' value="6~8시간" <c:if test="${s.sleep_Time == '7~8시간' }"> checked="checked" </c:if>/>
-			<label for="8hour">6~8시간</label>
+			<label for="8hour">6~8時間</label>
 			<input id='over8hour'type="radio" name='sleep_Time' value="8시간 이상" <c:if test="${s.sleep_Time == '8시간 이상' }"> checked="checked" </c:if>/>
-			<label for="over8hour">8시간 이상</label>
+			<label for="over8hour">8時間以上</label>
 
 			<h4>Stress</h4>
 	        <input id="super-happy" type="radio" name='stress' checked='checked' value="super-happy" <c:if test="${s.stress == 'super-happy' }"> checked="checked" </c:if>/>
-			<label for="super-happy">매우행복</label> 
+			<label for="super-happy">とても幸せ</label> 
 			
 			<input id='happy' type="radio" name='stress' value="happy" <c:if test="${s.stress == 'happy' }"> checked="checked" </c:if>/>
-			<label for="happy">행복</label>
+			<label for="happy">幸せ</label>
 			
 			<input id='neutral' type="radio" name='stress' value="neutral" <c:if test="${s.stress == 'neutral' }"> checked="checked" </c:if>/>
-			<label for="neutral">보통</label>
+			<label for="neutral">普通</label>
 			
 			<input id='sad' type="radio" name='stress' value="sad" <c:if test="${s.stress == 'sad' }"> checked="checked" </c:if>/>
-			<label for="sad">슬픔</label>
+			<label for="sad">悲しい</label>
 			
 			<input id='super-sad' type="radio" name='stress' value="super-sad" <c:if test="${s.stress == 'super-sad' }"> checked="checked" </c:if>/>
-			<label for="super-sad">매우슬픔</label>
+			<label for="super-sad">とても悲しい</label>
 
 			<h4>Family history</h4>
 			<input type="text" name="family_History" placeholder="ex) B형 감염 보균자" value="${s.family_History }">
@@ -264,9 +264,9 @@ $('#smileys input').on('click', function() {
 			<c:if test="${sessionScope.customer.cust_Sex == 'F' }">			
 			<h4>Pregnant</h4>
 			<input id="NoPregnant" type="radio" name='pregnant' checked='checked' value="없음" <c:if test="${s.pregnant == '없음' }"> checked="checked" </c:if>/>
-			<label for="NoPregnant">없음</label> 
+			<label for="NoPregnant">無し</label> 
 			<input id='YesPregnant' type="radio" name='pregnant' value="있음" <c:if test="${s.pregnant == '있음' }"> checked="checked" </c:if>/>
-			<label for="YesPregnant">있음</label>
+			<label for="YesPregnant">有り</label>
 			</c:if>
             </div>
             
