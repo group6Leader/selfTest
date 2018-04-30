@@ -189,6 +189,7 @@ $(window).scroll(function(){
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
+										
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
 											<ul class="dropdown-menu">
@@ -196,6 +197,7 @@ $(window).scroll(function(){
 												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
 											</ul></li>
 										</sec:authorize>
+										
 										<sec:authorize access="isAuthenticated()">
 										<li><a href="customer/goFix">My Page</a></li>
 										<li><a href="javascript:loginCheck()">予約</a></li>
@@ -221,11 +223,24 @@ $(window).scroll(function(){
 											</ul></li>
 										</sec:authorize>
 										
+										
+										
+										
 										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
 										<li><a href="customer/goAdmin">page</a></li>
 										
-										<sec:authorize access="isAnonymous()">
+										<c:if test="${sessionScope.customer != null}">
+										<li><a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
+											<span>Logout</span></a>
+										</li>
+										</c:if>
+										
+										<c:if test="${sessionScope.customer == null}">
+											<li><a id="SignIn">LOGIN</a></li>
+										</c:if>
+										
+										<%-- <sec:authorize access="isAnonymous()">
 											<c:if test="${sessionScope.customer == null}">
 											<li><a id="SignIn">LOGIN</a></li>
 											</c:if>
@@ -241,7 +256,7 @@ $(window).scroll(function(){
 										<c:if test="${sessionScope.customer == null}">
 											<li><a id="SignIn">LOGIN</a></li>
 										</c:if>
-										</sec:authorize>
+										</sec:authorize> --%>
 										
 									</ul>
 								</div>

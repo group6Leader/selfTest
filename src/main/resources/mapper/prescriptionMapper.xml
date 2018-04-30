@@ -39,6 +39,7 @@
 		select *
 		from prescription
 		where cust_Num = #{cust_Num}
+		and pre_Del != 1
 		order by pre_Num desc
         <!-- and
         rownum = 1
@@ -78,7 +79,6 @@
 		update prescription
 		set pre_Del = 1
 		where pre_Num = #{pre_Num}
-	
 	
 	</update>
 	

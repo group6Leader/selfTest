@@ -16,8 +16,6 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
-		/* alert('1'); */
-		
 		$('.rating').hide(); 
           	$('#board_Category').change(function(){
 			if($('#board_Category').val() == '병원 평가'){
@@ -140,7 +138,7 @@
 			</section>
 
 		<!-- Scripts -->
-					<script src="../resources/js/jquery.min.js"></script>
+			<script src="../resources/js/jquery.min.js"></script>
 			<script src="../resources/js/jquery.scrolly.min.js"></script>
 			<script src="../resources/js/jquery.scrollex.min.js"></script>
 			<script src="../resources/js/skel.min.js"></script>

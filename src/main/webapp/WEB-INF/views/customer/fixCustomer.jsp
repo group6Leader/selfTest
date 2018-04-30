@@ -20,9 +20,9 @@
     <link href="../resources/assets2/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="../resources/assets2/css/colors/default.css" id="theme" rel="stylesheet">
-	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<!-- <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> -->
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -62,6 +62,7 @@ $(document).ready(function() {
 	        }
 	    });
 	});
+	
  $(".uploadedList").on("click", "span", function(event){
 	    alert("이미지 삭제")
 	    var that = $(this); // 여기서 this는 클릭한 span태그
@@ -80,7 +81,8 @@ $(document).ready(function() {
 	        }
 	    });
 	});
- 
+
+
  $('#fixBtn').on('click',function(){
 	 
 	 	if(!confirm("수정하시겠습니까?")){
@@ -98,14 +100,9 @@ $(document).ready(function() {
 		var cust_Email = $('#cust_Email').val();
 		var cust_Major = $('#cust_Major').val();
 		
-		if(cust_Pw == ''){
-			alert("password를 입력해주세요");
-			return false;
-		}
-		
 		
 		$.ajax({
-			url : "custFix"
+			url : "custFix2"
 			,type : "POST"			
 			,data : {			
 
@@ -127,6 +124,7 @@ $(document).ready(function() {
 		
 		
 		});
+
  
  $('#delBtn').on('click',function(){
 		
@@ -161,17 +159,10 @@ $(document).ready(function() {
 		
 		});
 
+}); 
  
- 
- 
- 
- 
-});
 
-
-	
-
-	// 원본파일이름을 목록에 출력하기 위해
+	 // 원본파일이름을 목록에 출력하기 위해
 	function getOriginalName(fileName) {
 	    // 이미지 파일이면
 	    if(checkImageType(fileName)) {
@@ -199,13 +190,13 @@ $(document).ready(function() {
 
 	    // 이미지파일 형식을 체크하기 위해
 
-		};
+		}
 
 		function checkImageType(fileName) {
 	        // i : ignore case(대소문자 무관)
 	        var pattern = /jpg|gif|png|jpeg/i; // 정규표현식
 	        return fileName.match(pattern); // 규칙이 맞으면 true
-	    }
+	    } 
 </script>
 <style>
 
@@ -380,7 +371,7 @@ $(document).ready(function() {
                         <div class="card">
                             <!-- Tab panes -->
                             <div class="card-body">
-                                <form class="form-horizontal form-material" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal form-material" enctype="multipart/form-data">
                                    <input type="hidden" id="cust_Id" value="${login.cust_Id }">
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
@@ -391,7 +382,7 @@ $(document).ready(function() {
                                     <div class="form-group">
                                         <label class="col-md-12">Password</label>
                                         <div class="col-md-12">
-                                            <input id="cust_Pw" name="cust_Pw" type="password" required class="form-control form-control-line">
+                                            <input id="cust_Pw" name="cust_Pw" type="password" value="${login.cust_Pw }" required class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -478,7 +469,7 @@ $(document).ready(function() {
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
+    <!-- <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>

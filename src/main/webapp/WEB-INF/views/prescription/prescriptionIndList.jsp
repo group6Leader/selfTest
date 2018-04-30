@@ -41,10 +41,26 @@
 	src="<c:url value="/resources/js/jquery.tablesorter.js"></c:url>"></script>
 <title>prescription/prescriptionList</title>
 <script type="text/javascript">
-$(function(){
+	$(function(){
 	  $('#keywords').tablesorter(); 
 	});
-	</script>
+	
+	function del(pre_Num, cust_Num) {
+		/* alert('1');
+		alert(pre_Num);
+		alert(cust_Num); */
+		
+		if(confirm("정말 삭제하시겠습니까?")){
+			location.href='./delete?pre_Num=' + pre_Num + '&cust_Num=' + cust_Num;
+		}
+	}
+</script>
+<style type="text/css">
+	td.white {
+		background-color: #ffffff;
+	}
+</style>
+
 </head>
 <body>
 
@@ -193,14 +209,18 @@ $(function(){
                                         <thead>
                                             <tr>
                                                 <th>Prescription Number</th>
+                                                <th> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                          <c:forEach var="vo" items="${pList }">
                                             <tr>
                                                 <td><a href="prescriptionIndResult?pre_Num=${vo.pre_Num }"> ${vo.pre_Num }</a></td>
+                                                <sec:authorize access="hasRole('DOCTOR')">
+                                                <td> <input type="button" value="Delete" onclick="del(${vo.pre_Num}, ${vo.cust_Num})"> </td>
+                                                </sec:authorize>
                                             </tr>
-                                            </c:forEach>
+                                         </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
