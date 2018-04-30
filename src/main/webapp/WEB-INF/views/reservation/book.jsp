@@ -718,7 +718,6 @@ addEventButton.onclick = function (e) {
     </div>
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
     <!-- Bootstrap popper Core JavaScript -->
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
