@@ -287,8 +287,8 @@ if(${list!=null}){
 	 var arrName = [];
 	var arrDate = [];
 	var year;
-	var month = [];
-	var date = [];
+	var month;
+	var date;
 	var hour;
 	
 		list = '${list}';
@@ -308,28 +308,34 @@ if(${list!=null}){
 			//2018042915
 			year = arrDate[i].substring(10, 14);
 			if(arrDate[i].substring(14, 15) == 0){
-				month.push(arrDate[i].substring(15, 16));
+				month = arrDate[i].substring(15, 16);
 			}else{
-				month.push(arrDate[i].substring(14, 16));	
+				month = arrDate[i].substring(14, 16);	
 			}			
 			if(arrDate[i].substring(16,17) == 0){
-				date.push(arrDate[i].substring(17,18));
+				date = arrDate[i].substring(17,18);
 			}else{
-				date.push(arrDate[i].substring(16, 18));
+				date = arrDate[i].substring(16, 18);
 			}
 			hour = arrDate[i].substr(18,2);
 			alert(year +"년 " + month+ "월 " + date + "일 " + hour +"시");
-			alert("예약날짜"+date[i]);
-			/*  for(var i = 1; i<lastDay; i++){
-				var day = document.getElementById("col"+i).value;
+			for(var j = 1; j<=lastDay; j++){
+				var day = document.getElementById("col"+j).value;
 				if(date == day){
-					document.getElementById("col"+i).innerHTML = '<div class="col" id="col'+i+'"value="'+i+'"style="background-color: aqua;"></div>';
+					document.getElementById("col"+j).innerHTML = '<div class="col" id="col'+j+'"value="'+j+'"style="background-color: aqua;"></div>';
+					$("#col"+j).hover( 
+							function () {
+								$(this).append($('<span>'+year+'년 '+month+'월 '+date+'일 '+hour+'시</span>')); 
+							}, 
+							function () { 
+								$(this).find("span:last").remove(); 
+							} 
+						);
 				}
-			} */
-				 
-				
-			}
+			}	
 		}
+		
+	}
 				
 
 
@@ -640,9 +646,12 @@ addEventButton.onclick = function (e) {
 			</div>
 			
 			<div class="resStatas">
-			<c:if test="${sessionScope.myReservation != null }">
+			<c:if test="${sessionScope.myReservation != null && sessionScope.customer.division == 1 }">
+				&emsp;${myReservation }
+				<br><br>
+				<a href="./deleteBook"><button style="margin-left: 30px;">予約キャンセル</button></a>
 			</c:if>
-			<c:if test="${list != null }">
+			<c:if test="${list != null && sessionScope.customer.division == 2 }">
 				<div class="table-responsive" style="width: 25rem; margin-left: 2rem; margin-top: -8rem;padding:2px 25px; background-color: rgba(255,255,255,0.3);">
                                     <table class="table" id="keywords">
                                          <c:forEach var="list" items="${list}">
@@ -655,9 +664,9 @@ addEventButton.onclick = function (e) {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>${list.res_Num }</div></td>
-                                                <td>${list.res_Date }</div></td>
-                                                <td>${list.cust_Name }</div></td>
+                                                <td>${list.res_Num }</td>
+                                                <td>${list.res_Date }</td>
+                                                <td>${list.cust_Name }</td>
                                             </tr>
                                             </c:forEach>
                                         </tbody>

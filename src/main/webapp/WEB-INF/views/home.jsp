@@ -184,9 +184,10 @@ $(window).scroll(function(){
 								<c:if test="${param.error == 1}">
 							         
 							         <p> メールの認証をしてください。 </p>
+							        	
 							        	<script type="text/javascript">
-							        	alert("メールの認証をしてください");
-							        	</script>
+							        		alert("メールの認証をしてください");
+							        	</script>							        	
 								</c:if>
 								
 								
@@ -433,7 +434,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧エジン</h4>
+											<h4>ちゃ‧イェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -453,7 +454,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ぞ‧ミンゼ</h4>
+											<h4>ジョミンジェ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -480,7 +481,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧エジン</h4>
+											<h4>ちゃ‧イェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -507,7 +508,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ぞ‧ミンゼ</h4>
+											<h4>ジョミンジェ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -527,7 +528,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧エジン</h4>
+											<h4>ちゃ‧イェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
