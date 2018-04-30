@@ -10,9 +10,12 @@
 	<insert id="insertReservation" parameterType="reservation">
 		insert into reservation (
 			res_Num
-			,res_Date
-			,hos_Name
+			,res_Date			
 			,cust_Num
+			,cust_Name
+			<if test="hos_Name != null">
+				,hos_Name
+			</if>
 			<if test="cust_Id != null">
 				,cust_Id
 			</if>			
@@ -31,9 +34,12 @@
 		)
 		values (
 			res_Num_sequence.nextval
-			, #{res_Date}
-			, #{hos_Name}
+			, #{res_Date}			
 			, #{cust_Num}
+			, #{cust_Name}
+			<if test="hos_Name != null">
+				, #{hos_Name}
+			</if>
 			<if test="cust_Id != null">
 				, #{cust_Id}
 			</if>			

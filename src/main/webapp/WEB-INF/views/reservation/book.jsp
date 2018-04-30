@@ -78,7 +78,7 @@ var currentDate = new Date();
 var selectedDate = currentDate;
 var selectedDayBlock = null;
 var globalEventObj = {};
-
+var lastDay;
 var sidebar = document.getElementById("sidebar");
 
 function createCalendar(date, side) {
@@ -106,21 +106,25 @@ function createCalendar(date, side) {
   newTr.className = "row";
   var currentTr = gridTable.appendChild(newTr);
 
+
   for (let i = 1; i < startDate.getDay(); i++) {
     let emptyDivCol = document.createElement("div");
     emptyDivCol.className = "col empty-day";
     currentTr.appendChild(emptyDivCol);
   }
 
-  var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+  lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
   lastDay = lastDay.getDate();
-
+  
   for (let i = 1; i <= lastDay; i++) {
     if (currentTr.getElementsByTagName("div").length >= 7) {
       currentTr = gridTable.appendChild(addNewRow());
     }
     let currentDay = document.createElement("div");
     currentDay.className = "col";
+    currentDay.id = "col"+i;
+    currentDay.value = i;
+    currentDay.style="height: 67.6px;";
     if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
       selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
@@ -136,10 +140,11 @@ function createCalendar(date, side) {
         currentDay.classList.add("lighten-3");
       }, 900);
     }
+    //날짜 부분
     currentDay.innerHTML = i;
     currentTr.appendChild(currentDay);
   }
-
+  
   for (let i = currentTr.getElementsByTagName("div").length; i < 7; i++) {
     let emptyDivCol = document.createElement("div");
     emptyDivCol.className = "col empty-day";
@@ -164,11 +169,11 @@ function createCalendar(date, side) {
 createCalendar(currentDate);
 
 var todayDayName = document.getElementById("todayDayName");
-todayDayName.innerHTML = "Today is " + currentDate.toLocaleString("en-us", {
+todayDayName.innerHTML = "오늘은 " + currentDate.toLocaleString("ko-kr", {
   weekday: "long",
   day: "numeric",
   month: "short"
-}) + " .";
+}) + " 입니다.";
 
 var prevButton = document.getElementById("prev");
 var nextButton = document.getElementById("next");
@@ -264,7 +269,7 @@ gridTable.onclick = function (e) {
     day: "numeric",
     year: "numeric"
   });
-    
+  
   $.ajax({
       url:"book",
       type:'GET',
@@ -276,6 +281,62 @@ gridTable.onclick = function (e) {
   });
   
 }
+
+
+if(${list!=null}){	
+	 var arrName = [];
+	var arrDate = [];
+	var year;
+	var month;
+	var date;
+	var hour;
+	
+		list = '${list}';
+		var str = list.split(",");
+		for(var key in str){				
+			 if(str[key].includes('cust_Name')){
+				arrName.push(str[key]);
+				alert(str[key]);
+			}
+			if(str[key].includes('res_Date')){
+				arrDate.push(str[key]);
+				alert(str[key]);
+			} 				
+		}
+		
+		for(var i = 0; i<arrDate.length; i++){
+			//arrName[i];
+			//2018040510
+			//2018042915
+			year = arrDate[i].substring(10, 14);
+			if(arrDate[i].substring(14, 15) == 0){
+				month = arrDate[i].substring(15, 16);
+			}else{
+				month = arrDate[i].substring(14, 16);	
+			}			
+			if(arrDate[i].substring(16,17) == 0){
+				alert("1 :"+arrDate[i].substring(16,17));
+				date = arrDate[i].substring(17,18);
+				alert("2 :"+arrDate[i].substring(17,18));
+			}else{
+				date = arrDate[i].substring(16, 18);
+				alert("3 :"+arrDate[i].substring(16, 18));
+			}
+			hour = arrDate[i].substr(18,2);
+			alert(year +"년 " + month+ "월 " + date + "일 " + hour +"시");
+			
+			 for(var i = 1; i<lastDay; i++){
+				var day = document.getElementById("col"+i).value;
+				 if(date == day){
+					document.getElementById("col"+i).innerHTML = '<div class="col" id="col'+i+'"value="'+i+'"style="background-color: aqua;"></div>';
+				}
+				
+			}
+		}
+				
+}
+
+
 
 var changeFormButton = document.getElementById("changeFormButton");
 var addForm = document.getElementById("addForm");
@@ -348,18 +409,15 @@ addEventButton.onclick = function (e) {
           self.close();
       }
   });
-  
 }});
 </script>
+<script type="text/javascript">
 
-<script type="text/javascript">/* 
-	
-	if(${jsonList != null}){
-		var resList = JSON.parse('${jsonList}');
-		for(var i=0; i<resList.length; i++){
-			alert(resList[i]);
-		}; */
+
+  
 </script>
+
+
 </head>
 
 <body>
@@ -422,7 +480,7 @@ addEventButton.onclick = function (e) {
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown u-pro">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="download?saved=${login.saved_File}" alt="user" class="" />
+                            <!--  <img src="download?saved=${login.saved_File}" alt="user" class="" /> -->
                             <span class="hidden-md-down">${login.cust_Name}&nbsp;</span> </a>
                         </li>
                     </ul>
@@ -577,7 +635,6 @@ addEventButton.onclick = function (e) {
 
 			</div>
 		<div class="sidebar-wrapper z-depth-2" id="sidebar">
-
 			<div class="sidebar-title">
 				<h4 style="color: white;">선택 일자</h4>
 				<h5 id="eventDayName" style="color: white;">SIDEBAR SUB-TITLE</h5>
@@ -600,14 +657,14 @@ addEventButton.onclick = function (e) {
                                             <tr>
                                                 <th>Reservation Number</th>
                                                 <th>Reservation Date</th>
-                                                <th>Patient Number</th>
+                                                <th>Patient Name</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>${list.res_Num }</td>
-                                                <td>${list.res_Date }</td>
-                                                <td>${list.cust_Num }</td>
+                                                <td>${list.res_Num }</div></td>
+                                                <td>${list.res_Date }</div></td>
+                                                <td>${list.cust_Name }</div></td>
                                             </tr>
                                             </c:forEach>
                                         </tbody>

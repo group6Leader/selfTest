@@ -32,7 +32,7 @@ package com.seltest.www.vo;
 	    }
 	    
 	    public ArrayList<Hospital> apiParserSearch() throws Exception {
-	    	URL url = new URL(getURLParam(null));
+	    	URL url = new URL(getURLParam(""));
 	        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 	        factory.setNamespaceAware(true);
 	        XmlPullParser xpp = factory.newPullParser();
@@ -48,6 +48,7 @@ package com.seltest.www.vo;
 	        String telno = null;	        
 	        String xPos = null;
 	        String yPos = null;
+	       	        
 	        while (event_type != XmlPullParser.END_DOCUMENT) {
 	            if (event_type == XmlPullParser.START_TAG) {
 	                tag = xpp.getName();
@@ -72,7 +73,7 @@ package com.seltest.www.vo;
 	                }
 	                if(tag.equals("YPos")){
 	                	yPos = xpp.getText();
-	                }	              
+	                }	
 	            } else if (event_type == XmlPullParser.END_TAG) {
 	                tag = xpp.getName();
 	                if (tag.equals("item")) {
@@ -94,8 +95,8 @@ package com.seltest.www.vo;
 	    }  
 	    
 	    //출력
-	  /*  private void print(ArrayList<Hospital> list){
-	    	for(int i = 0; i<list.size(); i++){
+	   /*private void print(ArrayList<Hospital> list){
+		   for(int i = 0; i<list.size(); i++){
 	    		System.out.println(list);
 	    	}
 	    }*/
@@ -122,7 +123,6 @@ package com.seltest.www.vo;
 	    		url = url + "&yadmNm="+search.getYadmNm();
 	    	}
 	    	
-	    	System.out.println(url);
 	        if(url != null){
 		        url = url+"";	        
 		        }

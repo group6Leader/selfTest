@@ -47,11 +47,11 @@ public class HomeController {
 				String resCheck = "";
 				if(myRes.getCust_Id() != null){
 					res_Check = myRes.getCust_Id();
-					if(res_Check.equals("1234")) resCheck = "Dr차예진";
-					if(res_Check.equals("kanna")) resCheck = "Dr조민제";
-					if(res_Check.equals("1235")) resCheck = "Dr김준형";
-					if(res_Check.equals("aaa")) resCheck = "Dr신동철";
-					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + resCheck + " 에게 원격진료를 예약하셨습니다.";
+					if(res_Check.equals("cha")) resCheck = "Dr차예진";
+					if(res_Check.equals("jo")) resCheck = "Dr조민제";
+					if(res_Check.equals("kim")) resCheck = "Dr김준형";
+					if(res_Check.equals("sin")) resCheck = "Dr신동철";
+					String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + resCheck + "에게 원격진료를 예약하셨습니다.";
 					session.setAttribute("myReservation", myReservation);
 				}
 				if(myRes.getHos_Name() != null && myRes.getCategory() != null){

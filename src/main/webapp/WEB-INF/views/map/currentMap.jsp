@@ -56,7 +56,7 @@
 	var map;
 	var marker;
 	var iterator = 0;
-	var yadmNmArr = [];	//병워이름 저장 배열
+	var yadmNmArr = [];	//병원이름 저장 배열
 	var hosInfoArr = [];	//병원정보 저장 배열
 	var markersArr = [];  //마커 삭제를 위한 배열
 	var clickedLocation;	//클릭한 위치
