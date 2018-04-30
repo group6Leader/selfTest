@@ -381,7 +381,13 @@ function check(){
 										</sec:authorize>
 										<sec:authorize access="isAuthenticated()">
 										<li><a href="../customer/goFix">My Page</a></li>
-										<li><a href="../reservation/book">예약</a></li>
+										<c:if test="${sessionScope.customer.division == 2 }">
+											<li><a href="../reservation/book2">예약</a></li>
+										</c:if>
+										<c:if test="${sessionScope.customer.division == 1 }">
+											<li><a href="../reservation/book">예약</a></li>
+										</c:if>					
+										
 										<li><a href="../webrtc/goWebRtc">원격진료</a></li>
 										</sec:authorize>
 										
