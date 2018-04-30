@@ -1,10 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/assets2/images/favicon.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="../resources/assets2/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/assets2/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="../resources/assets2/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <!-- Custom CSS -->
+    <link href="../resources/assets2/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="../resources/assets2/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../resources/assets2/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/editForm.css"></c:url>">
 <title>selfCheck/selfCheckForm</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -16,19 +43,142 @@ $('#smileys input').on('click', function() {
 </head>
 <body>
 
-	<form action="goSelfCheck" method="post">
-		<h1>
-			 자가진단<span>솔직한 자신의 건강정보를 입력해주세요. 정확한 진단을 위해서 필요합니다.</span>
-		</h1>
-	
-	<div class="controls blood_Pressure">
-		<h1>Blood Pressure</h1>
-		<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100" value="${s.blood_Pressure }">
-		<h3>*혈압의 평균값을 입력해주세요.</h3>
-	</div>
-	
-		<div class="controls smoking">
-			<h1>Smoking</h1>
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">CHAR HOSPITAL</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/www">
+                        
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="../resources/assets/images/logo.png" style="width: 160px; padding-left: 60px;" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="../resources/assets/images/logo.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="download?saved=${login.saved_File}" alt="user" class="" />
+                            <span class="hidden-md-down">${login.cust_Name}&nbsp;</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="goAdmin" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        </li>
+                        <sec:authorize access="hasRole('CUSTOMER')">
+                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Let's Go SelfCheck</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="../selfCheck/goSelfCheck3" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">SelfCheck</span></a>
+                        </li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('DOCTOR')">
+                        <li> <a class="waves-effect waves-dark" href="../healthRecord/goHealthRecordList" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">HealthRecord</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="../prescription/prescriptionResult" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Prescription</span></a>
+                        </li>
+                        </sec:authorize>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+       
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+<div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">SelfCheck</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/www">Home</a></li>
+                            <li class="breadcrumb-item active">SelfCheck</li>
+                        </ol>
+                    </div>
+                </div>
+                <form action="goSelfCheck" method="post">
+		<div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">SelfCheck</h4>
+                                <h6 class="card-subtitle">List</h6>
+								<h4>Blood Pressure</h4>
+								<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100" value="100"<c:if test="${s.blood_Pressure != 0}"> value="${s.blood_Pressure }"</c:if>>
+								<h3 class="small">*혈압의 평균값을 입력해주세요.</h3>
+								<h4>Smoking</h4>
 			<input id="noSmoking" type="radio" name='smoking' checked='checked' value="없음" <c:if test="${s.smoking == '없음' }"> checked="checked" </c:if>/>
 			<label for="noSmoking">없음</label> 
 						
@@ -40,10 +190,7 @@ $('#smileys input').on('click', function() {
 			
 			<input id='moreSmoking' type="radio" name='smoking' value="하루 한 갑 이상" <c:if test="${s.smoking == '하루 한 갑 이상' }"> checked="checked" </c:if>/>
 			<label for="moreSmoking">하루 한 갑 이상</label>
-		</div>
-
-		<div class="controls drinking">
-			<h1>Drinking</h1>
+								<h4>Drinking</h4>
 			
 			<input id="noDrinking" type="radio" name='drinking' checked='checked' value="안함" <c:if test="${s.drinking == '안함' }"> checked="checked" </c:if>/>
 			<label for="noDrinking">음주 안함</label> 
@@ -56,54 +203,33 @@ $('#smileys input').on('click', function() {
 			
 			<input id='moreDrinking' type="radio" name='drinking' value="일주일 3번 이상" <c:if test="${s.drinking == '일주일 3번 이상' }"> checked="checked" </c:if>/>
 			<label for="moreDrinking">일주일 3번 이상</label>
-		</div>
-		
-		<div class="controls diabetes">
-			<h1>Diabetes</h1>
+								<h4>Diabetes</h4>
 			<input id="noDiabetes" type="radio" name='diabetes' checked='checked' value="없음" <c:if test="${s.diabetes == '없음' }"> checked="checked" </c:if>/>
 			<label for="noDiabetes">당뇨 없음</label> 
 			<input id='yesDiabetes' type="radio" name='diabetes' value="있음" <c:if test="${s.diabetes == '있음' }"> checked="checked" </c:if>/>
 			<label for="yesDiabetes">당뇨 있음</label>
-		</div>
-
-		<div class="controls surgery">
-			<h1>Surgery</h1>
+			<h4>Surgery</h4>
 			<input id="noSurgery" type="radio" name='surgery' checked='checked' value="없음" <c:if test="${s.surgery == '없음' }"> checked="checked" </c:if>/>
 			<label for="noSurgery">수술 경력없음</label> 
 			<input id='yesSurgery' type="radio" name='surgery' value="있음" <c:if test="${s.surgery == '있음' }"> checked="checked" </c:if>/>
 			<label for="yesSurgery">수술 경력있음</label>
-		</div>
-		
-		<div class="controls disability">
-			<h1>Obstacle</h1>
+			<h4>Obstacle</h4>
 			<input id="noDisability" type="radio" name='disability' checked='checked' value="없음" <c:if test="${s.disability == '없음' }"> checked="checked" </c:if>/>
 			<label for="noDisability">장애 없음</label> 
 			<input id='yesDisability' type="radio" name='disability' value="있음" <c:if test="${s.disability == '있음' }"> checked="checked" </c:if>/>
 			<label for="yesDisability">장애 있음</label>
-		</div>
-		
-		<div class="controls medicine">
-			<h1>Medicine</h1>
+			<h4>Medicine</h4>
 			<input type="text" name="medicine" placeholder="ex) 없음" value="${s.medicine }">
-			<h3>*최근의 복용한 약을 입력해주세요.</h3>
-		</div>
-		
-		<div class="controls medicine">
-			<h1>Allergy</h1>
+			<h3 class="small">*최근의 복용한 약을 입력해주세요.</h3>
+			<h4>Allergy</h4>
 			<input type="text" name="allergy" placeholder="ex) 갑각류 알레르기" value="${s.allergy }">
-		</div>
-		
-		<div class="controls overseas_Visits">
-			<h1>Overseas Visits</h1>
+			<h4>Overseas Visits</h4>
 			<input id="noOverseas_Visits" type="radio" name='overseas_Visits' checked='checked' value="없음" <c:if test="${s.overseas_Visits== '없음' }"> checked="checked" </c:if>/>
 			<label for="noOverseas_Visits">없음</label> 
 			<input id='yesOverseas_Visits' type="radio" name='overseas_Visits' value="있음" <c:if test="${s.overseas_Visits== '있음' }"> checked="checked" </c:if>/>
 			<label for="yesOverseas_Visits">있음</label>
-			<h3>*최근의 3개월 내의 해외여행 여부를 기입해주세요.</h3>
-		</div>
-		
-		<div class="controls sleep_Time">
-			<h1>Sleep Time</h1>
+			<h3 class="small">*최근의 3개월 내의 해외여행 여부를 기입해주세요.</h3>
+			<h4>Sleep Time</h4>
 			<input id="4hour" type="radio" name='sleep_Time' checked='checked' value="4시간 이하" <c:if test="${s.sleep_Time == '4시간 이하' }"> checked="checked" </c:if>/>
 			<label for="4hour">4시간 이하</label> 
 			<input id='6hour'type="radio" name='sleep_Time' value="5~6시간" <c:if test="${s.sleep_Time == '5~6시간' }"> checked="checked" </c:if>/>
@@ -112,61 +238,85 @@ $('#smileys input').on('click', function() {
 			<label for="8hour">7~8시간</label>
 			<input id='over8hour'type="radio" name='sleep_Time' value="8시간 이상" <c:if test="${s.sleep_Time == '8시간 이상' }"> checked="checked" </c:if>/>
 			<label for="over8hour">8시간 이상</label>
-		</div>
-		
-    <div class="controls stress">
-		<h1>Stress</h1>
-        <label for="super-happy" class="tooltip">
-        	<span class="tooltiptext">매우 행복</span>
-			<input type="radio" name="stress" class="super-happy" id="super-happy" checked="checked" value="super-happy" <c:if test="${s.stress == 'super-happy' }"> checked="checked" </c:if>/>
-			<svg viewBox="0 0 24 24">
-			<path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
-			</label>
 
-        <label for="happy"class="tooltip">
-        	<span class="tooltiptext">행복</span>
-			<input type="radio" name="stress" class="happy" id="happy" value="happy"  <c:if test="${s.stress == 'happy' }"> checked="checked" </c:if>/>
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" /></svg>
-			</label>
+			<h4>Stress</h4>
+	        <input id="super-happy" type="radio" name='stress' checked='checked' value="super-happy" <c:if test="${s.stress == 'super-happy' }"> checked="checked" </c:if>/>
+			<label for="super-happy">매우행복</label> 
+			
+			<input id='happy' type="radio" name='stress' value="happy" <c:if test="${s.stress == 'happy' }"> checked="checked" </c:if>/>
+			<label for="happy">행복</label>
+			
+			<input id='neutral' type="radio" name='stress' value="neutral" <c:if test="${s.stress == 'neutral' }"> checked="checked" </c:if>/>
+			<label for="neutral">보통</label>
+			
+			<input id='sad' type="radio" name='stress' value="sad" <c:if test="${s.stress == 'sad' }"> checked="checked" </c:if>/>
+			<label for="sad">슬픔</label>
+			
+			<input id='super-sad' type="radio" name='stress' value="super-sad" <c:if test="${s.stress == 'super-sad' }"> checked="checked" </c:if>/>
+			<label for="super-sad">매우슬픔</label>
 
-        <label for="neutral"class="tooltip">
-        	<span class="tooltiptext">보통</span>
-			<input type="radio" name="stress" class="neutral" id="neutral" value="neutral" <c:if test="${s.stress == 'neutral' }"> checked="checked" </c:if>/>
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" /></svg>
-			</label>
-
-        <label for="sad"class="tooltip">
-        	<span class="tooltiptext">슬픔</span>
-			<input type="radio" name="stress" class="sad" id="sad" value="sad" <c:if test="${s.stress == 'sad' }"> checked="checked" </c:if>/>
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24"><path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" /></svg>
-			</label>
-
-        <label for="super-sad"class="tooltip">
-        	<span class="tooltiptext">매우 슬픔</span>
-			<input type="radio" name="stress" class="super-sad" id="super-sad" value="super-sad" <c:if test="${s.stress == 'super-sad' }"> checked="checked" </c:if>/>
-			<svg viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" /></svg>
-			</label>
-
-    </div>
-    <div class="controls family_history">
-			<h1>Family history</h1>
+			<h4>Family history</h4>
 			<input type="text" name="family_History" placeholder="ex) B형 감염 보균자" value="${s.family_History }">
-	</div>
-		
-	<div class="controls pregnant">
-			<h1>Pregnant</h1>
+			<h4>Pregnant</h4>
 			<input id="NoPregnant" type="radio" name='pregnant' checked='checked' value="없음" <c:if test="${s.pregnant == '없음' }"> checked="checked" </c:if>/>
 			<label for="NoPregnant">없음</label> 
 			<input id='YesPregnant' type="radio" name='pregnant' value="있음" <c:if test="${s.pregnant == '있음' }"> checked="checked" </c:if>/>
 			<label for="YesPregnant">있음</label>
-		</div>
-		<div class="controlsBtn">
-			<input type="submit" class="custom-btn btn-1" value="다음">
-			<!-- <input type="button" class="custom-btn btn-1" value="종료" onclick="location.href='../'"> -->
-			
-		</div>
-	</form>
-
+                            </div>
+	                    <input type="submit" class="custom-btn btn-1" value="다음">
+                        </div>
+                    </div>
+                </div>
+                </form>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+	</div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2018 Char Hospital by Null Team
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
+    <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../resources/assets2/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="../resources/assets2/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../resources/assets2/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../resources/assets2/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="../resources/assets2/node_modules/raphael/raphael-min.js"></script>
+    <script src="../resources/assets2/node_modules/morrisjs/morris.min.js"></script>
+    <!--c3 JavaScript -->
+    <!-- Chart JS -->
+    <script src="../resources/assets2/js/dashboard1.js"></script>
+		
 
 </body>
 </html>

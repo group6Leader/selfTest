@@ -152,8 +152,7 @@
 					<!-- Buttons -->
 					<ul class="actions">
 						<li><input value="Back" class="button alt" type="button" onclick="location.href='./boardList'"></li>
-						<li><input value="Delete" class="button alt" type="button" onclick="del(${b.board_Num})"></li>
-						
+						<li><input style="margin-left: 31.3rem" value="Delete" class="button alt" type="button" onclick="del(${b.board_Num})"></li>
 						<li><input value="Edit" class="button alt" type="button" onclick="edit(${b.board_Num})"></li>
 					</ul>
 

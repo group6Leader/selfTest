@@ -5,9 +5,7 @@
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 300;
-  background:linear-gradient( #158EC6, #c6d0da, #c6d0da, #158EC6);
   color: #fff;
-  padding-top: 20px;
 }
 
 form {
@@ -31,10 +29,14 @@ h1 span {
   font-size: 70%;
   line-height: 1.2;
 }
-h3{
+.small{
 	font-size: 10px;
+	margin-bottom: 15px;
 }
-
+h4{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 div.controls {
   margin-bottom: 12px;
   border: 1px dotted #fafafa;
@@ -210,137 +212,6 @@ input[type='text'] {
 }
 
 /*스트레스*/
-.card {
-	display: flex;
-	margin: auto;
-	-webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
-	box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
-	background-color: rgb(255, 255, 255);
-	padding: 0.8rem;
-	width: 33rem;
-}
-
-.rating-container {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	padding: 0.4rem 0.8rem;
-	width: 100%;
-}
-
-.rating-text p {
-	color: rgba(0, 0, 16, 0.8);
-	font-size: 1.3rem;
-	padding: 0.3rem;
-}
-
-.rating {
-	background-color: rgba(0, 0, 16, 0.8);
-	padding: 0.4rem 0.4rem 0.1rem 0.4rem;
-	border-radius: 2.2rem;
-}
-
-svg {
-	fill: rgb(242, 242, 242);
-	height: 3.6rem;
-	width: 3.6rem;
-	margin: 0.2rem;
-}
-
-.rating-form-2 svg {
-	height: 3rem;
-	width: 3rem;
-	margin: 0.5rem;
-}
-
-#radios label {
-	position: relative;
-}
-
-input[type="radio"] {
-	position: absolute;
-	opacity: 0;
-}
-
-input[type="radio"] + svg {
-	-webkit-transition: all 0.2s;
-	transition: all 0.2s;
-}
-
-input + svg {
-	cursor: pointer;
-}
-
-input[class="super-happy"]:hover + svg,
-input[class="super-happy"]:checked + svg,
-input[class="super-happy"]:focus + svg {
-	fill: rgb(0, 109, 217);
-}
-
-input[class="happy"]:hover + svg,
-input[class="happy"]:checked + svg,
-input[class="happy"]:focus + svg {
-	fill: rgb(0, 204, 79);
-}
-
-input[class="neutral"]:hover + svg,
-input[class="neutral"]:checked + svg,
-input[class="neutral"]:focus + svg {
-	fill: rgb(232, 214, 0);
-}
-
-input[class="sad"]:hover + svg,
-input[class="sad"]:checked + svg,
-input[class="sad"]:focus + svg {
-	fill: rgb(229, 132, 0);
-}
-
-input[class="super-sad"]:hover + svg,
-input[class="super-sad"]:checked + svg,
-input[class="super-sad"]:focus + svg {
-	fill: rgb(239, 42, 16);
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(86, 86, 86,0.6);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.6s;
-}
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
 
 button {
   margin: 20px;
@@ -358,12 +229,12 @@ button {
 }
 /**** BTN No. 1 ****/
 .btn-1 {
-	border: 2.3px solid #ffffff;
-	color:#ffffff;
+	border: 2.3px solid #68b4ff;
+	color:#68b4ff;
 }
 .btn-1:hover {
-  background: #ffffff;
-  color: #400040;
+  background: #68b4ff;
+  color: #ffffff;
 }
 .btn-1:active {top: 2px;}
 

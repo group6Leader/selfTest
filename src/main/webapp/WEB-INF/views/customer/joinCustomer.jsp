@@ -246,10 +246,6 @@ function IdChk(){
 </head>
 <body>
 	<!-- Taken from https://codepen.io/jonnitto/project/editor/XRPjxx -->
-	<video width="1280" height="720" class="background" autoplay muted loop>
-		<source src="https://codepen.jonnitto.ch/BackgroundVideo.mp4"
-			type="video/mp4">
-	</video>
 	<form class="form-card" action="custJoin" method="post" enctype="multipart/form-data">
 		<fieldset class="form-fieldset">
 			<legend class="form-legend">JOIN US</legend>
