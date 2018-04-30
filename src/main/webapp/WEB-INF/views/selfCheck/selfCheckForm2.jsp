@@ -39,7 +39,7 @@
           	
 			<!-- 맨 첫 화면 문구창  -->
           	<div class="page" id="p1">
-          		<span id="title">아픈 부위를 선택하시고 부위에 따른 증상을 체크해주세요.</span> <br><br>
+          		<span id="title">痛い部位を選んだ後、部位による症状をチェックしてください。</span> <br><br>
           		<button class="button button-inline button-large" onclick="location.href='../'">종료하기</button>
           	</div>
 
@@ -50,84 +50,84 @@
      		<section class="content head">
      			<input type="hidden" value="head" name="pain">
      			
-     			<h1>1. 현재 증상은 어떠십니까 ? </h1>
+     			<h1>1. 今の症状はどうですか ? </h1>
 		     	<ul class="list">
 		     		
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="어지럽다" class="checkbox">어지럽다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="머리가 아프다" class="checkbox">머리가 아프다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="열이 나는 것 같다" class="checkbox">열이 나는 것 같다 </label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기절을 했다" class="checkbox">기절을 했다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="머리가 가렵다" class="checkbox">머리가 가렵다</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="어지럽다" class="checkbox">目くらむ</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="머리가 아프다" class="checkbox">頭が痛い</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="열이 나는 것 같다" class="checkbox">熱があるそう </label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기절을 했다" class="checkbox">気を失った</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="머리가 가렵다" class="checkbox">頭が痒い</label>
 					</li>
 					
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="피부에 문제가 있다" class="checkbox">피부에 문제가 있다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom"value="고열이 난다" class="checkbox">고열이 난다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="미열이 난다" class="checkbox">미열이 난다 </label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="체온이 떨어졌다" class="checkbox">체온이 떨어졌다 		</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="피부에 문제가 있다" class="checkbox">皮膚にトラブルがある</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom"value="고열이 난다" class="checkbox">高熱がする</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="미열이 난다" class="checkbox">微熱がする </label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="체온이 떨어졌다" class="checkbox">体温が落ちた</label>
 					</li>
 					
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="몸살기운이 있다" class="checkbox">몸살기운이 있다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="평소보다 땀이 많이 난다" class="checkbox">평소보다 땀이 많이 난다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">	해당 없음</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="몸살기운이 있다" class="checkbox">風気味がある</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="평소보다 땀이 많이 난다" class="checkbox">普段より汗が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">無し</label>
 					</li>
 					
 		      	</ul>
       		</section>
 			
 			<section class="content head">
-      			<h1>2.  머리가 아픈 경우 어떻게 아픕니까?</h1>
+      			<h1>2.  頭が痛い場合いどんな風に痛いですか?</h1>
      			<ul class="list">
      				
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="머리가 조이는 듯 하다" class="checkbox"> 머리가 조이는 듯 하게 아프다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="쪼개질 것 같다" class="checkbox"> 쪼개질 것 처럼 아프다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="관자놀이 부근에 박동성이 느껴지는 두통이다" class="checkbox"> 관자놀이 부근에 박동성이 느껴지는 두통이다</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="머리가 조이는 듯 하다" class="checkbox"> 頭がつつかれるように痛い</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="쪼개질 것 같다" class="checkbox"> 痛みがひどい</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="관자놀이 부근에 박동성이 느껴지는 두통이다" class="checkbox"> こめかみから感じられる痛み</label>
 					</li>
 					
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="특히 뒷통수 부위가 아프다" class="checkbox"> 특히 뒷통수 부위가 아프다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="특히 뒷통수 부위가 아프다" class="checkbox"> 特に後頭部が痛い</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label> 
 					</li>
 					
       			</ul>
      	 	</section>
 
 			<section class="content head">
-      			<h1>3. 머리가 아픈 경우 어떻게 아픕니까?</h1>
+      			<h1>3. 頭が痛い場合どんな症状がありますか?</h1>
      			<ul class="list">
 				
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="24시간 이내에 회복했다" class="checkbox">24시간 이내에 회복했다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="24시간 이상 증상이 있다" class="checkbox"> 24시간 이상 증상이 있다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기절하진 않았지만 자꾸 졸려왔다" class="checkbox"> 기절하진 않았지만 자꾸 졸려왔다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">해당 없음</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="24시간 이내에 회복했다" class="checkbox">24以内に回復した</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="24시간 이상 증상이 있다" class="checkbox"> 24時間以上症状が続く</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기절하진 않았지만 자꾸 졸려왔다" class="checkbox"> 気を失ってはないが、眠くなる</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">無し</label> 
 					</li>
       			
       			</ul>
       		</section>
       		
      		<section class="content head">
-      			<h1>4. 다음에 해당되는 것은?</h1>
+      			<h1>4. 次の内容をチェックしてください。</h1>
       			
    	 			<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="사고(넘어짐, 부딪힘, 교통사고 등)가 있었다" class="checkbox">사고(넘어짐, 부딪힘, 교통사고 등)가 있었다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="평소보다 어지럽다" class="checkbox">평소보다 어지럽다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="사고(넘어짐, 부딪힘, 교통사고 등)가 있었다" class="checkbox">事故(転倒, ぶつかる, 交通事故 等)があった</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="평소보다 어지럽다" class="checkbox">普段よりめくらむ</label>						
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label>
 					</li>
     			</ul>
     			
       		</section>
 			
 			<section class="content head">
-				<h1>5. 기타</h1>
-					<textarea name="symptom" placeholder="체크항목에 없는 증상에 대해 적어주세요."></textarea>
+				<h1>5. その他</h1>
+					<textarea name="symptom" placeholder="チェックしの項目にない症状を書いてください。"></textarea>
 			</section>
 
-		<input type="submit" value="제출하기" class="button button-inline button-large">
+		<input type="submit" value="提出" class="button button-inline button-large">
 		<!-- <button class="button button-inline button-large">제출하기</button> -->
 		</div>
 	
@@ -140,83 +140,83 @@
 		<div class="page" id="p3">
     		<section class="content neck">
         		<input type="hidden" value="neck" name="pain">
-       		 	<h1>1. 현재 증상은 어떠십니까 ? </h1>
+       		 	<h1>1. 今の症状はどうですか ? </h1>
        			
        			<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="음식이나 침을 삼키기 곤란하다" class="checkbox"> 음식이나 침을 삼키기 곤란하다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목이 부었다" class="checkbox"> 목이 부었다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="피를 토했다" class="checkbox"> 피를 토했다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목이 아프다" class="checkbox"> 목이 아프다</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="음식이나 침을 삼키기 곤란하다" class="checkbox"> ご飯や唾を飲み込むのが難しい</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목이 부었다" class="checkbox"> 喉を晴らす</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="피를 토했다" class="checkbox"> 血を吐いた</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목이 아프다" class="checkbox"> 喉が痛い</label>
 					</li>
 				
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목에 덩어리가 만져진다" class="checkbox">목에 덩어리가 만져진다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기침이 난다" class="checkbox"> 기침이 난다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="가래가 나온다" class="checkbox"> 가래가 나온다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목(안)이 가렵다" class="checkbox"> 목(안)이 가렵다</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목에 덩어리가 만져진다" class="checkbox">喉に塊がある</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기침이 난다" class="checkbox"> 咳が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="가래가 나온다" class="checkbox"> 痰が出る</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목(안)이 가렵다" class="checkbox"> 喉がかゆい</label>
 					</li>
 				
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="사춘기도 아닌데 목소리가 변했다" class="checkbox">사춘기도 아닌데 목소리가 변했다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="구갈(목막름)이 심하다" class="checkbox"> 구갈(목마름)이 심하다 </label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="사춘기도 아닌데 목소리가 변했다" class="checkbox">声が変わった</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="구갈(목막름)이 심하다" class="checkbox"> 喉が渇く </label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label>
 					</li>
         		</ul>
         	</section>
  	 		
  	 		<section class="content neck">
       	 	
-      	 		<h1>2.콧물이 나올 경우 어떤 증상 입니까?</h1>
+      	 		<h1>2.鼻水が出る場合、どんな症状ですか?</h1>
        			<ul class="list">
 				
 				<li class="list__item">
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="맑은 콧물이 나온다" class="checkbox"> 맑은 콧물이 나온다</label> 
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런 콧물이 나온다" class="checkbox"> 누런 콧물이 나온다</label>
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="맑은 콧물이 나온다" class="checkbox"> 澄んだ鼻水が出る</label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런 콧물이 나온다" class="checkbox"> 黄色い鼻水が出る</label>
 				</li>
 				
 				<li class="list__item">
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="찐득한 콧물이 나온다" class="checkbox"> 찐득한 콧물이 나온다</label> 
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="찐득한 콧물이 나온다" class="checkbox"> べたべたした鼻水が出る</label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無い</label> 
 				</li>
         		</ul>
         	</section>
 	
 			<section class="content neck">
-        		<h1>3. 호홉 곤란이 있다면 보기에서 해당되는 증상을 모두 선택하세요(중복 선택 가능)</h1>
+        		<h1>3. 呼吸困難がある場合、全ての症状を選んでください。(重複選択可能)</h1>
        	 		<ul class="list">
 				
 				<li class="list__item">
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="가슴이 답답하고 숨쉬기 힘들다" class="checkbox"> 가슴이 답답하고 숨쉬기 힘들다</label> 
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 내쉴 때 '쌔~액, 쌔~액' 소리가 난다" class="checkbox">숨을 내쉴 때 '쌔~액, 쌔~액' 소리가 난다.</label>
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 가쁘게 쉰다. 빠른 호홉을 한다" class="checkbox"> 숨을 가쁘게 쉰다. 빠른 호홉을 한다</label> 
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">해당 없음</label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="가슴이 답답하고 숨쉬기 힘들다" class="checkbox"> 胸苦しいし、息することが難しい </label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 내쉴 때 '쌔~액, 쌔~액' 소리가 난다" class="checkbox">息をする時、音がする</label>
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 가쁘게 쉰다. 빠른 호홉을 한다" class="checkbox"> 呼吸のテンポが速くなる</label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">無し</label> 
 				</li>
         		</ul>
 			</section>
 			
 			<section class="content neck">
        		
-       		<h1>4. 가래가 나온다면 보기에서 해당되는 증상을 모두 선택하세요.</h1>
+       		<h1>4. 痰が出る場合、全ての症状を選んでください。</h1>
        	 	<ul class="list">
 			
 				<li class="list__item">
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="일반적인 가래가 나온다" class="checkbox"> 일반적인 가래가 나온다</label>
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="끈적이는 가래가 나온다" class="checkbox"> 끈적이는 가래가 나온다</label> 
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런색 가래가 나온다" class="checkbox"> 누런색 가래가 나온다</label>
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="피가 섞인 가래가 나온다" class="checkbox"> 피가 섞인 가래가 나온다</label>
-					<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="일반적인 가래가 나온다" class="checkbox"> 普通の痰が出る</label>
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="끈적이는 가래가 나온다" class="checkbox"> べたべたした痰が出る</label> 
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런색 가래가 나온다" class="checkbox"> 黄色い痰が出る</label>
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="피가 섞인 가래가 나온다" class="checkbox"> 血が混じった痰が出る</label>
+					<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label>
 				</li>
         	</ul>
         	
         	</section>
 			
 			<section class="content neck">
-			<h1>5. 기타</h1>
-				<textarea name="symptom" placeholder="체크항목에 없는 증상에 대해 적어주세요."></textarea>
+			<h1>5. その他</h1>
+				<textarea name="symptom" placeholder="チェックの項目にない症状を書いてください。"></textarea>
 			</section>
 		
-		<input type="submit" value="제출하기" class="button button-inline button-large">	
+		<input type="submit" value="提出" class="button button-inline button-large">	
 		<!-- <button class="button button-inline button-large">제출하기</button> -->
 
 		</div>
@@ -228,77 +228,77 @@
 		<div class="page" id="p4">
           	<section class="content nose">
           		<input type="hidden" value="nose" name="pain">
-          		<h1>1. 현재 증상은 어떠십니까 ? </h1>
+          		<h1>1. 今の症状はどうですか ? </h1>
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="콧물이 난다" class="checkbox">콧물이 난다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="콧물이 목뒤로 넘어간다" class="checkbox"> 콧물이 목뒤로 넘어간다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코가 막힌다" class="checkbox"> 코가 막힌다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="재채기가 난다" class="checkbox"> 재채기가 난다</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="콧물이 난다" class="checkbox">鼻水が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="콧물이 목뒤로 넘어간다" class="checkbox"> 鼻水が喉まで行く</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코가 막힌다" class="checkbox"> 鼻が詰まる</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="재채기가 난다" class="checkbox"> くしゃみが出る</label>
 					</li>
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코, 목이 간지럽다" class="checkbox">코, 목이 간지럽다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코가 아프다" class="checkbox"> 코가 아프다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="어지럽다" class="checkbox"> 어지럽다</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코, 목이 간지럽다" class="checkbox">鼻、喉がかゆい</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코가 아프다" class="checkbox"> 鼻が痛い</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="어지럽다" class="checkbox"> めくらむ</label>
 					</li>
 					<li class="list__item">	
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="몸살기운이 있다" class="checkbox"> 몸살기운이 있다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="미열이 난다" class="checkbox"> 미열이 난다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="몸살기운이 있다" class="checkbox"> 風邪気味がある</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="미열이 난다" class="checkbox"> 微熱が続く</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label>
 					</li>
         		</ul>
           	</section>
 		  	
 		  	<section class="content nose">
-          		<h1>2.콧물이 나올 경우 어떤 증상 입니까?</h1>
+          		<h1>2.鼻水が出る場合の症状はどうですか?</h1>
        	 		
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="맑은 콧물이 나온다" class="checkbox"> 맑은 콧물이 나온다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런 콧물이 나온다" class="checkbox"> 누런 콧물이 나온다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="찐득한 콧물이 나온다" class="checkbox"> 찐득한 콧물이 나온다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">해당 없음</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="맑은 콧물이 나온다" class="checkbox"> 普通の痰が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런 콧물이 나온다" class="checkbox"> 黄色い鼻水が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="찐득한 콧물이 나온다" class="checkbox"> べたべたした鼻水が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">無し</label> 
 					</li>
         		</ul>
           	</section>
 			
 			<section class="content nose">
-          		<h1>3. 호홉 곤란이 있다면 보기에서 해당되는 증상을 모두 선택하세요</h1>
+          		<h1>3. 呼吸困難がある場合、全ての症状を選んでください。</h1>
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="가슴이 답답하고 숨쉬기 힘들다" class="checkbox"> 가슴이 답답하고 숨쉬기 힘들다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 내쉴 때 '쌔~액, 쌔~액' 소리가 난다" class="checkbox">숨을 내쉴 때 '쌔~액, 쌔~액' 소리가 난다.</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 가쁘게 쉰다. 빠른 호홉을 한다" class="checkbox">숨을 가쁘게 쉰다. 빠른 호홉을 한다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">해당 없음</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="가슴이 답답하고 숨쉬기 힘들다" class="checkbox"> 胸苦しいし、息をすることが難しい </label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 내쉴 때 '쌔~액, 쌔~액' 소리가 난다" class="checkbox">息をする時音がする</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨을 가쁘게 쉰다. 빠른 호홉을 한다" class="checkbox">呼吸が速くなる</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox">無し</label> 
 					</li>
         		</ul>
           	</section>
           	
           	<section class="content nose">
-          		<h1>4. 기침을 한다면 보기에서 해당되는 증상을 모두 선택하세요</h1>
+          		<h1>4. 咳が出る場合、全ての症状を選んでください。</h1>
        	 		
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="'콜록~콜록' 일반적인 기침을 한다" class="checkbox">'콜록~콜록' 일반적인 기침을 한다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="'컹!컹!' 개짖는 소리 같은 기침을 한다" class="checkbox"> '컹!컹!' 개짖는 소리 같은 기침을 한다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="'켁, 켁' 마른 기침을 한다" class="checkbox">	'켁, 켁' 마른 기침을 한다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기침을 잦게 자주한다" class="checkbox"> 기침을 잦게 자주한다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="밤에 기침이 심해진다" class="checkbox"> 밤에 기침이	심해진다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨이 넘어갈 듯이 기침을 한다" class="checkbox"> 숨이 넘어갈 듯이 기침을 한다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>				
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="'콜록~콜록' 일반적인 기침을 한다" class="checkbox">普通の咳が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="'컹!컹!' 개짖는 소리 같은 기침을 한다" class="checkbox"> ワンワンと犬のような咳が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="'켁, 켁' 마른 기침을 한다" class="checkbox">	空咳が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="기침을 잦게 자주한다" class="checkbox">咳が長く続く</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="밤에 기침이 심해진다" class="checkbox"> 夜に咳がひどくなる</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="숨이 넘어갈 듯이 기침을 한다" class="checkbox"> 息が止まるような咳が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label>				
 					</li>	
 	        	</ul>
           	</section>
           	
           	<section class="content nose">
-          		<h1>5. 가래가 나온다면 보기에서 해당되는 증상을 모두 선택하세요.</h1>
+          		<h1>5. 痰が出る場合、全ての症状を選んでください。</h1>
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="일반적인 가래가 나온다" class="checkbox"> 일반적인 가래가 나온다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="끈적이는 가래가 나온다" class="checkbox"> 끈적이는 가래가 나온다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런색 가래가 나온다" class="checkbox"> 누런색 가래가 나온다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="피가 섞인 가래가 나온다" class="checkbox"> 피가 섞인 가래가 나온다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="일반적인 가래가 나온다" class="checkbox">  普通の痰が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="끈적이는 가래가 나온다" class="checkbox"> べたべたした痰が出る</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="누런색 가래가 나온다" class="checkbox"> 黄色い痰が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="피가 섞인 가래가 나온다" class="checkbox"> 血が混じった痰が出る</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 無し</label>
 					</li>
         		</ul>
           	</section>
