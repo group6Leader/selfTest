@@ -4,8 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Calendar"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Calendar"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
@@ -641,9 +641,6 @@ addEventButton.onclick = function (e) {
 			
 			<div class="resStatas">
 			<c:if test="${sessionScope.myReservation != null }">
-				&emsp;&emsp;${myReservation }
-				<br><br>
-				<a href="./deleteBook"><button style="margin-left: 30px;">예약 취소</button></a>
 			</c:if>
 			<c:if test="${list != null }">
 				<div class="table-responsive" style="width: 25rem; margin-left: 2rem; margin-top: -8rem;padding:2px 25px; background-color: rgba(255,255,255,0.3);">
