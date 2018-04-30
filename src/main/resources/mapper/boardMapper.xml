@@ -25,7 +25,7 @@
 		, #{board_Category}
 		, #{content}
 		, #{score}
-		, 1
+		, #{cust_Num}
 		
 		)
 	
@@ -66,8 +66,9 @@
 	
 		update board
 		set board_Title = #{board_Title}
-		, hos_Name = #{hos_Name}
+		, board_Category = #{board_Category}
 		, content = #{content}
+		, score = #{score}
 		where board_Num = #{board_Num}
 	
 	</update>

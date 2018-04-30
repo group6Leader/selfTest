@@ -18,6 +18,7 @@ import com.seltest.www.common.PageNavigator;
 import com.seltest.www.dao.BoardDAO;
 import com.seltest.www.dao.ReplyDAO;
 import com.seltest.www.vo.Board;
+import com.seltest.www.vo.Customer;
 import com.seltest.www.vo.Reply;
 
 
@@ -97,11 +98,15 @@ public class CharLifeController {
 	}
 	
 	@RequestMapping(value = "write", method = RequestMethod.POST)
-	public String writeResult(Board board) {
+	public String writeResult(Board board, HttpSession session) {
 		
-		logger.info("writeResult로 이동");	
+		logger.info("write 완료");	
 		logger.info("{}", board);
 		
+		Customer customer = (Customer)session.getAttribute("customer");
+		int cust_Num = customer.getCust_Num();
+		
+		board.setCust_Num(cust_Num);
 		int insert = boardDAO.insertBoard(board);
 		logger.info("insert: " + insert);
 		

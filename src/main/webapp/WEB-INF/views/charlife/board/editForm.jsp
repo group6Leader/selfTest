@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,25 +9,47 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="../resources/css/charlife.css" />
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" type="text/css"  href="../resources/css/rating.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
 	<script type="text/javascript">
-		/* function del(board_Num) {
-			alert('1');
-			alert(board_Num);
+	$(document).ready(function() {
+		
+		$('.rating').hide(); 
+          	$('#board_Category').change(function(){
+			if($('#board_Category').val() == '병원 평가'){
+  				$('.rating').show()
+			}else{
+ 				$('.rating').hide()
+			}
+		})
+	})
+	
+	function checkForm() {
+		/* alert('1'); */
+		
+		var board_Title = $('#board_Title').val();
+		var content = $('#content').val();
+		
+		if(board_Title == '') {
+			/* alert('2') */
+			alert('Please Enter Title')
 			
-			location.href='./delete?board_Num=' + board_Num;
+			return false;
 		}
 		
-		function edit(board_Num) {
-			alert('2');
-			alert(board_Num);
+		if(content == '') {
+			/* alert('3') */
+			alert('Please Enter Content')
 			
-			location.href='./edit?board_Num=' + board_Num;
-		} */
+			return false;
+		}
+		
+		return true;
+	};
 	
-	</script>
-		
-		
+	</script>	
 </head>
 
 	<body class="subpage">
@@ -42,42 +65,75 @@
 				<div class="inner">
 				<article class="box">
 					
-					
-					<h2>${b.board_Num } Board Message (Edit)</h2>
+					<h2>Write Your Comment (Edit) </h2>
 
 					<form action="edit" method="post">
 
+						<div class="field half" style="width: 200px; font">
+							<label for="Category">Category</label>
+							<select id="board_Category" class="board_Category" name="board_Category" >
+								<option style="color: black;" value="자유 게시판" <c:if test="${b.board_Category == '자유 게시판' }"> selected="selected" </c:if>> 자유 게시판 </option>
+								<option style="color: black;" value="병원 평가" <c:if test="${b.board_Category == '병원 평가' }"> selected="selected" </c:if>>  병원 평가  </option>
+								<option style="color: black;" value="고객의 목소리" <c:if test="${b.board_Category == '고객의 목소리' }"> selected="selected" </c:if>> 고객의 목소리 </option>
+							</select>							
+						</div>
+						
 						<div class="field half first">
 							<label for="Title">Title</label>
-							<input name="board_Title" id="board_Title" type="text" value="${b.board_Title }">
+							<input name="board_Title" id="board_Title" type="text" placeholder="Title" value="${b.board_Title }">
 						</div>
-						<div class="field half">
-							<label for="Hospital Name">Hospital Name</label>
-							<input name="hos_Name" id="hos_Name" type="text" value="${b.hos_Name }">
-						</div>
+						
+						<!-- Ratings -->
+						<label for="Ratings">Ratings</label>
+						 <div class="rating">
+						  
+						  <label>
+						    <input type="radio" name="score" value="1" <c:if test="${b.score == 1 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="2" <c:if test="${b.score == 2 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="3" <c:if test="${b.score == 3 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>   
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="4" <c:if test="${b.score == 4 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						  
+						  <label>
+						    <input type="radio" name="score" value="5" <c:if test="${b.score == 5 }"> checked="checked" </c:if>/>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						    <span class="icon">★</span>
+						  </label>
+						 </div> <br><br>
+						
 						<div class="field">
 							<label for="comment">Comment</label>
 							<textarea name="content" id="content" rows="6"> ${b.content } </textarea>
 						</div>
+						
 						<ul class="actions">
-							<li><input value="Back" class="button alt" type="button" onclick="location.href='./'"></li>
-							<%-- <li><input value="Delete" class="button alt" type="button" onclick="del(${b.board_Num})"></li> --%>
+							<li><input value="Back" class="button alt" type="button" onclick="location.href='./boardList'"></li>
 							<li><input value="${b.board_Num }" name="board_Num" type="hidden">
-							<li><input value="Edit" class="button alt" type="submit"></li>
+							<li><input value="Complete" class="button alt" type="submit"></li>
 						</ul>
 					</form>
-
-
-				<!-- private int board_Num;
-				private String board_Title;
-				private String hos_Name;
-				private String content;
-				private String input_Date;
-				private int hits;
-				private int score;
-				private String original_File;
-				private String saved_File;
-				private int cust_Num; -->
 
 				</article>
 				</div>
