@@ -184,7 +184,9 @@ $(window).scroll(function(){
 								<c:if test="${param.error == 1}">
 							         
 							         <p> メールの認証をしてください。 </p>
-							        	
+							        	<script type="text/javascript">
+							        	alert("メールの認証をしてください");
+							        	</script>
 								</c:if>
 								
 								
