@@ -124,7 +124,7 @@ function createCalendar(date, side) {
     currentDay.className = "col";
     currentDay.id = "col"+i;
     currentDay.value = i;
-    currentDay.style="height: 67.6px;";
+    //currentDay.style="height: 67.6px;";
     if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
       selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
@@ -287,8 +287,8 @@ if(${list!=null}){
 	 var arrName = [];
 	var arrDate = [];
 	var year;
-	var month;
-	var date;
+	var month = [];
+	var date = [];
 	var hour;
 	
 		list = '${list}';
@@ -296,11 +296,9 @@ if(${list!=null}){
 		for(var key in str){				
 			 if(str[key].includes('cust_Name')){
 				arrName.push(str[key]);
-				alert(str[key]);
 			}
 			if(str[key].includes('res_Date')){
 				arrDate.push(str[key]);
-				alert(str[key]);
 			} 				
 		}
 		
@@ -310,28 +308,30 @@ if(${list!=null}){
 			//2018042915
 			year = arrDate[i].substring(10, 14);
 			if(arrDate[i].substring(14, 15) == 0){
-				month = arrDate[i].substring(15, 16);
+				month.push(arrDate[i].substring(15, 16));
 			}else{
-				month = arrDate[i].substring(14, 16);	
+				month.push(arrDate[i].substring(14, 16));	
 			}			
 			if(arrDate[i].substring(16,17) == 0){
-				date = arrDate[i].substring(17,18);
+				date.push(arrDate[i].substring(17,18));
 			}else{
-				date = arrDate[i].substring(16, 18);
+				date.push(arrDate[i].substring(16, 18));
 			}
 			hour = arrDate[i].substr(18,2);
 			alert(year +"년 " + month+ "월 " + date + "일 " + hour +"시");
-			
-			 for(var i = 1; i<lastDay; i++){
+			alert("예약날짜"+date[i]);
+			/*  for(var i = 1; i<lastDay; i++){
 				var day = document.getElementById("col"+i).value;
-				 if(date == day){
+				if(date == day){
 					document.getElementById("col"+i).innerHTML = '<div class="col" id="col'+i+'"value="'+i+'"style="background-color: aqua;"></div>';
 				}
+			} */
+				 
 				
 			}
 		}
 				
-}
+
 
 
 

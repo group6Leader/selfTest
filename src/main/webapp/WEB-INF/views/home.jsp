@@ -375,7 +375,7 @@ $(window).scroll(function(){
 						<div class="row">
 							<div class="col-sm-4 col-xs-12">
 								<div class="single_counter_right">
-									<h4 class="statistic-counter">4</h4>
+									<h4 class="statistic-counter">345</h4>
 									<div class="separator"></div>
 									<p>doctor</p>
 								</div>
@@ -384,7 +384,7 @@ $(window).scroll(function(){
 
 							<div class="col-sm-4 col-xs-12">
 								<div class="single_counter_right">
-									<h4 class="statistic-counter">20</h4>
+									<h4 class="statistic-counter">2780</h4>
 									<div class="separator"></div>
 									<p>patient</p>
 								</div>
@@ -393,7 +393,7 @@ $(window).scroll(function(){
 
 							<div class="col-sm-4 col-xs-12">
 								<div class="single_counter_right">
-									<h4 class="statistic-counter">0</h4>
+									<h4 class="statistic-counter">58</h4>
 									<div class="separator"></div>
 									<p>Telemedicine</p>
 								</div>
@@ -430,7 +430,7 @@ $(window).scroll(function(){
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
+												src="./resources/image/doctor/Cha.jpg" alt="" />
 											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
@@ -440,7 +440,7 @@ $(window).scroll(function(){
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team2.jpg" alt="" />
+												src="./resources/image/doctor/Kim.jpg" alt="" />
 											<h4>キム‧ジュンヒョン</h4>
 											<div class="separator"></div>
 											<p>内科専攻</p>
@@ -477,20 +477,20 @@ $(window).scroll(function(){
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>joshua spencer</h4>
+												src="./resources/image/doctor/Cha.jpg" alt="" />
+											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
-											<p>founder</p>
+											<p>外科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>diane lewis</h4>
+												src="./resources/image/doctor/Kim.jpg"alt="" />
+											<h4>キム‧ジュンヒョン</h4>
 											<div class="separator"></div>
-											<p>artist, designer</p>
+											<p>内科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
@@ -504,30 +504,30 @@ $(window).scroll(function(){
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>paul hall</h4>
+												src="./resources/image/doctor/Jo.jpg" alt="" />
+											<h4>ぞ‧ミンゼ</h4>
 											<div class="separator"></div>
-											<p>art director</p>
+											<p>精神医学科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>joshua spencer</h4>
+												src="./resources/image/doctor/Sin.jpg" alt="" />
+											<h4>シン‧ドンチュル</h4>
 											<div class="separator"></div>
-											<p>founder</p>
+											<p>歯科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
-											<h4>diane lewis</h4>
+												src="./resources/image/doctor/Cha.jpg" alt="" />
+											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
-											<p>artist, designer</p>
+											<p>外科専攻</p>
 										</div>
 									</div>
 									<!-- End of col-sm-4 -->
