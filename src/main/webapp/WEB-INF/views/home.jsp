@@ -180,16 +180,20 @@ $(window).scroll(function(){
 								</div>
 
 								<!-- Collect the nav links, forms, and other content for toggling -->
-
-								<c:if test="${param.error != null}">
-							        <p> メールの認証をしてください。 </p>
+								
+								<c:if test="${param.error == 1}">
+							         
+							         <p> メールの認証をしてください。 </p>
+							        	
 								</c:if>
+								
+								
 
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
-										
+										<c:if test="${sessionScope.customer != null}">
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
 											<ul class="dropdown-menu">
@@ -222,7 +226,7 @@ $(window).scroll(function(){
 												<li><a href="healthRecord/goHealthRecordList">個人診断書</a></li>
 											</ul></li>
 										</sec:authorize>
-										
+										</c:if>
 										
 										
 										

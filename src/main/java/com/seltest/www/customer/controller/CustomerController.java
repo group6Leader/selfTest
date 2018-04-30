@@ -247,7 +247,7 @@ public class CustomerController {
 		String admin = "pauluskim0306@gmail.com";
 
 		// Server Address
-		String serverAddress = "http://localhost:9090/www/";
+		String serverAddress = "https://10.10.16.30:8443/www/";
 
 		
 		
@@ -362,7 +362,9 @@ public class CustomerController {
 		
 		session.setAttribute("member", member);
 		session.setAttribute("customer", selCust);
-
+		
+		
+		
 		return "redirect:/";
 
 	}

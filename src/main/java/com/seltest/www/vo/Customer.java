@@ -1,6 +1,8 @@
 package com.seltest.www.vo;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable{
 
 	private int cust_Num;
 	private String cust_Id;
