@@ -83,9 +83,9 @@
 	
 	<select id="selectBoardList" parameterType="hashMap" resultType="Board">
 	
-	select * 
-	from 
-	board
+		select * 
+		from board
+		order by board_Num desc
 	
 	</select>
 
