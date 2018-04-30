@@ -34,7 +34,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
@@ -62,10 +61,15 @@ $(document).ready(function() {
 				if(disCode!=""){
 				
 					$.each(disCode, function(index , item){
-						
-						html += index + ' : ' + item.dis_Code + '<br />'; 
-						console.log(item);
+						var test = '<a href="javascript:void(0)" class="a" id="'+index+'" onclick=sel('+index+')';
+						test += ' value="'+item.dis_Code+'">'+index + ' : ' + item.dis_Code +'</a>'+ '<br>';
+						 html += test;
 
+						
+					console.log(item);
+
+						
+						
 					})
 				
 				}else{
@@ -74,6 +78,9 @@ $(document).ready(function() {
 				html += '</span>';
 				
 				$('#check').html(html);
+				
+				
+				
 			}
 			,error:function(err){
 				console.log(JSON.stringify(err));
@@ -82,8 +89,10 @@ $(document).ready(function() {
 	}	
 });
 	
-	
-	
+function sel(code) {
+	//alert(code);
+}
+
 
 $( function() {
     $( "#first_Date" ).datepicker({ dateFormat: 'yy-mm-dd' });
@@ -246,6 +255,7 @@ function docReserveList() {
                                 <form class="form-horizontal form-material" action="insertHealthRecord" method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                    <input type="hidden" id="cust_Id" value="${login.cust_Id }">
+                                   
                                     <div class="form-group">
                                         <label class="col-md-12">Diseases Name</label>
                                         <div class="col-md-12">
@@ -269,6 +279,8 @@ function docReserveList() {
                                         <div class="col-md-12">
                                             <input type="text" id="dis_Category" name="dis_Category" placeholder="Select dis_Category." required="required" class="form-control form-control-line">
                                         </div>
+                                        <span id="check">
+                                        </span>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-12">Usage</label>
@@ -386,7 +398,7 @@ function docReserveList() {
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
+   <!--  <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script> -->
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->

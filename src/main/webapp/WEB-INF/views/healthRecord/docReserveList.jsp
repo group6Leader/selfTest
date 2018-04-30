@@ -51,7 +51,7 @@
 				search_Num : search_Num
 			},success : function(find) {
 				
-				opener.document.getElementById('cust_Name').value=find.findName;
+				
 				opener.document.getElementById('hos_Name').value=find.hos_Name;
 				opener.document.getElementById('hos_Address').value=find.hos_Address;
 				opener.document.getElementById('hos_Phone').value=find.hos_Phone;
@@ -182,6 +182,7 @@
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- All Jquery -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
     <!-- ============================================================== -->
     <!-- Bootstrap popper Core JavaScript -->
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
