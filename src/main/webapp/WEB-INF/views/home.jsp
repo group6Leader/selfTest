@@ -34,7 +34,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
-
+<link href="https://fonts.googleapis.com/css?family=Lobster|Sriracha" rel="stylesheet">
+<style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+p , span , h1,h2,h3,h4,h5,a{ font-family: 'Noto Sans Japanese', serif; font-weight: 200; }
+</style>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.login').hide();
@@ -184,10 +188,9 @@ $(window).scroll(function(){
 								<c:if test="${param.error == 1}">
 							         
 							         <p> メールの認証をしてください。 </p>
-							        	
 							        	<script type="text/javascript">
-							        		alert("メールの認証をしてください");
-							        	</script>							        	
+							        	alert("メールの認証をしてください");
+							        	</script>
 								</c:if>
 								
 								
@@ -204,39 +207,13 @@ $(window).scroll(function(){
 												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
 											</ul></li>
 										</sec:authorize>
-										
 										<sec:authorize access="isAuthenticated()">
-										<li><a href="customer/goFix">My Page</a></li>
-										<li><a href="javascript:loginCheck()">予約</a></li>
 										<li><a href="webrtc/goWebRtc">遠隔診療</a></li>
-										</sec:authorize>
-										
-										<sec:authorize access="hasRole('DOCTOR')">
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">医者さんのメニュー</a>
-											<ul class="dropdown-menu">
-												<li><a href="healthRecord/goHealthRecord">診断書作成</a></li>
-												<li><a href="healthRecord/goHealthRecordList">診断書リスト</a></li>
-												<li><a href="prescription/goPrescription">処方箋作成</a></li>
-												<li><a href="prescription/prescriptionResult">処方箋リスト</a></li>
-											</ul></li>
-										</sec:authorize>
-										<sec:authorize access="hasRole('CUSTOMER')">
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">患者さんのメニュー</a>
-											<ul class="dropdown-menu">
-												<li><a href="prescription/prescriptionIndList2">個人処方箋</a></li>
-												<li><a href="healthRecord/goHealthRecordList">個人診断書</a></li>
-											</ul></li>
+										<li><a href="customer/goFix">My Page</a></li>
 										</sec:authorize>
 										</c:if>
-										
-										
-										
 										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
-										<li><a href="customer/goAdmin">page</a></li>
-										
 										<c:if test="${sessionScope.customer != null}">
 										<li><a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
 											<span>Logout</span></a>
@@ -298,7 +275,7 @@ $(window).scroll(function(){
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="head_title text-center margin-top-80">
-						<h1>CHAR HOSPITAL</h1>
+						<h1 style="font-family: 'Sriracha', cursive;"><span style="font-size: 5rem; font-family: 'Sriracha', cursive; color:#99ccff;">C</span>HAR HOSPITAL</h1>
 						<c:if test="${sessionScope.customer.division == 1 }">
 							<h3>${sessionScope.customer.cust_Name } 様を歓迎します。</h3>
 							
@@ -434,7 +411,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧イェジン</h4>
+											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -454,7 +431,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ジョミンジェ</h4>
+											<h4>ぞ‧ミンゼ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -481,7 +458,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧イェジン</h4>
+											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -508,7 +485,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ジョミンジェ</h4>
+											<h4>ぞ‧ミンゼ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -528,7 +505,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧イェジン</h4>
+											<h4>ちゃ‧エジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>

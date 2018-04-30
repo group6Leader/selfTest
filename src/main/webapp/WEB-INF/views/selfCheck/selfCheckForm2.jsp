@@ -25,7 +25,7 @@
 <header>
 	<h1>Detail SelfCheck</h1>
 	<h3>
-		By <a href="" target="_blank">Char Hospital</a>
+		By <a href="/www" target="_blank">Char Hospital</a>
 	</h3>
 </header>
 
