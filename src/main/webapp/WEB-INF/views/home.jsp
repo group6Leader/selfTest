@@ -450,7 +450,7 @@ $(window).scroll(function(){
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team3.jpg" alt="" />
+												src="./resources/image/doctor/Jo.jpg" alt="" />
 											<h4>ぞ‧ミンゼ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
@@ -467,7 +467,7 @@ $(window).scroll(function(){
 									<div class="col-sm-4">
 										<div class="team">
 											<img class="img-circle"
-												src="./resources/assets/images/team1.jpg" alt="" />
+												src="./resources/image/doctor/Sin.jpg" alt="" />
 											<h4>シン‧ドンチュル</h4>
 											<div class="separator"></div>
 											<p>歯科専攻</p>
