@@ -144,8 +144,8 @@ public class CustomerController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "custFix", method = {RequestMethod.GET,RequestMethod.POST})
-	public String custFix(Customer customer) {
+	@RequestMapping(value = "custFix2", method = RequestMethod.POST)
+	public String custFix2(Customer customer) {
 		
 		
 		String msg= "!";
