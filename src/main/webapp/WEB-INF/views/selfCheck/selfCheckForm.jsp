@@ -232,10 +232,10 @@ $('#smileys input').on('click', function() {
 			<h4>Sleep Time</h4>
 			<input id="4hour" type="radio" name='sleep_Time' checked='checked' value="4시간 이하" <c:if test="${s.sleep_Time == '4시간 이하' }"> checked="checked" </c:if>/>
 			<label for="4hour">4시간 이하</label> 
-			<input id='6hour'type="radio" name='sleep_Time' value="5~6시간" <c:if test="${s.sleep_Time == '5~6시간' }"> checked="checked" </c:if>/>
-			<label for="6hour">5~6시간</label>
-			<input id='8hour'type="radio" name='sleep_Time' value="7~8시간" <c:if test="${s.sleep_Time == '7~8시간' }"> checked="checked" </c:if>/>
-			<label for="8hour">7~8시간</label>
+			<input id='6hour'type="radio" name='sleep_Time' value="4~6시간" <c:if test="${s.sleep_Time == '5~6시간' }"> checked="checked" </c:if>/>
+			<label for="6hour">4~6시간</label>
+			<input id='8hour'type="radio" name='sleep_Time' value="6~8시간" <c:if test="${s.sleep_Time == '7~8시간' }"> checked="checked" </c:if>/>
+			<label for="8hour">6~8시간</label>
 			<input id='over8hour'type="radio" name='sleep_Time' value="8시간 이상" <c:if test="${s.sleep_Time == '8시간 이상' }"> checked="checked" </c:if>/>
 			<label for="over8hour">8시간 이상</label>
 
@@ -257,12 +257,16 @@ $('#smileys input').on('click', function() {
 
 			<h4>Family history</h4>
 			<input type="text" name="family_History" placeholder="ex) B형 감염 보균자" value="${s.family_History }">
+			
+			<c:if test="${sessionScope.customer.cust_Sex == 'F' }">			
 			<h4>Pregnant</h4>
 			<input id="NoPregnant" type="radio" name='pregnant' checked='checked' value="없음" <c:if test="${s.pregnant == '없음' }"> checked="checked" </c:if>/>
 			<label for="NoPregnant">없음</label> 
 			<input id='YesPregnant' type="radio" name='pregnant' value="있음" <c:if test="${s.pregnant == '있음' }"> checked="checked" </c:if>/>
 			<label for="YesPregnant">있음</label>
-                            </div>
+			</c:if>
+            </div>
+            
 	                    <input type="submit" class="custom-btn btn-1" value="다음">
                         </div>
                     </div>

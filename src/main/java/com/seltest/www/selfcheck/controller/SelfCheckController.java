@@ -41,6 +41,7 @@ public class SelfCheckController {
 		System.out.println(selfCheck);
 		
 		model.addAttribute("s", selfCheck);
+		model.addAttribute("c", customer);
 		
 		return "selfCheck/selfCheckForm";
 	}

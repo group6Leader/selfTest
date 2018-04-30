@@ -89,10 +89,13 @@
 			<div class="cell row header">가족력</div>
 			<div class="cell">${s.family_History }</div>
 		</div>
+		
+		<c:if test="${c.cust_Sex == 'F' }">
 		<div class="row">
 			<div class="cell row header">임신여부</div>
 			<div class="cell">${s.pregnant }</div>
 		</div>
+		</c:if>
 		<div class="row">
 			<div class="cell row header">아픈부위</div>
 			<div class="cell">${s.pain }</div>

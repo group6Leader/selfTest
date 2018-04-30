@@ -208,10 +208,12 @@
                                                 <th>Family History</th>                                                
                                                 <td>${s.family_History }</td>
                                             </tr>
+                                            <c:if test="${sessionScope.customer.cust_Sex == 'F' }">
                                             <tr>
                                                 <th>Pregnant</th>                                                
                                                 <td>${s.pregnant }</td>
                                             </tr>
+                                            </c:if>
                                             <tr>
                                                 <th>Symptom</th>                                                
                                                 <td>${s.symptom }</td>
