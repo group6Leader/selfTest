@@ -323,6 +323,10 @@ if(${list!=null}){
 				var day = document.getElementById("col"+j).value;
 				if(date == day){
 					document.getElementById("col"+j).innerHTML = '<div class="col" id="col'+j+'"value="'+j+'"style="background-color: aqua;"></div>';
+					
+					//  '<span>'+year+'년 '+month+'월 '+date+'일 '+hour+'시</span>'    이거만 넣어주면됨
+					
+					
 					$("#col"+j).hover( 
 							function () {
 								$(this).append($('<span>'+year+'년 '+month+'월 '+date+'일 '+hour+'시</span>')); 
