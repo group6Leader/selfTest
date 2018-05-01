@@ -40,7 +40,7 @@
 			<!-- 맨 첫 화면 문구창  -->
           	<div class="page" id="p1">
           		<span id="title">痛い部位を選んだ後、部位による症状をチェックしてください。</span> <br><br>
-          		<button class="button button-inline button-large" onclick="location.href='../'">종료하기</button>
+          		<button class="button button-inline button-large" onclick="location.href='../'">終了</button>
           	</div>
 
 	<!-- 머리 -->
@@ -304,26 +304,26 @@
           	</section>
           	
           	<section class="content nose">
-          		<h1>6. 다음에 해당하는 것은</h1>
+          		<h1>6. 当たるものは？</h1>
        	 	
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="평소와 다르게 입냄새가 난다" class="checkbox">평소와 다르게 입냄새가 난다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="식욕이 저하됐다" class="checkbox"> 식욕이 저하됐다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="속이 미식거린다" class="checkbox"> 속이 미식거린다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목안에 뭐가 있는 것 같은 이물감이 느껴진다" class="checkbox">목안에 뭐가 있는 것같은 이물감이 느껴진다</label> 
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="에어컨에 장시간 노출됐다" class="checkbox"> 에어컨에 장시간 노출됐다</label>
-						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코 옆 양 볼 부분을 눌렀을 때 아프다" class="checkbox">코 옆 양 볼 부분을 눌렀을 때 아프다</label> 						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="평소와 다르게 입냄새가 난다" class="checkbox">普段と違って口臭を感じる</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="식욕이 저하됐다" class="checkbox"> 食欲を失った</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="속이 미식거린다" class="checkbox"> おなかの調子が悪い</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="목안에 뭐가 있는 것 같은 이물감이 느껴진다" class="checkbox">喉に何かある違和感を感じる</label> 
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="에어컨에 장시간 노출됐다" class="checkbox"> エアコンの風に長時間当たった</label>
+						<label class="label--checkbox"><input type="checkbox" name="symptom" value="코 옆 양 볼 부분을 눌렀을 때 아프다" class="checkbox">ほっぺたを押す時痛みを感じる</label> 						<label class="label--checkbox"><input type="checkbox" name="symptom" value="해당 없음" class="checkbox"> 해당 없음</label>
 					</li>
 	        	</ul>
         	</section>
         	
 			<section class="content neck">
-				<h1>7. 기타</h1>
-					<textarea name="symptom" placeholder="체크항목에 없는 증상에 대해 적어주세요."></textarea>
+				<h1>7. その他</h1>
+					<textarea name="symptom" placeholder="チェックの項目にない症状を書いてください。"></textarea>
 			</section>
 			
-			<input type="submit" value="제출하기" class="button button-inline button-large">
+			<input type="submit" value="提出" class="button button-inline button-large">
 			<!-- <button class="button button-inline button-large">제출하기</button> -->	   
 			
 		</div> 
@@ -333,12 +333,12 @@
 	<form action="goSelfCheck2" method="post">		
         <div class="page" id="p5">
           	<section class="content mouth">
-          		<h1>1. 현재 증상은 어떠십니까 ? </h1>
+          		<h1>1. 今の症状はどうですか。 </h1>
        	 		<ul class="list">
 					<li class="list__item">
-						<label class="label--checkbox"><input type="checkbox" name="mouthQ1" value="침을 흘린다" class="checkbox">침을 흘린다</label>
-						<label class="label--checkbox"><input type="checkbox" name="mouthQ1" value="피를 토했다" class="checkbox">피를 토했다</label>
-						<label class="label--checkbox"><input type="checkbox" name="mouthQ1" value="치아나 잇몸이 간지럽거나 아프지 않는데 입냄새가 난다" class="checkbox">치아나 잇몸이 간지럽거나 아프지 않는데 입냄새가 난다</label>
+						<label class="label--checkbox"><input type="checkbox" name="mouthQ1" value="침을 흘린다" class="checkbox">唾が出た</label>
+						<label class="label--checkbox"><input type="checkbox" name="mouthQ1" value="피를 토했다" class="checkbox">血を吐いた</label>
+						<label class="label--checkbox"><input type="checkbox" name="mouthQ1" value="치아나 잇몸이 간지럽거나 아프지 않는데 입냄새가 난다" class="checkbox">普段と違って口臭を感じる</label>
 					</li>
 			
 					<li class="list__item">

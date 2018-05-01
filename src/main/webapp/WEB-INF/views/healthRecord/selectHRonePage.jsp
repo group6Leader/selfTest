@@ -45,19 +45,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
-	function del_check() {
-
-		var dia_Num = document.getElementById("dia_Num")
-
-		if (confirm("정말로 삭제 하시겠습니까?")) {
-
-			alert(dia_Num.value);
-
-			location.href = 'deleteHR?dia_Num=' + dia_Num.value;
-		}
-
-	}
-
+	
 	function print(printArea) {
 		win = window.open();
 		self.focus();
@@ -82,6 +70,23 @@
 		win.close();
 	}
 </script>
+<script type="text/javascript">
+function del_check() {
+
+	var dia_Num = document.getElementById("dia_Num");
+
+	if (confirm("정말로 삭제 하시겠습니까?")) {
+		
+		alert(dia_Num.value);
+		location.href = 'deleteHR?dia_Num=' + dia_Num.value;
+		return true;
+	}
+	return false;
+
+}
+
+</script>
+
 
 <title>Select HealthRecord</title>
 </head>
