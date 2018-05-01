@@ -11,10 +11,12 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,6 +31,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.seltest.www.common.MediaUtils;
 import com.seltest.www.common.UploadFileUtils;
+import com.seltest.www.dao.ReservationDAO;
+import com.seltest.www.vo.Member;
+import com.seltest.www.vo.Reservation;
 
 
 
@@ -36,15 +41,48 @@ import com.seltest.www.common.UploadFileUtils;
 @RequestMapping(value = "webrtc")
 public class WebRtcController {
 
+	@Autowired
+	ReservationDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(WebRtcController.class);
 
 
 	@RequestMapping(value = "goWebRtc", method = RequestMethod.GET)
-	public String goWebRtc4() {
-
+	public String goWebRtc4(HttpSession session) {
+		
 		logger.info("webRtc-4 창으로 이동합니다-c");
 
+		int cust_Num = 0;
+		Member member = (Member) session.getAttribute("member");
+		if(member != null){
+			cust_Num = member.getCustomer().getCust_Num();
+		}
+				
+		Reservation myRes = new Reservation();
+		int result = 0;		
+		
+		//로그인 체크
+		if(member != null){				
+			myRes = dao.selectMyReservation(cust_Num);
+			//나의 예약정보 확인
+			if(myRes != null){
+				cust_Num = myRes.getCust_Num();
+				int res_Num = myRes.getRes_Num();
+				Reservation res = new Reservation();
+				res.setCust_Num(cust_Num);
+				res.setRes_Num(res_Num);
+				result = dao.deleteReservation(res);
+				if(result != 0){
+					System.out.println("예약 삭제 성공");
+					session.removeAttribute("myReservation");
+				}else{
+					System.out.println("예약 삭제 실패");
+					return "../";
+				}
+			}
+		}
+		
+		
 		return "webrtc/webRtc";
 
 	} 
