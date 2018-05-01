@@ -124,7 +124,7 @@ $(function(){
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../customer/goFix" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <sec:authorize access="hasRole('CUSTOMER')">
                         <li> <a class="waves-effect waves-dark" href="../reservation/book" aria-expanded="false"><i class="fa fa-calendar"></i><span class="hide-menu">Reservation</span></a>
@@ -171,9 +171,11 @@ $(function(){
                             <li class="breadcrumb-item active">Prescription</li>
                         </ol>
                     </div>
+                    <sec:authorize access="hasRole('DOCTOR')">
                     <div class="col-md-7 align-self-center">
                         <a href="goHealthRecord" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down">New HealthRecord</a>
                     </div>
+                    </sec:authorize>
                 </div>
                 
                 <!-- ============================================================== -->

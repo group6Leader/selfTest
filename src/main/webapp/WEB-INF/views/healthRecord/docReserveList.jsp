@@ -39,9 +39,10 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 	<script type="text/javascript">
-	function formCheck(custNum) {
+	function formCheck(custNum, custName) {
 	
 	var search_Num = custNum;
+	var search_Name = custName;
 
 	$(document).ready(function() {
 		$.ajax({
@@ -56,6 +57,7 @@
 				opener.document.getElementById('hos_Address').value=find.hos_Address;
 				opener.document.getElementById('hos_Phone').value=find.hos_Phone;
 				opener.document.getElementById('cust_Num').value=search_Num;
+				opener.document.getElementById('cust_Name').value=search_Name;
 				
 				window.close();
 				
@@ -140,6 +142,7 @@
                                                 <th>Hospital Address</th>
                                                 <th>Hospital Phone</th>
                                                 <th>Customer Number</th>
+                                                <th>Customer Name</th>
                                                 <th>Select</th>
                                             </tr>
                                         </thead>
@@ -150,7 +153,8 @@
                                                 <td>${find_Cust.hos_Addr }</td>
                                                 <td>${find_Cust.hos_Phone }</td>
                                                 <td>${find_Cust.cust_Num }</td>
-                                                <td><button class="btn" onclick="formCheck(${find_Cust.cust_Num })">SELECT</button></td>
+                                                <td>${find_Cust.cust_Name }</td>
+                                                <td><button class="btn" onclick="formCheck(${find_Cust.cust_Num }, '${find_Cust.cust_Name }')">SELECT</button></td>
                                             </tr>
                                             </c:forEach>
                                         </tbody>

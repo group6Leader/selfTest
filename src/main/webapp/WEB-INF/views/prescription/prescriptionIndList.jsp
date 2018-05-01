@@ -189,7 +189,9 @@
                         </ol>
                     </div>
                     <div class="col-md-7 align-self-center">
-                        <a href="readOne?cust_Num=${cust_Num}" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down">New PreScription</a>
+                        <sec:authorize access="hasRole('DOCTOR')">
+	                        <a href="readOne?cust_Num=${cust_Num}" class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down">New PreScription</a>
+                        </sec:authorize>
                     </div>
 
                     
@@ -220,7 +222,7 @@
                                             <tr>
                                                 <td><a href="prescriptionIndResult?pre_Num=${vo.pre_Num }&cust_Num=${vo.cust_Num}"> ${vo.pre_Num }</a></td>
                                                 <sec:authorize access="hasRole('CUSTOMER')">
-                                                <td> <input type="button" value="Delete" onclick="del(${vo.pre_Num}, ${vo.cust_Num})"> </td>
+                                                <td> <input type="button" value="Delete" onclick="del(${vo.pre_Num}, ${vo.cust_Num})">  </td>
                                                 </sec:authorize>
                                             </tr>
                                          </c:forEach>

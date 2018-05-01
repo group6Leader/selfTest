@@ -254,25 +254,30 @@ function docReserveList() {
                             <!-- Tab panes -->
                                 <form class="form-horizontal form-material" action="insertHealthRecord" method="post" enctype="multipart/form-data">
                             <div class="card-body">
-                                   <input type="hidden" id="cust_Id" value="${login.cust_Id }">
+                                   	<div>
+	                                   <input type="hidden" id="cust_Id" value="${login.cust_Id }">
+                                   	<c:if test="${sessionScope.customer.division == 2 }">
+										<button class="btn docReserveList" onclick="docReserveList()" value="findCust">FIND_CUST</button>
+									</c:if> 
+                                   	</div>
                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Diseases Name</label>
                                         <div class="col-md-12">
-                                            <input type="text"  id="dis_Name" name="dis_Name" placeholder="Enter disease name" class="form-control form-control-line">
+                                            <input type="text"  id="dis_Name" name="dis_Name" placeholder="Enter Disease Name" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Final Diagnosis</label>
                                         <div class="col-md-12">
-                                            <input id="final_Diagnosis" name="final_Diagnosis" type="text" placeholder="Enter final_Diagnosis" class="form-control form-control-line">
+                                            <input id="final_Diagnosis" name="final_Diagnosis" type="text" placeholder="Enter Final Diagnosis" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label class="col-md-12">Diseases Category</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="dis_Category" name="dis_Category" placeholder="Select dis_Category." required="required" class="form-control form-control-line">
+                                            <input type="text" id="dis_Category" name="dis_Category" placeholder="Select Disease Category." required="required" class="form-control form-control-line">
                                         </div>
                                         <span id="check">
                                         </span>
@@ -306,43 +311,50 @@ function docReserveList() {
                                     </div>
                                     </div>
                                 <div class="card-body">
-                                    <div class="form-group">
+                                    <div class="form-group"> 
                                         <label class="col-md-12">Care Opinions</label>
                                         <div class="col-md-12">
-                                            <input id="care_Opinions" name="care_Opinions" placeholder="Write care_Opinions" required="required" class="form-control form-control-line">
+                                            <input id="care_Opinions" name="care_Opinions" placeholder="Write Care Opinions" required="required" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Ect</label>
+                                        <label class="col-md-12">Etc</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="ect" name="ect" class="form-control form-control-line" placeholder="Write ect" required="required" class="form-control form-control-line">
+                                            <input type="text" id="ect" name="ect" class="form-control form-control-line" placeholder="Extra" required="required" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12">Customer Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" readonly="readonly" id="cust_Name" name="cust_Name" placeholder="Customer Name" class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hos_Name" name="hos_Name" placeholder="hospital_Name" class="form-control form-control-line">
+                                            <input type="text" readonly="readonly" id="hos_Name" name="hos_Name" placeholder="Hospital Name" class="form-control form-control-line">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital Address</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hos_Address" name="hos_Address" placeholder="hospital_Address" class="form-control form-control-line">
+                                            <input type="text" readonly="readonly" id="hos_Address" name="hos_Address" placeholder="Hospital Address" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital PhoneNumber</label>
                                         <div class="col-md-12">
-                                            <input placeholder="hospital_Phone" type="number" readonly="readonly" id="hos_Phone" name="hos_Phone" class="form-control form-control-line">
+                                            <input type="text" readonly="readonly" id="hos_Phone" name="hos_Phone" placeholder="Hospital Phone" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Customer Number</label>
                                         <div class="col-md-12">
-                                            <input id="cust_Num" name="cust_Num" placeholder="write customer name" type="text" readonly="readonly" class="form-control form-control-line">
-                                            <c:if test="${sessionScope.customer.division == 2 }">
-												<button class="btn docReserveList" onclick="docReserveList()" value="findCust">FIND_CUST</button>
-											</c:if>
+                                            <input id="cust_Num" name="cust_Num" placeholder="Customer Number" type="text" readonly="readonly" class="form-control form-control-line">
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -353,6 +365,7 @@ function docReserveList() {
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
+                                        	<!-- <input type="hidden" name=""> -->
                                             <button type="submit" id="fixBtn" class="btn btn-success">Submit</button>
                                             <button type="reset" id="delBtn" class="btn btn-success">Reset</button>
                                         </div>

@@ -216,6 +216,15 @@ $(window).scroll(function(){
 										
 										</c:if>
 										
+										<sec:authorize access="hasRole('CUSTOMER')">
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-haspopup="true">患者さんのメニュー</a>
+											<ul class="dropdown-menu">
+												<li><a href="prescription/prescriptionIndList2">個人処方箋</a></li>
+												<li><a href="healthRecord/goHealthRecordList">個人診断書</a></li>
+											</ul></li>
+										</sec:authorize>
+										
 										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
 										

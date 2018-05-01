@@ -72,7 +72,7 @@
 		from prescription 
 		where cust_Num = #{cust_Num} 
 		and pre_Del = 0
-		order by pre_Num
+		order by pre_Num desc
 
 	</select>
 	

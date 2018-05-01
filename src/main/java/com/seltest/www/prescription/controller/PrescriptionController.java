@@ -257,6 +257,6 @@ public class PrescriptionController {
 			return "healthRecord/selectHRonePage";
 		}*/
 		
-		return "redirect: ./prescriptionIndList?cust_Num=" + cust_Num;
+		return "redirect: ./prescriptionIndList2";
 	}
 }
