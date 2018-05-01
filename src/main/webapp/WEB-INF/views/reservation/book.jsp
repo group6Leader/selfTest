@@ -603,10 +603,12 @@ addEventButton.onclick = function (e) {
 				</div>
 
 				<div class="calendar-footer">
+				<sec:authorize access="hasRole('CUSTOMER')">
 					<div class="emptyForm" id="emptyForm">
 						<h4 id="emptyFormTitle">예약 하기</h4>
 						<a class="addEvent" id="changeFormButton">Add new</a>
 					</div>
+				</sec:authorize>
 					<div class="addForm" id="addForm">
 						<h4>담당의사와 예약시간을 선택해주세요.</h4>
 

@@ -200,15 +200,7 @@ $(window).scroll(function(){
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
 										<c:if test="${sessionScope.customer != null}">
-										
-										<sec:authorize access="hasRole('CUSTOMER')">
-										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
-											<ul class="dropdown-menu">
-												<li><a href="selfCheck/goSelfCheck">自己診断作成</a></li>
-												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
-											</ul></li>
-										</sec:authorize>
-										
+																														
 										<sec:authorize access="isAuthenticated()">
 										<li><a href="webrtc/goWebRtc">遠隔診療</a></li>
 										<li><a href="customer/goFix">My Page</a></li>

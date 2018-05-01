@@ -21,6 +21,11 @@ $(function(){
 	  $('#keywords').tablesorter(); 
 	});
 </script>
+<style type="text/css">
+body {
+		background-color: #F0F8FF;
+	}
+</style>
 
 
 

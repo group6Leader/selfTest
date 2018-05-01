@@ -7,6 +7,7 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/selfCheck3.css"></c:url>">
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>selfCheck/readOne</title>
 
@@ -110,10 +111,10 @@
 		</div>
 	</div> <br>
 	
-	<button onclick="location.href='./goSelfCheckList'" style="margin-left: 30px;"> Back </button>
+	<button onclick="location.href='./goSelfCheckList'" class="btn-themecolor" style="margin-left: 30px;"> Back </button>
 	
 	<sec:authorize access="hasRole('DOCTOR')">
-	<button onclick="goIndPrescription()" > Prescription </button>
+	<button onclick="goIndPrescription()" class="btn-themecolor"> Prescription </button>
 	</sec:authorize>
 	
 	<input type="hidden" id="prescription" value="${s.cust_Num}">

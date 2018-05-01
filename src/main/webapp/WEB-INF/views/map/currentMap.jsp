@@ -267,9 +267,9 @@ function clickBtn(){
 	var hospitalAddr = document.querySelector('.hospitalAddr');
 	var hospitalUrl = document.querySelector('.hospitalUrl');
 	var hospitalPhone = document.querySelector('.hospitalPhone');
-	alert(hospitalAddr.value);
+	/* alert(hospitalAddr.value);
 	alert(hospitalUrl.value);
-	alert(hospitalPhone.value);
+	alert(hospitalPhone.value); */
 	document.getElementById("hosName").innerHTML = '<input type="text" name="yadmNm" id="yadmNm" value="'+ hospitalName.value +'" class="form-control">';
 	document.getElementById("hosUrl").innerHTML = '<input type="hidden" name="hos_Homepage" value="'+ hospitalUrl.value + '" >';
 	document.getElementById("hosAddr").innerHTML = '<input type="hidden" name="hos_Addr" value="'+ hospitalAddr.value + '" >';

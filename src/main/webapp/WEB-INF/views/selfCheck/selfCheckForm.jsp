@@ -216,7 +216,7 @@ $('#smileys input').on('click', function() {
 			<label for="noSurgery">手術経験無し</label> 
 			<input id='yesSurgery' type="radio" name='surgery' value="있음" <c:if test="${s.surgery == '있음' }"> checked="checked" </c:if>/>
 			<label for="yesSurgery">手術経験有り</label>
-			<h4>Obstacle</h4>
+			<h4>Disabled</h4>
 			<input id="noDisability" type="radio" name='disability' checked='checked' value="없음" <c:if test="${s.disability == '없음' }"> checked="checked" </c:if>/>
 			<label for="noDisability">障害無し</label> 
 			<input id='yesDisability' type="radio" name='disability' value="있음" <c:if test="${s.disability == '있음' }"> checked="checked" </c:if>/>

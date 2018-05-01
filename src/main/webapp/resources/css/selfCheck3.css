@@ -12,6 +12,31 @@ body {
 font-family: 'Gothic A1', sans-serif;
   font-family: 'Nanum Gothic', sans-serif;
 }
+btn {
+  padding: 7px 12px;
+  cursor: pointer; }
+  .btn:hover {
+    opacity: 0.8; }
+  .btn:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+
+.btn-themecolor,
+.btn-themecolor.disabled {
+  background: #20aee3;
+  color: #ffffff;
+  border: 1px solid #20aee3; }
+  .btn-themecolor:hover,
+  .btn-themecolor.disabled:hover {
+    background: #20aee3;
+    opacity: 0.7;
+    border: 1px solid #20aee3; }
+  .btn-themecolor.active, .btn-themecolor:active, .btn-themecolor:focus,
+  .btn-themecolor.disabled.active,
+  .btn-themecolor.disabled:active,
+  .btn-themecolor.disabled:focus {
+    background: #028ee1; }
+
 @media screen and (max-width: 580px) {
   body {
     font-size: 16px;

@@ -443,7 +443,8 @@ $(function() {
 	    console.log('onstart', arguments);
 	    isRecognizing = true;
 
-	    $btnMic.attr('class', 'on');
+	    $btnMic.attr('class', 'on btnTools btn-3');
+	    $btnMic.html('<i class="fas fa-microphone"></i>');
 	  };
 
 	  recognition.onend = function() {
@@ -455,7 +456,8 @@ $(function() {
 	    }
 
 	    // DO end process
-	    $btnMic.attr('class', 'off');
+	    $btnMic.attr('class', 'off btnTools btn-5');
+	    $btnMic.html('<i class="fas fa-microphone-slash"></i>');
 	    if (!finalTranscript) {
 	      console.log('empty finalTranscript');
 	      return false;
@@ -615,7 +617,7 @@ $(function() {
 <c:if test="${sessionScope.customer.division == 1 }">
 	<button class="selfcheck btnTools btn-2" onclick="selfCheckOne()"><i class="fas fa-clipboard"></i></button>
 </c:if> 
-<button id="btn-mic" class="off btnTools btn-3"><i class="fas fa-microphone-slash"></i></button>
+<button id="btn-mic" class="off btnTools btn-5"><i class="fas fa-microphone-slash"></i></button>
      <input type="button" id="enterBtn" class="fa btnTools btn-4" value="">
 <input type="button" id="exitBtn" class="fa btnTools btn-5" value="">
 </div>

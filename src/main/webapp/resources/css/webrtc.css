@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1');
 @import
 	url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
@@ -19,17 +19,17 @@ body,html{
 
 #local_video {
 	position: absolute;
-	top: 10%;
-	left: 13%;
-	width: 22.5%;
+	top: 20%;
+	left: 3%;
+	width: 33%;
 	background: rgba(200, 200, 200, 0.7);
 }
 
 #remote_video {
 	position: absolute;
-	top: 10%;
-	left: 37.5%;
-	width: 22.5%;
+	top: 20%;
+	left: 38%;
+	width: 33%;
 	background: rgba(200, 200, 200, 0.7);
 }
 #webRtcbtn{
@@ -40,6 +40,7 @@ body,html{
 }
 /* 요기 밑에는 채팅 */
 .jamaku {
+	font-family: 'Gothic A1', sans-serif;
 	background-color: rgba(0, 0, 0, 0.6);
 	color: white;
 	display: inline-block;
@@ -49,11 +50,12 @@ body,html{
 }
 
 #me {
-	left: 8rem;
+	margin-top:30rem;
+	margin-left: 10rem;
 }
 
-#you {
-	left: 33rem;
+#you {margin-top:30rem;
+ margin-left:55rem;
 }
 
 #chatArea {
@@ -135,12 +137,12 @@ body,html{
 
 /* 요기 밑에는 마이크자막 */
 .on{
-	background-color: #a9e897;
-	content: "";
-}
+	transition: all 2s;
+	}
 .off{
-	background-color: #ff9f9f;
+	transition: all 2s;
 }
+
 
 /*--------------------
 Mixins
@@ -313,6 +315,7 @@ Body
  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
+  
 }
 .btnTools:HOVER {
 	 background-position: right center; /* change the direction of the change here */

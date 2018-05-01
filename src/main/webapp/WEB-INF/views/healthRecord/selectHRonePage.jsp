@@ -254,8 +254,10 @@ function del_check() {
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
             </div>
-<button class="form-btn" onclick="del_check()">DELETE</button>
-<input type = "button" OnClick="print(document.getElementById('printArea').innerHTML)" value="PRINT"/>
+            <div style="margin-left: 83rem;">
+<button class="form-btn btn-themecolor" onclick="del_check()">DELETE</button>
+<input class="btn-themecolor" type = "button" OnClick="print(document.getElementById('printArea').innerHTML)" value="PRINT"/>
+	</div>
 	</div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

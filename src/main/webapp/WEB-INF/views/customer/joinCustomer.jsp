@@ -20,7 +20,7 @@ $(document).ready(function() {
 	 
 	var RegexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 요휴성검사
 
-	var RegexName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; //이름 유효성 검사 2~4자 사이
+	//var RegexName = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; //이름 유효성 검사 2~4자 사이
 
 	var RegexId = /^[a-z0-9_-]{3,16}$/; //아이디 유효성 검사 316자 사이
 	
@@ -33,9 +33,9 @@ $(document).ready(function() {
 			$("#cust_Id").focus();
 			return false;
 		}
-		if (!RegexName.test($.trim($("#cust_Name").val())))
+		if (!RegexId.test($.trim($("#cust_Name").val())))
 		{
-			alert("이름은 입력해주세요.");
+			alert("이름을 입력해주세요.");
 			$("#cust_Name").focus();
 			return false;
 		}

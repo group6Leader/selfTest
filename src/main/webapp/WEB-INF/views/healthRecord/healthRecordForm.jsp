@@ -257,7 +257,7 @@ function docReserveList() {
                                    	<div>
 	                                   <input type="hidden" id="cust_Id" value="${login.cust_Id }">
                                    	<c:if test="${sessionScope.customer.division == 2 }">
-										<button class="btn docReserveList" onclick="docReserveList()" value="findCust">FIND_CUST</button>
+										<button class="btn docReserveList" onclick="docReserveList()" value="findCust" style="width: 47rem;">FIND_CUST</button>
 									</c:if> 
                                    	</div>
                                    

@@ -115,9 +115,9 @@ $(document).ready(function() {
 				,cust_Major : cust_Major
 				
 			},success : function(msg) {
-				alert(msg);
+				/* alert(msg); */
 			},error : function(err) {
-				alert(JSON.stringify(err));
+				/* alert(JSON.stringify(err)); */
 			}
 		
 		});
