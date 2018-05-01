@@ -268,12 +268,7 @@ function docReserveList() {
                                             <input id="final_Diagnosis" name="final_Diagnosis" type="text" placeholder="Enter final_Diagnosis" class="form-control form-control-line">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Birth</label>
-                                        <div class="col-md-12">
-                                            <input id="final_Diagnosis" name="final_Diagnosis" placeholder="Enter final_Diagnosis."type="text" required class="form-control form-control-line">
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-12">Diseases Category</label>
                                         <div class="col-md-12">
@@ -300,7 +295,7 @@ function docReserveList() {
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">Diagnosis Date</label>
                                         <div class="col-md-12">
-                                            <input type="email"id="dia_Date" name="dia_Date" class="form-control form-control-line">
+                                            <input type="text"id="dia_Date" name="dia_Date" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
