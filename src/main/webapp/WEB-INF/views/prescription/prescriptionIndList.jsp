@@ -184,7 +184,12 @@
                     <div class="col-md-5 align-self-center">
                         <h3 class="text-themecolor">Patient Prescription</h3>
                         <ol class="breadcrumb">
+                        <sec:authorize access="hasRole('CUSTOMER')">
+                            <li class="breadcrumb-item"><a href="/www">Home</a></li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('DOCTOR')">
                             <li class="breadcrumb-item"><a href="prescriptionResult">Prescription</a></li>
+                            </sec:authorize>
                             <li class="breadcrumb-item active">Patient Prescription</li>
                         </ol>
                     </div>

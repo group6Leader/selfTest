@@ -360,6 +360,7 @@ public class CustomerController {
 		
 		logger.info("{}", selCust);
 		
+		session.setAttribute("login", member);
 		session.setAttribute("member", member);
 		session.setAttribute("customer", selCust);
 		
