@@ -6,6 +6,17 @@ body {
   background-color: #eee !important;
   font-family: "Sawarabi Mincho";
 }
+.info{
+	position: absolute;
+	width: 11rem;
+	background-color: rgba(233,233,233,0.7);
+	padding: 0.3rem;
+	border-radius: 5rem;
+	
+}
+#col{
+height: 3px;
+	}
 
 h3, h4, h5 {
   /*color: #e7e7e7;*/
@@ -199,6 +210,22 @@ h3, h4, h5 {
   left: 47%;
   top: 67%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .content-wrapper {
   padding-top: 50px;

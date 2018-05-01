@@ -80,6 +80,15 @@ var selectedDayBlock = null;
 var globalEventObj = {};
 var lastDay;
 var sidebar = document.getElementById("sidebar");
+var x= 0;
+var y= 0;
+
+$(document).mousemove(function(e){
+	x = e.pageX;
+    y = e.pageY;
+    
+	   });
+
 
 function createCalendar(date, side) {
   var currentDate = date;
@@ -322,17 +331,19 @@ if(${list!=null}){
 			for(var j = 1; j<=lastDay; j++){
 				var day = document.getElementById("col"+j).value;
 				if(date == day){
-					document.getElementById("col"+j).innerHTML = '<div class="col" id="col'+j+'"value="'+j+'"style="background-color: aqua;"></div>';
+					document.getElementById("col"+j).style.backgroundColor = "#f45ff3";
 					
 					//  '<span>'+year+'년 '+month+'월 '+date+'일 '+hour+'시</span>'    이거만 넣어주면됨
 					
-					
 					$("#col"+j).hover( 
 							function () {
-								$(this).append($('<span>'+year+'년 '+month+'월 '+date+'일 '+hour+'시</span>')); 
+								$('body').append($('<div class="info">'+year+'년 '+month+'월 '+date+'일 '+hour+'시</div>'));
+								var offset = $(this).offset();
+								$(".info").css('left',x+10);
+								$(".info").css('top',y-20);
 							}, 
 							function () { 
-								$(this).find("span:last").remove(); 
+								$(".info").remove(); 
 							} 
 						);
 				}
