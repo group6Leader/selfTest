@@ -101,7 +101,7 @@
 						 <div class="field">
 							<label for="comment">Photo</label>
 								<div id="filecontainer">
-									<img src="download?saved=${b.saved_File}" style="width: 50rem; height:10rem; background-color: rgba(222,222,222,0.8);" />			
+									<img src="download?saved=${b.saved_File}" style="width: 30rem; height:10rem; background-color: rgba(222,222,222,0.8);" />			
 								</div>
 						</div>
 						<!-- Content -->					

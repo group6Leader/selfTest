@@ -208,7 +208,7 @@
 						 </div> <br><br>	
 						<div class="field">
 						<label for="content">Photo UpLode</label>
-						<div class="fileDrop" id="fileDropdiv" style="width: 50rem; height:10rem; background-color: rgba(222,222,222,0.8);">
+						<div class="fileDrop" id="fileDropdiv" style="width: 20rem; height:10rem; background-color: rgba(222,222,222,0.8);">
     								<!-- 업로드된 파일 목록 -->
    							<div class="uploadedList">
    											<!-- '<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">' -->

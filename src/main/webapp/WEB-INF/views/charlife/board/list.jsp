@@ -73,6 +73,7 @@
 								</c:forEach>
 								
 							</table>
+							<div style="margin-left: 30rem;">
 							<a href="javascript:pagingFormSubmit(1)">◁◁</a>
 
 <a href="javascript:pagingFormSubmit(${navi.currentPage-1 })">◀</a>
@@ -97,7 +98,7 @@
    <form action="boardList" id="pagingForm" method="get">
    <input type="hidden" name="page" id="page">
    </form>
-											
+</div>											
 						</div>
 
 					</article>

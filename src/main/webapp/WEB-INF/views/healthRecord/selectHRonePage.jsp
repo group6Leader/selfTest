@@ -254,10 +254,11 @@ function del_check() {
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
             </div>
+            <sec:authorize access="hasRole('CUSTOMER')">
             <div style="margin-left: 83rem;">
 <button class="form-btn btn-themecolor" onclick="del_check()">DELETE</button>
 <input class="btn-themecolor" type = "button" OnClick="print(document.getElementById('printArea').innerHTML)" value="PRINT"/>
-	</div>
+	</div></sec:authorize>
 	</div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
