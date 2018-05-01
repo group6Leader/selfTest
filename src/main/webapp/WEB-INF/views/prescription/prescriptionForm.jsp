@@ -388,6 +388,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <!-- Bootstrap tether Core JavaScript -->
+    <script src="../resources/assets2/node_modules/jquery/jquery.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/popper.min.js"></script>
     <script src="../resources/assets2/node_modules/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
