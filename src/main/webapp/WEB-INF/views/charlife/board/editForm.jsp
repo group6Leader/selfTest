@@ -46,7 +46,9 @@
 			return false;
 		}
 		
-		return true;
+		if(confirm("정말 수정하시겠습니까?")){
+			return true;
+		}
 	};
 	
 	</script>	
@@ -67,7 +69,7 @@
 					
 					<h2>Write Your Comment (Edit) </h2>
 
-					<form action="edit" method="post">
+					<form action="edit" method="post" onsubmit="return checkForm()">
 
 						<div class="field half" style="width: 200px; font">
 							<label for="Category">Category</label>

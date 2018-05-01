@@ -20,9 +20,7 @@ function del(board_Num) {
 
 function edit(board_Num) {
 	
-	if(confirm("정말 수정하시겠습니까?")){
-		location.href='./edit?board_Num=' + board_Num;
-	}
+	location.href='./edit?board_Num=' + board_Num;
 }
 
 function del2(board_Num, reply_Num) {
