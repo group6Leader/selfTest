@@ -154,7 +154,7 @@
 					<!-- <button onclick="add()" style="margin-left: 400px;"> 추가 </button> <br><br> -->
 
 					<label></label>
-					<input type="submit" value="Print Out" id="create-account" class="button"/>
+					<input type="submit" value="Submit" id="create-account" class="button"/>
 					
 				</form>
 

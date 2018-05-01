@@ -168,11 +168,15 @@ public class PrescriptionController {
 	}
 	
 	@RequestMapping(value = "prescriptionIndResult", method = RequestMethod.GET)
-	public String prescriptionIndResult(int pre_Num, Model model, HttpSession session) {
+	public String prescriptionIndResult(int pre_Num, int cust_Num, Model model, HttpSession session) {
 		
-		logger.info("PresciprtionIndResult로 가기");
+		logger.info("환자 한 명의 처방전 보기~");
 		
-		System.out.println("pre_Num: " + pre_Num);
+		logger.info("per_Num: {}", pre_Num);
+		logger.info("cust_Num: {}", cust_Num);
+	
+		Customer c = customerDAO.readOne(cust_Num);
+		model.addAttribute("c", c);
 		
 		Prescription prescription = prescriptionDAO.readOne(pre_Num);
 		System.out.println(prescription);
@@ -192,7 +196,7 @@ public class PrescriptionController {
 		ArrayList<Prescription> plist = new ArrayList<>();
 		int last = med_NameArray.length;
 		for(int i =0;i<last;i++){
-			System.out.println("i = "+i);
+//			System.out.println("i = "+i);
 			Prescription p = new Prescription();
 			p.setCust_Id(prescription.getCust_Id());
 			p.setCust_Num(prescription.getCust_Num());
@@ -205,14 +209,15 @@ public class PrescriptionController {
 		}		
 		
 		if(session.getAttribute("cust_Num") != null){
-		int cust_Num = (int) session.getAttribute("cust_Num");
-		Customer c = customerDAO.readOne(cust_Num);
-		System.out.println(c);
-		model.addAttribute("c", c);
+			cust_Num = (int) session.getAttribute("cust_Num");
+			c = customerDAO.readOne(cust_Num);
+			logger.info("Customer session 가지고 오기");
+			logger.info("{}", c);
+			model.addAttribute("c", c);
 		}
+		
 		model.addAttribute("pre_Num",plist.get(0).getPre_Num());
 		model.addAttribute("doctor_Name",plist.get(0).getCust_Id());
-	
 		model.addAttribute("p", plist);
 		
 		return "prescription/prescriptionIndResult";

@@ -281,7 +281,7 @@ function docReserveList() {
                                         <label class="col-sm-12">Usage</label>
                                         <div class="col-sm-12">
                                             <select name="usage" class="form-control form-control-line">
-                                                	<option value="submit">제출용</option>
+                                                	<option value="submit">Submit</option>
                                                 	<option value="save">Save</option>
                                             </select>
                                         </div>

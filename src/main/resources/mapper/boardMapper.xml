@@ -75,9 +75,8 @@
 	
 	<select id="getTotal" parameterType="hashMap" resultType="int">
 	
-	select count(*)
-
-	from board
+		select count(*)
+		from board
 	
 	</select>
 	

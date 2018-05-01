@@ -200,6 +200,7 @@ $(window).scroll(function(){
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
 										<c:if test="${sessionScope.customer != null}">
+										
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
 											<ul class="dropdown-menu">
@@ -207,13 +208,17 @@ $(window).scroll(function(){
 												<li><a href="selfCheck/goSelfCheck3">自己診断結果</a></li>
 											</ul></li>
 										</sec:authorize>
+										
 										<sec:authorize access="isAuthenticated()">
 										<li><a href="webrtc/goWebRtc">遠隔診療</a></li>
 										<li><a href="customer/goFix">My Page</a></li>
 										</sec:authorize>
+										
 										</c:if>
+										
 										<li><a href="charlife/gocharlife">CHAR LIFE</a></li>
 										<li><a href="javascript:map()">MAP</a></li>
+										
 										<c:if test="${sessionScope.customer != null}">
 										<li><a class="codrops-icon codrops-icon-drop" href="customer/logout" id='Logout'>
 											<span>Logout</span></a>
@@ -411,7 +416,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧エジン</h4>
+											<h4>チャイェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -431,7 +436,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ぞ‧ミンゼ</h4>
+											<h4>ジョミンジェ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -458,7 +463,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧エジン</h4>
+											<h4>チャイェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -485,7 +490,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ぞ‧ミンゼ</h4>
+											<h4>ジョミンジェ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -505,7 +510,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>ちゃ‧エジン</h4>
+											<h4>チャイェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
