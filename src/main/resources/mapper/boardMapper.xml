@@ -16,6 +16,13 @@
 		, score
 		, cust_Num
 		
+		<if test="original_File != null">
+			,original_File
+		</if>	
+		<if test="saved_File != null">
+			,saved_File
+		</if>
+		
 		)
 		
 		values(
@@ -26,6 +33,12 @@
 		, #{content}
 		, #{score}
 		, #{cust_Num}
+		<if test="original_File != null">
+			,#{original_File}
+		</if>	
+		<if test="saved_File != null">
+			,#{saved_File}
+		</if>
 		
 		)
 	
