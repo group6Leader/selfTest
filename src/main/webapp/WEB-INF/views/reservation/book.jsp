@@ -327,15 +327,15 @@ if(${list!=null}){
 				date = arrDate[i].substring(16, 18);
 			}
 			hour = arrDate[i].substr(18,2);
-			alert(year +"년 " + month+ "월 " + date + "일 " + hour +"시");
+			//alert(year +"년 " + month+ "월 " + date + "일 " + hour +"시");
 			for(var j = 1; j<=lastDay; j++){
 				var day = document.getElementById("col"+j).value;
 				if(date == day){
-					document.getElementById("col"+j).style.backgroundColor = "#f45ff3";
+					document.getElementById("col"+j).style.backgroundColor = "#ccccff";
 					
 					//  '<span>'+year+'년 '+month+'월 '+date+'일 '+hour+'시</span>'    이거만 넣어주면됨
 					
-					$("#col"+j).hover( 
+			/* 		$("#col"+j).hover( 
 							function () {
 								$('body').append($('<div class="info">'+year+'년 '+month+'월 '+date+'일 '+hour+'시</div>'));
 								var offset = $(this).offset();
@@ -345,7 +345,7 @@ if(${list!=null}){
 							function () { 
 								$(".info").remove(); 
 							} 
-						);
+						); */
 				}
 			}	
 		}
