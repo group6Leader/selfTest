@@ -210,11 +210,15 @@ public class ReservationController {
 	
 	//예약 하기2
 	@RequestMapping(value="reservation2", method = RequestMethod.GET)
-	public String revservation2(HttpSession session, Model model, String yadmNm, String dgsbjtCd, String date, String time){
+	public String revservation2(HttpSession session, Model model, String yadmNm, String dgsbjtCd, String date, String time,
+			String hos_Addr, String hos_Homepage, String hos_Phone){
 		System.out.println(yadmNm);
 		System.out.println(dgsbjtCd);
 		System.out.println(date);
 		System.out.println(time);
+		System.out.println(hos_Addr);
+		System.out.println(hos_Homepage);
+		System.out.println(hos_Phone);
 		
 		
 		String hos_Name = "";
@@ -276,6 +280,17 @@ public class ReservationController {
 			model.addAttribute("haveRes", haveRes);
 			return "redirect:../mapping/maps?haveRes="+haveRes;
 		}
+		
+		if(hos_Addr !=null || hos_Addr!=""){
+			res.setHos_Addr(hos_Addr);
+		}
+		if(hos_Homepage != null || hos_Homepage != ""){
+			res.setHos_Homepage(hos_Homepage);
+		}
+		if(hos_Phone != null || hos_Phone != ""){
+			res.setHos_Phone(hos_Phone);
+		}
+		res.setCust_Id("cha");
 		String cust_Name = member.getCustomer().getCust_Name();
 		res.setCust_Name(cust_Name);
 		res.setCust_Num(cust_Num);

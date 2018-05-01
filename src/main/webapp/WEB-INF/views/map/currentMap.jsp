@@ -170,9 +170,13 @@
 								      '</div>'+
 								      '<input type="button" id=firstHeading class="hospitalName" onclick="clickBtn()" value="'+yadmNm+'">'+
 								      '<div id="bodyContent">'+
-								      '<p><b>홈페이지 : </b>' + '<a href=' + hospUrl + ' target="_blank">' + hospUrl + '</a></p>'+
-								      '<p><b>주소 : </b>' + addr + '</p>' +
-								      '<p><b>전화번호 : </b>' + telno + '</p></div>');
+								      '<p><b>홈페이지 : </b>' + '<a href=' + hospUrl + ' target="_blank">'+hospUrl+'</a></p>'+
+								      '<p><b>주소 : </b>'+addr+'</p>' +
+								      '<p><b>전화번호 : </b><span  >' + telno + '</span></p></div>' +
+								      '<input type="hidden" class="hospitalUrl" value="'+hospUrl +'">' +
+								      '<input type="hidden" class="hospitalPhone" value="'+telno +'">' + 
+								      '<input type="hidden" class="hospitalAddr" value="'+addr +'">' 
+									);
 							//hosInfoArr.push("홈페이지: " + hospUrl + "\n주소: " + addr + "\n전화번호: " + telno);
 							hosLocation.push(new google.maps.LatLng(yPos, xPos));
 							//console.log('병원명:'+yadmNm, '주소:'+addr, '홈페이지:'+hospUrl, '전화:'+telno, 'x:'+xPos, 'y:'+yPos);
@@ -260,8 +264,18 @@ $(document).ready(function() {
 <script type="text/javascript">
 function clickBtn(){
 	var hospitalName = document.querySelector('.hospitalName');
+	var hospitalAddr = document.querySelector('.hospitalAddr');
+	var hospitalUrl = document.querySelector('.hospitalUrl');
+	var hospitalPhone = document.querySelector('.hospitalPhone');
+	alert(hospitalAddr.value);
+	alert(hospitalUrl.value);
+	alert(hospitalPhone.value);
 	document.getElementById("hosName").innerHTML = '<input type="text" name="yadmNm" id="yadmNm" value="'+ hospitalName.value +'" class="form-control">';
+	document.getElementById("hosUrl").innerHTML = '<input type="hidden" name="hos_Homepage" value="'+ hospitalUrl.value + '" >';
+	document.getElementById("hosAddr").innerHTML = '<input type="hidden" name="hos_Addr" value="'+ hospitalAddr.value + '" >';
+	document.getElementById("hosPhone").innerHTML = '<input type="hidden" name="hos_Phone" value="'+ hospitalPhone.value +'" >';
 }
+
 
 if(${haveRes != null}){
 	alert("예약이 존재합니다. 예약 취소 후 시도해주세요.");
@@ -539,7 +553,7 @@ function check(){
 														<input type="text" id="time" name="time" value="" class="form-control">
 													</div>
 												</div>
-
+												
 												<div class="row form-group">
 													<div class="col-md-12">
 														<input type="submit" class="btn btn-primary btn-block" value="Reserve Now">
@@ -547,6 +561,9 @@ function check(){
 														<input type="reset" value="Reset" class="btn btn-primary btn-block btn-reset-map">
 													</div>
 												</div>
+												<div id="hosAddr"><input type="hidden" name="hos_Addr" value=""></div>
+												<div id="hosUrl"><input type="hidden" name="hos_Homepage" value=""></div>
+												<div id="hosPhone"><input type="hidden" name="hos_Phone" value=""></div>
 											</form>	
 										</div>										
 									</div>
