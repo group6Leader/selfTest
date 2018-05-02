@@ -9,7 +9,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Map &mdash; 병원검색</title>
+	<title>Map &mdash; 病院検索</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -152,9 +152,9 @@
 				    		var addr = ele.addr;
 				    		hospUrl = "";
 				    		if(ele.hospUrl == ''){
-				    			hospUrl = '없음.';
+				    			hospUrl = '無';
 				    		}else if(ele.hospUrl == null){
-				    			hospUrl = '없음.';
+				    			hospUrl = '無';
 				    		}else if(ele.hospUrl.indexOf("http") != -1){
 				    			hospUrl = ele.hospUrl;
 				    		}else {
@@ -170,9 +170,9 @@
 								      '</div>'+
 								      '<input type="button" id=firstHeading class="hospitalName" onclick="clickBtn()" value="'+yadmNm+'">'+
 								      '<div id="bodyContent">'+
-								      '<p><b>홈페이지 : </b>' + '<a href=' + hospUrl + ' target="_blank">'+hospUrl+'</a></p>'+
-								      '<p><b>주소 : </b>'+addr+'</p>' +
-								      '<p><b>전화번호 : </b><span  >' + telno + '</span></p></div>' +
+								      '<p><b>ホームページ : </b>' + '<a href=' + hospUrl + ' target="_blank">'+hospUrl+'</a></p>'+
+								      '<p><b>住所 : </b>'+addr+'</p>' +
+								      '<p><b>電話番号 : </b><span  >' + telno + '</span></p></div>' +
 								      '<input type="hidden" class="hospitalUrl" value="'+hospUrl +'">' +
 								      '<input type="hidden" class="hospitalPhone" value="'+telno +'">' + 
 								      '<input type="hidden" class="hospitalAddr" value="'+addr +'">' 
@@ -278,11 +278,11 @@ function clickBtn(){
 
 
 if(${haveRes != null}){
-	alert("예약이 존재합니다. 예약 취소 후 시도해주세요.");
+	alert("既に予約があります。");
 }  
 
 if(${resSuccess != null}){
-	alert("예약이 완료되었습니다.");
+	alert("予約しました。");
 }
 
 $(function() {
@@ -335,19 +335,19 @@ function check(){
 	var time = document.getElementById('time').value;
 	
 	if(yadmNm == null || yadmNm ==""){
-		alert("예약하실 병원을 선택하세요.");
+		alert("病院を選んでください。");
 		return false;
 	}
 	if(dgsbjtCd == null || dgsbjtCd == ""){
-		alert("예약하실 진료과목을 선택하세요.");
+		alert("診療科目を選んでください。");
 		return false;
 	}
 	if(date == null || date == ""){
-		alert("예약 날짜를 선택하세요.");
+		alert("予約日を選んでください。");
 		return false;
 	}
 	if(time == null || time == ""){
-		alert("예약 시간을 선택하세요.");
+		alert("予約時間を選んでください。");
 		return false;
 	}
 	return true;	
@@ -389,37 +389,37 @@ function check(){
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">자가진단</a>
 											<ul class="dropdown-menu">
-												<li><a href="../selfCheck/goSelfCheck">자가진단 하러가기</a></li>
-												<li><a href="../selfCheck/goSelfCheck3">자가진단 결과보기</a></li>
+												<li><a href="../selfCheck/goSelfCheck">自己診断</a></li>
+												<li><a href="../selfCheck/goSelfCheck3">自己診断結果</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="isAuthenticated()">
 										<li><a href="../customer/goFix">My Page</a></li>
 										<c:if test="${sessionScope.customer.division == 2 }">
-											<li><a href="../reservation/book2">예약</a></li>
+											<li><a href="../reservation/book2">予約</a></li>
 										</c:if>
 										<c:if test="${sessionScope.customer.division == 1 }">
-											<li><a href="../reservation/book">예약</a></li>
+											<li><a href="../reservation/book">予約</a></li>
 										</c:if>					
 										
-										<li><a href="../webrtc/goWebRtc">원격진료</a></li>
+										<li><a href="../webrtc/goWebRtc">遠隔診療</a></li>
 										</sec:authorize>
 										
 										<sec:authorize access="hasRole('DOCTOR')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">의사메뉴</a>
+											data-toggle="dropdown" role="button" aria-haspopup="true">医者メニュー</a>
 											<ul class="dropdown-menu">
-												<li><a href="">진단서 작성</a></li>
-												<li><a href="">처방전 작성</a></li>
-												<li><a href="">처방전 리스트</a></li>
+												<li><a href="">診断書作成</a></li>
+												<li><a href="">処方箋作成</a></li>
+												<li><a href="">処方箋リスト</a></li>
 											</ul></li>
 										</sec:authorize>
 										<sec:authorize access="hasRole('CUSTOMER')">
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-haspopup="true">환자메뉴</a>
+											data-toggle="dropdown" role="button" aria-haspopup="true">患者メニュー</a>
 											<ul class="dropdown-menu">
-												<li><a href="../prescription/prescriptionIndList2">개인 처방전</a></li>
-												<li><a href="../healthRecord/goHealthRecord">개인 진단서</a></li>
+												<li><a href="../prescription/prescriptionIndList2">個人処方箋</a></li>
+												<li><a href="../healthRecord/goHealthRecord">個人診断書</a></li>
 											</ul></li>
 										</sec:authorize>
 										
@@ -437,7 +437,7 @@ function check(){
 										</sec:authorize>	
 										
 										<c:if test="${param.error != null}">
-							        		<li> 이메일 인증을 하셔야 합니다. </li>
+							        		<li> メールの認証をしてください。 </li>
 								    		</c:if>										
 									</ul>
 								</div>
@@ -487,24 +487,24 @@ function check(){
 													<div class="col-md-12">
 														<label for="activities">Subject</label>
 														<select name="dgsbjtCd" id="dgsbjtCd" class="form-control">
-															<option value="" disabled="disabled" selected="selected">진료과목</option>
-															<option value="00">일반의</option>
-															<option value="01">내과</option>
-															<option value="02">신경과</option>
-															<option value="03">정신건강의학과</option>
-															<option value="04">외과</option>
-															<option value="05">정형외과</option>
-															<option value="06">신경외과</option>
-															<option value="07">흉부외과</option>
-															<option value="08">성형외과</option>
-															<option value="10">산부인과</option>
-															<option value="11">소아청소년과</option>
-															<option value="12">안과</option>
-															<option value="13">이비인후과</option>
-															<option value="14">피부과</option>
-															<option value="15">비뇨기과</option>
-															<option value="49">치과</option>
-															<option value="80">한방내과</option>
+															<option value="" disabled="disabled" selected="selected">診療科目</option>
+															<option value="00">一般診療</option>
+															<option value="01">内科</option>
+															<option value="02">神経科</option>
+															<option value="03">精神医学科</option>
+															<option value="04">外科</option>
+															<option value="05">整形外科</option>
+															<option value="06">神経外科</option>
+															<option value="07">胸部外科</option>
+															<option value="08">美容外科</option>
+															<option value="10">産婦人科</option>
+															<option value="11">小児科</option>
+															<option value="12">眼科</option>
+															<option value="13">耳鼻咽喉科</option>
+															<option value="14">皮膚科</option>
+															<option value="15">泌尿器科</option>
+															<option value="49">歯科</option>
+															<option value="80">漢方内科</option>
 														</select>
 													</div>
 												</div>
@@ -512,32 +512,32 @@ function check(){
 													<div class="col-md-12">
 														<label for="activities">Area</label>
 														<select  name="sgguCd" id="sgguCd" class="form-control">
-															<option value="" disabled="disabled" selected="selected">지역</option>
-															<option value="110001">강남구</option>
-															<option value="110002">강동구</option>
-															<option value="110003">강서구</option>
-															<option value="110004">관악구</option>
-															<option value="110005">구로구</option>
-															<option value="110006">도봉구</option>
-															<option value="110007">동대문구</option>
-															<option value="110008">동작구</option>
-															<option value="110009">마포구</option>
-															<option value="110010">서대문구</option>
-															<option value="110011">성동문구</option>
-															<option value="110012">성북구</option>
-															<option value="110013">영등포구</option>
-															<option value="110014">용산구</option>
-															<option value="110015">은평구</option>
-															<option value="110016">종로구</option>
-															<option value="110017">중구</option>
-															<option value="110018">송파구</option>
-															<option value="110019">중랑구</option>
-															<option value="110020">양천구</option>
-															<option value="110021">서초구</option>
-															<option value="110022">노원구</option>
-															<option value="110023">광진구</option>
-															<option value="110024">강북구</option>
-															<option value="110025">금천구</option>
+															<option value="" disabled="disabled" selected="selected">地域</option>
+															<option value="110001">江南区</option>
+															<option value="110002">江東区</option>
+															<option value="110003">江西区</option>
+															<option value="110004">冠岳区</option>
+															<option value="110005">九老区</option>
+															<option value="110006">道峰区</option>
+															<option value="110007">東大門区</option>
+															<option value="110008">銅雀区</option>
+															<option value="110009">麻浦区</option>
+															<option value="110010">西大門区</option>
+															<option value="110011">城東区</option>
+															<option value="110012">城北区</option>
+															<option value="110013">永登浦区</option>
+															<option value="110014">龍山区</option>
+															<option value="110015">恩平区</option>
+															<option value="110016">鍾路区</option>
+															<option value="110017">中区</option>
+															<option value="110018">松坡区</option>
+															<option value="110019">中浪区</option>
+															<option value="110020">陽川区</option>
+															<option value="110021">瑞草区</option>
+															<option value="110022">蘆原区</option>
+															<option value="110023">広津区</option>
+															<option value="110024">江北区</option>
+															<option value="110025">金泉区</option>
 														</select>
 													</div>
 												</div>
@@ -631,7 +631,7 @@ function check(){
 			</div>
 		</form:form>
 		<div class='forgot'>
-			<h3>회원이 아니신가요?</h3>
+			<h3>会員ではないですか?</h3>
 			<a href='customer/goJoin'>click here</a> to join a new member
 		</div>
 	</div>	
