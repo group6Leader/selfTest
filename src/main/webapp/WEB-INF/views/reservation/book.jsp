@@ -137,7 +137,7 @@ function createCalendar(date, side) {
     if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
       selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
-      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-us", {
+      document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("ja-jp", {
         month: "long",
         day: "numeric",
         year: "numeric"
@@ -178,11 +178,11 @@ function createCalendar(date, side) {
 createCalendar(currentDate);
 
 var todayDayName = document.getElementById("todayDayName");
-todayDayName.innerHTML = "오늘은 " + currentDate.toLocaleString("ko-kr", {
+todayDayName.innerHTML = "今日は" + currentDate.toLocaleString("ja-jp", {
   weekday: "long",
   day: "numeric",
   month: "short"
-}) + " 입니다.";
+}) + "です。";
 
 var prevButton = document.getElementById("prev");
 var nextButton = document.getElementById("next");
@@ -249,7 +249,7 @@ function showEvents() {
     emptyMessage.innerHTML = "";
     sidebarEvents.appendChild(emptyMessage);
     let emptyFormMessage = document.getElementById("emptyFormTitle");
-    emptyFormMessage.innerHTML = "예약 하기";
+    emptyFormMessage.innerHTML = "予約";
   }
 }
 
@@ -273,7 +273,7 @@ gridTable.onclick = function (e) {
 
   showEvents();
 
-  document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("ko-kr", {
+  document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("ja-jp", {
     month: "long",
     day: "numeric",
     year: "numeric"
@@ -416,10 +416,10 @@ addEventButton.onclick = function (e) {
       data: {hour: desc, doctor: title},
       success:function(data){      	  
     	  if(${haveRes != null}){
-    	  		alert("예약이 존재합니다.");
+    	  		alert("既に予約があります。");
     	  }  
     	  if(${resErrorMsg != null}){
-    		   alert("예약불가 합니다.");
+    		   alert("予約が出来ません。");
     	  }
     	  location.href="book";
       },
@@ -605,22 +605,22 @@ addEventButton.onclick = function (e) {
 				<div class="calendar-footer">
 				<sec:authorize access="hasRole('CUSTOMER')">
 					<div class="emptyForm" id="emptyForm">
-						<h4 id="emptyFormTitle">예약 하기</h4>
+						<h4 id="emptyFormTitle">予約</h4>
 						<a class="addEvent" id="changeFormButton">Add new</a>
 					</div>
 				</sec:authorize>
 					<div class="addForm" id="addForm">
-						<h4>담당의사와 예약시간을 선택해주세요.</h4>
+						<h4>担当医者と予約時間を選んでください。</h4>
 
 						<div class="row">
 							<div class="input-field col s6">
 								<div class="column-4 form-select">
 									<select name="" id="eventTitleInput">
-										<option value="" disabled="disabled">진료종류</option>
-										<option selected="selected">Dr차예진</option>
-										<option>Dr조민제</option>
-										<option>Dr김준형</option>
-										<option>Dr신동철</option>
+										<option value="" disabled="disabled">担当医者</option>
+										<option selected="selected">Drチャ‧イェジン</option>
+										<option>Drジョ‧ミンジェ</option>
+										<option>Drキム‧ジュンヒョン</option>
+										<option>Drシン‧ドンチュル</option>
 									</select>
 								</div>
 							</div>
@@ -658,7 +658,7 @@ addEventButton.onclick = function (e) {
 			</div>
 		<div class="sidebar-wrapper z-depth-2" id="sidebar">
 			<div class="sidebar-title">
-				<h4 style="color: white;">선택 일자</h4>
+				<h4 style="color: white;">選択日</h4>
 				<h5 id="eventDayName" style="color: white;">SIDEBAR SUB-TITLE</h5>
 			</div>
 			<div class="sidebar-events" id="sidebarEvents">
@@ -667,7 +667,7 @@ addEventButton.onclick = function (e) {
 			
 			<div class="resStatas">
 			<c:if test="${sessionScope.myReservation != null && sessionScope.customer.division == 1 }">
-				&emsp;${myReservation }
+				${myReservation }
 				<br><br>
 				<a href="./deleteBook"><button style="margin-left: 30px;">予約キャンセル</button></a>
 			</c:if>

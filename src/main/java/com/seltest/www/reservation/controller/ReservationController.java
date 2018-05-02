@@ -79,7 +79,7 @@ public class ReservationController {
 				myRes = dao.selectMyReservation(cust_Num);
 				//나의 예약정보 확인
 				if(myRes != null){
-					String haveRes = "예약 정보가 이미 존재합니다.";
+					String haveRes = "既に予約があります。";
 					model.addAttribute("haveRes", haveRes);					
 					String my_Res = myRes.getRes_Date();
 					String year = my_Res.substring(0, 4);
@@ -89,17 +89,17 @@ public class ReservationController {
 					String resCheck = "";
 					if(myRes.getCust_Id() != null){
 						res_Check = myRes.getCust_Id();
-						if(res_Check.equals("cha")) resCheck = "Dr차예진";
-						if(res_Check.equals("jo")) resCheck = "Dr조민제";
-						if(res_Check.equals("kim")) resCheck = "Dr김준형";
-						if(res_Check.equals("sin")) resCheck = "Dr신동철";
-						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ resCheck + " 에게" + " 원격진료를 예약하셨습니다.";	
+						if(res_Check.equals("cha")) resCheck = "Drチャ‧イェジン";
+						if(res_Check.equals("jo")) resCheck = "Drジョ‧ミンジェ";
+						if(res_Check.equals("kim")) resCheck = "Drキム‧ジュンヒョン";
+						if(res_Check.equals("sin")) resCheck = "Drシン‧ドンチュル";
+						String myReservation = year+"年"+month+"月"+date+"日"+hour+"時、"+ resCheck + "に" + "遠隔診療を予約しました。";	
 						model.addAttribute("myReservation", myReservation);
 						session.setAttribute("myReservation", myReservation);
 					}
 					
 					if(myRes.getHos_Name() != null && myRes.getCategory() != null){
-						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 "+ myRes.getHos_Name() + " " + myRes.getCategory() + " 진료를 예약하셨습니다.";
+						String myReservation = year+"年"+month+"月"+date+"日"+hour+"時"+ myRes.getHos_Name() + " " + myRes.getCategory() + "診療を予約しました。";
 						model.addAttribute("myReservation", myReservation);
 						session.setAttribute("myReservation", myReservation);
 					}
@@ -156,7 +156,7 @@ public class ReservationController {
 			int today = Integer.parseInt(sdf.format(cal.getTime()));
 			int selectedDay = Integer.parseInt(res_Date);
 			if(selectedDay <= today){
-				String resErrorMsg = "예약 불가합니다.";
+				String resErrorMsg = "予約が出来ません。";
 				model.addAttribute("resErrorMsg", resErrorMsg);
 			}
 			String cust_Name = member.getCustomer().getCust_Name();
@@ -165,16 +165,16 @@ public class ReservationController {
 			res.setCust_Num(cust_Num);
 			String doc_Name = request.getParameter("doctor");
 			String cust_Id = "";
-			if(doc_Name.equals("Dr차예진")){
+			if(doc_Name.equals("Drチャ‧イェジン")){
 				cust_Id = "cha";
 			}
-			if(doc_Name.equals("Dr조민제")){
+			if(doc_Name.equals("Drジョ‧ミンジェ")){
 				cust_Id = "jo";
 			}
-			if(doc_Name.equals("Dr김준형")){
+			if(doc_Name.equals("Drキム‧ジュンヒョン")){
 				cust_Id = "kim";
 			}
-			if(doc_Name.equals("Dr신동철")){
+			if(doc_Name.equals("Drシン‧ドンチュル")){
 				cust_Id = "sin";
 			}
 			res.setCust_Id(cust_Id);
@@ -191,24 +191,24 @@ public class ReservationController {
 					if(myRes != null){
 						cust_Id = myRes.getCust_Id();
 						String docName = "";
-							if(cust_Id.equals("cha")) docName = "Dr 차예진";
-							if(cust_Id.equals("jo")) docName = "Dr 조민제";
-							if(cust_Id.equals("kim")) docName = "Dr 김준형";
-							if(cust_Id.equals("sin")) docName = "Dr 신동철";
+							if(cust_Id.equals("cha")) docName = "Drチャ‧イェジン";
+							if(cust_Id.equals("jo")) docName = "Drジョ‧ミンジェ";
+							if(cust_Id.equals("kim")) docName = "Drキム‧ジュンヒョン";
+							if(cust_Id.equals("sin")) docName = "Drシン‧ドンチュル";
 						String my_Res = myRes.getRes_Date();
 						String year = my_Res.substring(0, 4);
 						String month = my_Res.substring(4, 6);
 						String date = my_Res.substring(6, 8);
 						hour = my_Res.substring(8, 10);
-						String myReservation = year+"년 "+month+"월 "+date+"일 "+hour+"시 " + docName+ "에게 원격진료를 예약하셨습니다.";					
+						String myReservation = year+"年"+month+"月"+date+"日"+hour+"時、" + docName+ "に遠隔診療を予約しました。";					
 						model.addAttribute("myReservation", myReservation);
 						session.setAttribute("myReservation", myReservation);
 					}
 				}
-				System.out.println("예약 완료");
+				System.out.println("予約完了");
 			}else{
 				session.removeAttribute(selectedDate);
-				System.out.println("예약 실패");
+				System.out.println("予約失敗");
 				return "reservation/book";
 			}
 						
@@ -218,7 +218,7 @@ public class ReservationController {
 	//예약 하기2
 	@RequestMapping(value="reservation2", method = RequestMethod.GET)
 	public String revservation2(HttpSession session, Model model, String yadmNm, String dgsbjtCd, String date, String time,
-			String hos_Addr, String hos_Homepage, String hos_Phone){
+		String hos_Addr, String hos_Homepage, String hos_Phone){
 		System.out.println(yadmNm);
 		System.out.println(dgsbjtCd);
 		System.out.println(date);

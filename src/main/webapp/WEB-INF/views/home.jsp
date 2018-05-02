@@ -417,7 +417,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>チャイェジン</h4>
+											<h4>チャ‧イェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -437,7 +437,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ジョミンジェ</h4>
+											<h4>ジョ‧ミンジェ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -464,7 +464,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>チャイェジン</h4>
+											<h4>チャ‧イェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
@@ -491,7 +491,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Jo.jpg" alt="" />
-											<h4>ジョミンジェ</h4>
+											<h4>ジョ‧ミンジェ</h4>
 											<div class="separator"></div>
 											<p>精神医学科専攻</p>
 										</div>
@@ -511,7 +511,7 @@ $(window).scroll(function(){
 										<div class="team">
 											<img class="img-circle"
 												src="./resources/image/doctor/Cha.jpg" alt="" />
-											<h4>チャイェジン</h4>
+											<h4>チャ‧イェジン</h4>
 											<div class="separator"></div>
 											<p>外科専攻</p>
 										</div>
