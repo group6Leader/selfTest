@@ -75,7 +75,7 @@ function del_check() {
 
 	var dia_Num = document.getElementById("dia_Num");
 
-	if (confirm("정말로 삭제 하시겠습니까?")) {
+	if (confirm("削除しますが?")) {
 		
 		alert(dia_Num.value);
 		location.href = 'deleteHR?dia_Num=' + dia_Num.value;

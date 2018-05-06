@@ -22,14 +22,14 @@ $(function(){
 <body>
 
 	<div id="wrapper">
-	<h1>환자 명단</h1>
+	<h1>患者名簿</h1>
     <table id="keywords" cellpadding="0" cellspacing="0">
       <thead>
         <tr>
-          <th><span>고객번호</span></th>
-          <th><span>아이디 </span></th>
-          <th><span>이름</span></th>
-          <th><span>생년월일</span> </th>
+          <th><span>顧客番号</span></th>
+          <th><span>ID </span></th>
+          <th><span>名前</span></th>
+          <th><span>生年月日</span> </th>
         </tr>
       </thead>
       <tbody>

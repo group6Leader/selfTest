@@ -278,7 +278,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Hospital Phone</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="hos_Address" name="hos_Address" placeholder="Address" value="서울시 강남구 삼성동 코엑스" readonly="readonly" class="form-control form-control-line">
+                                            <input type="text" id="hos_Address" name="hos_Address" placeholder="Address" value="ソウル市江南区" readonly="readonly" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -371,7 +371,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 Adminwrap by wrappixel.com
+                © 2018 Char Hospital by Null Team
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

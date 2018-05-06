@@ -389,7 +389,7 @@ function docReserveList() {
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 Adminwrap by wrappixel.com
+                © 2018 Char Hospital by Null Team
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

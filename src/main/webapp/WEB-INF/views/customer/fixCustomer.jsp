@@ -85,7 +85,7 @@ $(document).ready(function() {
 
  $('#fixBtn').on('click',function(){
 	 
-	 	if(!confirm("수정하시겠습니까?")){
+	 	if(!confirm("修正しますか?")){
 	 		return false;
 	 	}
 	 
@@ -129,7 +129,7 @@ $(document).ready(function() {
  $('#delBtn').on('click',function(){
 		
 	 
-	 	if(!confirm("삭제하시겠습니까?")){
+	 	if(!confirm("削除しますか?")){
 	 		
 	 		return false;
 	 	}
@@ -361,8 +361,8 @@ $(document).ready(function() {
    											<!-- '<img alt="" src="download?origin='+data.originalfile+'&saved='+data.savedfile+'">' -->
     									</div>
    									</div>
-    									<h4 class="card-title m-t-10">드래그 해주세요.</h4>
-                                    <h6 class="card-subtitle">수정을 원하시는 사진을 드래그 해주세요.</h6>
+    									<h4 class="card-title m-t-10">ドラッグしてください。</h4>
+                                    <h6 class="card-subtitle">修正したい写真をドラッグしてください。</h6>
    								</center>
    							</div>
    						</div>
@@ -455,7 +455,7 @@ $(document).ready(function() {
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 Adminwrap by wrappixel.com
+                © 2018 Char Hospital by Null Team
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

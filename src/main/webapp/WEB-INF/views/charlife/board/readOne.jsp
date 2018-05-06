@@ -44,9 +44,9 @@
 					<div class="field half" style="width: 200px; font">
 						<label for="Category">Category</label>
 						<select id="board_Category" name="board_Category" disabled="disabled">
-							<option style="color: black;" value="자유 게시판" <c:if test="${b.board_Category == '자유 게시판' }"> selected="selected" </c:if>> 자유 게시판 </option>
-							<option style="color: black;" value="병원 평가" <c:if test="${b.board_Category == '병원 평가' }"> selected="selected" </c:if>> 병원 평가 </option>
-							<option style="color: black;" value="고객의 목소리" <c:if test="${b.board_Category == '고객의 목소리' }"> selected="selected" </c:if>> 고객의 목소리 </option>
+							<option style="color: black;" value="自由掲示板" <c:if test="${b.board_Category == '自由掲示板' }"> selected="selected" </c:if>> 自由掲示板 </option>
+							<option style="color: black;" value="病院口コミ" <c:if test="${b.board_Category == '病院口コミ' }"> selected="selected" </c:if>> 病院口コミ </option>
+							<option style="color: black;" value="顧客の声" <c:if test="${b.board_Category == '顧客の声' }"> selected="selected" </c:if>> 顧客の声 </option>
 						</select>							
 					</div>
 

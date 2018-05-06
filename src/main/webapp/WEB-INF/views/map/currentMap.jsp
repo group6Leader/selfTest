@@ -387,7 +387,7 @@ function check(){
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="/www">Char Hospital</a></li>
 										<sec:authorize access="hasRole('CUSTOMER')">
-										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">자가진단</a>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true">自己診断</a>
 											<ul class="dropdown-menu">
 												<li><a href="../selfCheck/goSelfCheck">自己診断</a></li>
 												<li><a href="../selfCheck/goSelfCheck3">自己診断結果</a></li>

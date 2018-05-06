@@ -122,7 +122,7 @@ package com.seltest.www.vo;
 	    	if(search.getYadmNm() != null){
 	    		url = url + "&yadmNm="+search.getYadmNm();
 	    	}
-	    	
+	    	System.out.println(url);
 	        if(url != null){
 		        url = url+"";	        
 		        }

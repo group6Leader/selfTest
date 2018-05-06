@@ -231,8 +231,8 @@ function print(printArea)
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>차병원</td>
-                                                <td>서울 강남구 삼성동 코엑스</td>
+                                                <td>チャ病院</td>
+                                                <td>ソウル市江南区</td>
                                                 <td>119</td>
                                             </tr>
                                         </tbody>

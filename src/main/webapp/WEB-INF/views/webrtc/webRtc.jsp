@@ -26,7 +26,7 @@
 <!--Theme Responsive css-->
 <link rel="stylesheet" href="../resources/assets/css/responsive.css" />
 <script src="../resources/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>PeerJS - 영상 채팅 예제</title>
+<title>webrtc - 遠隔診療</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"

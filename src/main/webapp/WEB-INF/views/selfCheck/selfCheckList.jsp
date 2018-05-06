@@ -35,7 +35,7 @@ body {
 <body>
 
 <div id="wrapper">
-<h1>자가진단 리스트</h1>
+<h1>自己診断リスト</h1>
 
 
 
@@ -43,12 +43,12 @@ body {
 
 	<thead>
 		<tr>
-			<th><span>자가진단번호</span></th>
-			<th><span>고객번호</span></th>
-			<th><span>아이디</span></th>
-			<th><span>이름</span></th>
-			<th><span>생년월일</span></th>
-			<th><span>자가진단일</span></th>
+			<th><span>自己診断番号</span></th>
+			<th><span>顧客番号</span></th>
+			<th><span>ID</span></th>
+			<th><span>名前</span></th>
+			<th><span>生年月日</span></th>
+			<th><span>自己診断日</span></th>
 		</tr>
      </thead>
 

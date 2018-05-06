@@ -18,7 +18,7 @@
 		
 		$('.rating').hide(); 
           	$('#board_Category').change(function(){
-			if($('#board_Category').val() == '병원 평가'){
+			if($('#board_Category').val() == '病院口コミ'){
   				$('.rating').show()
 			}else{
  				$('.rating').hide()
@@ -83,14 +83,14 @@
 		                str = "<div><a href='displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
 		            }
 		            // 삭제 버튼
-		            str += "<span data-src="+data+">[삭제]</span></div>";
+		            str += "<span data-src="+data+">[削除]</span></div>";
 		            $(".uploadedList").append(str);
 		        }
 		    });
 		});
 		
 	 $(".uploadedList").on("click", "span", function(event){
-		    alert("이미지 삭제");
+		    alert("イメージ削除");
 		    var that = $(this); // 여기서 this는 클릭한 span태그
 		    $.ajax({
 		        url: "deleteFile",
@@ -156,9 +156,9 @@
 						<div class="field half" style="width: 200px; font">
 							<label for="Category">Category</label>
 							<select id="board_Category" class="board_Category" name="board_Category" >
-								<option style="color: black;" value="자유 게시판"> 자유 게시판 </option>
-								<option style="color: black;" value="병원 평가">  병원 평가  </option>
-								<option style="color: black;" value="고객의 목소리"> 고객의 목소리 </option>
+								<option style="color: black;" value="自由掲示板"> 自由掲示板 </option>
+								<option style="color: black;" value="病院口コミ">  病院口コミ  </option>
+								<option style="color: black;" value="顧客の声"> 顧客の声 </option>
 							</select>							
 						</div>
 					

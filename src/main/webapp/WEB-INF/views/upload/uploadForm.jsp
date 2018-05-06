@@ -99,14 +99,14 @@ function getImageLink(fileName) {
 	                str = "<div><a href='displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
 	            }
 	            // 삭제 버튼
-	            str += "<span data-src="+data+">[삭제]</span></div>";
+	            str += "<span data-src="+data+">[削除]</span></div>";
 	            $(".uploadedList").append(str);
 	        }
 	    });
 	});
  
  $(".uploadedList").on("click", "span", function(event){
-	    alert("이미지 삭제")
+	    alert("イメージ削除")
 	    var that = $(this); // 여기서 this는 클릭한 span태그
 	    $.ajax({
 	        url: "deleteFile",
@@ -132,7 +132,7 @@ function getImageLink(fileName) {
     <!-- application/x-www-form-urlencoded 기본옵션 -->
     <form id="form1" target="iframePhoto" action="uploadForm" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
-        <input type="submit" value="업로드">    
+        <input type="submit" value="アップロード">    
     </form>
     
     <!-- form data가 이곳으로 이동 -->

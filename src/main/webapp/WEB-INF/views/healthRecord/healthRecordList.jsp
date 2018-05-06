@@ -193,7 +193,7 @@ $(function(){
                                 <h4 class="card-title">Prescription</h4>
                                 <h6 class="card-subtitle">patient List</h6>
                                 <div class="table-responsive">
-									등록된 진단서가 없습니다.
+									登録されている診断書がありません。
                                 </div>
                             </div>
                         </div>
@@ -287,7 +287,7 @@ $(function(){
     <script src="../resources/assets2/js/dashboard1.js"></script>
 	<c:if test="${HR_List!='[]'}">
 	<div id="wrapper">
-	<h1>개인 진단서 리스트</h1>
+	<h1>個人診断書リスト</h1>
     <table id="keywords" cellpadding="0" cellspacing="0">
       <thead>
         <tr>

@@ -700,7 +700,7 @@ $(window).scroll(function(){
 			</div>
 		</form:form>
 		<div class='forgot'>
-			<h3>회원이 아니신가요?</h3>
+			<h3>会員ではないですか。</h3>
 			<a href='customer/goJoin'>click here</a> to join a new member
 		</div>
 

@@ -29,19 +29,19 @@ $(document).ready(function() {
 	$("form").submit(function() {
 		if (!RegexId.test($.trim($("#cust_Id").val())))
 		{
-			alert("아이디 오류");
+			alert("IDエラー");
 			$("#cust_Id").focus();
 			return false;
 		}
 		if (!RegexId.test($.trim($("#cust_Name").val())))
 		{
-			alert("이름을 입력해주세요.");
+			alert("名前を入力してください。");
 			$("#cust_Name").focus();
 			return false;
 		}
 		if (!RegexEmail.test($.trim($("#cust_Email").val())))
 		{
-			alert("이메일 오류");
+			alert("めーるエラー");
 			$("#cust_Email").focus();
 			return false;
 		}
@@ -85,7 +85,7 @@ $(document).ready(function() {
 	    });
 	});
  $(".uploadedList").on("click", "span", function(event){
-	    alert("이미지 삭제")
+	    alert("イメージ削除")
 	    var that = $(this); // 여기서 this는 클릭한 span태그
 	    $.ajax({
 	        url: "deleteFile",
@@ -120,9 +120,9 @@ function IdChk(){
 			console.log(data);
 			var html = '<span id="check">';
 			if(data['cust_Id']!=""){
-				html += '중복되는 아이디가 있습니다.';
+				html += '既に登録されているIDです。';
 			}else{
-				html += '사용가능한 아이디 입니다.';
+				html += '使えます。';
 			}
 			html += '</span>';
 			
@@ -164,7 +164,7 @@ function IdChk(){
 
 		for (var i = year - 100; i <= year; i++) {
 
-			selectValue.add(new Option(i + "년", i), optionIndex++);
+			selectValue.add(new Option(i + "年", i), optionIndex++);
 
 		}
 
@@ -178,7 +178,7 @@ function IdChk(){
 
 		for (var i = 1; i <= 12; i++) {
 
-			selectValue.add(new Option(i + "월", i), optionIndex++);
+			selectValue.add(new Option(i + "月", i), optionIndex++);
 
 		}
 
@@ -192,7 +192,7 @@ function IdChk(){
 
 		for (var i = 1; i <= 31; i++) {
 
-			selectValue.add(new Option(i + "일", i), optionIndex++);
+			selectValue.add(new Option(i + "日", i), optionIndex++);
 
 		}
 
@@ -286,19 +286,19 @@ function IdChk(){
 			
 			
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">성별</div>
+				<div class="form-radio-legend">性別</div>
 				<label class="form-radio-label"> <input name=cust_Sex
 					class="form-radio-field" type="radio" value="M" /> <i
-					class="form-radio-button"></i> <span>남자</span>
+					class="form-radio-button"></i> <span>男</span>
 				</label> <label class="form-radio-label"> <input name=cust_Sex
 					class="form-radio-field" type="radio" value="F" /> <i
-					class="form-radio-button"></i> <span>여자</span>
+					class="form-radio-button"></i> <span>女</span>
 				</label>
 				
 				
 			</div>
 			<div class="form-radio form-radio-block">
-				<div class="form-radio-legend">생년월일 </div>
+				<div class="form-radio-legend">生年月日 </div>
 			</div>
 			
 			

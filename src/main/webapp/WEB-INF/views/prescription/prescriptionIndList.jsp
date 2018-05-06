@@ -50,7 +50,7 @@
 		alert(pre_Num);
 		alert(cust_Num); */
 		
-		if(confirm("정말 삭제하시겠습니까?")){
+		if(confirm("削除しますか?")){
 			location.href='./delete?pre_Num=' + pre_Num + '&cust_Num=' + cust_Num;
 		}
 	}

@@ -179,10 +179,10 @@ $('#smileys input').on('click', function() {
                                 <h4 class="card-title">SelfCheck</h4>
                                 <h6 class="card-subtitle">List</h6>
 								<h4>Blood Pressure</h4>
-								<input type="text" name="blood_Pressure" placeholder="ex) 평균혈압 100" value="100"<c:if test="${s.blood_Pressure != 0}"> value="${s.blood_Pressure }"</c:if>>
+								<input type="text" name="blood_Pressure" placeholder="ex) 平均血圧100" value="100"<c:if test="${s.blood_Pressure != 0}"> value="${s.blood_Pressure }"</c:if>>
 								<h3 class="small">* 血圧の平均値を入力してください。</h3>
 								<h4>Smoking</h4>
-			<input id="noSmoking" type="radio" name='smoking' checked='checked' value="없음" <c:if test="${s.smoking == '없음' }"> checked="checked" </c:if>/>
+			<input id="noSmoking" type="radio" name='smoking' checked='checked' value="無し" <c:if test="${s.smoking == '無し' }"> checked="checked" </c:if>/>
 			<label for="noSmoking">無し</label> 
 						
 			<input id='halfSmoking' type="radio" name='smoking' value="하루 한 갑 미만" <c:if test="${s.smoking == '하루 한 갑 미만' }"> checked="checked" </c:if>/>
@@ -217,15 +217,15 @@ $('#smileys input').on('click', function() {
 			<input id='yesSurgery' type="radio" name='surgery' value="있음" <c:if test="${s.surgery == '있음' }"> checked="checked" </c:if>/>
 			<label for="yesSurgery">手術経験有り</label>
 			<h4>Disabled</h4>
-			<input id="noDisability" type="radio" name='disability' checked='checked' value="없음" <c:if test="${s.disability == '없음' }"> checked="checked" </c:if>/>
+			<input id="noDisability" type="radio" name='disability' checked='checked' value="無し" <c:if test="${s.disability == '無し' }"> checked="checked" </c:if>/>
 			<label for="noDisability">障害無し</label> 
-			<input id='yesDisability' type="radio" name='disability' value="있음" <c:if test="${s.disability == '있음' }"> checked="checked" </c:if>/>
+			<input id='yesDisability' type="radio" name='disability' value="無し" <c:if test="${s.disability == '無し' }"> checked="checked" </c:if>/>
 			<label for="yesDisability">障害有り</label>
 			<h4>Medicine</h4>
-			<input type="text" name="medicine" placeholder="ex) 없음" value="${s.medicine }">
+			<input type="text" name="medicine" placeholder="ex) 無し" value="${s.medicine }">
 			<h3 class="small">*最近飲んだ薬を書いてください。</h3>
 			<h4>Allergy</h4>
-			<input type="text" name="allergy" placeholder="ex) 갑각류 알레르기" value="${s.allergy }">
+			<input type="text" name="allergy" placeholder="ex) 花アレルギー" value="${s.allergy }">
 			<h4>Overseas Visits</h4>
 			<input id="noOverseas_Visits" type="radio" name='overseas_Visits' checked='checked' value="없음" <c:if test="${s.overseas_Visits== '없음' }"> checked="checked" </c:if>/>
 			<label for="noOverseas_Visits">無し</label> 

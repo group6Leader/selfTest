@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>채팅</title>
+<title>ちゃっチング</title>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"></c:url>"></script>
 <script type="text/javascript">
 	var wsocket;
@@ -67,14 +67,14 @@
 </style>
 </head>
 <body>
-	이름:<input type="text" id="nickname">
-	<input type="button" id="enterBtn" value="입장">
-	<input type="button" id="exitBtn" value="나가기">
+	名前:<input type="text" id="nickname">
+	<input type="button" id="enterBtn" value="入場">
+	<input type="button" id="exitBtn" value="退場">
     
-    <h1>대화 영역</h1>
+    <h1>ChatArea</h1>
     <div id="chatArea"><div id="chatMessageArea"></div></div>
     <br/>
     <input type="text" id="message">
-    <input type="button" id="sendBtn" value="전송">
+    <input type="button" id="sendBtn" value="send">
 </body>
 </html>
